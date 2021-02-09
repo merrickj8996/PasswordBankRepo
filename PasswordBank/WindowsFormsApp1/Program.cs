@@ -19,4 +19,9 @@ namespace WindowsFormsApp1
             Application.Run(new Form1());
         }
     }
+
+    static class Password
+    {
+
+    }
 }
