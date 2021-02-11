@@ -9,22 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
-{
-    public partial class MasterForm : Form
-    {
-        public MasterForm()
-        {
+namespace WindowsFormsApp1 {
+    public partial class MasterForm : Form {
+        public MasterForm() {
             InitializeComponent();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-            CreateFile();
+        private void toolStripButton1_Click(object sender, EventArgs e) {
+            DisplayNewFileWarning();
         }
 
-        private void readCSV(string filePath)
-        {
+        private void readCSV(string filePath) {
             //Read the CSV file that as just opened.
             //set the columns to be equal to the first line of the CSV seperated by commas
             string[] lines = File.ReadAllLines(filePath);
@@ -36,8 +31,7 @@ namespace WindowsFormsApp1
             for (int i = 0; i < Cols; i++)
                 dt.Columns.Add(fields[i].ToLower(), typeof(string));
             DataRow Row;
-            for (int i = 1; i < lines.GetLength(0); i++)
-            {
+            for (int i = 1; i < lines.GetLength(0); i++) {
                 fields = lines[i].Split(new char[] { ',' });
                 Row = dt.NewRow();
                 for (int f = 0; f < Cols; f++)
@@ -50,25 +44,21 @@ namespace WindowsFormsApp1
         /**
          * Windows prompt for opening a file
          */
-        private void OpenFile(string filePath, string fileContent)
-        {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
+        private void OpenFile(string filePath, string fileContent) {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
                 openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
                 openFileDialog.FilterIndex = 2;
                 openFileDialog.RestoreDirectory = true;
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
+                if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     //Get the path of specified file
                     filePath = openFileDialog.FileName;
 
                     //Read the contents of the file into a stream
                     var fileStream = openFileDialog.OpenFile();
 
-                    using (StreamReader reader = new StreamReader(fileStream))
-                    {
+                    using (StreamReader reader = new StreamReader(fileStream)) {
                         fileContent = reader.ReadToEnd();
                     }
                     readCSV(filePath);
@@ -78,24 +68,23 @@ namespace WindowsFormsApp1
         /**
          * Method for creating a file
          */
-        private void CreateFile()
-        {
+        private void CreateFile() {
             Stream myStream;
-            SaveFileDialog save = new SaveFileDialog
-            {
+            SaveFileDialog save = new SaveFileDialog {
                 Filter = "CSV |*.csv",
                 Title = "Save password DB"
             };
-            if (save.ShowDialog() == DialogResult.OK)
-            {
-                if ((myStream = save.OpenFile()) != null)
-                {
+            if (save.ShowDialog() == DialogResult.OK) {
+                if ((myStream = save.OpenFile()) != null) {
                     myStream.Close();
                 }
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true))
-                {
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
                     file.WriteLine("Group,Title,User Name,Password,URL,Notes");
                 }
+                readCSV(save.FileName);
+                this.Hide();
+                passwordOptions masterPass = new passwordOptions();
+                masterPass.ShowDialog();
             }
 
             //Read the CSV file that as just opened.
@@ -103,86 +92,71 @@ namespace WindowsFormsApp1
             //readCSV(save.FileName);
         }
 
-        private void saveFile()
-        {
-            SaveFileDialog save = new SaveFileDialog
-            {
+        private void saveFile() {
+            SaveFileDialog save = new SaveFileDialog {
                 Filter = "CSV |*.csv",
                 Title = "Save file"
             };
-            if (save.ShowDialog() == DialogResult.OK)
-            {
+            if (save.ShowDialog() == DialogResult.OK) {
                 StreamWriter write = new StreamWriter(File.Create(save.FileName));
                 write.Write(dataGridView1);
                 write.Dispose();
             }
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-            
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void MasterForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-
-        private void newToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void DisplayNewFileWarning() {
             string message = "Are you sure you wish to create a new password File?";
             string title = "Pass Keeper";
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
-            if (result == DialogResult.Yes)
-            {
+            if (result == DialogResult.Yes) {
                 CreateFile();
-                this.Hide();
-                passwordOptions masterPass = new passwordOptions();
-                masterPass.ShowDialog();
-
             }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
 
         }
 
-        private void settignsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
 
         }
 
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
+        private void MasterForm_Load(object sender, EventArgs e) {
 
         }
 
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
 
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e) {
+            DisplayNewFileWarning();
+        }
+
+        private void settignsToolStripMenuItem_Click(object sender, EventArgs e) {
+
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e) {
+
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e) {
             //decryption should go here I think.
-            
+
             var fileContent = string.Empty;
             var filePath = string.Empty;
 
             OpenFile(filePath, fileContent);
         }
 
-        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e) {
             // decryption algorithm likely to go here as This is where the file reading starst as far as
 
             var fileContent = string.Empty;
@@ -191,13 +165,11 @@ namespace WindowsFormsApp1
             OpenFile(filePath, fileContent);
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e)
-        {
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
 
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
+        private void toolStripButton3_Click(object sender, EventArgs e) {
             saveFile();
         }
     }
