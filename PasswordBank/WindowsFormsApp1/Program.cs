@@ -23,14 +23,12 @@ namespace WindowsFormsApp1
 
     static class Password
     {
-        static double checkStrength(string password) {
+        public static double checkStrength(string password) {
             // Initalizes double to store password strength at sets it to 0.
             double passwordStrength = 0;
 
             // If the password isn't more than 4 characters the password strength will be 0.
             if (password.Length <= 4) {
-                // Changing text color to red.
-                Console.ForegroundColor = ConsoleColor.Red;
                 return passwordStrength;
             }
 
