@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
     }
     static class BankFile {
 
-        // Compresses all files in a folder using GZipStream
+        // Compresses all files in a folder using GZip
         public static void Compress(DirectoryInfo fileDirectory) {
 
             // For loop lets each file in directory get compressed
@@ -128,13 +128,35 @@ namespace WindowsFormsApp1
                         // Creates a File Stream for the compressed file
                         using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz")) {
 
-                            // Creates the compressionStream
+                            // Creates the compression stream
                             using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress)) {
 
                                 // Compresses file
                                 originalFileStream.CopyTo(compressionStream);
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        // Decompresses a file using GZip
+        public static void Decompress(FileInfo fileToDecompress) {
+            
+            // Creates a FileStream containing the data from fileToDecompress
+            using (FileStream originalFileStream = fileToDecompress.OpenRead()) {
+
+                string currentFileName = fileToDecompress.FullName;
+                string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+
+                // Creates the decompressed file stream
+                using (FileStream decompressedFileStream = File.Create(newFileName)) {
+
+                    // Creates the compression stream
+                    using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress)) {
+
+                        // Decompresses file
+                        decompressionStream.CopyTo(decompressedFileStream);
                     }
                 }
             }
