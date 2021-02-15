@@ -1,6 +1,5 @@
 
 *.cache
-PasswordBank/.vs/PasswordBank/DesignTimeBuild/.dtbcache.v2
 obj
 bin
 *.suo
