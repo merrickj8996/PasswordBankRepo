@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.IO.Compression;
 
 namespace WindowsFormsApp1
 {
@@ -106,6 +108,35 @@ namespace WindowsFormsApp1
                 passwordStrength = passwordStrength * mulitplier;
 
                 return passwordStrength;
+            }
+        }
+    }
+    static class BankFile {
+
+        // Compresses all files in a folder using GZipStream
+        public static void Compress(DirectoryInfo fileDirectory) {
+
+            // For loop lets each file in directory get compressed
+            foreach (FileInfo fileToCompress in fileDirectory.GetFiles()) {
+
+                // Creates a File Stream containing the data in the fileToCompress
+                using (FileStream originalFileStream = fileToCompress.OpenRead()) {
+
+                    // Check that the file is not hidden or already a .gz file
+                    if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz") {
+
+                        // Creates a File Stream for the compressed file
+                        using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz")) {
+
+                            // Creates the compressionStream
+                            using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress)) {
+
+                                // Compresses file
+                                originalFileStream.CopyTo(compressionStream);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
