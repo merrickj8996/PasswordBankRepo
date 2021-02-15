@@ -72,18 +72,8 @@ namespace WindowsFormsApp1
                     passwordStrength++;
                 }
 
-                // Sets the first character in the password to temp
-                char temp = password[0];
-                // Every password will have at least one special character
-                int uniqueCharacters = 1;
-                for (int i = 0; i < password.Length; i++) {
-                    // If the current character is unique then it becomes the new temp 
-                    // and uniqueCharacters increaes by 1
-                    if (password[i] != temp) {
-                        temp = password[i];
-                        uniqueCharacters++;
-                    }
-                }
+                // checks the number of unique characters in the password and stores it in uniqueCharacters
+                int uniqueCharacters = password.Distinct().Count();
 
                 // multiplier is intialized and set to 0.
                 double mulitplier = 0;
