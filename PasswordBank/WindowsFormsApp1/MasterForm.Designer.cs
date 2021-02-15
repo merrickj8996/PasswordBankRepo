@@ -30,19 +30,19 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton5 = new System.Windows.Forms.ToolStripButton();
+            this.AddRowButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
@@ -88,9 +88,9 @@ namespace WindowsFormsApp1
             this.OpenFileButton,
             this.toolStripButton3,
             this.toolStripSeparator4,
-            this.toolStripButton4,
+            this.NewEntryButton,
             this.toolStripSeparator5,
-            this.toolStripButton5,
+            this.AddRowButton,
             this.toolStripButton6,
             this.toolStripButton7,
             this.toolStripButton8,
@@ -140,28 +140,28 @@ namespace WindowsFormsApp1
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton4
+            // NewEntryButton
             // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::WindowsFormsApp1.Properties.Resources.edit;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "toolStripButton4";
+            this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.NewEntryButton.Image = global::WindowsFormsApp1.Properties.Resources.edit;
+            this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NewEntryButton.Name = "NewEntryButton";
+            this.NewEntryButton.Size = new System.Drawing.Size(23, 22);
+            this.NewEntryButton.Text = "toolStripButton4";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
             this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
             // 
-            // toolStripButton5
+            // AddRowButton
             // 
-            this.toolStripButton5.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
-            this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton5.Text = "toolStripButton5";
+            this.AddRowButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.AddRowButton.Image = ((System.Drawing.Image)(resources.GetObject("AddRowButton.Image")));
+            this.AddRowButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AddRowButton.Name = "AddRowButton";
+            this.AddRowButton.Size = new System.Drawing.Size(23, 22);
+            this.AddRowButton.Text = "toolStripButton5";
             // 
             // toolStripButton6
             // 
@@ -238,7 +238,7 @@ namespace WindowsFormsApp1
             this.menuStrip1.Size = new System.Drawing.Size(972, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "Menu Bar";
-            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
+
             // 
             // fileToolStripMenuItem
             // 
@@ -288,7 +288,7 @@ namespace WindowsFormsApp1
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.saveToolStripMenuItem.Text = "Save";
-            this.saveToolStripMenuItem.Click += new System.EventHandler(this.saveToolStripMenuItem_Click);
+
             // 
             // saveAsToolStripMenuItem1
             // 
@@ -352,7 +352,7 @@ namespace WindowsFormsApp1
             this.settignsToolStripMenuItem.Name = "settignsToolStripMenuItem";
             this.settignsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settignsToolStripMenuItem.Text = "Settings";
-            this.settignsToolStripMenuItem.Click += new System.EventHandler(this.settignsToolStripMenuItem_Click);
+
             // 
             // splitContainer1
             // 
@@ -364,7 +364,7 @@ namespace WindowsFormsApp1
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.treeView1);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
+
             // 
             // splitContainer1.Panel2
             // 
@@ -372,24 +372,24 @@ namespace WindowsFormsApp1
             this.splitContainer1.Size = new System.Drawing.Size(972, 521);
             this.splitContainer1.SplitterDistance = 237;
             this.splitContainer1.TabIndex = 4;
-            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+
             // 
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node4";
-            treeNode1.Text = "Node4";
-            treeNode2.Name = "Node5";
-            treeNode2.Text = "Node5";
-            treeNode3.Name = "Root";
-            treeNode3.Text = "Root";
+            treeNode4.Name = "Node4";
+            treeNode4.Text = "Node4";
+            treeNode5.Name = "Node5";
+            treeNode5.Text = "Node5";
+            treeNode6.Name = "Root";
+            treeNode6.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode6});
             this.treeView1.Size = new System.Drawing.Size(972, 237);
             this.treeView1.TabIndex = 0;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+
             // 
             // dataGridView1
             // 
@@ -399,7 +399,7 @@ namespace WindowsFormsApp1
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(972, 280);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+
             // 
             // MasterForm
             // 
@@ -412,7 +412,6 @@ namespace WindowsFormsApp1
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MasterForm";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MasterForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -445,9 +444,9 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ToolStripButton OpenFileButton;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripButton toolStripButton4;
+        private System.Windows.Forms.ToolStripButton NewEntryButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton toolStripButton5;
+        private System.Windows.Forms.ToolStripButton AddRowButton;
         private System.Windows.Forms.ToolStripButton toolStripButton6;
         private System.Windows.Forms.ToolStripButton toolStripButton7;
         private System.Windows.Forms.ToolStripButton toolStripButton8;

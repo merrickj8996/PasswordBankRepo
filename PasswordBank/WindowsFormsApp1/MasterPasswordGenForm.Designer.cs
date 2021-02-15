@@ -1,0 +1,213 @@
+﻿
+namespace WindowsFormsApp1 {
+    partial class MasterPasswordGenForm {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
+            this.label1 = new System.Windows.Forms.Label();
+            this.UpperCase = new System.Windows.Forms.CheckBox();
+            this.LowerCase = new System.Windows.Forms.CheckBox();
+            this.Digits = new System.Windows.Forms.CheckBox();
+            this.Underline = new System.Windows.Forms.CheckBox();
+            this.Space = new System.Windows.Forms.CheckBox();
+            this.Special = new System.Windows.Forms.CheckBox();
+            this.Brackets = new System.Windows.Forms.CheckBox();
+            this.Latin = new System.Windows.Forms.CheckBox();
+            this.Close = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Size = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.Size)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(315, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Select the password generation options you would like to include:";
+            // 
+            // UpperCase
+            // 
+            this.UpperCase.AutoSize = true;
+            this.UpperCase.Location = new System.Drawing.Point(19, 98);
+            this.UpperCase.Name = "UpperCase";
+            this.UpperCase.Size = new System.Drawing.Size(139, 17);
+            this.UpperCase.TabIndex = 1;
+            this.UpperCase.Text = "Upper Case (A, B, C, ...)";
+            this.UpperCase.UseVisualStyleBackColor = true;
+            // 
+            // LowerCase
+            // 
+            this.LowerCase.AutoSize = true;
+            this.LowerCase.Location = new System.Drawing.Point(19, 122);
+            this.LowerCase.Name = "LowerCase";
+            this.LowerCase.Size = new System.Drawing.Size(136, 17);
+            this.LowerCase.TabIndex = 2;
+            this.LowerCase.Text = "Lower Case (a, b, c, ...)";
+            this.LowerCase.UseVisualStyleBackColor = true;
+            // 
+            // Digits
+            // 
+            this.Digits.AutoSize = true;
+            this.Digits.Location = new System.Drawing.Point(19, 146);
+            this.Digits.Name = "Digits";
+            this.Digits.Size = new System.Drawing.Size(112, 17);
+            this.Digits.TabIndex = 3;
+            this.Digits.Text = "Digits (0,1,2,3, ....)";
+            this.Digits.UseVisualStyleBackColor = true;
+            // 
+            // Underline
+            // 
+            this.Underline.AutoSize = true;
+            this.Underline.Location = new System.Drawing.Point(19, 170);
+            this.Underline.Name = "Underline";
+            this.Underline.Size = new System.Drawing.Size(96, 17);
+            this.Underline.TabIndex = 5;
+            this.Underline.Text = "Underscore (_)";
+            this.Underline.UseVisualStyleBackColor = true;
+            // 
+            // Space
+            // 
+            this.Space.AutoSize = true;
+            this.Space.Location = new System.Drawing.Point(165, 98);
+            this.Space.Name = "Space";
+            this.Space.Size = new System.Drawing.Size(69, 17);
+            this.Space.TabIndex = 6;
+            this.Space.Text = "Space ( )";
+            this.Space.UseVisualStyleBackColor = true;
+            // 
+            // Special
+            // 
+            this.Special.AutoSize = true;
+            this.Special.Location = new System.Drawing.Point(165, 122);
+            this.Special.Name = "Special";
+            this.Special.Size = new System.Drawing.Size(125, 17);
+            this.Special.TabIndex = 7;
+            this.Special.Text = "Special (!, +, ?, *, ... )";
+            this.Special.UseVisualStyleBackColor = true;
+            // 
+            // Brackets
+            // 
+            this.Brackets.AutoSize = true;
+            this.Brackets.Location = new System.Drawing.Point(165, 146);
+            this.Brackets.Name = "Brackets";
+            this.Brackets.Size = new System.Drawing.Size(127, 17);
+            this.Brackets.TabIndex = 8;
+            this.Brackets.Text = "Brackets ([, ], {, }, (, ))";
+            this.Brackets.UseVisualStyleBackColor = true;
+            // 
+            // Latin
+            // 
+            this.Latin.AutoSize = true;
+            this.Latin.Location = new System.Drawing.Point(165, 170);
+            this.Latin.Name = "Latin";
+            this.Latin.Size = new System.Drawing.Size(113, 17);
+            this.Latin.TabIndex = 9;
+            this.Latin.Text = "Latin-1 (Æ, ÷, ß, ¶)";
+            this.Latin.UseVisualStyleBackColor = true;
+            // 
+            // Close
+            // 
+            this.Close.Location = new System.Drawing.Point(247, 272);
+            this.Close.Name = "Close";
+            this.Close.Size = new System.Drawing.Size(75, 23);
+            this.Close.TabIndex = 10;
+            this.Close.Text = "Close";
+            this.Close.UseVisualStyleBackColor = true;
+            this.Close.Click += new System.EventHandler(this.Close_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 57);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(171, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Enter in the length of the password";
+            // 
+            // Size
+            // 
+            this.Size.Location = new System.Drawing.Point(208, 55);
+            this.Size.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.Size.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.Size.Name = "Size";
+            this.Size.Size = new System.Drawing.Size(68, 20);
+            this.Size.TabIndex = 12;
+            this.Size.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // MasterPasswordGenForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(334, 307);
+            this.Controls.Add(this.Size);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.Close);
+            this.Controls.Add(this.Latin);
+            this.Controls.Add(this.Brackets);
+            this.Controls.Add(this.Special);
+            this.Controls.Add(this.Space);
+            this.Controls.Add(this.Underline);
+            this.Controls.Add(this.Digits);
+            this.Controls.Add(this.LowerCase);
+            this.Controls.Add(this.UpperCase);
+            this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "MasterPasswordGenForm";
+            this.Text = "MasterPasswordGenForm";
+            ((System.ComponentModel.ISupportInitialize)(this.Size)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.CheckBox UpperCase;
+        private System.Windows.Forms.CheckBox LowerCase;
+        private System.Windows.Forms.CheckBox Digits;
+        private System.Windows.Forms.CheckBox Underline;
+        private System.Windows.Forms.CheckBox Space;
+        private System.Windows.Forms.CheckBox Special;
+        private System.Windows.Forms.CheckBox Brackets;
+        private System.Windows.Forms.CheckBox Latin;
+        private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.NumericUpDown Size;
+    }
+}

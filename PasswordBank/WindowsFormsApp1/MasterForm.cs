@@ -114,37 +114,9 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e) {
-
-        }
-
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
-
-        }
-
-        private void MasterForm_Load(object sender, EventArgs e) {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
-
-        }
-
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
-        }
-
-        private void settignsToolStripMenuItem_Click(object sender, EventArgs e) {
-
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e) {
-
-        }
-
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e) {
-
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e) {
@@ -163,10 +135,6 @@ namespace WindowsFormsApp1 {
             var filePath = string.Empty;
 
             OpenFile(filePath, fileContent);
-        }
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
-
         }
 
         private void toolStripButton3_Click(object sender, EventArgs e) {
