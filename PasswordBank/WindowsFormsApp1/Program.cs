@@ -25,7 +25,7 @@ namespace WindowsFormsApp1
         }
     }
 
-    public static class Password
+    public static partial class Password
     {
         public static double checkStrength(string password) {
             // Initalizes double to store password strength at sets it to 0.

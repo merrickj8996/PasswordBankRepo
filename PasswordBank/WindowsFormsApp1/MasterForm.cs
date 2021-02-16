@@ -61,7 +61,8 @@ namespace WindowsFormsApp1 {
                     using (StreamReader reader = new StreamReader(fileStream)) {
                         fileContent = reader.ReadToEnd();
                     }
-                    ReadCSV(filePath);
+                    EnterPasswordForFile form = new EnterPasswordForFile();
+                    form.Show();
                 }
             }
         }
