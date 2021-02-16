@@ -15,7 +15,7 @@ namespace WindowsFormsApp1 {
             InitializeComponent();
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e) {
+        private void CreateNewButton_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
         }
 
@@ -117,11 +117,11 @@ namespace WindowsFormsApp1 {
         }
 
 
-        private void newToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void CreateNewFileDropDown_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e) {
+        private void OpenFileButton_Click(object sender, EventArgs e) {
             //decryption should go here I think.
 
             var fileContent = string.Empty;
@@ -130,7 +130,7 @@ namespace WindowsFormsApp1 {
             OpenFile(filePath, fileContent);
         }
 
-        private void openFileToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void OpenFileDropDown_Click(object sender, EventArgs e) {
             // decryption algorithm likely to go here as This is where the file reading starst as far as
 
             var fileContent = string.Empty;
@@ -139,7 +139,7 @@ namespace WindowsFormsApp1 {
             OpenFile(filePath, fileContent);
         }
 
-        private void toolStripButton3_Click(object sender, EventArgs e) {
+        private void SaveButton_Click(object sender, EventArgs e) {
             saveFile();
         }
     }
