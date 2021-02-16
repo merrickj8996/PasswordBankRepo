@@ -6,6 +6,8 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.IO.Compression;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WindowsFormsApp1
 {
@@ -23,7 +25,7 @@ namespace WindowsFormsApp1
         }
     }
 
-    static class Password
+    public static class Password
     {
         public static double checkStrength(string password) {
             // Initalizes double to store password strength at sets it to 0.
@@ -108,6 +110,18 @@ namespace WindowsFormsApp1
                 passwordStrength = passwordStrength * mulitplier;
 
                 return passwordStrength;
+            }
+        }
+        public static string HashSHA256(string data) {
+            using (SHA256 sha256Hash = SHA256.Create()) {
+                //compute the hash. store in byte array
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++) {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
             }
         }
     }

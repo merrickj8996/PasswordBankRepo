@@ -64,5 +64,49 @@ namespace PasswordBankTests {
             // Clean-up
             File.Delete(decompressedPath);
         }
+
+        [TestMethod]
+        public void Sha256Test() {
+
+            string testPassword = "password";
+            string hashedPassword;
+
+            //act
+            hashedPassword = Password.HashSHA256(testPassword);
+
+            //assert
+            Assert.IsFalse(hashedPassword.Equals(testPassword));
+        }
+
+        [TestMethod]
+        public void PasswordIsAlwaysSameSha256Test() {
+            //this test verifies that the hashing algorithm will always gnereate the same string based on the same input
+            string testPassword = "password";
+            string hashedPassword;
+            string hashedPassword2;
+
+            //Act
+            hashedPassword = Password.HashSHA256(testPassword);
+            hashedPassword2 = Password.HashSHA256(testPassword);
+
+            //Assert
+            Assert.IsTrue(hashedPassword.Equals(hashedPassword2));
+        }
+
+        [TestMethod]
+        public void TwoDifferentPasswordsSha256Test() {
+            //this test verifies that two different passwords hash to different values.
+            string testPassword = "password";
+            string testPassword2 = "PassWord";
+            string hashedPassword;
+            string hashedPassword2;
+
+            //Act
+            hashedPassword = Password.HashSHA256(testPassword);
+            hashedPassword2 = Password.HashSHA256(testPassword2);
+
+            //Assert
+            Assert.IsFalse(hashedPassword.Equals(hashedPassword2));
+        }
     }
 }
