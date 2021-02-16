@@ -4,6 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.IO;
+using System.IO.Compression;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace WindowsFormsApp1
 {
@@ -21,7 +25,7 @@ namespace WindowsFormsApp1
         }
     }
 
-    static class Password
+    public static class Password
     {
         public static double checkStrength(string password) {
             // Initalizes double to store password strength at sets it to 0.
@@ -106,6 +110,69 @@ namespace WindowsFormsApp1
                 passwordStrength = passwordStrength * mulitplier;
 
                 return passwordStrength;
+            }
+        }
+        public static string HashSHA256(string data) {
+            using (SHA256 sha256Hash = SHA256.Create()) {
+                //compute the hash. store in byte array
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++) {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+    }
+    public static class BankFile {
+
+        // Compresses all files in a folder using GZip
+        public static void Compress(DirectoryInfo fileDirectory) {
+
+            // For loop lets each file in directory get compressed
+            foreach (FileInfo fileToCompress in fileDirectory.GetFiles()) {
+
+                // Creates a File Stream containing the data in the fileToCompress
+                using (FileStream originalFileStream = fileToCompress.OpenRead()) {
+
+                    // Check that the file is not hidden or already a .gz file
+                    if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz") {
+
+                        // Creates a File Stream for the compressed file
+                        using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz")) {
+
+                            // Creates the compression stream
+                            using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress)) {
+
+                                // Compresses file
+                                originalFileStream.CopyTo(compressionStream);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Decompresses a file using GZip
+        public static void Decompress(FileInfo fileToDecompress) {
+            
+            // Creates a FileStream containing the data from fileToDecompress
+            using (FileStream originalFileStream = fileToDecompress.OpenRead()) {
+
+                string currentFileName = fileToDecompress.FullName;
+                string newFileName = currentFileName.Remove(currentFileName.Length - fileToDecompress.Extension.Length);
+
+                // Creates the decompressed file stream
+                using (FileStream decompressedFileStream = File.Create(newFileName)) {
+
+                    // Creates the compression stream
+                    using (GZipStream decompressionStream = new GZipStream(originalFileStream, CompressionMode.Decompress)) {
+
+                        // Decompresses file
+                        decompressionStream.CopyTo(decompressedFileStream);
+                    }
+                }
             }
         }
     }
