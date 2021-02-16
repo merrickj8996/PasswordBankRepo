@@ -8,6 +8,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
@@ -15,39 +16,21 @@ namespace WindowsFormsApp1 {
         public passwordOptions() {
             InitializeComponent();
         }
-
-        private static string computeSha256Hash(String data) {
-            using (SHA256 sha256Hash = SHA256.Create()) {
-                //compute the hash. store in byte array
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++) {
-                    builder.Append(bytes[i].ToString("x2"));
+        public string databasefileName { get; set; }
+        private void OkButton_Click (object sender, EventArgs e) {
+            //format the database name to be a text file
+            Console.WriteLine(databasefileName + ".txt");
+            if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
+                ///string path = Environment.GetFolderPath(Environment.)
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(@"..\..\..\PasswordBankTests\TestResources\Sha256TestSources\", databasefileName + ".txt"), true)) {
+                    file.WriteLine(Password.HashSHA256(PassEntry1.Text));
                 }
-                return builder.ToString();
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e) {
-            if ((PassEntry1.Text == PassEntry2.Text) && PassEntry1 != null && PassEntry2 != null) {
-                Stream myStream;
-                SaveFileDialog save = new SaveFileDialog {
-                    Filter = "Text File (.txt) |*.txt",
-                    Title = "Save password for DB"
-                };
-                if (save.ShowDialog() == DialogResult.OK) {
-                    if ((myStream = save.OpenFile()) != null) {
-                        myStream.Close();
-                    }
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
-                        file.WriteLine(computeSha256Hash(PassEntry1.Text));
-                    }
-                    this.Close();
-                }
+                MasterForm frm = new MasterForm();
+                this.Close();
+                frm.Show();
             }
             else {
-                string message = "Your passwords do not match. Please try entering them again";
+                string message = "Your passwords do not match or the boxes are blank. Please try entering them again";
                 string title = "Pass Keeper";
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 _ = MessageBox.Show(message, title, buttons);
@@ -100,6 +83,12 @@ namespace WindowsFormsApp1 {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Blue;
                 passwordStrengthLabel.Text = "Password Strength: Strong";
             }
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e) {
+            MasterForm form = new MasterForm();
+            this.Hide();
+            form.Show();
         }
     }
 }
