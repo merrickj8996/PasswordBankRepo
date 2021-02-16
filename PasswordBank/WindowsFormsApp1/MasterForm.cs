@@ -19,7 +19,7 @@ namespace WindowsFormsApp1 {
             DisplayNewFileWarning();
         }
 
-        private void readCSV(string filePath) {
+        private void ReadCSV(string filePath) {
             //Read the CSV file that as just opened.
             //set the columns to be equal to the first line of the CSV seperated by commas
             string[] lines = File.ReadAllLines(filePath);
@@ -61,7 +61,7 @@ namespace WindowsFormsApp1 {
                     using (StreamReader reader = new StreamReader(fileStream)) {
                         fileContent = reader.ReadToEnd();
                     }
-                    readCSV(filePath);
+                    ReadCSV(filePath);
                 }
             }
         }
@@ -70,6 +70,7 @@ namespace WindowsFormsApp1 {
          */
         private void CreateFile() {
             Stream myStream;
+            string fileName;
             SaveFileDialog save = new SaveFileDialog {
                 Filter = "CSV |*.csv",
                 Title = "Save password DB"
@@ -81,15 +82,15 @@ namespace WindowsFormsApp1 {
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
                     file.WriteLine("Group,Title,User Name,Password,URL,Notes");
                 }
-                readCSV(save.FileName);
+                ReadCSV(save.FileName);
                 this.Hide();
+
+                //get the name of the file and trim off the .csv
+                fileName = Path.GetFileName(save.FileName).Substring(0, Path.GetFileName(save.FileName).Length - 4);
                 passwordOptions masterPass = new passwordOptions();
+                masterPass.databasefileName = fileName;
                 masterPass.ShowDialog();
             }
-
-            //Read the CSV file that as just opened.
-            //set the columns to be equal to the first line of the CSV seperated by commas
-            //readCSV(save.FileName);
         }
 
         private void saveFile() {

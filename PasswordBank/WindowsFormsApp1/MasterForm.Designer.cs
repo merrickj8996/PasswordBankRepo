@@ -30,11 +30,11 @@ namespace WindowsFormsApp1
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
@@ -238,7 +238,6 @@ namespace WindowsFormsApp1
             this.menuStrip1.Size = new System.Drawing.Size(972, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "Menu Bar";
-
             // 
             // fileToolStripMenuItem
             // 
@@ -288,7 +287,6 @@ namespace WindowsFormsApp1
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.saveToolStripMenuItem.Text = "Save";
-
             // 
             // saveAsToolStripMenuItem1
             // 
@@ -352,7 +350,6 @@ namespace WindowsFormsApp1
             this.settignsToolStripMenuItem.Name = "settignsToolStripMenuItem";
             this.settignsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settignsToolStripMenuItem.Text = "Settings";
-
             // 
             // splitContainer1
             // 
@@ -364,7 +361,6 @@ namespace WindowsFormsApp1
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.treeView1);
-
             // 
             // splitContainer1.Panel2
             // 
@@ -372,24 +368,22 @@ namespace WindowsFormsApp1
             this.splitContainer1.Size = new System.Drawing.Size(972, 521);
             this.splitContainer1.SplitterDistance = 237;
             this.splitContainer1.TabIndex = 4;
-
             // 
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode4.Name = "Node4";
-            treeNode4.Text = "Node4";
-            treeNode5.Name = "Node5";
-            treeNode5.Text = "Node5";
-            treeNode6.Name = "Root";
-            treeNode6.Text = "Root";
+            treeNode1.Name = "Node4";
+            treeNode1.Text = "Node4";
+            treeNode2.Name = "Node5";
+            treeNode2.Text = "Node5";
+            treeNode3.Name = "Root";
+            treeNode3.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(972, 237);
             this.treeView1.TabIndex = 0;
-
             // 
             // dataGridView1
             // 
@@ -399,7 +393,6 @@ namespace WindowsFormsApp1
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(972, 280);
             this.dataGridView1.TabIndex = 0;
-
             // 
             // MasterForm
             // 
