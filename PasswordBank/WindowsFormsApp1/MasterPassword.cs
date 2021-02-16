@@ -22,12 +22,14 @@ namespace WindowsFormsApp1 {
             Console.WriteLine(databasefileName + ".txt");
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
                 ///string path = Environment.GetFolderPath(Environment.)
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(@"..\..\..\PasswordBankTests\TestResources\Sha256TestSources\", databasefileName + ".txt"), true)) {
+                /*using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(@"..\..\..\PasswordBankTests\TestResources\Sha256TestSources\", databasefileName + ".txt"), true)) {
                     file.WriteLine(Password.HashSHA256(PassEntry1.Text));
-                }
-                MasterForm frm = new MasterForm();
+                }*/
+
+                // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
+                KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
                 this.Close();
-                frm.Show();
+                keyFileOptionPopUp.Show();
             }
             else {
                 string message = "Your passwords do not match or the boxes are blank. Please try entering them again";
@@ -35,6 +37,9 @@ namespace WindowsFormsApp1 {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 _ = MessageBox.Show(message, title, buttons);
             }
+
+
+
         }
 
         private void button3_Click(object sender, EventArgs e) {
