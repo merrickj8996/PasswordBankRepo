@@ -44,7 +44,7 @@ namespace WindowsFormsApp1 {
         /**
          * Windows prompt for opening a file
          */
-        private void OpenFile(string filePath, string fileContent) {
+        private String OpenFile(string filePath, string fileContent) {
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
                 openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
@@ -61,10 +61,9 @@ namespace WindowsFormsApp1 {
                     using (StreamReader reader = new StreamReader(fileStream)) {
                         fileContent = reader.ReadToEnd();
                     }
-                    EnterPasswordForFile form = new EnterPasswordForFile();
-                    form.Show();
                 }
             }
+            return filePath;
         }
         /**
          * Method for creating a file
@@ -127,16 +126,20 @@ namespace WindowsFormsApp1 {
             var fileContent = string.Empty;
             var filePath = string.Empty;
 
-            OpenFile(filePath, fileContent);
+            filePath = OpenFile(filePath, fileContent);
+            EnterPasswordForFile frm = new EnterPasswordForFile();
+            frm.databasefileName = filePath;
+            frm.Show();
         }
 
         private void OpenFileDropDown_Click(object sender, EventArgs e) {
-            // decryption algorithm likely to go here as This is where the file reading starst as far as
-
             var fileContent = string.Empty;
             var filePath = string.Empty;
 
-            OpenFile(filePath, fileContent);
+            filePath = OpenFile(filePath, fileContent);
+            EnterPasswordForFile frm = new EnterPasswordForFile();
+            frm.databasefileName = filePath;
+            frm.Show();
         }
 
         private void SaveButton_Click(object sender, EventArgs e) {

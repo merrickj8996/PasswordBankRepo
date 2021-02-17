@@ -21,12 +21,8 @@ namespace WindowsFormsApp1 {
             //format the database name to be a text file
             Console.WriteLine(databasefileName + ".txt");
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
-<<<<<<< HEAD
                 ///string path = Environment.GetFolderPath(Environment.)
                 /*using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(@"..\..\..\PasswordBankTests\TestResources\Sha256TestSources\", databasefileName + ".txt"), true)) {
-=======
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(@"..\..\..\PasswordBankTests\TestResources\Sha256TestSources\", databasefileName + ".txt"), true)) {
->>>>>>> e855bea51405de30ddb0d11c9eee1f7396c7cb59
                     file.WriteLine(Password.HashSHA256(PassEntry1.Text));
                 }*/
 
