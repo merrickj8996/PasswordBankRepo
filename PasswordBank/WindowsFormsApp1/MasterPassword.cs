@@ -18,6 +18,7 @@ namespace WindowsFormsApp1 {
         }
         public string databasefileName { get; set; }
         private void OkButton_Click (object sender, EventArgs e) {
+            
             //format the database name to be a text file
             Console.WriteLine(databasefileName + ".txt");
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
@@ -25,6 +26,9 @@ namespace WindowsFormsApp1 {
                 /*using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(@"..\..\..\PasswordBankTests\TestResources\Sha256TestSources\", databasefileName + ".txt"), true)) {
                     file.WriteLine(Password.HashSHA256(PassEntry1.Text));
                 }*/
+
+                //Encrypt the File with the entered password
+                Crypto.EncryptFile(databasefileName, PassEntry1.Text);
 
                 // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
                 KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
@@ -94,6 +98,10 @@ namespace WindowsFormsApp1 {
             MasterForm form = new MasterForm();
             this.Hide();
             form.Show();
+        }
+
+        private void PassEntry2_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }

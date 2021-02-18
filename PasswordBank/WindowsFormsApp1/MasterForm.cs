@@ -93,7 +93,7 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        private void saveFile() {
+        private void SaveFile() {
             SaveFileDialog save = new SaveFileDialog {
                 Filter = "CSV |*.csv",
                 Title = "Save file"
@@ -128,7 +128,7 @@ namespace WindowsFormsApp1 {
 
             filePath = OpenFile(filePath, fileContent);
             EnterPasswordForFile frm = new EnterPasswordForFile();
-            frm.databasefileName = filePath;
+            frm.DatabaseFileName = filePath;
             frm.Show();
         }
 
@@ -138,12 +138,18 @@ namespace WindowsFormsApp1 {
 
             filePath = OpenFile(filePath, fileContent);
             EnterPasswordForFile frm = new EnterPasswordForFile();
-            frm.databasefileName = filePath;
+            frm.DatabaseFileName = filePath;
             frm.Show();
         }
 
         private void SaveButton_Click(object sender, EventArgs e) {
-            saveFile();
+            SaveFile();
+        }
+
+        //Lock button to Encrypt the currently opened file.
+        private void LockButton_Click(object sender, EventArgs e) {
+            Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp.ToString());
+            FileOP.ClearFile();
         }
     }
 }

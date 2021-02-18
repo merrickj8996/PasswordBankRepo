@@ -206,6 +206,7 @@ namespace WindowsFormsApp1
             this.LockButton.Size = new System.Drawing.Size(23, 22);
             this.LockButton.Text = "Lock File";
             this.LockButton.ToolTipText = "Find";
+            this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
             // 
             // menuStrip1
             // 

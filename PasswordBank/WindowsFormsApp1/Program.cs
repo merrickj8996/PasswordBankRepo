@@ -8,25 +8,24 @@ using System.IO;
 using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Text;
+using System.Security;
+using System.Data;
 
-namespace WindowsFormsApp1
-{
-    static class Program
-    {
+namespace WindowsFormsApp1 {
+
+    static class Program {
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
-        {
+        static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MasterForm());
         }
     }
 
-    public static partial class Password
-    {
+    public static partial class Password {
         public static double checkStrength(string password) {
             // Initalizes double to store password strength at sets it to 0.
             double passwordStrength = 0;
@@ -156,7 +155,7 @@ namespace WindowsFormsApp1
 
         // Decompresses a file using GZip
         public static void Decompress(FileInfo fileToDecompress) {
-            
+
             // Creates a FileStream containing the data from fileToDecompress
             using (FileStream originalFileStream = fileToDecompress.OpenRead()) {
 
@@ -176,11 +175,13 @@ namespace WindowsFormsApp1
             }
         }
     }
+
     static class Crypto {
         #region memberVariables
         private static int mIter = 50000;
         private static int mKeyLength = 256;
         private static int mBlockSize = 128;
+        public static SecureString mPassTemp;
         #endregion
 
         //Generates Salt for use with password. 
@@ -205,7 +206,7 @@ namespace WindowsFormsApp1
             AES.IV = key.GetBytes(AES.BlockSize / 8);
             //AES.Mode = CipherMode.CFB;
             try {
-                using (FileStream fileCrypto = new FileStream(inFile + ".aes", FileMode.Create)) {
+                using (FileStream fileCrypto = new FileStream(inFile + ".temp", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None)) {
                     fileCrypto.Write(salt, 0, salt.Length);
                     using (CryptoStream cryptoStream = new CryptoStream(fileCrypto, AES.CreateEncryptor(), CryptoStreamMode.Write)) {
                         using (FileStream fileStreamIn = new FileStream(inFile, FileMode.Open)) {
@@ -216,20 +217,20 @@ namespace WindowsFormsApp1
                             }
                         }
                     }
-                    File.Delete(inFile);
+                    File.Move(inFile + ".temp", inFile);
                 }
             }
             catch (CryptographicException ex_CryptographicException) {
                 Console.WriteLine("CryptograpicException error: " + ex_CryptographicException);
-                File.Delete(inFile + ".aes");
+                File.Delete(inFile + ".temp");
             }
             catch (Exception ex) {
                 Console.WriteLine("Error: " + ex.Message);
-                File.Delete(inFile + ".aes");
+                File.Delete(inFile + ".temp");
             }
 
         }
-        public static void DecryptFile(string inFile, string outFile, string password) {
+        public static void DecryptFile(string inFile, string password) {
             byte[] passwords = Encoding.UTF8.GetBytes(password);
             byte[] salt = new byte[32];
             using (FileStream fileCrypto = new FileStream(inFile, FileMode.Open)) {
@@ -244,7 +245,7 @@ namespace WindowsFormsApp1
                 //AES.Mode = CipherMode.CFB;
                 try {
                     using (CryptoStream cryptoStream = new CryptoStream(fileCrypto, AES.CreateDecryptor(), CryptoStreamMode.Read)) {
-                        using (FileStream fileStreamOut = new FileStream(outFile, FileMode.Create)) {
+                        using (FileStream fileStreamOut = new FileStream(inFile + ".temp", FileMode.Create)) {
                             int read;
                             byte[] buffer = new byte[1048576];
                             while ((read = cryptoStream.Read(buffer, 0, buffer.Length)) > 0) {
@@ -252,18 +253,115 @@ namespace WindowsFormsApp1
                             }
                         }
                     }
-                    File.Delete(inFile);
+                    File.Move(inFile + ".temp", inFile);
                 }
                 catch (CryptographicException ex_CryptographicException) {
                     Console.WriteLine("CryptograpicException error: " + ex_CryptographicException);
-                    File.Delete(outFile);
+                    File.Delete(inFile + ".temp");
                 }
                 catch (Exception ex) {
                     Console.WriteLine("Error: " + ex.Message);
-                    File.Delete(outFile);
+                    File.Delete(inFile + ".temp");
                 }
 
             }
+
+        }
+    }
+
+    static class FileOP {
+        #region memberVariables
+        public static String mFileName;
+        #endregion
+
+        public static void ClearFile() {
+            mFileName = "";
+        }
+
+        public static string GetFile() {
+            return mFileName;
+        }
+
+        public static void LoadFile(string fileName) {
+            mFileName = fileName;
+        }
+
+        public static void SaveFile() {
+            //TODO: Implement/move saveFile from MasterForm.cs
+            SaveFileDialog save = new SaveFileDialog {
+                Filter = "CSV |*.csv",
+                Title = "Save file"
+            };
+            if (save.ShowDialog() == DialogResult.OK) {
+                StreamWriter write = new StreamWriter(File.Create(save.FileName));
+                write.Write(dataGridView1);
+                write.Dispose();
+            }
+        }
+
+        public static void CreateFile() {
+            //TODO: Import/move CreateFile from MasterForm.cs
+            Stream myStream;
+            SaveFileDialog save = new SaveFileDialog {
+                Filter = "CSV |*.csv",
+                Title = "Save password DB"
+            };
+            if (save.ShowDialog() == DialogResult.OK) {
+                if ((myStream = save.OpenFile()) != null) {
+                    myStream.Close();
+                }
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
+                    file.WriteLine("Group,Title,User Name,Password,URL,Notes");
+                }
+                ReadFile();
+            }
+        }
+
+        public static void OpenFile() {
+            //TODO: Import/move OpenFile from MasterForm.cs
+            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK) {
+                    //Get the path of specified file
+                    FileOP.LoadFile(openFileDialog.FileName);
+
+                    //Read the contents of the file into a stream
+                    var fileStream = openFileDialog.OpenFile();
+
+                    using (StreamReader reader = new StreamReader(fileStream)) {
+                        fileContent = reader.ReadToEnd();
+                    }
+                }
+            }
+        }
+
+        public static void ReadFile() {
+            //TODO: Import/move ReadCSV from MasterForm.cs
+           
+            //Read the CSV file that as just opened.
+            //set the columns to be equal to the first line of the CSV seperated by commas
+            string[] lines = File.ReadAllLines(FileOP.GetFile());
+            string[] fields;
+            fields = lines[0].Split(new char[] { ',' });
+            int Cols = fields.GetLength(0);
+            DataTable dt = new DataTable();
+            //1st row must be column names; force lower case to ensure matching later on.
+            for (int i = 0; i < Cols; i++)
+                dt.Columns.Add(fields[i].ToLower(), typeof(string));
+            DataRow Row;
+            for (int i = 1; i < lines.GetLength(0); i++) {
+                fields = lines[i].Split(new char[] { ',' });
+                Row = dt.NewRow();
+                for (int f = 0; f < Cols; f++)
+                    Row[f] = fields[f];
+                dt.Rows.Add(Row);
+            }
+            
+            //dataGridView1.DataSource = dt;
 
         }
     }

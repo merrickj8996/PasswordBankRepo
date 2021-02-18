@@ -13,10 +13,15 @@ namespace WindowsFormsApp1 {
         public EnterPasswordForFile() {
             InitializeComponent();
         }
-        public string databasefileName { get; set; }
+        public string DatabaseFileName { get; set; }
 
         private void button1_Click(object sender, EventArgs e) {
-            Console.WriteLine(databasefileName);
+            Crypto.DecryptFile(DatabaseFileName, passwordEntry.Text);
+            passwordEntry.Text.ToCharArray().ToList().ForEach(i => Crypto.mPassTemp.AppendChar(i));
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }
