@@ -23,21 +23,21 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.button1 = new System.Windows.Forms.Button();
+            this.OkButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.passwordEntry = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
-            // button1
+            // OkButton
             // 
-            this.button1.Location = new System.Drawing.Point(243, 340);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Ok";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.OkButton.Location = new System.Drawing.Point(243, 340);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.TabIndex = 0;
+            this.OkButton.Text = "Ok";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -51,20 +51,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 51);
+            this.label2.Location = new System.Drawing.Point(17, 46);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Password:";
             // 
-            // textBox1
+            // passwordEntry
             // 
             this.passwordEntry.Location = new System.Drawing.Point(79, 43);
             this.passwordEntry.MaxLength = 20;
-            this.passwordEntry.Name = "textBox1";
+            this.passwordEntry.Name = "passwordEntry";
+            this.passwordEntry.PasswordChar = '*';
             this.passwordEntry.Size = new System.Drawing.Size(100, 20);
             this.passwordEntry.TabIndex = 3;
-            this.passwordEntry.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // EnterPasswordForFile
             // 
@@ -74,7 +74,7 @@
             this.Controls.Add(this.passwordEntry);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.OkButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EnterPasswordForFile";
             this.Text = "EnterPasswordForFile";
@@ -85,7 +85,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button OkButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox passwordEntry;

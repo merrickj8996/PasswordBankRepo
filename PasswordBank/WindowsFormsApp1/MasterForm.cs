@@ -111,7 +111,7 @@ namespace WindowsFormsApp1 {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes) {
-                CreateFile();
+                FileOP.CreateFile();
             }
         }
 
@@ -124,9 +124,9 @@ namespace WindowsFormsApp1 {
             //decryption should go here I think.
             var fileContent = string.Empty;
             var filePath = string.Empty;
-            filePath = OpenFile(filePath, fileContent);
+            FileOP.SelectFile();
             EnterPasswordForFile frm = new EnterPasswordForFile();
-            frm.DatabaseFileName = filePath;
+            //frm.DatabaseFileName = filePath;
             frm.Show();
         }
 
