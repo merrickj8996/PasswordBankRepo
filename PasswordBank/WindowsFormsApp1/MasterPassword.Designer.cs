@@ -78,6 +78,7 @@ namespace WindowsFormsApp1
             this.PassEntry2.PasswordChar = '*';
             this.PassEntry2.Size = new System.Drawing.Size(247, 20);
             this.PassEntry2.TabIndex = 3;
+            this.PassEntry2.TextChanged += new System.EventHandler(this.PassEntry2_TextChanged);
             // 
             // label3
             // 

@@ -44,7 +44,7 @@ namespace WindowsFormsApp1 {
         /**
          * Windows prompt for opening a file
          */
-        private void OpenFile(string filePath, string fileContent) {
+        private String OpenFile(string filePath, string fileContent) {
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
                 openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
@@ -61,10 +61,9 @@ namespace WindowsFormsApp1 {
                     using (StreamReader reader = new StreamReader(fileStream)) {
                         fileContent = reader.ReadToEnd();
                     }
-                    EnterPasswordForFile form = new EnterPasswordForFile();
-                    form.Show();
                 }
             }
+            return filePath;
         }
         /**
          * Method for creating a file
@@ -94,7 +93,7 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        private void saveFile() {
+        private void SaveFile() {
             SaveFileDialog save = new SaveFileDialog {
                 Filter = "CSV |*.csv",
                 Title = "Save file"
@@ -123,24 +122,32 @@ namespace WindowsFormsApp1 {
 
         private void OpenFileButton_Click(object sender, EventArgs e) {
             //decryption should go here I think.
-
             var fileContent = string.Empty;
             var filePath = string.Empty;
-
-            OpenFile(filePath, fileContent);
+            filePath = OpenFile(filePath, fileContent);
+            EnterPasswordForFile frm = new EnterPasswordForFile();
+            frm.DatabaseFileName = filePath;
+            frm.Show();
         }
 
         private void OpenFileDropDown_Click(object sender, EventArgs e) {
-            // decryption algorithm likely to go here as This is where the file reading starst as far as
-
             var fileContent = string.Empty;
             var filePath = string.Empty;
 
-            OpenFile(filePath, fileContent);
+            filePath = OpenFile(filePath, fileContent);
+            EnterPasswordForFile frm = new EnterPasswordForFile();
+            frm.DatabaseFileName = filePath;
+            frm.Show();
         }
 
         private void SaveButton_Click(object sender, EventArgs e) {
-            saveFile();
+            FileOP.SaveFile();
+        }
+
+        //Lock button to Encrypt the currently opened file.
+        private void LockButton_Click(object sender, EventArgs e) {
+            Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp.ToString());
+            FileOP.ClearFile();
         }
     }
 }
