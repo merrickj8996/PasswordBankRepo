@@ -122,10 +122,8 @@ namespace WindowsFormsApp1 {
 
         private void OpenFileButton_Click(object sender, EventArgs e) {
             //decryption should go here I think.
-
             var fileContent = string.Empty;
             var filePath = string.Empty;
-
             filePath = OpenFile(filePath, fileContent);
             EnterPasswordForFile frm = new EnterPasswordForFile();
             frm.DatabaseFileName = filePath;
@@ -143,7 +141,7 @@ namespace WindowsFormsApp1 {
         }
 
         private void SaveButton_Click(object sender, EventArgs e) {
-            SaveFile();
+            FileOP.SaveFile();
         }
 
         //Lock button to Encrypt the currently opened file.

@@ -292,11 +292,11 @@ namespace WindowsFormsApp1 {
                 Filter = "CSV |*.csv",
                 Title = "Save file"
             };
-            if (save.ShowDialog() == DialogResult.OK) {
-                StreamWriter write = new StreamWriter(File.Create(save.FileName));
-                write.Write(dataGridView1);
-                write.Dispose();
-            }
+            //if (save.ShowDialog() == DialogResult.OK) {
+            //    StreamWriter write = new StreamWriter(File.Create(save.FileName));
+            //    write.Write(dataGridView1);
+            //    write.Dispose();
+            //}
         }
 
         public static void CreateFile() {
@@ -317,7 +317,7 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        public static void OpenFile() {
+        public static void SelectFile() {
             //TODO: Import/move OpenFile from MasterForm.cs
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
                 openFileDialog.InitialDirectory = "c:\\";
@@ -328,18 +328,11 @@ namespace WindowsFormsApp1 {
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     //Get the path of specified file
                     FileOP.LoadFile(openFileDialog.FileName);
-
-                    //Read the contents of the file into a stream
-                    var fileStream = openFileDialog.OpenFile();
-
-                    using (StreamReader reader = new StreamReader(fileStream)) {
-                        fileContent = reader.ReadToEnd();
-                    }
                 }
             }
         }
 
-        public static void ReadFile() {
+        public static DataTable ReadFile() {
             //TODO: Import/move ReadCSV from MasterForm.cs
            
             //Read the CSV file that as just opened.
@@ -360,7 +353,7 @@ namespace WindowsFormsApp1 {
                     Row[f] = fields[f];
                 dt.Rows.Add(Row);
             }
-            
+            return dt;
             //dataGridView1.DataSource = dt;
 
         }
