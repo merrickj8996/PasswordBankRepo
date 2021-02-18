@@ -8,7 +8,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
@@ -18,10 +17,9 @@ namespace WindowsFormsApp1 {
         }
         public string databasefileName { get; set; }
         private void OkButton_Click (object sender, EventArgs e) {
-            
             //format the database name to be a text file
-            Console.WriteLine(databasefileName + ".txt");
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
+<<<<<<< HEAD
 
 
 
@@ -31,6 +29,8 @@ namespace WindowsFormsApp1 {
                     file.WriteLine(Password.HashSHA256(PassEntry1.Text));
                 }*/
 
+=======
+>>>>>>> 00bc4488601bb66371970facede4523331f6ae33
                 //Encrypt the File with the entered password
                 Crypto.EncryptFile(databasefileName, PassEntry1.Text);
 
@@ -98,7 +98,7 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e) {
+        private void ExitButton_Click(object sender, EventArgs e) {
             MasterForm form = new MasterForm();
             this.Hide();
             form.Show();

@@ -16,12 +16,9 @@ namespace WindowsFormsApp1 {
         public string DatabaseFileName { get; set; }
 
         private void button1_Click(object sender, EventArgs e) {
-            Crypto.DecryptFile(DatabaseFileName, passwordEntry.Text);
-            passwordEntry.Text.ToCharArray().ToList().ForEach(i => Crypto.mPassTemp.AppendChar(i));
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e) {
-
+            Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
+            Crypto.mPassTemp = passwordEntry.Text;
+            //passwordEntry.Text.ToCharArray().ToList().ForEach(i => Crypto.mPassTemp.AppendChar(i));
         }
     }
 }

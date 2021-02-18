@@ -12,9 +12,10 @@ namespace WindowsFormsApp1 {
     public partial class MasterPasswordGenForm : Form {
         public MasterPasswordGenForm() {
             InitializeComponent();
+            LowerCase.Enabled = false;
         }
 
-        private void Close_Click(object sender, EventArgs e) {
+        private void CloseButton_Click(object sender, EventArgs e) {
             this.Hide();
         }
 

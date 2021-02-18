@@ -181,7 +181,8 @@ namespace WindowsFormsApp1 {
         private static int mIter = 50000;
         private static int mKeyLength = 256;
         private static int mBlockSize = 128;
-        public static SecureString mPassTemp;
+        public static String mPassTemp = "";
+        //public static SecureString mPassTemp;
         #endregion
 
         //Generates Salt for use with password. 
@@ -308,6 +309,8 @@ namespace WindowsFormsApp1 {
             };
             if (save.ShowDialog() == DialogResult.OK) {
                 if ((myStream = save.OpenFile()) != null) {
+                    FileOP.LoadFile(save.FileName);
+                    FileOP.PrintFileName();
                     myStream.Close();
                 }
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
@@ -328,6 +331,7 @@ namespace WindowsFormsApp1 {
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     //Get the path of specified file
                     FileOP.LoadFile(openFileDialog.FileName);
+                    FileOP.PrintFileName();
                 }
             }
         }
@@ -356,6 +360,9 @@ namespace WindowsFormsApp1 {
             return dt;
             //dataGridView1.DataSource = dt;
 
+        }
+        public static void PrintFileName() {
+           Console.WriteLine(FileOP.GetFile());
         }
     }
 }
