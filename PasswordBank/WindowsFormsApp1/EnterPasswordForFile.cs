@@ -13,5 +13,10 @@ namespace WindowsFormsApp1 {
         public EnterPasswordForFile() {
             InitializeComponent();
         }
+        public string databasefileName { get; set; }
+
+        private void button1_Click(object sender, EventArgs e) {
+            Console.WriteLine(databasefileName);
+        }
     }
 }
