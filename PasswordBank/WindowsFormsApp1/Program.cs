@@ -71,7 +71,7 @@ namespace WindowsFormsApp1 {
                 }
 
                 // If the password contains a special character it gets an increase of 1.
-                if (Regex.IsMatch(password, @"[!,@,#,$,%,^,&,*,?,_,~,£,(,)]")) {
+                if (Regex.IsMatch(password, @"[`,!,@,#,$,%,^,&,*,_,+,=,;,:,?,/,(,),{,}]")) {
                     passwordStrength++;
                 }
 
