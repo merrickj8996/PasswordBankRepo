@@ -181,7 +181,8 @@ namespace WindowsFormsApp1 {
         private static int mIter = 50000;
         private static int mKeyLength = 256;
         private static int mBlockSize = 128;
-        public static SecureString mPassTemp;
+        public static String mPassTemp = "";
+        //public static SecureString mPassTemp;
         #endregion
 
         //Generates Salt for use with password. 

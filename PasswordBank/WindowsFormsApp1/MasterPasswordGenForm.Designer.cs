@@ -32,10 +32,10 @@ namespace WindowsFormsApp1 {
             this.Special = new System.Windows.Forms.CheckBox();
             this.Brackets = new System.Windows.Forms.CheckBox();
             this.Latin = new System.Windows.Forms.CheckBox();
-            this.Close = new System.Windows.Forms.Button();
+            this.CloseButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.Size = new System.Windows.Forms.NumericUpDown();
-            ((System.ComponentModel.ISupportInitialize)(this.Size)).BeginInit();
+            this.passSize = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.passSize)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,15 +119,15 @@ namespace WindowsFormsApp1 {
             this.Latin.Text = "Latin-1 (Æ, ÷, ß, ¶)";
             this.Latin.UseVisualStyleBackColor = true;
             // 
-            // Close
+            // CloseButton
             // 
-            this.Close.Location = new System.Drawing.Point(247, 272);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(75, 23);
-            this.Close.TabIndex = 10;
-            this.Close.Text = "Close";
-            this.Close.UseVisualStyleBackColor = true;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
+            this.CloseButton.Location = new System.Drawing.Point(247, 272);
+            this.CloseButton.Name = "CloseButton";
+            this.CloseButton.Size = new System.Drawing.Size(75, 23);
+            this.CloseButton.TabIndex = 10;
+            this.CloseButton.Text = "Close";
+            this.CloseButton.UseVisualStyleBackColor = true;
+            this.CloseButton.Click += new System.EventHandler(this.CloseButton_Click);
             // 
             // label2
             // 
@@ -138,23 +138,23 @@ namespace WindowsFormsApp1 {
             this.label2.TabIndex = 11;
             this.label2.Text = "Enter in the length of the password";
             // 
-            // Size
+            // passSize
             // 
-            this.Size.Location = new System.Drawing.Point(208, 55);
-            this.Size.Maximum = new decimal(new int[] {
+            this.passSize.Location = new System.Drawing.Point(208, 55);
+            this.passSize.Maximum = new decimal(new int[] {
             20,
             0,
             0,
             0});
-            this.Size.Minimum = new decimal(new int[] {
+            this.passSize.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.Size.Name = "Size";
-            this.Size.Size = new System.Drawing.Size(68, 20);
-            this.Size.TabIndex = 12;
-            this.Size.Value = new decimal(new int[] {
+            this.passSize.Name = "passSize";
+            this.passSize.Size = new System.Drawing.Size(68, 20);
+            this.passSize.TabIndex = 12;
+            this.passSize.Value = new decimal(new int[] {
             20,
             0,
             0,
@@ -165,9 +165,9 @@ namespace WindowsFormsApp1 {
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(334, 307);
-            this.Controls.Add(this.Size);
+            this.Controls.Add(this.passSize);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.Close);
+            this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.Latin);
             this.Controls.Add(this.Brackets);
             this.Controls.Add(this.Special);
@@ -179,7 +179,7 @@ namespace WindowsFormsApp1 {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "MasterPasswordGenForm";
             this.Text = "MasterPasswordGenForm";
-            ((System.ComponentModel.ISupportInitialize)(this.Size)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,8 +195,8 @@ namespace WindowsFormsApp1 {
         private System.Windows.Forms.CheckBox Special;
         private System.Windows.Forms.CheckBox Brackets;
         private System.Windows.Forms.CheckBox Latin;
-        private System.Windows.Forms.Button Close;
+        private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.NumericUpDown Size;
+        private System.Windows.Forms.NumericUpDown passSize;
     }
 }

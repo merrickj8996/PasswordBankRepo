@@ -8,7 +8,6 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp1 {
@@ -18,7 +17,6 @@ namespace WindowsFormsApp1 {
         }
         public string databasefileName { get; set; }
         private void OkButton_Click (object sender, EventArgs e) {
-            
             //format the database name to be a text file
             Console.WriteLine(databasefileName + ".txt");
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
@@ -94,7 +92,7 @@ namespace WindowsFormsApp1 {
             }
         }
 
-        private void CancelButton_Click(object sender, EventArgs e) {
+        private void ExitButton_Click(object sender, EventArgs e) {
             MasterForm form = new MasterForm();
             this.Hide();
             form.Show();

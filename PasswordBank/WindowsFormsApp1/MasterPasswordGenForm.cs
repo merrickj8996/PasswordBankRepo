@@ -15,7 +15,7 @@ namespace WindowsFormsApp1 {
             LowerCase.Enabled = false;
         }
 
-        private void Close_Click(object sender, EventArgs e) {
+        private void CloseButton_Click(object sender, EventArgs e) {
             this.Hide();
         }
 

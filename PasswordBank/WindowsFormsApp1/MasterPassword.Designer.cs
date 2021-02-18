@@ -37,7 +37,7 @@ namespace WindowsFormsApp1
             this.label4 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.OkButton = new System.Windows.Forms.Button();
-            this.CancelButton = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.passwordStrengthLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -120,15 +120,15 @@ namespace WindowsFormsApp1
             this.OkButton.UseVisualStyleBackColor = true;
             this.OkButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
-            // CancelButton
+            // ExitButton
             // 
-            this.CancelButton.Location = new System.Drawing.Point(12, 316);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 8;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
-            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
+            this.ExitButton.Location = new System.Drawing.Point(12, 316);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.TabIndex = 8;
+            this.ExitButton.Text = "Cancel";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // label5
             // 
@@ -159,7 +159,7 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(468, 351);
             this.Controls.Add(this.passwordStrengthLabel);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.OkButton);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
@@ -186,7 +186,7 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button OkButton;
-        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label passwordStrengthLabel;
     }
