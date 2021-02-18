@@ -28,7 +28,6 @@ namespace WindowsFormsApp1 {
             this.UpperCase = new System.Windows.Forms.CheckBox();
             this.LowerCase = new System.Windows.Forms.CheckBox();
             this.Digits = new System.Windows.Forms.CheckBox();
-            this.Underline = new System.Windows.Forms.CheckBox();
             this.Space = new System.Windows.Forms.CheckBox();
             this.Special = new System.Windows.Forms.CheckBox();
             this.Brackets = new System.Windows.Forms.CheckBox();
@@ -51,7 +50,7 @@ namespace WindowsFormsApp1 {
             // UpperCase
             // 
             this.UpperCase.AutoSize = true;
-            this.UpperCase.Location = new System.Drawing.Point(19, 98);
+            this.UpperCase.Location = new System.Drawing.Point(19, 123);
             this.UpperCase.Name = "UpperCase";
             this.UpperCase.Size = new System.Drawing.Size(139, 17);
             this.UpperCase.TabIndex = 1;
@@ -61,7 +60,9 @@ namespace WindowsFormsApp1 {
             // LowerCase
             // 
             this.LowerCase.AutoSize = true;
-            this.LowerCase.Location = new System.Drawing.Point(19, 122);
+            this.LowerCase.Checked = true;
+            this.LowerCase.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.LowerCase.Location = new System.Drawing.Point(19, 98);
             this.LowerCase.Name = "LowerCase";
             this.LowerCase.Size = new System.Drawing.Size(136, 17);
             this.LowerCase.TabIndex = 2;
@@ -77,16 +78,6 @@ namespace WindowsFormsApp1 {
             this.Digits.TabIndex = 3;
             this.Digits.Text = "Digits (0,1,2,3, ....)";
             this.Digits.UseVisualStyleBackColor = true;
-            // 
-            // Underline
-            // 
-            this.Underline.AutoSize = true;
-            this.Underline.Location = new System.Drawing.Point(19, 170);
-            this.Underline.Name = "Underline";
-            this.Underline.Size = new System.Drawing.Size(96, 17);
-            this.Underline.TabIndex = 5;
-            this.Underline.Text = "Underscore (_)";
-            this.Underline.UseVisualStyleBackColor = true;
             // 
             // Space
             // 
@@ -121,7 +112,7 @@ namespace WindowsFormsApp1 {
             // Latin
             // 
             this.Latin.AutoSize = true;
-            this.Latin.Location = new System.Drawing.Point(165, 170);
+            this.Latin.Location = new System.Drawing.Point(19, 169);
             this.Latin.Name = "Latin";
             this.Latin.Size = new System.Drawing.Size(113, 17);
             this.Latin.TabIndex = 9;
@@ -181,7 +172,6 @@ namespace WindowsFormsApp1 {
             this.Controls.Add(this.Brackets);
             this.Controls.Add(this.Special);
             this.Controls.Add(this.Space);
-            this.Controls.Add(this.Underline);
             this.Controls.Add(this.Digits);
             this.Controls.Add(this.LowerCase);
             this.Controls.Add(this.UpperCase);
@@ -201,7 +191,6 @@ namespace WindowsFormsApp1 {
         private System.Windows.Forms.CheckBox UpperCase;
         private System.Windows.Forms.CheckBox LowerCase;
         private System.Windows.Forms.CheckBox Digits;
-        private System.Windows.Forms.CheckBox Underline;
         private System.Windows.Forms.CheckBox Space;
         private System.Windows.Forms.CheckBox Special;
         private System.Windows.Forms.CheckBox Brackets;
