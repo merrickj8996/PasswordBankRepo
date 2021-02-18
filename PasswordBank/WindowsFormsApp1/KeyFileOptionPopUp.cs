@@ -39,5 +39,11 @@ namespace WindowsFormsApp1 {
             this.Close();
             frm.Show();
         }
+
+        private void KeyFileCancelButton_Click(object sender, EventArgs e) {
+            EnterPasswordForFile enterPasswordForFile = new EnterPasswordForFile();
+            this.Hide();
+            enterPasswordForFile.Show();
+        }
     }
 }

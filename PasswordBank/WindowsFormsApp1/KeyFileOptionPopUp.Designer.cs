@@ -75,7 +75,7 @@ namespace WindowsFormsApp1 {
             this.KeyFileOkButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyFileOkButton.AutoSize = true;
-            this.KeyFileOkButton.Location = new System.Drawing.Point(142, 102);
+            this.KeyFileOkButton.Location = new System.Drawing.Point(148, 90);
             this.KeyFileOkButton.Name = "KeyFileOkButton";
             this.KeyFileOkButton.Size = new System.Drawing.Size(75, 30);
             this.KeyFileOkButton.TabIndex = 3;
