@@ -48,6 +48,9 @@ namespace WindowsFormsApp1 {
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Yes) {
                 FileOP.CreateFile();
+                passwordOptions form = new passwordOptions();
+                this.Hide();
+                form.Show();
             }
         }
 
