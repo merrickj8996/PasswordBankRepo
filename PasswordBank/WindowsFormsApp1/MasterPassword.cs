@@ -17,10 +17,9 @@ namespace WindowsFormsApp1 {
         }
         public string databasefileName { get; set; }
         private void OkButton_Click (object sender, EventArgs e) {
-            //format the database name to be a text file
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
                 //Encrypt the File with the entered password
-                Crypto.EncryptFile(databasefileName, PassEntry1.Text);
+                Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
 
                 // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
                 KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();

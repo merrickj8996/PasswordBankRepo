@@ -35,9 +35,12 @@ namespace WindowsFormsApp1 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
+
             MasterForm frm = new MasterForm();
-            this.Close();
             frm.Show();
+            frm.PerformRefresh();
+            this.Close();
         }
+
     }
 }
