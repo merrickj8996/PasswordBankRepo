@@ -34,10 +34,10 @@
 
                 int value = BitConverter.ToInt32(data, 0) % chars.Length;
 
-                genPass.Insert(genPass.Length, chars[value].ToString());
+                genPass += chars[value];
             }
 
-            return genPass;
+            return "testString";
         }
     }
 }
