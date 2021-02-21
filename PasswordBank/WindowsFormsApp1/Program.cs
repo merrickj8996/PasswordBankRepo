@@ -341,7 +341,7 @@ namespace WindowsFormsApp1 {
            
             //Read the CSV file that as just opened.
             //set the columns to be equal to the first line of the CSV seperated by commas
-            string[] lines = File.ReadAllLines(FileOP.GetFile());
+            string[] lines = File.ReadAllLines(GetFile());
             string[] fields;
             fields = lines[0].Split(new char[] { ',' });
             int Cols = fields.GetLength(0);
