@@ -12,32 +12,32 @@
             string genPass = "";
 
             if (includeUppercase) {
-                chars.Insert(chars.Length, uppers);
+                chars += uppers;
             }
 
             if (includeNumbers) {
-                chars.Insert(chars.Length, numbers);
+                chars += numbers;
             }
 
             if (includeSymbols) {
-                chars.Insert(chars.Length, symbols);
+                chars += symbols;
             }
 
             if (includeBrackets) {
-                chars.Insert(chars.Length, brackets);
+                chars += brackets;
             }
 
-            for (int i = 0; i > length; i++) {
+            for (int i = 0; i < length; i++) {
                 byte[] data = new byte[4];
                 RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
                 rng.GetBytes(data);
 
-                int value = BitConverter.ToInt32(data, 0) % chars.Length;
+                int value = Math.Abs(BitConverter.ToInt32(data, 0) % chars.Length);
 
                 genPass += chars[value];
             }
 
-            return "testString";
+            return genPass;
         }
     }
 }
