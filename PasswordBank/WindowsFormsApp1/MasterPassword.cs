@@ -15,7 +15,16 @@ namespace WindowsFormsApp1 {
         public passwordOptions() {
             InitializeComponent();
         }
+        public void UpdateTextBox(string pass) {
 
+            PassEntry1.BeginInvoke((MethodInvoker)delegate {
+                this.PassEntry1.Text = pass;
+                this.PassEntry2.Text = pass;
+            });
+            //this.Refresh();
+        }
+
+        public string randomPass { get; set; }
         private void OkButton_Click (object sender, EventArgs e) {
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
                 //Encrypt the File with the entered password
@@ -47,6 +56,7 @@ namespace WindowsFormsApp1 {
         private void button1_Click(object sender, EventArgs e) {
             MasterPasswordGenForm generatePasswordOptions = new MasterPasswordGenForm();
             generatePasswordOptions.Show();
+            this.Hide();
         }
 
         private void passwordStrengthLabel_Click(object sender, EventArgs e) {
