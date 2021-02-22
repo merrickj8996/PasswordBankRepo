@@ -152,6 +152,7 @@ namespace WindowsFormsApp1 {
 
             //Delete uncompressed file
             File.Delete(inFile);
+            FileOP.LoadFile(FileOP.GetFile() + ".gz");
         }
 
         // Decompresses a file using GZip
@@ -176,10 +177,12 @@ namespace WindowsFormsApp1 {
                         decompressionStream.CopyTo(decompressedFileStream);
                     }
                 }
+                FileOP.LoadFile(FileOP.GetFile().Remove(FileOP.GetFile().Length - fileToDecompress.Extension.Length));
             }
 
             // Delete compressed file
             File.Delete(inFile);
+            
         }
     }
 

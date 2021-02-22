@@ -21,6 +21,7 @@ namespace WindowsFormsApp1 {
             }
             Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
             Crypto.mPassTemp = passwordEntry.Text;
+            BankFile.Decompress(FileOP.GetFile());
             MasterForm frm = new MasterForm();
             frm.Show();
             frm.PerformRefresh();
