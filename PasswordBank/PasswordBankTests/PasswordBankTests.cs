@@ -12,34 +12,70 @@ namespace PasswordBankTests {
             // Tests that a .txt file gets compressed
 
             // Arrange
-            string toCompressPath = @"..\..\..\TestResources\CompressTestResources";
-            string compressedPath = toCompressPath + @"\Test.txt.gz";
-            DirectoryInfo toCompressDirectory = new DirectoryInfo(toCompressPath);
+            string toCompressPath = @"..\..\..\TestResources\CompressTestResources\Test.txt";
+            if (!File.Exists(toCompressPath)) {
+                using (StreamWriter sw = File.CreateText(toCompressPath)) {
+                    sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                }
+            }
+            string compressedPath = @"..\..\..\TestResources\CompressTestResources\Test.txt.gz";
 
             // Act
-            BankFile.Compress(toCompressDirectory);
+            BankFile.Compress(toCompressPath);
 
             // Assert
-            Assert.IsNotNull(compressedPath);
+            Assert.IsTrue(File.Exists(compressedPath));
 
             // Clean-up
             File.Delete(compressedPath);
         }
 
         [TestMethod]
+        public void DeleteAfterCompressTest() {
+            // Tests that the .txt file is deleted after compression
+
+            // Arrange
+            string toCompressPath = @"..\..\..\TestResources\CompressTestResources\Test.txt";
+            if (!File.Exists(toCompressPath)) {
+                using (StreamWriter sw = File.CreateText(toCompressPath)) {
+                    sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                }
+            }
+            string compressedPath = @"..\..\..\TestResources\CompressTestResources\Test.txt.gz";
+
+            // Act
+            BankFile.Compress(toCompressPath);
+
+            // Assert
+            Assert.IsFalse(File.Exists(toCompressPath));
+
+            // Clean-up
+            File.Delete(compressedPath);
+        }
+
+        
+        [TestMethod]
         public void DecompressTest() {
             // Tests that a compressed .gz file gets decompressed into a .txt file
 
             // Arrange
-            string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
+            
+            // Ensuring there is a .gz file to be decompressed
             string decompressedPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt";
-            FileInfo toDecompressFile = new FileInfo(toDecompressPath);
+            if (!File.Exists(decompressedPath)) {
+                using (StreamWriter sw = File.CreateText(decompressedPath)) {
+                    sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                }
+            }
+            BankFile.Compress(decompressedPath);
+
+            string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
 
             // Act
-            BankFile.Decompress(toDecompressFile);
+            BankFile.Decompress(toDecompressPath);
 
             // Assert
-            Assert.IsNotNull(decompressedPath);
+            Assert.IsTrue(File.Exists(decompressedPath));
 
             // Clean-up
             File.Delete(decompressedPath);
@@ -47,19 +83,54 @@ namespace PasswordBankTests {
 
         [TestMethod]
         public void DecompressCorrectlyTest() {
-            // Tests that the contents of a decompressed .txt file are what they're supposed to be
+            // Tests that a compressed .gz file gets decompressed into a .txt file
 
             // Arrange
-            string originalPath = @"..\..\..\TestResources\DecompressTestResources\Original.txt";
-            string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
-            FileInfo toDecompressFile = new FileInfo(toDecompressPath);
+
+            // Ensuring there is a .gz file to be decompressed
             string decompressedPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt";
+            if (!File.Exists(decompressedPath)) {
+                using (StreamWriter sw = File.CreateText(decompressedPath)) {
+                    sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                }
+            }
+            BankFile.Compress(decompressedPath);
+
+            string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
+            string comparatorPath = @"..\..\..\TestResources\DecompressTestResources\comparator.txt";
 
             // Act
-            BankFile.Decompress(toDecompressFile);
+            BankFile.Decompress(toDecompressPath);
 
             // Assert
-            Assert.IsTrue(File.ReadLines(originalPath).SequenceEqual(File.ReadLines(decompressedPath)));
+            Assert.IsTrue(File.ReadLines(comparatorPath).SequenceEqual(File.ReadLines(decompressedPath)));
+
+            // Clean-up
+            File.Delete(decompressedPath);
+        }
+
+        [TestMethod]
+        public void DeletionAfterDecompressTest() {
+            // Tests that a compressed .gz file gets decompressed into a .txt file
+
+            // Arrange
+
+            // Ensuring there is a .gz file to be decompressed
+            string decompressedPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt";
+            if (!File.Exists(decompressedPath)) {
+                using (StreamWriter sw = File.CreateText(decompressedPath)) {
+                    sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                }
+            }
+            BankFile.Compress(decompressedPath);
+
+            string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
+
+            // Act
+            BankFile.Decompress(toDecompressPath);
+
+            // Assert
+            Assert.IsFalse(File.Exists(toDecompressPath));
 
             // Clean-up
             File.Delete(decompressedPath);

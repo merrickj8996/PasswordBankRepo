@@ -30,6 +30,10 @@ namespace WindowsFormsApp1 {
                 //Encrypt the File with the entered password
                 Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
 
+                // Creates a new print pop-up
+                MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
+                printPopUp.ShowDialog();
+
                 // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
                 KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
                 this.Close();

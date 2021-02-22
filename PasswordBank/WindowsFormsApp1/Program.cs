@@ -127,34 +127,38 @@ namespace WindowsFormsApp1 {
     public static class BankFile {
 
         // Compresses all files in a folder using GZip
-        public static void Compress(DirectoryInfo fileDirectory) {
+        public static void Compress(string inFile) {
+            //Makes new FileInfo for the target file
+            FileInfo fileToCompress = new FileInfo(inFile);
 
-            // For loop lets each file in directory get compressed
-            foreach (FileInfo fileToCompress in fileDirectory.GetFiles()) {
+            // Creates a File Stream containing the data in the fileToCompress
+            using (FileStream originalFileStream = fileToCompress.OpenRead()) {
 
-                // Creates a File Stream containing the data in the fileToCompress
-                using (FileStream originalFileStream = fileToCompress.OpenRead()) {
+                // Check that the file is not hidden or already a .gz file
+                if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz") {
 
-                    // Check that the file is not hidden or already a .gz file
-                    if ((File.GetAttributes(fileToCompress.FullName) & FileAttributes.Hidden) != FileAttributes.Hidden & fileToCompress.Extension != ".gz") {
+                    // Creates a File Stream for the compressed file
+                    using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz")) {
 
-                        // Creates a File Stream for the compressed file
-                        using (FileStream compressedFileStream = File.Create(fileToCompress.FullName + ".gz")) {
+                        // Creates the compression stream
+                        using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress)) {
 
-                            // Creates the compression stream
-                            using (GZipStream compressionStream = new GZipStream(compressedFileStream, CompressionMode.Compress)) {
-
-                                // Compresses file
-                                originalFileStream.CopyTo(compressionStream);
-                            }
+                            // Compresses file
+                            originalFileStream.CopyTo(compressionStream);
                         }
                     }
                 }
             }
+
+            //Delete uncompressed file
+            File.Delete(inFile);
         }
 
         // Decompresses a file using GZip
-        public static void Decompress(FileInfo fileToDecompress) {
+        public static void Decompress(string inFile) {
+
+            //Makes new FileInfo for the target file
+            FileInfo fileToDecompress = new FileInfo(inFile);
 
             // Creates a FileStream containing the data from fileToDecompress
             using (FileStream originalFileStream = fileToDecompress.OpenRead()) {
@@ -173,6 +177,9 @@ namespace WindowsFormsApp1 {
                     }
                 }
             }
+
+            // Delete compressed file
+            File.Delete(inFile);
         }
     }
 
@@ -372,7 +379,7 @@ namespace WindowsFormsApp1 {
 
         public static DataTable ReadFile() {
             //TODO: Import/move ReadCSV from MasterForm.cs
-           
+
             //Read the CSV file that as just opened.
             //set the columns to be equal to the first line of the CSV seperated by commas
             string[] lines = File.ReadAllLines(GetFile());
@@ -396,7 +403,7 @@ namespace WindowsFormsApp1 {
 
         }
         public static void PrintFileName() {
-           Console.WriteLine(FileOP.GetFile());
+            Console.WriteLine(FileOP.GetFile());
         }
     }
 }
