@@ -218,6 +218,7 @@ namespace WindowsFormsApp1 {
                             }
                         }
                     }
+                    File.Delete(inFile);
                     File.Move(inFile + ".temp", inFile);
                 }
             }
@@ -254,6 +255,7 @@ namespace WindowsFormsApp1 {
                             }
                         }
                     }
+                    File.Delete(inFile);
                     File.Move(inFile + ".temp", inFile);
                 }
                 catch (CryptographicException ex_CryptographicException) {
@@ -273,6 +275,7 @@ namespace WindowsFormsApp1 {
     static class FileOP {
         #region memberVariables
         public static String mFileName;
+        public static String mKeyFileName;
         #endregion
 
         public static void ClearFile() {
@@ -285,6 +288,18 @@ namespace WindowsFormsApp1 {
 
         public static void LoadFile(string fileName) {
             mFileName = fileName;
+        }
+
+        public static void ClearKeyFile() {
+            mKeyFileName = "";
+        }
+
+        public static string GetKeyFile() {
+            return mKeyFileName;
+        }
+
+        public static void LoadKeyFile(string keyFileName) {
+            mKeyFileName = keyFileName;
         }
 
         public static void SaveFile() {
@@ -315,8 +330,9 @@ namespace WindowsFormsApp1 {
                 }
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
                     file.WriteLine("Group,Title,User Name,Password,URL,Notes");
+                    file.Close();
                 }
-                ReadFile();
+                //ReadFile();
             }
         }
 
@@ -331,9 +347,27 @@ namespace WindowsFormsApp1 {
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     //Get the path of specified file
                     FileOP.LoadFile(openFileDialog.FileName);
-                    FileOP.PrintFileName();
                 }
             }
+        }
+
+        public static void SelectKeyFile() {
+            //TODO: Import/move OpenFile from MasterForm.cs
+            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
+                openFileDialog.InitialDirectory = "c:\\";
+                openFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
+                openFileDialog.FilterIndex = 2;
+                openFileDialog.RestoreDirectory = true;
+
+                if (openFileDialog.ShowDialog() == DialogResult.OK) {
+                    //Get the path of specified file
+                    FileOP.LoadKeyFile(openFileDialog.FileName);
+                }
+            }
+        }
+
+        public static string KeyFileToBits(string keyFile) {
+            return Convert.ToBase64String(File.ReadAllBytes(keyFile));
         }
 
         public static DataTable ReadFile() {

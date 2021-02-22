@@ -35,12 +35,20 @@ namespace WindowsFormsApp1 {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-
+            FileOP.SelectKeyFile();
+            Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+            FileOP.ClearKeyFile();
             MasterForm frm = new MasterForm();
             frm.Show();
             frm.PerformRefresh();
             this.Close();
         }
 
+        private void KeyFileNoButton_Click(object sender, EventArgs e) {
+            MasterForm frm = new MasterForm();
+            frm.Show();
+            frm.PerformRefresh();
+            this.Close();
+        }
     }
 }

@@ -59,10 +59,24 @@ namespace WindowsFormsApp1 {
             FileOP.SaveFile();
         }
 
-        //Lock button to Encrypt the currently opened file.
+        //Lock button to Encrypt and close the currently opened file.
         private void LockButton_Click(object sender, EventArgs e) {
-            Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp.ToString());
+            //Encrypt the file with stored password
+            Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp);
+
+            //If a Keyfile was used to open the file, use it to encrypt the file when locking
+            if (FileOP.GetKeyFile().Length > 0) {
+
+                //Encrypt the file with the KeyFile
+                Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+
+                //Clear the keyFile from memory
+                FileOP.ClearKeyFile();
+            }
+
+            //Clear the file from memory
             FileOP.ClearFile();
+            this.Close();
         }
     }
 }

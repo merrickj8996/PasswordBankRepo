@@ -13,15 +13,23 @@ namespace WindowsFormsApp1 {
         public EnterPasswordForFile() {
             InitializeComponent();
         }
-        public string DatabaseFileName { get; set; }
 
         private void button1_Click(object sender, EventArgs e) {
+            
+            if (KeyfileLocation.TextLength > 0) {
+                Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text));
+            }
             Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
             Crypto.mPassTemp = passwordEntry.Text;
             MasterForm frm = new MasterForm();
             frm.Show();
             frm.PerformRefresh();
             this.Close();
+        }
+
+        private void FindKeyFile_Click(object sender, EventArgs e) {
+            FileOP.SelectKeyFile();
+            KeyfileLocation.Text = FileOP.GetKeyFile();
         }
     }
 }
