@@ -16,6 +16,13 @@ namespace WindowsFormsApp1 {
         }
 
         private void CloseButton_Click(object sender, EventArgs e) {
+
+            int count = Convert.ToInt32(Math.Round(passSize.Value, 0));
+            string pass = Password.randomizePassword(count, UpperCase.Checked, Digits.Checked, Special.Checked, Brackets.Checked);
+            Console.WriteLine(pass);
+            passwordOptions frm = new passwordOptions();
+            frm.Show();
+            frm.UpdateTextBox(pass);
             this.Hide();
         }
 

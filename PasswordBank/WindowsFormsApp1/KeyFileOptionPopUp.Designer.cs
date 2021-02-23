@@ -25,9 +25,8 @@ namespace WindowsFormsApp1 {
         /// </summary>
         private void InitializeComponent() {
             this.KeyPassOptionLabel = new System.Windows.Forms.Label();
-            this.KeyFileYesRadioButton = new System.Windows.Forms.RadioButton();
-            this.KeyFileNoRadioButton = new System.Windows.Forms.RadioButton();
-            this.KeyFileOkButton = new System.Windows.Forms.Button();
+            this.KeyFileYesButton = new System.Windows.Forms.Button();
+            this.KeyFileNoButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // KeyPassOptionLabel
@@ -35,31 +34,33 @@ namespace WindowsFormsApp1 {
             this.KeyPassOptionLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyPassOptionLabel.AutoSize = true;
-            this.KeyPassOptionLabel.Location = new System.Drawing.Point(12, 9);
+            this.KeyPassOptionLabel.Location = new System.Drawing.Point(8, 6);
+            this.KeyPassOptionLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.KeyPassOptionLabel.Name = "KeyPassOptionLabel";
-            this.KeyPassOptionLabel.Size = new System.Drawing.Size(354, 20);
+            this.KeyPassOptionLabel.Size = new System.Drawing.Size(241, 13);
             this.KeyPassOptionLabel.TabIndex = 0;
             this.KeyPassOptionLabel.Text = "Would you like to add a key file for more security?";
             this.KeyPassOptionLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // KeyFileYesRadioButton
+            // KeyFileYesButton
             // 
-            this.KeyFileYesRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.KeyFileYesButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeyFileYesRadioButton.AutoSize = true;
-            this.KeyFileYesRadioButton.Location = new System.Drawing.Point(84, 51);
-            this.KeyFileYesRadioButton.Name = "KeyFileYesRadioButton";
-            this.KeyFileYesRadioButton.Size = new System.Drawing.Size(62, 24);
-            this.KeyFileYesRadioButton.TabIndex = 1;
-            this.KeyFileYesRadioButton.TabStop = true;
-            this.KeyFileYesRadioButton.Text = "Yes";
-            this.KeyFileYesRadioButton.UseVisualStyleBackColor = true;
-            this.KeyFileYesRadioButton.CheckedChanged += new System.EventHandler(this.KeyFileYesRadioButton_CheckedChanged);
+            this.KeyFileYesButton.AutoSize = true;
+            this.KeyFileYesButton.Location = new System.Drawing.Point(49, 66);
+            this.KeyFileYesButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.KeyFileYesButton.Name = "KeyFileYesButton";
+            this.KeyFileYesButton.Size = new System.Drawing.Size(50, 23);
+            this.KeyFileYesButton.TabIndex = 3;
+            this.KeyFileYesButton.Text = "Yes";
+            this.KeyFileYesButton.UseVisualStyleBackColor = true;
+            this.KeyFileYesButton.Click += new System.EventHandler(this.button1_Click);
             // 
-            // KeyFileNoRadioButton
+            // KeyFileNoButton
             // 
-            this.KeyFileNoRadioButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.KeyFileNoButton.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+<<<<<<< HEAD
             this.KeyFileNoRadioButton.AutoSize = true;
             this.KeyFileNoRadioButton.Location = new System.Drawing.Point(232, 51);
             this.KeyFileNoRadioButton.Name = "KeyFileNoRadioButton";
@@ -82,19 +83,30 @@ namespace WindowsFormsApp1 {
             this.KeyFileOkButton.Text = "Ok";
             this.KeyFileOkButton.UseVisualStyleBackColor = true;
             this.KeyFileOkButton.Click += new System.EventHandler(this.button1_Click);
+=======
+            this.KeyFileNoButton.AutoSize = true;
+            this.KeyFileNoButton.Location = new System.Drawing.Point(161, 66);
+            this.KeyFileNoButton.Margin = new System.Windows.Forms.Padding(2);
+            this.KeyFileNoButton.Name = "KeyFileNoButton";
+            this.KeyFileNoButton.Size = new System.Drawing.Size(50, 23);
+            this.KeyFileNoButton.TabIndex = 4;
+            this.KeyFileNoButton.Text = "No";
+            this.KeyFileNoButton.UseVisualStyleBackColor = true;
+            this.KeyFileNoButton.Click += new System.EventHandler(this.KeyFileNoButton_Click);
+>>>>>>> 09595ada9247cb9620267842edff28eae17eec13
             // 
             // KeyFileOptionPopUp
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(378, 144);
-            this.Controls.Add(this.KeyFileOkButton);
-            this.Controls.Add(this.KeyFileNoRadioButton);
-            this.Controls.Add(this.KeyFileYesRadioButton);
+            this.ClientSize = new System.Drawing.Size(256, 105);
+            this.Controls.Add(this.KeyFileNoButton);
+            this.Controls.Add(this.KeyFileYesButton);
             this.Controls.Add(this.KeyPassOptionLabel);
-            this.MaximumSize = new System.Drawing.Size(400, 200);
-            this.MinimumSize = new System.Drawing.Size(400, 200);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.MaximumSize = new System.Drawing.Size(272, 144);
+            this.MinimumSize = new System.Drawing.Size(272, 144);
             this.Name = "KeyFileOptionPopUp";
             this.Text = "Key File";
             this.ResumeLayout(false);
@@ -105,8 +117,7 @@ namespace WindowsFormsApp1 {
         #endregion
 
         private System.Windows.Forms.Label KeyPassOptionLabel;
-        private System.Windows.Forms.RadioButton KeyFileYesRadioButton;
-        private System.Windows.Forms.RadioButton KeyFileNoRadioButton;
-        private System.Windows.Forms.Button KeyFileOkButton;
+        private System.Windows.Forms.Button KeyFileYesButton;
+        private System.Windows.Forms.Button KeyFileNoButton;
     }
 }

@@ -15,11 +15,20 @@ namespace WindowsFormsApp1 {
         public passwordOptions() {
             InitializeComponent();
         }
-        public string databasefileName { get; set; }
+        public void UpdateTextBox(string pass) {
+
+            PassEntry1.BeginInvoke((MethodInvoker)delegate {
+                this.PassEntry1.Text = pass;
+                this.PassEntry2.Text = pass;
+            });
+            //this.Refresh();
+        }
+
+        public string randomPass { get; set; }
         private void OkButton_Click (object sender, EventArgs e) {
-            //format the database name to be a text file
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
 
+<<<<<<< HEAD
 
 
 
@@ -30,8 +39,17 @@ namespace WindowsFormsApp1 {
                 }*/
 
 
+=======
+                //File is compressed before Encryption
+                BankFile.Compress(FileOP.GetFile());
+                
+>>>>>>> 09595ada9247cb9620267842edff28eae17eec13
                 //Encrypt the File with the entered password
-                Crypto.EncryptFile(databasefileName, PassEntry1.Text);
+                Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
+
+                // Creates a new print pop-up
+                MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
+                printPopUp.ShowDialog();
 
                 // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
                 KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
@@ -59,6 +77,7 @@ namespace WindowsFormsApp1 {
         private void button1_Click(object sender, EventArgs e) {
             MasterPasswordGenForm generatePasswordOptions = new MasterPasswordGenForm();
             generatePasswordOptions.Show();
+            this.Hide();
         }
 
         private void passwordStrengthLabel_Click(object sender, EventArgs e) {

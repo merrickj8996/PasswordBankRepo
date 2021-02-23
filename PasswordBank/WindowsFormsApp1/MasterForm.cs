@@ -14,31 +14,12 @@ namespace WindowsFormsApp1 {
         public MasterForm() {
             InitializeComponent();
         }
-
+        public void PerformRefresh() {
+            dataGridView1.DataSource = FileOP.ReadFile();
+        }
         private void CreateNewButton_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
-        }
 
-        private void ReadCSV(string filePath) {
-            //Read the CSV file that as just opened.
-            //set the columns to be equal to the first line of the CSV seperated by commas
-            string[] lines = File.ReadAllLines(filePath);
-            string[] fields;
-            fields = lines[0].Split(new char[] { ',' });
-            int Cols = fields.GetLength(0);
-            DataTable dt = new DataTable();
-            //1st row must be column names; force lower case to ensure matching later on.
-            for (int i = 0; i < Cols; i++)
-                dt.Columns.Add(fields[i].ToLower(), typeof(string));
-            DataRow Row;
-            for (int i = 1; i < lines.GetLength(0); i++) {
-                fields = lines[i].Split(new char[] { ',' });
-                Row = dt.NewRow();
-                for (int f = 0; f < Cols; f++)
-                    Row[f] = fields[f];
-                dt.Rows.Add(Row);
-            }
-            dataGridView1.DataSource = dt;
         }
 
         private void DisplayNewFileWarning() {
@@ -57,10 +38,10 @@ namespace WindowsFormsApp1 {
 
         private void CreateNewFileDropDown_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
+
         }
 
         private void OpenFileButton_Click(object sender, EventArgs e) {
-            //decryption should go here I think.
             var fileContent = string.Empty;
             var filePath = string.Empty;
             FileOP.SelectFile();
@@ -78,10 +59,24 @@ namespace WindowsFormsApp1 {
             FileOP.SaveFile();
         }
 
-        //Lock button to Encrypt the currently opened file.
+        //Lock button to Encrypt and close the currently opened file.
         private void LockButton_Click(object sender, EventArgs e) {
-            Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp.ToString());
+            //Encrypt the file with stored password
+            Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp);
+
+            //If a Keyfile was used to open the file, use it to encrypt the file when locking
+            if (FileOP.GetKeyFile().Length > 0) {
+
+                //Encrypt the file with the KeyFile
+                Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+
+                //Clear the keyFile from memory
+                FileOP.ClearKeyFile();
+            }
+
+            //Clear the file from memory
             FileOP.ClearFile();
+            this.Close();
         }
     }
 }
