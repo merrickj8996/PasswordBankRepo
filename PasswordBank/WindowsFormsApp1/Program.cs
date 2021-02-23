@@ -124,7 +124,7 @@ namespace WindowsFormsApp1 {
             }
         }
     }
-    public static class BankFile {
+    public static class Compressor {
 
         // Compresses all files in a folder using GZip
         public static void Compress(string inFile) {

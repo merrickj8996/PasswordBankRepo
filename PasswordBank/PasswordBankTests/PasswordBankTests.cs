@@ -21,7 +21,7 @@ namespace PasswordBankTests {
             string compressedPath = @"..\..\..\TestResources\CompressTestResources\Test.txt.gz";
 
             // Act
-            BankFile.Compress(toCompressPath);
+            Compressor.Compress(toCompressPath);
 
             // Assert
             Assert.IsTrue(File.Exists(compressedPath));
@@ -44,7 +44,7 @@ namespace PasswordBankTests {
             string compressedPath = @"..\..\..\TestResources\CompressTestResources\Test.txt.gz";
 
             // Act
-            BankFile.Compress(toCompressPath);
+            Compressor.Compress(toCompressPath);
 
             // Assert
             Assert.IsFalse(File.Exists(toCompressPath));
@@ -67,12 +67,12 @@ namespace PasswordBankTests {
                     sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
                 }
             }
-            BankFile.Compress(decompressedPath);
+            Compressor.Compress(decompressedPath);
 
             string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
 
             // Act
-            BankFile.Decompress(toDecompressPath);
+            Compressor.Decompress(toDecompressPath);
 
             // Assert
             Assert.IsTrue(File.Exists(decompressedPath));
@@ -94,13 +94,13 @@ namespace PasswordBankTests {
                     sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
                 }
             }
-            BankFile.Compress(decompressedPath);
+            Compressor.Compress(decompressedPath);
 
             string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
             string comparatorPath = @"..\..\..\TestResources\DecompressTestResources\comparator.txt";
 
             // Act
-            BankFile.Decompress(toDecompressPath);
+            Compressor.Decompress(toDecompressPath);
 
             // Assert
             Assert.IsTrue(File.ReadLines(comparatorPath).SequenceEqual(File.ReadLines(decompressedPath)));
@@ -122,12 +122,12 @@ namespace PasswordBankTests {
                     sw.WriteLine("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.");
                 }
             }
-            BankFile.Compress(decompressedPath);
+            Compressor.Compress(decompressedPath);
 
             string toDecompressPath = @"..\..\..\TestResources\DecompressTestResources\Test.txt.gz";
 
             // Act
-            BankFile.Decompress(toDecompressPath);
+            Compressor.Decompress(toDecompressPath);
 
             // Assert
             Assert.IsFalse(File.Exists(toDecompressPath));
