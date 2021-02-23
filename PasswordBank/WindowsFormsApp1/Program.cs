@@ -204,7 +204,7 @@ namespace WindowsFormsApp1 {
             return salt;
         }
 
-        //Takes a file name and password and encrypts the file. 
+        //Takes a file name and string password and encrypts the file. 
         public static void EncryptFile(string inFile, string password) {
             byte[] salt = SaltGen();
             byte[] passwords = Encoding.UTF8.GetBytes(password);
@@ -217,7 +217,11 @@ namespace WindowsFormsApp1 {
             AES.IV = key.GetBytes(AES.BlockSize / 8);
             //AES.Mode = CipherMode.CFB;
             try {
+
+                //Creates a new file stream to temporarilty store encrypted data.
                 using (FileStream fileCrypto = new FileStream(inFile + ".temp", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None)) {
+
+                    //Writes the salt to the head of the file
                     fileCrypto.Write(salt, 0, salt.Length);
                     using (CryptoStream cryptoStream = new CryptoStream(fileCrypto, AES.CreateEncryptor(), CryptoStreamMode.Write)) {
                         using (FileStream fileStreamIn = new FileStream(inFile, FileMode.Open)) {
