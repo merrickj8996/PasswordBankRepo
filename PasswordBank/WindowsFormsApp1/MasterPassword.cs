@@ -19,7 +19,7 @@ namespace WindowsFormsApp1 {
         private void OkButton_Click (object sender, EventArgs e) {
             //format the database name to be a text file
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
-<<<<<<< HEAD
+
 
 
 
@@ -29,8 +29,7 @@ namespace WindowsFormsApp1 {
                     file.WriteLine(Password.HashSHA256(PassEntry1.Text));
                 }*/
 
-=======
->>>>>>> 00bc4488601bb66371970facede4523331f6ae33
+
                 //Encrypt the File with the entered password
                 Crypto.EncryptFile(databasefileName, PassEntry1.Text);
 
