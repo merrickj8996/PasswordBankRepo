@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace FirstPass
 {
     partial class MasterForm
     {
@@ -103,7 +103,7 @@ namespace WindowsFormsApp1
             // CreateNewButton
             // 
             this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CreateNewButton.Image = global::WindowsFormsApp1.Properties.Resources.plus;
+            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
             this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CreateNewButton.Name = "CreateNewButton";
             this.CreateNewButton.Size = new System.Drawing.Size(23, 22);
@@ -113,7 +113,7 @@ namespace WindowsFormsApp1
             // OpenFileButton
             // 
             this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.OpenFileButton.Image = global::WindowsFormsApp1.Properties.Resources.open_icon;
+            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
             this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenFileButton.Name = "OpenFileButton";
             this.OpenFileButton.Size = new System.Drawing.Size(23, 22);
@@ -123,7 +123,7 @@ namespace WindowsFormsApp1
             // SaveFilebutton
             // 
             this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveFilebutton.Image = global::WindowsFormsApp1.Properties.Resources.save;
+            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
             this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveFilebutton.Name = "SaveFilebutton";
             this.SaveFilebutton.Size = new System.Drawing.Size(23, 22);
@@ -138,7 +138,7 @@ namespace WindowsFormsApp1
             // NewEntryButton
             // 
             this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.NewEntryButton.Image = global::WindowsFormsApp1.Properties.Resources.editIcon;
+            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
             this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NewEntryButton.Name = "NewEntryButton";
             this.NewEntryButton.Size = new System.Drawing.Size(23, 22);
@@ -153,7 +153,7 @@ namespace WindowsFormsApp1
             // CopyUsernameButton
             // 
             this.CopyUsernameButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyUsernameButton.Image = global::WindowsFormsApp1.Properties.Resources.copyUsername;
+            this.CopyUsernameButton.Image = global::FirstPass.Properties.Resources.copyUsername;
             this.CopyUsernameButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyUsernameButton.Name = "CopyUsernameButton";
             this.CopyUsernameButton.Size = new System.Drawing.Size(23, 22);
@@ -162,7 +162,7 @@ namespace WindowsFormsApp1
             // CopyPassword
             // 
             this.CopyPassword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyPassword.Image = global::WindowsFormsApp1.Properties.Resources.copyPassword;
+            this.CopyPassword.Image = global::FirstPass.Properties.Resources.copyPassword;
             this.CopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyPassword.Name = "CopyPassword";
             this.CopyPassword.Size = new System.Drawing.Size(23, 22);
@@ -171,7 +171,7 @@ namespace WindowsFormsApp1
             // CopyButton
             // 
             this.CopyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyButton.Image = global::WindowsFormsApp1.Properties.Resources.copyLink;
+            this.CopyButton.Image = global::FirstPass.Properties.Resources.copyLink;
             this.CopyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyButton.Name = "CopyButton";
             this.CopyButton.Size = new System.Drawing.Size(23, 22);
@@ -185,7 +185,7 @@ namespace WindowsFormsApp1
             // SearchButton
             // 
             this.SearchButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SearchButton.Image = global::WindowsFormsApp1.Properties.Resources.MagnifyingGlass;
+            this.SearchButton.Image = global::FirstPass.Properties.Resources.MagnifyingGlass;
             this.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(23, 22);
@@ -200,7 +200,7 @@ namespace WindowsFormsApp1
             // LockButton
             // 
             this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LockButton.Image = global::WindowsFormsApp1.Properties.Resources._lock;
+            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
             this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LockButton.Name = "LockButton";
             this.LockButton.Size = new System.Drawing.Size(23, 22);

@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1 {
+namespace FirstPass {
     partial class KeyFileOptionPopUp {
         /// <summary>
         /// Required designer variable.

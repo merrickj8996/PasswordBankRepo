@@ -11,7 +11,7 @@ using System.Text;
 using System.Security;
 using System.Data;
 
-namespace WindowsFormsApp1 {
+namespace FirstPass {
 
     static class Program {
         /// <summary>
