@@ -29,7 +29,7 @@ namespace FirstPass {
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
 
                 //File is compressed before Encryption
-                BankFile.Compress(FileOP.GetFile());
+                Compressor.Compress(FileOP.GetFile());
                 
                 //Encrypt the File with the entered password
                 Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);

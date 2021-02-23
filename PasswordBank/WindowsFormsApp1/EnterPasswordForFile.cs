@@ -21,7 +21,7 @@ namespace FirstPass {
             }
             Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
             Crypto.mPassTemp = passwordEntry.Text;
-            BankFile.Decompress(FileOP.GetFile());
+            Compressor.Decompress(FileOP.GetFile());
             MasterForm frm = new MasterForm();
             frm.Show();
             frm.PerformRefresh();
