@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WindowsFormsApp1 {
+namespace FirstPass {
 
     public static class Compressor {
 
