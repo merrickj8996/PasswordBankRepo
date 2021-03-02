@@ -28,22 +28,9 @@ namespace WindowsFormsApp1 {
         private void OkButton_Click (object sender, EventArgs e) {
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
 
-<<<<<<< HEAD
-
-
-
-
-                ///string path = Environment.GetFolderPath(Environment.)
-                /*using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.Combine(@"..\..\..\PasswordBankTests\TestResources\Sha256TestSources\", databasefileName + ".txt"), true)) {
-                    file.WriteLine(Password.HashSHA256(PassEntry1.Text));
-                }*/
-
-
-=======
                 //File is compressed before Encryption
                 BankFile.Compress(FileOP.GetFile());
                 
->>>>>>> 09595ada9247cb9620267842edff28eae17eec13
                 //Encrypt the File with the entered password
                 Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
 
@@ -51,10 +38,10 @@ namespace WindowsFormsApp1 {
                 MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                 printPopUp.ShowDialog();
 
-                // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
-                KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
                 this.Close();
-                keyFileOptionPopUp.Show();
+                // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
+                /*KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
+                keyFileOptionPopUp.Show();*/
             }
             else {
                 string message = "Your passwords do not match or the boxes are blank. Please try entering them again";
@@ -124,6 +111,23 @@ namespace WindowsFormsApp1 {
 
         private void PassEntry2_TextChanged(object sender, EventArgs e) {
 
+        }
+
+        private void label6_Click(object sender, EventArgs e) {
+
+        }
+
+        private void KeyFileCheckBox_CheckedChanged(object sender, EventArgs e) {
+            if (KeyFileCheckBox.Checked) {
+                FileOP.SelectKeyFile();
+                Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+                KeyFileLocationText.Text = FileOP.GetKeyFile();
+                FileOP.ClearKeyFile();
+            }
+            else {
+                FileOP.ClearKeyFile();
+                KeyFileLocationText.Text = FileOP.GetKeyFile();
+            }
         }
     }
 }

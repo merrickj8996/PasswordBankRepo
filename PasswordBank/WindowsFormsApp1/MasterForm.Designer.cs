@@ -67,8 +67,8 @@ namespace WindowsFormsApp1
             this.settignsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -80,6 +80,7 @@ namespace WindowsFormsApp1
             // 
             // toolStrip1
             // 
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.CreateNewButton,
             this.OpenFileButton,
@@ -94,9 +95,10 @@ namespace WindowsFormsApp1
             this.SearchButton,
             this.toolStripSeparator7,
             this.LockButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 35);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(972, 25);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1458, 33);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "ToolBar";
             // 
@@ -106,7 +108,7 @@ namespace WindowsFormsApp1
             this.CreateNewButton.Image = global::WindowsFormsApp1.Properties.Resources.plus;
             this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CreateNewButton.Name = "CreateNewButton";
-            this.CreateNewButton.Size = new System.Drawing.Size(23, 22);
+            this.CreateNewButton.Size = new System.Drawing.Size(34, 28);
             this.CreateNewButton.Text = "New Password File";
             this.CreateNewButton.Click += new System.EventHandler(this.CreateNewButton_Click);
             // 
@@ -116,7 +118,7 @@ namespace WindowsFormsApp1
             this.OpenFileButton.Image = global::WindowsFormsApp1.Properties.Resources.open_icon;
             this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenFileButton.Name = "OpenFileButton";
-            this.OpenFileButton.Size = new System.Drawing.Size(23, 22);
+            this.OpenFileButton.Size = new System.Drawing.Size(34, 28);
             this.OpenFileButton.Text = "Open File";
             this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
             // 
@@ -126,14 +128,14 @@ namespace WindowsFormsApp1
             this.SaveFilebutton.Image = global::WindowsFormsApp1.Properties.Resources.save;
             this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveFilebutton.Name = "SaveFilebutton";
-            this.SaveFilebutton.Size = new System.Drawing.Size(23, 22);
+            this.SaveFilebutton.Size = new System.Drawing.Size(34, 28);
             this.SaveFilebutton.Text = "Save";
             this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 33);
             // 
             // NewEntryButton
             // 
@@ -141,14 +143,14 @@ namespace WindowsFormsApp1
             this.NewEntryButton.Image = global::WindowsFormsApp1.Properties.Resources.editIcon;
             this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NewEntryButton.Name = "NewEntryButton";
-            this.NewEntryButton.Size = new System.Drawing.Size(23, 22);
+            this.NewEntryButton.Size = new System.Drawing.Size(34, 28);
             this.NewEntryButton.Text = "toolStripButton4";
             this.NewEntryButton.ToolTipText = "New Entry";
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 33);
             // 
             // CopyUsernameButton
             // 
@@ -156,7 +158,7 @@ namespace WindowsFormsApp1
             this.CopyUsernameButton.Image = global::WindowsFormsApp1.Properties.Resources.copyUsername;
             this.CopyUsernameButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyUsernameButton.Name = "CopyUsernameButton";
-            this.CopyUsernameButton.Size = new System.Drawing.Size(23, 22);
+            this.CopyUsernameButton.Size = new System.Drawing.Size(34, 28);
             this.CopyUsernameButton.Text = "Copy Username";
             // 
             // CopyPassword
@@ -165,7 +167,7 @@ namespace WindowsFormsApp1
             this.CopyPassword.Image = global::WindowsFormsApp1.Properties.Resources.copyPassword;
             this.CopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyPassword.Name = "CopyPassword";
-            this.CopyPassword.Size = new System.Drawing.Size(23, 22);
+            this.CopyPassword.Size = new System.Drawing.Size(34, 28);
             this.CopyPassword.Text = "Copy Password";
             // 
             // CopyButton
@@ -174,13 +176,13 @@ namespace WindowsFormsApp1
             this.CopyButton.Image = global::WindowsFormsApp1.Properties.Resources.copyLink;
             this.CopyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyButton.Name = "CopyButton";
-            this.CopyButton.Size = new System.Drawing.Size(23, 22);
+            this.CopyButton.Size = new System.Drawing.Size(34, 28);
             this.CopyButton.Text = "Copy URL";
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 33);
             // 
             // SearchButton
             // 
@@ -188,14 +190,14 @@ namespace WindowsFormsApp1
             this.SearchButton.Image = global::WindowsFormsApp1.Properties.Resources.MagnifyingGlass;
             this.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(23, 22);
+            this.SearchButton.Size = new System.Drawing.Size(34, 28);
             this.SearchButton.Text = "Search";
             this.SearchButton.ToolTipText = "Search";
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 33);
             // 
             // LockButton
             // 
@@ -203,20 +205,22 @@ namespace WindowsFormsApp1
             this.LockButton.Image = global::WindowsFormsApp1.Properties.Resources._lock;
             this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LockButton.Name = "LockButton";
-            this.LockButton.Size = new System.Drawing.Size(23, 22);
+            this.LockButton.Size = new System.Drawing.Size(34, 28);
             this.LockButton.Text = "Lock File";
             this.LockButton.ToolTipText = "Find";
             this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
             // 
             // menuStrip1
             // 
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileDropDown,
             this.groupToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(972, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1458, 35);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "Menu Bar";
             // 
@@ -233,13 +237,13 @@ namespace WindowsFormsApp1
             this.toolStripSeparator3,
             this.printToolStripMenuItem});
             this.FileDropDown.Name = "FileDropDown";
-            this.FileDropDown.Size = new System.Drawing.Size(37, 20);
+            this.FileDropDown.Size = new System.Drawing.Size(54, 29);
             this.FileDropDown.Text = "File";
             // 
             // CreateNewFileDropDown
             // 
             this.CreateNewFileDropDown.Name = "CreateNewFileDropDown";
-            this.CreateNewFileDropDown.Size = new System.Drawing.Size(186, 22);
+            this.CreateNewFileDropDown.Size = new System.Drawing.Size(282, 34);
             this.CreateNewFileDropDown.Text = "New";
             this.CreateNewFileDropDown.Click += new System.EventHandler(this.CreateNewFileDropDown_Click);
             // 
@@ -248,53 +252,53 @@ namespace WindowsFormsApp1
             this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenFileDropDown});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(282, 34);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // OpenFileDropDown
             // 
             this.OpenFileDropDown.Name = "OpenFileDropDown";
-            this.OpenFileDropDown.Size = new System.Drawing.Size(124, 22);
+            this.OpenFileDropDown.Size = new System.Drawing.Size(189, 34);
             this.OpenFileDropDown.Text = "Open File";
             this.OpenFileDropDown.Click += new System.EventHandler(this.OpenFileDropDown_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(279, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(282, 34);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(186, 22);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(282, 34);
             this.saveAsToolStripMenuItem1.Text = "Save As";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(279, 6);
             // 
             // passwordFileSettingsToolStripMenuItem
             // 
             this.passwordFileSettingsToolStripMenuItem.Name = "passwordFileSettingsToolStripMenuItem";
-            this.passwordFileSettingsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.passwordFileSettingsToolStripMenuItem.Size = new System.Drawing.Size(282, 34);
             this.passwordFileSettingsToolStripMenuItem.Text = "PasswordFile settings";
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(183, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(279, 6);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(282, 34);
             this.printToolStripMenuItem.Text = "Print";
             // 
             // groupToolStripMenuItem
@@ -303,19 +307,19 @@ namespace WindowsFormsApp1
             this.addGroupToolStripMenuItem,
             this.editGroupToolStripMenuItem});
             this.groupToolStripMenuItem.Name = "groupToolStripMenuItem";
-            this.groupToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.groupToolStripMenuItem.Size = new System.Drawing.Size(78, 29);
             this.groupToolStripMenuItem.Text = "Group";
             // 
             // addGroupToolStripMenuItem
             // 
             this.addGroupToolStripMenuItem.Name = "addGroupToolStripMenuItem";
-            this.addGroupToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.addGroupToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
             this.addGroupToolStripMenuItem.Text = "Add Group";
             // 
             // editGroupToolStripMenuItem
             // 
             this.editGroupToolStripMenuItem.Name = "editGroupToolStripMenuItem";
-            this.editGroupToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.editGroupToolStripMenuItem.Size = new System.Drawing.Size(203, 34);
             this.editGroupToolStripMenuItem.Text = "Edit Group";
             // 
             // helpToolStripMenuItem
@@ -323,19 +327,20 @@ namespace WindowsFormsApp1
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.settignsToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // settignsToolStripMenuItem
             // 
             this.settignsToolStripMenuItem.Name = "settignsToolStripMenuItem";
-            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(178, 34);
             this.settignsToolStripMenuItem.Text = "Settings";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 49);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 68);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -346,14 +351,16 @@ namespace WindowsFormsApp1
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
-            this.splitContainer1.Size = new System.Drawing.Size(972, 521);
-            this.splitContainer1.SplitterDistance = 237;
+            this.splitContainer1.Size = new System.Drawing.Size(1458, 809);
+            this.splitContainer1.SplitterDistance = 368;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 4;
             // 
             // treeView1
             // 
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeView1.Name = "treeView1";
             treeNode1.Name = "Node4";
             treeNode1.Text = "Node4";
@@ -363,7 +370,7 @@ namespace WindowsFormsApp1
             treeNode3.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeView1.Size = new System.Drawing.Size(972, 237);
+            this.treeView1.Size = new System.Drawing.Size(1458, 368);
             this.treeView1.TabIndex = 0;
             // 
             // dataGridView1
@@ -371,21 +378,25 @@ namespace WindowsFormsApp1
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(972, 280);
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(1458, 435);
             this.dataGridView1.TabIndex = 0;
             // 
             // MasterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 570);
+            this.ClientSize = new System.Drawing.Size(1458, 877);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MasterForm";
             this.Text = "PasswordKeeper";
+            this.Load += new System.EventHandler(this.MasterForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

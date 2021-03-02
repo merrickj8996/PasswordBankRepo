@@ -78,5 +78,9 @@ namespace WindowsFormsApp1 {
             FileOP.ClearFile();
             this.Close();
         }
+
+        private void MasterForm_Load(object sender, EventArgs e) {
+
+        }
     }
 }

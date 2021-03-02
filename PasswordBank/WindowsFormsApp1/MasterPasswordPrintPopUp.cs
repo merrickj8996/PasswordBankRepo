@@ -47,6 +47,10 @@ namespace WindowsFormsApp1 {
 
             File.Delete("password.txt");
 
+            MasterForm frm = new MasterForm();
+            frm.Show();
+            frm.PerformRefresh();
+
             this.Close();
         }
 
@@ -80,6 +84,9 @@ namespace WindowsFormsApp1 {
         }
 
         private void noPrintButton_Click(object sender, EventArgs e) {
+            MasterForm frm = new MasterForm();
+            frm.Show();
+            frm.PerformRefresh();
             this.Close();
         }
     }
