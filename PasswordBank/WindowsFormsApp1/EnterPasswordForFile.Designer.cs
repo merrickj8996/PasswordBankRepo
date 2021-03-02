@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1 {
+﻿namespace FirstPass {
     partial class EnterPasswordForFile {
         /// <summary>
         /// Required designer variable.

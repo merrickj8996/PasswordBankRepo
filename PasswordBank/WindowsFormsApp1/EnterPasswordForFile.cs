@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1 {
+namespace FirstPass {
     public partial class EnterPasswordForFile : Form {
         public EnterPasswordForFile() {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace WindowsFormsApp1 {
             }
             Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
             Crypto.mPassTemp = passwordEntry.Text;
-            BankFile.Decompress(FileOP.GetFile());
+            Compressor.Decompress(FileOP.GetFile());
             MasterForm frm = new MasterForm();
             frm.Show();
             frm.PerformRefresh();

@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1 {
+namespace FirstPass {
     public partial class MasterForm : Form {
         public MasterForm() {
             InitializeComponent();
@@ -79,8 +79,15 @@ namespace WindowsFormsApp1 {
             this.Close();
         }
 
+<<<<<<< HEAD
         private void MasterForm_Load(object sender, EventArgs e) {
 
         }
+=======
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
+
+        }
+
+>>>>>>> a911effebff5028a20f0108913e6fa564e67cf17
     }
 }

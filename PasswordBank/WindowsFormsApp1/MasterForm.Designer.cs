@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1
+namespace FirstPass
 {
     partial class MasterForm
     {
@@ -67,6 +67,11 @@ namespace WindowsFormsApp1
             this.settignsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
+<<<<<<< HEAD
+=======
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.AddNewEntry = new System.Windows.Forms.Button();
+>>>>>>> a911effebff5028a20f0108913e6fa564e67cf17
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.toolStrip1.SuspendLayout();
@@ -75,6 +80,9 @@ namespace WindowsFormsApp1
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,7 +113,7 @@ namespace WindowsFormsApp1
             // CreateNewButton
             // 
             this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CreateNewButton.Image = global::WindowsFormsApp1.Properties.Resources.plus;
+            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
             this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CreateNewButton.Name = "CreateNewButton";
             this.CreateNewButton.Size = new System.Drawing.Size(34, 28);
@@ -115,7 +123,7 @@ namespace WindowsFormsApp1
             // OpenFileButton
             // 
             this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.OpenFileButton.Image = global::WindowsFormsApp1.Properties.Resources.open_icon;
+            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
             this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.OpenFileButton.Name = "OpenFileButton";
             this.OpenFileButton.Size = new System.Drawing.Size(34, 28);
@@ -125,7 +133,7 @@ namespace WindowsFormsApp1
             // SaveFilebutton
             // 
             this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveFilebutton.Image = global::WindowsFormsApp1.Properties.Resources.save;
+            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
             this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SaveFilebutton.Name = "SaveFilebutton";
             this.SaveFilebutton.Size = new System.Drawing.Size(34, 28);
@@ -140,7 +148,7 @@ namespace WindowsFormsApp1
             // NewEntryButton
             // 
             this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.NewEntryButton.Image = global::WindowsFormsApp1.Properties.Resources.editIcon;
+            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
             this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.NewEntryButton.Name = "NewEntryButton";
             this.NewEntryButton.Size = new System.Drawing.Size(34, 28);
@@ -155,7 +163,7 @@ namespace WindowsFormsApp1
             // CopyUsernameButton
             // 
             this.CopyUsernameButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyUsernameButton.Image = global::WindowsFormsApp1.Properties.Resources.copyUsername;
+            this.CopyUsernameButton.Image = global::FirstPass.Properties.Resources.copyUsername;
             this.CopyUsernameButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyUsernameButton.Name = "CopyUsernameButton";
             this.CopyUsernameButton.Size = new System.Drawing.Size(34, 28);
@@ -164,7 +172,7 @@ namespace WindowsFormsApp1
             // CopyPassword
             // 
             this.CopyPassword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyPassword.Image = global::WindowsFormsApp1.Properties.Resources.copyPassword;
+            this.CopyPassword.Image = global::FirstPass.Properties.Resources.copyPassword;
             this.CopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyPassword.Name = "CopyPassword";
             this.CopyPassword.Size = new System.Drawing.Size(34, 28);
@@ -173,7 +181,7 @@ namespace WindowsFormsApp1
             // CopyButton
             // 
             this.CopyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyButton.Image = global::WindowsFormsApp1.Properties.Resources.copyLink;
+            this.CopyButton.Image = global::FirstPass.Properties.Resources.copyLink;
             this.CopyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.CopyButton.Name = "CopyButton";
             this.CopyButton.Size = new System.Drawing.Size(34, 28);
@@ -187,7 +195,7 @@ namespace WindowsFormsApp1
             // SearchButton
             // 
             this.SearchButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SearchButton.Image = global::WindowsFormsApp1.Properties.Resources.MagnifyingGlass;
+            this.SearchButton.Image = global::FirstPass.Properties.Resources.MagnifyingGlass;
             this.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.SearchButton.Name = "SearchButton";
             this.SearchButton.Size = new System.Drawing.Size(34, 28);
@@ -202,7 +210,7 @@ namespace WindowsFormsApp1
             // LockButton
             // 
             this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LockButton.Image = global::WindowsFormsApp1.Properties.Resources._lock;
+            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
             this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.LockButton.Name = "LockButton";
             this.LockButton.Size = new System.Drawing.Size(34, 28);
@@ -342,7 +350,6 @@ namespace WindowsFormsApp1
             this.splitContainer1.Location = new System.Drawing.Point(0, 68);
             this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
@@ -350,11 +357,18 @@ namespace WindowsFormsApp1
             // 
             // splitContainer1.Panel2
             // 
+<<<<<<< HEAD
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Size = new System.Drawing.Size(1458, 809);
             this.splitContainer1.SplitterDistance = 368;
             this.splitContainer1.SplitterWidth = 6;
+=======
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Size = new System.Drawing.Size(972, 521);
+            this.splitContainer1.SplitterDistance = 237;
+>>>>>>> a911effebff5028a20f0108913e6fa564e67cf17
             this.splitContainer1.TabIndex = 4;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // treeView1
             // 
@@ -370,18 +384,52 @@ namespace WindowsFormsApp1
             treeNode3.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
+<<<<<<< HEAD
             this.treeView1.Size = new System.Drawing.Size(1458, 368);
+=======
+            this.treeView1.Size = new System.Drawing.Size(237, 521);
+>>>>>>> a911effebff5028a20f0108913e6fa564e67cf17
             this.treeView1.TabIndex = 0;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.AddNewEntry);
+            this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer2.Size = new System.Drawing.Size(731, 521);
+            this.splitContainer2.SplitterDistance = 242;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // AddNewEntry
+            // 
+            this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 219);
+            this.AddNewEntry.Name = "AddNewEntry";
+            this.AddNewEntry.Size = new System.Drawing.Size(731, 23);
+            this.AddNewEntry.TabIndex = 1;
+            this.AddNewEntry.Text = "Add new entry";
+            this.AddNewEntry.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.Name = "dataGridView1";
+<<<<<<< HEAD
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.Size = new System.Drawing.Size(1458, 435);
+=======
+            this.dataGridView1.Size = new System.Drawing.Size(731, 213);
+>>>>>>> a911effebff5028a20f0108913e6fa564e67cf17
             this.dataGridView1.TabIndex = 0;
             // 
             // MasterForm
@@ -405,6 +453,9 @@ namespace WindowsFormsApp1
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -446,6 +497,8 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settignsToolStripMenuItem;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button AddNewEntry;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }

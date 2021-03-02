@@ -1,5 +1,5 @@
 ﻿
-namespace WindowsFormsApp1 {
+namespace FirstPass {
     partial class MasterPasswordPrintPopUp {
         /// <summary>
         /// Required designer variable.
