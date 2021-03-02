@@ -6,8 +6,8 @@ using System.Windows.Forms;
 namespace FirstPass {
     class FileOP {
         #region memberVariables
-        public static String mFileName;
-        public static String mKeyFileName;
+        public static String mFileName = "";
+        public static String mKeyFileName = "";
         #endregion
 
         public static void ClearFile() {

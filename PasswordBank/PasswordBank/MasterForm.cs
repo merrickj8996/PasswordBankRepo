@@ -61,6 +61,10 @@ namespace FirstPass {
 
         //Lock button to Encrypt and close the currently opened file.
         private void LockButton_Click(object sender, EventArgs e) {
+
+            //Compresses File
+            Compressor.Compress(FileOP.GetFile());
+
             //Encrypt the file with stored password
             Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp);
 
