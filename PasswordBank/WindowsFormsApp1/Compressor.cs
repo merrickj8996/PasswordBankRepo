@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace FirstPass {
 
+    /// <summary>
+    /// Contains all the methods for file compression and decompression.
+    /// </summary>
     public static class Compressor {
 
-        // Compresses all files in a folder using GZip
+        /// <summary>
+        /// Compresses a file using GZip compression.
+        /// </summary>
+        /// <param name="inFile">Filepath of the file to be compressed.</param>
         public static void Compress(string inFile) {
             //Makes new FileInfo for the target file
             FileInfo fileToCompress = new FileInfo(inFile);
@@ -34,12 +40,17 @@ namespace FirstPass {
                 }
             }
 
-            //Delete uncompressed file
+            // Delete uncompressed file
             File.Delete(inFile);
+
+            // Updates the file
             FileOP.LoadFile(FileOP.GetFile() + ".gz");
         }
 
-        // Decompresses a file using GZip
+        /// <summary>
+        /// Decompresses a file using GZip decompression.
+        /// </summary>
+        /// <param name="inFile">Filepath of the file to be decompressed.</param>
         public static void Decompress(string inFile) {
 
             //Makes new FileInfo for the target file
@@ -61,12 +72,13 @@ namespace FirstPass {
                         decompressionStream.CopyTo(decompressedFileStream);
                     }
                 }
+
+                // Updates FileOP to the decompressed file
                 FileOP.LoadFile(FileOP.GetFile().Remove(FileOP.GetFile().Length - fileToDecompress.Extension.Length));
             }
 
             // Delete compressed file
             File.Delete(inFile);
-
         }
     }
 }
