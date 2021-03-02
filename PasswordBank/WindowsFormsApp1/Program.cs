@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.IO;
-using System.IO.Compression;
 using System.Security.Cryptography;
 using System.Text;
-using System.Security;
 using System.Data;
 
 namespace FirstPass {
@@ -106,7 +102,7 @@ namespace FirstPass {
                 }
 
                 // Multiplier is applied to password strength.
-                passwordStrength = passwordStrength * mulitplier;
+                passwordStrength *= mulitplier;
 
                 return passwordStrength;
             }
@@ -125,232 +121,6 @@ namespace FirstPass {
         }
     }
 
-    static class Crypto {
-        #region memberVariables
-        private static int mIter = 50000;
-        private static int mKeyLength = 256;
-        private static int mBlockSize = 128;
-        public static String mPassTemp = "";
-        //public static SecureString mPassTemp;
-        #endregion
 
-        //Generates Salt for use with password. 
-        public static byte[] SaltGen() {
-            byte[] salt = new byte[32];
-            using (RNGCryptoServiceProvider rngCryptoServiceProvider = new RNGCryptoServiceProvider()) {
-                rngCryptoServiceProvider.GetBytes(salt);
-            }
-            return salt;
-        }
-
-        //Takes a file name and string password and encrypts the file. 
-        public static void EncryptFile(string inFile, string password) {
-            byte[] salt = SaltGen();
-            byte[] passwords = Encoding.UTF8.GetBytes(password);
-            AesManaged AES = new AesManaged();
-            AES.KeySize = mKeyLength;
-            AES.BlockSize = mBlockSize;
-            AES.Padding = PaddingMode.PKCS7;
-            var key = new Rfc2898DeriveBytes(passwords, salt, mIter);
-            AES.Key = key.GetBytes(AES.KeySize / 8);
-            AES.IV = key.GetBytes(AES.BlockSize / 8);
-            //AES.Mode = CipherMode.CFB;
-            try {
-
-                //Creates a new file stream to temporarilty store encrypted data.
-                using (FileStream fileCrypto = new FileStream(inFile + ".temp", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None)) {
-
-                    //Writes the salt to the head of the file
-                    fileCrypto.Write(salt, 0, salt.Length);
-                    using (CryptoStream cryptoStream = new CryptoStream(fileCrypto, AES.CreateEncryptor(), CryptoStreamMode.Write)) {
-                        using (FileStream fileStreamIn = new FileStream(inFile, FileMode.Open)) {
-                            byte[] buffer = new byte[1048576];
-                            int read;
-                            while ((read = fileStreamIn.Read(buffer, 0, buffer.Length)) > 0) {
-                                cryptoStream.Write(buffer, 0, read);
-                            }
-                        }
-                    }
-                    File.Delete(inFile);
-                    File.Move(inFile + ".temp", inFile);
-                }
-            }
-            catch (CryptographicException ex_CryptographicException) {
-                Console.WriteLine("CryptograpicException error: " + ex_CryptographicException);
-                File.Delete(inFile + ".temp");
-            }
-            catch (Exception ex) {
-                Console.WriteLine("Error: " + ex.Message);
-                File.Delete(inFile + ".temp");
-            }
-
-        }
-        public static void DecryptFile(string inFile, string password) {
-            byte[] passwords = Encoding.UTF8.GetBytes(password);
-            byte[] salt = new byte[32];
-            using (FileStream fileCrypto = new FileStream(inFile, FileMode.Open)) {
-                fileCrypto.Read(salt, 0, salt.Length);
-                AesManaged AES = new AesManaged();
-                AES.KeySize = mKeyLength;
-                AES.BlockSize = mBlockSize;
-                var key = new Rfc2898DeriveBytes(passwords, salt, mIter);
-                AES.Key = key.GetBytes(AES.KeySize / 8);
-                AES.IV = key.GetBytes(AES.BlockSize / 8);
-                AES.Padding = PaddingMode.PKCS7;
-                //AES.Mode = CipherMode.CFB;
-                try {
-                    using (CryptoStream cryptoStream = new CryptoStream(fileCrypto, AES.CreateDecryptor(), CryptoStreamMode.Read)) {
-                        using (FileStream fileStreamOut = new FileStream(inFile + ".temp", FileMode.Create)) {
-                            int read;
-                            byte[] buffer = new byte[1048576];
-                            while ((read = cryptoStream.Read(buffer, 0, buffer.Length)) > 0) {
-                                fileStreamOut.Write(buffer, 0, read);
-                            }
-                        }
-                    }
-                    File.Delete(inFile);
-                    File.Move(inFile + ".temp", inFile);
-                }
-                catch (CryptographicException ex_CryptographicException) {
-                    Console.WriteLine("CryptograpicException error: " + ex_CryptographicException);
-                    File.Delete(inFile + ".temp");
-                }
-                catch (Exception ex) {
-                    Console.WriteLine("Error: " + ex.Message);
-                    File.Delete(inFile + ".temp");
-                }
-
-            }
-
-        }
-    }
-
-    static class FileOP {
-        #region memberVariables
-        public static String mFileName;
-        public static String mKeyFileName;
-        #endregion
-
-        public static void ClearFile() {
-            mFileName = "";
-        }
-
-        public static string GetFile() {
-            return mFileName;
-        }
-
-        public static void LoadFile(string fileName) {
-            mFileName = fileName;
-        }
-
-        public static void ClearKeyFile() {
-            mKeyFileName = "";
-        }
-
-        public static string GetKeyFile() {
-            return mKeyFileName;
-        }
-
-        public static void LoadKeyFile(string keyFileName) {
-            mKeyFileName = keyFileName;
-        }
-
-        public static void SaveFile() {
-            //TODO: Implement/move saveFile from MasterForm.cs
-            SaveFileDialog save = new SaveFileDialog {
-                Filter = "CSV |*.csv",
-                Title = "Save file"
-            };
-            //if (save.ShowDialog() == DialogResult.OK) {
-            //    StreamWriter write = new StreamWriter(File.Create(save.FileName));
-            //    write.Write(dataGridView1);
-            //    write.Dispose();
-            //}
-        }
-
-        public static void CreateFile() {
-            //TODO: Import/move CreateFile from MasterForm.cs
-            Stream myStream;
-            SaveFileDialog save = new SaveFileDialog {
-                Filter = "CSV |*.csv",
-                Title = "Save password DB"
-            };
-            if (save.ShowDialog() == DialogResult.OK) {
-                if ((myStream = save.OpenFile()) != null) {
-                    FileOP.LoadFile(save.FileName);
-                    FileOP.PrintFileName();
-                    myStream.Close();
-                }
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
-                    file.WriteLine("Group,Title,User Name,Password,URL,Notes");
-                    file.Close();
-                }
-                //ReadFile();
-            }
-        }
-
-        public static void SelectFile() {
-            //TODO: Import/move OpenFile from MasterForm.cs
-            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                    //Get the path of specified file
-                    FileOP.LoadFile(openFileDialog.FileName);
-                }
-            }
-        }
-
-        public static void SelectKeyFile() {
-            //TODO: Import/move OpenFile from MasterForm.cs
-            using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "csv files (*.csv)|*.csv|All files (*.*)|*.*";
-                openFileDialog.FilterIndex = 2;
-                openFileDialog.RestoreDirectory = true;
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                    //Get the path of specified file
-                    FileOP.LoadKeyFile(openFileDialog.FileName);
-                }
-            }
-        }
-
-        public static string KeyFileToBits(string keyFile) {
-            return Convert.ToBase64String(File.ReadAllBytes(keyFile));
-        }
-
-        public static DataTable ReadFile() {
-            //TODO: Import/move ReadCSV from MasterForm.cs
-
-            //Read the CSV file that as just opened.
-            //set the columns to be equal to the first line of the CSV seperated by commas
-            string[] lines = File.ReadAllLines(GetFile());
-            string[] fields;
-            fields = lines[0].Split(new char[] { ',' });
-            int Cols = fields.GetLength(0);
-            DataTable dt = new DataTable();
-            //1st row must be column names; force lower case to ensure matching later on.
-            for (int i = 0; i < Cols; i++)
-                dt.Columns.Add(fields[i].ToLower(), typeof(string));
-            DataRow Row;
-            for (int i = 1; i < lines.GetLength(0); i++) {
-                fields = lines[i].Split(new char[] { ',' });
-                Row = dt.NewRow();
-                for (int f = 0; f < Cols; f++)
-                    Row[f] = fields[f];
-                dt.Rows.Add(Row);
-            }
-            return dt;
-            //dataGridView1.DataSource = dt;
-
-        }
-        public static void PrintFileName() {
-            Console.WriteLine(FileOP.GetFile());
-        }
-    }
 }
 
