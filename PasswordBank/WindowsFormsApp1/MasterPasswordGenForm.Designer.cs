@@ -28,10 +28,8 @@ namespace FirstPass {
             this.UpperCase = new System.Windows.Forms.CheckBox();
             this.LowerCase = new System.Windows.Forms.CheckBox();
             this.Digits = new System.Windows.Forms.CheckBox();
-            this.Space = new System.Windows.Forms.CheckBox();
             this.Special = new System.Windows.Forms.CheckBox();
             this.Brackets = new System.Windows.Forms.CheckBox();
-            this.Latin = new System.Windows.Forms.CheckBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.passSize = new System.Windows.Forms.NumericUpDown();
@@ -79,20 +77,10 @@ namespace FirstPass {
             this.Digits.Text = "Digits (0,1,2,3, ....)";
             this.Digits.UseVisualStyleBackColor = true;
             // 
-            // Space
-            // 
-            this.Space.AutoSize = true;
-            this.Space.Location = new System.Drawing.Point(165, 98);
-            this.Space.Name = "Space";
-            this.Space.Size = new System.Drawing.Size(69, 17);
-            this.Space.TabIndex = 6;
-            this.Space.Text = "Space ( )";
-            this.Space.UseVisualStyleBackColor = true;
-            // 
             // Special
             // 
             this.Special.AutoSize = true;
-            this.Special.Location = new System.Drawing.Point(165, 122);
+            this.Special.Location = new System.Drawing.Point(161, 98);
             this.Special.Name = "Special";
             this.Special.Size = new System.Drawing.Size(125, 17);
             this.Special.TabIndex = 7;
@@ -102,22 +90,12 @@ namespace FirstPass {
             // Brackets
             // 
             this.Brackets.AutoSize = true;
-            this.Brackets.Location = new System.Drawing.Point(165, 146);
+            this.Brackets.Location = new System.Drawing.Point(164, 123);
             this.Brackets.Name = "Brackets";
             this.Brackets.Size = new System.Drawing.Size(127, 17);
             this.Brackets.TabIndex = 8;
             this.Brackets.Text = "Brackets ([, ], {, }, (, ))";
             this.Brackets.UseVisualStyleBackColor = true;
-            // 
-            // Latin
-            // 
-            this.Latin.AutoSize = true;
-            this.Latin.Location = new System.Drawing.Point(19, 169);
-            this.Latin.Name = "Latin";
-            this.Latin.Size = new System.Drawing.Size(113, 17);
-            this.Latin.TabIndex = 9;
-            this.Latin.Text = "Latin-1 (Æ, ÷, ß, ¶)";
-            this.Latin.UseVisualStyleBackColor = true;
             // 
             // CloseButton
             // 
@@ -168,10 +146,8 @@ namespace FirstPass {
             this.Controls.Add(this.passSize);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.CloseButton);
-            this.Controls.Add(this.Latin);
             this.Controls.Add(this.Brackets);
             this.Controls.Add(this.Special);
-            this.Controls.Add(this.Space);
             this.Controls.Add(this.Digits);
             this.Controls.Add(this.LowerCase);
             this.Controls.Add(this.UpperCase);
@@ -191,10 +167,8 @@ namespace FirstPass {
         private System.Windows.Forms.CheckBox UpperCase;
         private System.Windows.Forms.CheckBox LowerCase;
         private System.Windows.Forms.CheckBox Digits;
-        private System.Windows.Forms.CheckBox Space;
         private System.Windows.Forms.CheckBox Special;
         private System.Windows.Forms.CheckBox Brackets;
-        private System.Windows.Forms.CheckBox Latin;
         private System.Windows.Forms.Button CloseButton;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown passSize;
