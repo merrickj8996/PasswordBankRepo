@@ -38,10 +38,10 @@ namespace FirstPass {
                 MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                 printPopUp.ShowDialog();
 
-                // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
-                KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
                 this.Close();
-                keyFileOptionPopUp.Show();
+                // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
+                /*KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
+                keyFileOptionPopUp.Show();*/
             }
             else {
                 string message = "Your passwords do not match or the boxes are blank. Please try entering them again";
@@ -82,6 +82,8 @@ namespace FirstPass {
             if(passwordStrength <= 4) {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Red;
                 passwordStrengthLabel.Text = "Password Strength: Very Weak";
+                PasswordStrengthBar.BackColor = Color.Red;
+                //PasswordStrengthBar.Value =  * 6.25;
             }
 
             // If the password strength is more than 4, but no greater than 8 it is weak.
@@ -110,6 +112,31 @@ namespace FirstPass {
         }
 
         private void PassEntry2_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e) {
+
+        }
+
+        private void KeyFileCheckBox_CheckedChanged(object sender, EventArgs e) {
+            if (KeyFileCheckBox.Checked) {
+                FileOP.SelectKeyFile();
+                Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+                KeyFileLocationText.Text = FileOP.GetKeyFile();
+                FileOP.ClearKeyFile();
+            }
+            else {
+                FileOP.ClearKeyFile();
+                KeyFileLocationText.Text = FileOP.GetKeyFile();
+            }
+        }
+
+        private void PasswordStrengthBar_Click(object sender, EventArgs e) {
+
+        }
+
+        private void passwordOptions_Load(object sender, EventArgs e) {
 
         }
     }

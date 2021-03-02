@@ -56,6 +56,10 @@ namespace FirstPass {
 
             File.Delete("password.txt");
 
+            MasterForm frm = new MasterForm();
+            frm.Show();
+            frm.PerformRefresh();
+
             this.Close();
         }
 
@@ -96,6 +100,9 @@ namespace FirstPass {
         /// Closes the pop-up when user clicks cancel button.
         /// </summary>
         private void noPrintButton_Click(object sender, EventArgs e) {
+            MasterForm frm = new MasterForm();
+            frm.Show();
+            frm.PerformRefresh();
             this.Close();
         }
     }
