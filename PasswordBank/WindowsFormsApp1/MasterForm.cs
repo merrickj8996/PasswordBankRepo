@@ -79,15 +79,15 @@ namespace FirstPass {
             this.Close();
         }
 
-<<<<<<< HEAD
+
         private void MasterForm_Load(object sender, EventArgs e) {
 
         }
-=======
+
         private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
 
         }
 
->>>>>>> a911effebff5028a20f0108913e6fa564e67cf17
+
     }
 }

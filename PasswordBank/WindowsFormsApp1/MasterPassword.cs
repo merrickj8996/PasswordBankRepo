@@ -82,6 +82,8 @@ namespace FirstPass {
             if(passwordStrength <= 4) {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Red;
                 passwordStrengthLabel.Text = "Password Strength: Very Weak";
+                PasswordStrengthBar.BackColor = Color.Red;
+                //PasswordStrengthBar.Value =  * 6.25;
             }
 
             // If the password strength is more than 4, but no greater than 8 it is weak.
@@ -128,6 +130,14 @@ namespace FirstPass {
                 FileOP.ClearKeyFile();
                 KeyFileLocationText.Text = FileOP.GetKeyFile();
             }
+        }
+
+        private void PasswordStrengthBar_Click(object sender, EventArgs e) {
+
+        }
+
+        private void passwordOptions_Load(object sender, EventArgs e) {
+
         }
     }
 }
