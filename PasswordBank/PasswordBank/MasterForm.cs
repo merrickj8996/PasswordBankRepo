@@ -78,5 +78,10 @@ namespace FirstPass {
             FileOP.ClearFile();
             this.Close();
         }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
+
+        }
+
     }
 }

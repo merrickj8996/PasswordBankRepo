@@ -67,14 +67,19 @@ namespace FirstPass
             this.settignsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.AddNewEntry = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -337,7 +342,6 @@ namespace FirstPass
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 49);
             this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
             // splitContainer1.Panel1
             // 
@@ -345,10 +349,11 @@ namespace FirstPass
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(972, 521);
             this.splitContainer1.SplitterDistance = 237;
             this.splitContainer1.TabIndex = 4;
+            this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // treeView1
             // 
@@ -363,16 +368,42 @@ namespace FirstPass
             treeNode3.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
-            this.treeView1.Size = new System.Drawing.Size(972, 237);
+            this.treeView1.Size = new System.Drawing.Size(237, 521);
             this.treeView1.TabIndex = 0;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.AddNewEntry);
+            this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
+            this.splitContainer2.Size = new System.Drawing.Size(731, 521);
+            this.splitContainer2.SplitterDistance = 242;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // AddNewEntry
+            // 
+            this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 219);
+            this.AddNewEntry.Name = "AddNewEntry";
+            this.AddNewEntry.Size = new System.Drawing.Size(731, 23);
+            this.AddNewEntry.TabIndex = 1;
+            this.AddNewEntry.Text = "Add new entry";
+            this.AddNewEntry.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(972, 280);
+            this.dataGridView1.Size = new System.Drawing.Size(731, 213);
             this.dataGridView1.TabIndex = 0;
             // 
             // MasterForm
@@ -394,6 +425,9 @@ namespace FirstPass
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -435,6 +469,8 @@ namespace FirstPass
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settignsToolStripMenuItem;
         private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button AddNewEntry;
         private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
