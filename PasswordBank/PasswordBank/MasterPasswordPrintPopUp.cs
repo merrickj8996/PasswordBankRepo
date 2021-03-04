@@ -10,23 +10,32 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1 {
+namespace FirstPass {
+    /// <summary>
+    /// Contains all the methods for printing the master password onto paper
+    /// </summary>
     public partial class MasterPasswordPrintPopUp : Form {
 
-
+        // Member variable containing the master password
         private string m_masterPassword;
 
-        public MasterPasswordPrintPopUp() {
-            InitializeComponent();
-        }
+        // PrintDocument representing the document being printed
+        private PrintDocument masterPasswordDoc = new PrintDocument();
 
+        /// <summary>
+        /// Initializes the pop up and assigns the master password to a member variable.
+        /// </summary>
+        /// <param name="masterPassword">Master password.</param>
         public MasterPasswordPrintPopUp(string masterPassword) {
             InitializeComponent();
             m_masterPassword = masterPassword;
         }
 
-        private PrintDocument masterPasswordDoc = new PrintDocument();
-
+        /// <summary>
+        /// Handles the print button being pressed.
+        /// </summary>
+        /// <param name="sender">Button that got pressed.</param>
+        /// <param name="e">Event data from button press.</param>
         private void printButton_Click(object sender, EventArgs e) {
 
             using (StreamWriter passwordFile = new StreamWriter("password.txt")) {
@@ -47,39 +56,53 @@ namespace WindowsFormsApp1 {
 
             File.Delete("password.txt");
 
+            MasterForm frm = new MasterForm();
+            frm.Show();
+            frm.PerformRefresh();
+
             this.Close();
         }
 
-        // The PrintPage event is raised for each page to be printed.
-        private void MasterPasswordDoc_PrintPage(object sender, PrintPageEventArgs ev) {
+        /// <summary>
+        /// Sets all the settings for the page being printed.
+        /// </summary>
+        /// <param name="sender">Button that got pressed.</param>
+        /// <param name="e">Event data from button press.</param>
+        private void MasterPasswordDoc_PrintPage(object sender, PrintPageEventArgs e) {
             float linesPerPage = 0;
             float yPos = 0;
             int count = 0;
-            float leftMargin = ev.MarginBounds.Left;
-            float topMargin = ev.MarginBounds.Top;
+            float leftMargin = e.MarginBounds.Left;
+            float topMargin = e.MarginBounds.Top;
             string line = null;
             Font printFont = new Font("Arial", 10);
 
             // Calculate the number of lines per page.
-            linesPerPage = ev.MarginBounds.Height / printFont.GetHeight(ev.Graphics);
+            linesPerPage = e.MarginBounds.Height / printFont.GetHeight(e.Graphics);
 
             using(StreamReader streamToPrint = new StreamReader("password.txt")) {
                 // Print each line of the file.
                 while (count < linesPerPage && ((line = streamToPrint.ReadLine()) != null)) {
-                    yPos = topMargin + (count * printFont.GetHeight(ev.Graphics));
-                    ev.Graphics.DrawString(line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
+                    yPos = topMargin + (count * printFont.GetHeight(e.Graphics));
+                    e.Graphics.DrawString(line, printFont, Brushes.Black, leftMargin, yPos, new StringFormat());
                     count++;
                 }
             }
 
             // If more lines exist, print another page.
             if (line != null)
-                ev.HasMorePages = true;
+                e.HasMorePages = true;
             else
-                ev.HasMorePages = false;
+                e.HasMorePages = false;
         }
 
+        /// <summary>
+        /// Closes the pop-up when user clicks cancel button.
+        /// </summary>
         private void noPrintButton_Click(object sender, EventArgs e) {
+            MasterForm frm = new MasterForm();
+            frm.Show();
+            frm.PerformRefresh();
             this.Close();
         }
     }

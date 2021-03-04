@@ -1,4 +1,4 @@
-﻿namespace WindowsFormsApp1 {
+﻿namespace FirstPass {
     using System;
     using System.Security.Cryptography;
     static partial class Password {
