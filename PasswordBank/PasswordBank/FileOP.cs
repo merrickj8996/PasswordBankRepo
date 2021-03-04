@@ -93,7 +93,7 @@ namespace FirstPass {
                 }
                 //Write the first line of the file to the file.
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
-                    file.WriteLine("Group,Title,User Name,Password,URL,Notes");
+                    file.WriteLine("ID,Group,Title,User Name,Password,URL,Notes");
                     file.Close();
                 }
             }
