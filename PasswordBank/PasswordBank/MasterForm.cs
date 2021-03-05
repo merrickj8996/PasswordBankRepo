@@ -39,14 +39,20 @@ namespace FirstPass {
             MessageBoxButtons buttons = MessageBoxButtons.YesNo;
 
             //creates a dialog box with the message, title and button options
-            DialogResult result = MessageBox.Show(message, title, buttons);
+            DialogResult confirm = MessageBox.Show(message, title, buttons);
 
             //if they want to make a new file
-            if (result == DialogResult.Yes) {
+            if (confirm == DialogResult.Yes) {
+                if (FileOP.GetFile() != "") {
+                    DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                    if (savePrompt == DialogResult.Yes) {
+                        //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    }
+                    LockFile();
+                }
                 //call the create file method and inflate the next form
                 FileOP.CreateFile();
                 passwordOptions form = new passwordOptions();
-                this.Hide();
                 form.Show();
             }
         }
@@ -56,17 +62,25 @@ namespace FirstPass {
         /// </summary>
         private void CreateNewFileDropDown_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
-
         }
         /// <summary>
         /// Calls the select file method and shows the next form when the open button is clicked.
         /// </summary>
         private void OpenFileButton_Click(object sender, EventArgs e) {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-            FileOP.SelectFile();
-            EnterPasswordForFile frm = new EnterPasswordForFile();
-            frm.Show();
+           
+            if (FileOP.GetFile() != "") {
+                DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                if (savePrompt == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                }
+                LockFile();
+            }
+            if (FileOP.SelectFile()) {
+                EnterPasswordForFile frm = new EnterPasswordForFile();
+                frm.TheParent = this;
+                frm.Show();
+            }
+            
         }
         /// <summary>
         /// Calls the select file method and shows the next form when the open button is clicked from the file dropdown menu.
@@ -85,7 +99,19 @@ namespace FirstPass {
 
         //Lock button to Encrypt and close the currently opened file.
         private void LockButton_Click(object sender, EventArgs e) {
+            LockFile();
+        }
 
+
+        private void MasterForm_Load(object sender, EventArgs e) {
+
+        }
+
+        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
+
+        }
+
+        private void LockFile() {
             //Compresses File
             Compressor.Compress(FileOP.GetFile());
 
@@ -104,16 +130,6 @@ namespace FirstPass {
 
             //Clear the file from memory
             FileOP.ClearFile();
-            this.Close();
-        }
-
-
-        private void MasterForm_Load(object sender, EventArgs e) {
-
-        }
-
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
-
         }
 
 

@@ -102,7 +102,7 @@ namespace FirstPass {
         /// <summary>
         /// Opens the dialog for opening a file allows opening of .gz files
         /// </summary>
-        public static void SelectFile() {
+        public static bool SelectFile() {
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
                 openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "gz file (*.gz)|*.gz";
@@ -111,6 +111,9 @@ namespace FirstPass {
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     //set the path of the file that is selected
                     FileOP.LoadFile(openFileDialog.FileName);
+                    return true;
+                } else {
+                    return false;
                 }
             }
         }
@@ -118,7 +121,7 @@ namespace FirstPass {
         /// <summary>
         /// Opens the dialog for opening a file allows opening of all files to allow any file to be a key file
         /// </summary>
-        public static void SelectKeyFile() {
+        public static bool SelectKeyFile() {
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
                 openFileDialog.InitialDirectory = "c:\\";
                 openFileDialog.Filter = "All files (*.*)|*.*";
@@ -128,6 +131,9 @@ namespace FirstPass {
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     //Get the path of specified file
                     FileOP.LoadKeyFile(openFileDialog.FileName);
+                    return true;
+                } else {
+                    return false;
                 }
             }
         }
