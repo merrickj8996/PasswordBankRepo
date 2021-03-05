@@ -1,8 +1,6 @@
 ﻿
-namespace FirstPass
-{
-    partial class passwordOptions
-    {
+namespace FirstPass {
+    partial class PasswordOptions {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -12,10 +10,8 @@ namespace FirstPass
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -27,8 +23,7 @@ namespace FirstPass
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.PassEntry1 = new System.Windows.Forms.TextBox();
@@ -111,7 +106,7 @@ namespace FirstPass
             this.button1.TabIndex = 6;
             this.button1.Text = "Randomize";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.RandomGen_Click);
             // 
             // OkButton
             // 
@@ -144,7 +139,7 @@ namespace FirstPass
             // 
             // passwordStrengthLabel
             // 
-            this.passwordStrengthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.passwordStrengthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.passwordStrengthLabel.Location = new System.Drawing.Point(20, 113);
             this.passwordStrengthLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
@@ -153,11 +148,11 @@ namespace FirstPass
             this.passwordStrengthLabel.TabIndex = 10;
             this.passwordStrengthLabel.Text = "Password Strength: ";
             this.passwordStrengthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.passwordStrengthLabel.Click += new System.EventHandler(this.passwordStrengthLabel_Click);
+            this.passwordStrengthLabel.Click += new System.EventHandler(this.PasswordStrengthLabel_Click);
             // 
             // KeyFileCheckBox
             // 
-            this.KeyFileCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.KeyFileCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyFileCheckBox.AutoSize = true;
             this.KeyFileCheckBox.Location = new System.Drawing.Point(136, 176);
@@ -170,7 +165,7 @@ namespace FirstPass
             // 
             // KeyFileLocationText
             // 
-            this.KeyFileLocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.KeyFileLocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyFileLocationText.Location = new System.Drawing.Point(203, 174);
             this.KeyFileLocationText.Margin = new System.Windows.Forms.Padding(2);
@@ -181,7 +176,7 @@ namespace FirstPass
             // 
             // PasswordStrengthBar
             // 
-            this.PasswordStrengthBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.PasswordStrengthBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.PasswordStrengthBar.Location = new System.Drawing.Point(292, 113);
             this.PasswordStrengthBar.Margin = new System.Windows.Forms.Padding(2);

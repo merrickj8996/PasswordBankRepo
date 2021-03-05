@@ -21,7 +21,12 @@ namespace FirstPass {
         /// Sets the datagridviews datasource to be the datatable consturcted by the readfile method.
         /// </summary>
         public void PerformRefresh() {
-            dataGridView1.DataSource = FileOP.ReadFile();
+            if(FileOP.GetFile() != "") {
+                dataGridView1.DataSource = FileOP.ReadFile();
+            } else {
+                dataGridView1.DataSource = null;
+            }
+            
         }
         /// <summary>
         /// Calls the createfilewarning method when the user clicks on the save button.
@@ -52,7 +57,7 @@ namespace FirstPass {
                 }
                 //call the create file method and inflate the next form
                 FileOP.CreateFile();
-                passwordOptions form = new passwordOptions();
+                PasswordOptions form = new PasswordOptions();
                 form.Show();
             }
         }
@@ -76,8 +81,9 @@ namespace FirstPass {
                 LockFile();
             }
             if (FileOP.SelectFile()) {
-                EnterPasswordForFile frm = new EnterPasswordForFile();
-                frm.TheParent = this;
+                EnterPasswordForFile frm = new EnterPasswordForFile {
+                    TheParent = this
+                };
                 frm.Show();
             }
             
@@ -107,7 +113,7 @@ namespace FirstPass {
 
         }
 
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
+        private void SplitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
 
         }
 
@@ -130,6 +136,7 @@ namespace FirstPass {
 
             //Clear the file from memory
             FileOP.ClearFile();
+            this.PerformRefresh();
         }
 
     }

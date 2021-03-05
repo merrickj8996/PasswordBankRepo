@@ -41,7 +41,7 @@
             this.OkButton.TabIndex = 0;
             this.OkButton.Text = "Ok";
             this.OkButton.UseVisualStyleBackColor = true;
-            this.OkButton.Click += new System.EventHandler(this.button1_Click);
+            this.OkButton.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // label1
             // 

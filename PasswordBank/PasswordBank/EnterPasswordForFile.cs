@@ -17,22 +17,35 @@ namespace FirstPass {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            try {
-                if (KeyfileLocation.TextLength > 0) {
-                    Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text));
+        private void Confirm_Click(object sender, EventArgs e) {
+
+            if (KeyfileLocation.TextLength > 0) {
+                if (!Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text))) {
+                    MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
                 }
+                else if (!Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text)) {
+                    Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text));
+                    MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+                }
+                else {
+                    Crypto.mPassTemp = passwordEntry.Text;
+                    Compressor.Decompress(FileOP.GetFile());
+                    TheParent.PerformRefresh();
+                    this.Close();
+                }
+
+            }
+            else if (!Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text)) {
+                MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+            }
+            else {
                 Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
                 Crypto.mPassTemp = passwordEntry.Text;
                 Compressor.Decompress(FileOP.GetFile());
                 TheParent.PerformRefresh();
                 this.Close();
             }
-            catch (CryptographicException) {
-                Console.Write("Bad Password");
-                this.Close();
-            }
-            
+
         }
 
         private void FindKeyFile_Click(object sender, EventArgs e) {

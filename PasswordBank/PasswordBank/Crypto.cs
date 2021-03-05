@@ -30,7 +30,7 @@ namespace FirstPass {
         }
 
         //Takes a file name and string password and encrypts the file. 
-        public static void EncryptFile(string inFile, string password) {
+        public static bool EncryptFile(string inFile, string password) {
             byte[] salt = SaltGen();
             byte[] passwords = Encoding.UTF8.GetBytes(password);
             AesManaged AES = new AesManaged {
@@ -60,19 +60,22 @@ namespace FirstPass {
                     }
                     File.Delete(inFile);
                     File.Move(inFile + ".temp", inFile);
+                    return true;
                 }
             }
             catch (CryptographicException ex_CryptographicException) {
                 Console.WriteLine("CryptograpicException error: " + ex_CryptographicException);
                 File.Delete(inFile + ".temp");
+                return false;
             }
             catch (Exception ex) {
                 Console.WriteLine("Error: " + ex.Message);
                 File.Delete(inFile + ".temp");
+                return false;
             }
 
         }
-        public static void DecryptFile(string inFile, string password) {
+        public static bool DecryptFile(string inFile, string password) {
             byte[] passwords = Encoding.UTF8.GetBytes(password);
             byte[] salt = new byte[32];
             using (FileStream fileCrypto = new FileStream(inFile, FileMode.Open)) {
@@ -98,14 +101,17 @@ namespace FirstPass {
                     }
                     File.Delete(inFile);
                     File.Move(inFile + ".temp", inFile);
+                    return true;
                 }
                 catch (CryptographicException ex_CryptographicException) {
                     Console.WriteLine("CryptograpicException error: " + ex_CryptographicException);
                     File.Delete(inFile + ".temp");
+                    return false;
                 }
                 catch (Exception ex) {
                     Console.WriteLine("Error: " + ex.Message);
                     File.Delete(inFile + ".temp");
+                    return false;
                 }
 
             }

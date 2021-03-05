@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstPass {
-    public partial class passwordOptions : Form {
-        public passwordOptions() {
+    public partial class PasswordOptions : Form {
+        public PasswordOptions() {
             InitializeComponent();
         }
         public void UpdateTextBox(string pass) {
@@ -24,7 +24,6 @@ namespace FirstPass {
             //this.Refresh();
         }
 
-        public string randomPass { get; set; }
         private void OkButton_Click(object sender, EventArgs e) {
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
                 if (KeyFileCheckBox.Checked) {
@@ -40,10 +39,7 @@ namespace FirstPass {
 
                         this.Close();
                     } else {
-                        string message = "Your key file is invalid. Please reselect your keyfile.";
-                        string title = "File Error";
-                        MessageBoxButtons buttons = MessageBoxButtons.OK;
-                        _ = MessageBox.Show(message, title, buttons);
+                       MessageBox.Show("Your key file is invalid. Please reselect your keyfile.", "File Error", MessageBoxButtons.OK);
                     }
                 } else {
                     Compressor.Compress(FileOP.GetFile());
@@ -63,13 +59,13 @@ namespace FirstPass {
             }
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        private void RandomGen_Click(object sender, EventArgs e) {
             MasterPasswordGenForm generatePasswordOptions = new MasterPasswordGenForm();
             generatePasswordOptions.Show();
             this.Hide();
         }
 
-        private void passwordStrengthLabel_Click(object sender, EventArgs e) {
+        private void PasswordStrengthLabel_Click(object sender, EventArgs e) {
 
         }
 
@@ -78,7 +74,7 @@ namespace FirstPass {
             // This code will run everytime the text changes in the password box.
 
             // creates passwordStrength variable to hold the current strenght of the password.
-            double passwordStrength = Password.checkStrength(PassEntry1.Text);
+            double passwordStrength = Password.CheckStrength(PassEntry1.Text);
 
             // If the password strength is 4 or less it is very weak.
             if (passwordStrength <= 4) {
