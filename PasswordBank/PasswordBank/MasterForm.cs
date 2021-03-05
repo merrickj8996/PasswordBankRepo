@@ -67,12 +67,20 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked.
         /// </summary>
         private void OpenFileButton_Click(object sender, EventArgs e) {
-            var fileContent = string.Empty;
-            var filePath = string.Empty;
-            FileOP.SelectFile();
-            EnterPasswordForFile frm = new EnterPasswordForFile();
-            frm.Show();
-            this.Hide();
+           
+            if (FileOP.GetFile() != "") {
+                DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                if (savePrompt == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                }
+                LockFile();
+            }
+            if (FileOP.SelectFile()) {
+                EnterPasswordForFile frm = new EnterPasswordForFile();
+                frm.TheParent = this;
+                frm.Show();
+            }
+            
         }
         /// <summary>
         /// Calls the select file method and shows the next form when the open button is clicked from the file dropdown menu.
@@ -86,10 +94,7 @@ namespace FirstPass {
         /// Calls the save function when the user clicks the save file button.
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
-            //currently compresses the file and encrypts the file so it can be seen for later opening Very much a place holder until we get something better in here.
-            Compressor.Compress(FileOP.GetFile());
-            Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp);
-            Console.WriteLine("file was compressed then encryped");
+            FileOP.SaveFile();
         }
 
         //Lock button to Encrypt and close the currently opened file.
@@ -125,7 +130,6 @@ namespace FirstPass {
 
             //Clear the file from memory
             FileOP.ClearFile();
-            this.Close();
         }
 
     }
