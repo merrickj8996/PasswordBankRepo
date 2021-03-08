@@ -25,13 +25,13 @@ namespace FirstPass {
         /// </summary>
         private void InitializeComponent() {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.CreatingPasswordLabel = new System.Windows.Forms.Label();
             this.NextPage = new System.Windows.Forms.Button();
             this.PreviousButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -50,6 +50,43 @@ namespace FirstPass {
             this.panel1.Size = new System.Drawing.Size(433, 327);
             this.panel1.TabIndex = 0;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::FirstPass.Properties.Resources.createNewFileDropdown;
+            this.pictureBox2.Location = new System.Drawing.Point(200, 68);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(192, 210);
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(129, 155);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(18, 13);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Or";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(4, 27);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(426, 50);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Inorder to create a new file, you must click on either the new file button or go " +
+    "to the file drop down menu and click new.";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::FirstPass.Properties.Resources.CreateNewButton;
+            this.pictureBox1.Location = new System.Drawing.Point(38, 141);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(29, 27);
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
             // CreatingPasswordLabel
             // 
             this.CreatingPasswordLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -63,7 +100,7 @@ namespace FirstPass {
             // 
             // NextPage
             // 
-            this.NextPage.Location = new System.Drawing.Point(526, 422);
+            this.NextPage.Location = new System.Drawing.Point(471, 422);
             this.NextPage.Name = "NextPage";
             this.NextPage.Size = new System.Drawing.Size(75, 23);
             this.NextPage.TabIndex = 0;
@@ -72,49 +109,12 @@ namespace FirstPass {
             // 
             // PreviousButton
             // 
-            this.PreviousButton.Location = new System.Drawing.Point(245, 421);
+            this.PreviousButton.Location = new System.Drawing.Point(123, 422);
             this.PreviousButton.Name = "PreviousButton";
             this.PreviousButton.Size = new System.Drawing.Size(75, 23);
             this.PreviousButton.TabIndex = 1;
             this.PreviousButton.Text = "Previous";
             this.PreviousButton.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(4, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(426, 50);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Inorder to create a new file, you must click on either the new file button or go " +
-    "to the file drop down menu and click new.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(129, 155);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(18, 13);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Or";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::FirstPass.Properties.Resources.createNewFileDropdown;
-            this.pictureBox2.Location = new System.Drawing.Point(200, 68);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(192, 210);
-            this.pictureBox2.TabIndex = 5;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::FirstPass.Properties.Resources.CreateNewButton;
-            this.pictureBox1.Location = new System.Drawing.Point(38, 141);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(29, 27);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // flowLayoutPanel1
             // 
