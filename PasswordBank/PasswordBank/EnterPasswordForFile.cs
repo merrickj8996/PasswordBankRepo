@@ -4,33 +4,54 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstPass {
     public partial class EnterPasswordForFile : Form {
+
+        public MasterForm TheParent;
         public EnterPasswordForFile() {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e) {
-            
+        private void Confirm_Click(object sender, EventArgs e) {
+
             if (KeyfileLocation.TextLength > 0) {
-                Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text));
+                if (!Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text))) {
+                    MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+                }
+                else if (!Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text)) {
+                    Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text));
+                    MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+                }
+                else {
+                    Crypto.mPassTemp = passwordEntry.Text;
+                    Compressor.Decompress(FileOP.GetFile());
+                    TheParent.PerformRefresh();
+                    this.Close();
+                }
+
             }
-            Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
-            Crypto.mPassTemp = passwordEntry.Text;
-            Compressor.Decompress(FileOP.GetFile());
-            MasterForm frm = new MasterForm();
-            frm.Show();
-            frm.PerformRefresh();
-            this.Close();
+            else if (!Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text)) {
+                MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+            }
+            else {
+                Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
+                Crypto.mPassTemp = passwordEntry.Text;
+                Compressor.Decompress(FileOP.GetFile());
+                TheParent.PerformRefresh();
+                this.Close();
+            }
+
         }
 
         private void FindKeyFile_Click(object sender, EventArgs e) {
-            FileOP.SelectKeyFile();
-            KeyfileLocation.Text = FileOP.GetKeyFile();
+            if (FileOP.SelectKeyFile()) {
+                KeyfileLocation.Text = FileOP.GetKeyFile();
+            }
         }
     }
 }

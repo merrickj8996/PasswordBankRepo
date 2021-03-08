@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstPass {
-    public partial class passwordOptions : Form {
-        public passwordOptions() {
+    public partial class PasswordOptions : Form {
+        public PasswordOptions() {
             InitializeComponent();
         }
         public void UpdateTextBox(string pass) {
@@ -24,24 +24,32 @@ namespace FirstPass {
             //this.Refresh();
         }
 
-        public string randomPass { get; set; }
-        private void OkButton_Click (object sender, EventArgs e) {
+        private void OkButton_Click(object sender, EventArgs e) {
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
+                if (KeyFileCheckBox.Checked) {
+                     if (FileOP.GetKeyFile() != "" && FileOP.GetKeyFile() != null && File.Exists(FileOP.GetKeyFile())) {
+                        Compressor.Compress(FileOP.GetFile());
+                        Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
+                        Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+                        KeyFileLocationText.Text = FileOP.GetKeyFile();
+                        FileOP.ClearKeyFile();
 
-                //File is compressed before Encryption
-                Compressor.Compress(FileOP.GetFile());
-                
-                //Encrypt the File with the entered password
-                Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
+                        MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
+                        printPopUp.ShowDialog();
 
-                // Creates a new print pop-up
-                MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
-                printPopUp.ShowDialog();
+                        this.Close();
+                    } else {
+                       MessageBox.Show("Your key file is invalid. Please reselect your keyfile.", "File Error", MessageBoxButtons.OK);
+                    }
+                } else {
+                    Compressor.Compress(FileOP.GetFile());
+                    Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
 
-                this.Close();
-                // Creates a new KeyFileOptionPopUp object to open the Key File Popup.
-                /*KeyFileOptionPopUp keyFileOptionPopUp = new KeyFileOptionPopUp();
-                keyFileOptionPopUp.Show();*/
+                    MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
+                    printPopUp.ShowDialog();
+
+                    this.Close();
+                }
             }
             else {
                 string message = "Your passwords do not match or the boxes are blank. Please try entering them again";
@@ -49,37 +57,27 @@ namespace FirstPass {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 _ = MessageBox.Show(message, title, buttons);
             }
-
-
-
         }
 
-        private void button3_Click(object sender, EventArgs e) {
-            //this.Close();
-            MasterForm frm = new MasterForm();
-            this.Close();
-            frm.Show();
-        }
-
-        private void button1_Click(object sender, EventArgs e) {
+        private void RandomGen_Click(object sender, EventArgs e) {
             MasterPasswordGenForm generatePasswordOptions = new MasterPasswordGenForm();
             generatePasswordOptions.Show();
             this.Hide();
         }
 
-        private void passwordStrengthLabel_Click(object sender, EventArgs e) {
-            
+        private void PasswordStrengthLabel_Click(object sender, EventArgs e) {
+
         }
 
         private void PassEntry1_TextChanged(object sender, EventArgs e) {
-            
+
             // This code will run everytime the text changes in the password box.
 
             // creates passwordStrength variable to hold the current strenght of the password.
-            double passwordStrength = Password.checkStrength(PassEntry1.Text);
+            double passwordStrength = Password.CheckStrength(PassEntry1.Text);
 
             // If the password strength is 4 or less it is very weak.
-            if(passwordStrength <= 4) {
+            if (passwordStrength <= 4) {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Red;
                 passwordStrengthLabel.Text = "Password Strength: Very Weak";
                 PasswordStrengthBar.BackColor = Color.Red;
@@ -106,38 +104,14 @@ namespace FirstPass {
         }
 
         private void ExitButton_Click(object sender, EventArgs e) {
-            MasterForm form = new MasterForm();
+           
             this.Hide();
-            form.Show();
+            
         }
 
-        private void PassEntry2_TextChanged(object sender, EventArgs e) {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e) {
-
-        }
-
-        private void KeyFileCheckBox_CheckedChanged(object sender, EventArgs e) {
-            if (KeyFileCheckBox.Checked) {
-                FileOP.SelectKeyFile();
-                Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
-                KeyFileLocationText.Text = FileOP.GetKeyFile();
-                FileOP.ClearKeyFile();
-            }
-            else {
-                FileOP.ClearKeyFile();
-                KeyFileLocationText.Text = FileOP.GetKeyFile();
-            }
-        }
-
-        private void PasswordStrengthBar_Click(object sender, EventArgs e) {
-
-        }
-
-        private void passwordOptions_Load(object sender, EventArgs e) {
-
+        private void FindKeyFile_Click(object sender, EventArgs e) {
+            FileOP.SelectKeyFile();
+            KeyFileLocationText.Text = FileOP.GetKeyFile();
         }
     }
 }

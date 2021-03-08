@@ -214,7 +214,7 @@ namespace FirstPass
             this.LockButton.Name = "LockButton";
             this.LockButton.Size = new System.Drawing.Size(28, 28);
             this.LockButton.Text = "Lock File";
-            this.LockButton.ToolTipText = "Find";
+            this.LockButton.ToolTipText = "Lock File";
             this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
             // 
             // menuStrip1
@@ -341,7 +341,7 @@ namespace FirstPass
             // settignsToolStripMenuItem
             // 
             this.settignsToolStripMenuItem.Name = "settignsToolStripMenuItem";
-            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settignsToolStripMenuItem.Text = "Settings";
             // 
             // helpToolStripMenuItem1
@@ -349,15 +349,14 @@ namespace FirstPass
             this.helpToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quickGuideToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // quickGuideToolStripMenuItem
             // 
             this.quickGuideToolStripMenuItem.Name = "quickGuideToolStripMenuItem";
-            this.quickGuideToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.quickGuideToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.quickGuideToolStripMenuItem.Text = "Quick guide";
-            this.quickGuideToolStripMenuItem.Click += new System.EventHandler(this.quickGuideToolStripMenuItem_Click);
             // 
             // splitContainer1
             // 

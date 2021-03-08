@@ -41,7 +41,7 @@
             this.OkButton.TabIndex = 0;
             this.OkButton.Text = "Ok";
             this.OkButton.UseVisualStyleBackColor = true;
-            this.OkButton.Click += new System.EventHandler(this.button1_Click);
+            this.OkButton.Click += new System.EventHandler(this.Confirm_Click);
             // 
             // label1
             // 
@@ -75,6 +75,7 @@
             this.KeyfileLocation.Location = new System.Drawing.Point(79, 150);
             this.KeyfileLocation.MaxLength = 20;
             this.KeyfileLocation.Name = "KeyfileLocation";
+            this.KeyfileLocation.ReadOnly = true;
             this.KeyfileLocation.Size = new System.Drawing.Size(100, 20);
             this.KeyfileLocation.TabIndex = 5;
             // 

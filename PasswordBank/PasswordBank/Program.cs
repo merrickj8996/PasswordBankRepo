@@ -10,11 +10,13 @@ using System.Data;
 namespace FirstPass {
 
     static class Program {
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main() {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MasterForm());
@@ -22,7 +24,7 @@ namespace FirstPass {
     }
 
     public static partial class Password {
-        public static double checkStrength(string password) {
+        public static double CheckStrength(string password) {
             // Initalizes double to store password strength at sets it to 0.
             double passwordStrength = 0;
 
