@@ -107,5 +107,12 @@ namespace FirstPass {
             this.Close();
         }
 
+
+        //click event for the help option to teach you how to use the program
+        private void quickGuideToolStripMenuItem_Click(object sender, EventArgs e) {
+            //open the new form
+            UserGuide frm = new UserGuide();
+            frm.Show();
+        }
     }
 }
