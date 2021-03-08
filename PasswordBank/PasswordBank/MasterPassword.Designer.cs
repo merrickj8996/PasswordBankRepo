@@ -156,12 +156,12 @@ namespace FirstPass
             // 
             this.passwordStrengthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.passwordStrengthLabel.Location = new System.Drawing.Point(30, 174);
+            this.passwordStrengthLabel.Location = new System.Drawing.Point(20, 174);
             this.passwordStrengthLabel.Name = "passwordStrengthLabel";
-            this.passwordStrengthLabel.Size = new System.Drawing.Size(368, 20);
+            this.passwordStrengthLabel.Size = new System.Drawing.Size(334, 20);
             this.passwordStrengthLabel.TabIndex = 10;
             this.passwordStrengthLabel.Text = "Password Strength: ";
-            this.passwordStrengthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.passwordStrengthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.passwordStrengthLabel.Click += new System.EventHandler(this.passwordStrengthLabel_Click);
             // 
             // KeyFileCheckBox
@@ -169,7 +169,7 @@ namespace FirstPass
             this.KeyFileCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyFileCheckBox.AutoSize = true;
-            this.KeyFileCheckBox.Location = new System.Drawing.Point(209, 197);
+            this.KeyFileCheckBox.Location = new System.Drawing.Point(209, 205);
             this.KeyFileCheckBox.Name = "KeyFileCheckBox";
             this.KeyFileCheckBox.Size = new System.Drawing.Size(90, 24);
             this.KeyFileCheckBox.TabIndex = 11;
@@ -181,7 +181,7 @@ namespace FirstPass
             // 
             this.KeyFileLocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeyFileLocationText.Location = new System.Drawing.Point(305, 197);
+            this.KeyFileLocationText.Location = new System.Drawing.Point(305, 203);
             this.KeyFileLocationText.Name = "KeyFileLocationText";
             this.KeyFileLocationText.ReadOnly = true;
             this.KeyFileLocationText.Size = new System.Drawing.Size(233, 26);
@@ -191,9 +191,9 @@ namespace FirstPass
             // 
             this.PasswordStrengthBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.PasswordStrengthBar.Location = new System.Drawing.Point(438, 174);
+            this.PasswordStrengthBar.Location = new System.Drawing.Point(360, 174);
             this.PasswordStrengthBar.Name = "PasswordStrengthBar";
-            this.PasswordStrengthBar.Size = new System.Drawing.Size(100, 23);
+            this.PasswordStrengthBar.Size = new System.Drawing.Size(178, 23);
             this.PasswordStrengthBar.TabIndex = 13;
             // 
             // passwordOptions

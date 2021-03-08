@@ -88,6 +88,9 @@ namespace FirstPass {
 
         }
 
-
+        private void AddNewEntry_Click(object sender, EventArgs e) {
+            entryVariables.ReadOnly = false;
+            entryNotes.ReadOnly = false;
+        }
     }
 }

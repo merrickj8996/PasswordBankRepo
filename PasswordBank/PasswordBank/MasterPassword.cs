@@ -82,26 +82,28 @@ namespace FirstPass {
             if(passwordStrength <= 4) {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Red;
                 passwordStrengthLabel.Text = "Password Strength: Very Weak";
-                PasswordStrengthBar.BackColor = Color.Red;
-                //PasswordStrengthBar.Value =  * 6.25;
+                PasswordStrengthBar.Value = 0;
             }
 
             // If the password strength is more than 4, but no greater than 8 it is weak.
             else if (passwordStrength <= 8) {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Orange;
                 passwordStrengthLabel.Text = "Password Strength: Weak";
+                PasswordStrengthBar.Value = 33;
             }
 
             // If the password strength is more than 8, but no greater than 12 it is average.
             else if (passwordStrength <= 12) {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Green;
                 passwordStrengthLabel.Text = "Password Strength: Average";
+                PasswordStrengthBar.Value = 66;
             }
 
             // If the password strength is more than 12 it is strong.
             else {
                 passwordStrengthLabel.ForeColor = System.Drawing.Color.Blue;
                 passwordStrengthLabel.Text = "Password Strength: Strong";
+                PasswordStrengthBar.Value = 100;
             }
         }
 

@@ -67,9 +67,12 @@ namespace FirstPass
             this.settignsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.AddNewEntry = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.entryNotes = new System.Windows.Forms.RichTextBox();
+            this.entryVariablesGridView = new System.Windows.Forms.DataGridView();
+            this.entryVariables = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -77,10 +80,12 @@ namespace FirstPass
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.entryVariablesGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -378,18 +383,6 @@ namespace FirstPass
             this.treeView1.Size = new System.Drawing.Size(355, 811);
             this.treeView1.TabIndex = 0;
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(1097, 213);
-            this.dataGridView1.TabIndex = 0;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -401,6 +394,11 @@ namespace FirstPass
             // 
             this.splitContainer2.Panel1.Controls.Add(this.AddNewEntry);
             this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.entryNotes);
+            this.splitContainer2.Panel2.Controls.Add(this.entryVariablesGridView);
             this.splitContainer2.Size = new System.Drawing.Size(1097, 811);
             this.splitContainer2.SplitterDistance = 376;
             this.splitContainer2.TabIndex = 0;
@@ -415,6 +413,51 @@ namespace FirstPass
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";
             this.AddNewEntry.UseVisualStyleBackColor = true;
+            this.AddNewEntry.Click += new System.EventHandler(this.AddNewEntry_Click);
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 62;
+            this.dataGridView1.Size = new System.Drawing.Size(1097, 213);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // entryNotes
+            // 
+            this.entryNotes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.entryNotes.Location = new System.Drawing.Point(365, 0);
+            this.entryNotes.Name = "entryNotes";
+            this.entryNotes.ReadOnly = true;
+            this.entryNotes.Size = new System.Drawing.Size(732, 431);
+            this.entryNotes.TabIndex = 1;
+            this.entryNotes.Text = "";
+            // 
+            // entryVariablesGridView
+            // 
+            this.entryVariablesGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.entryVariablesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.entryVariablesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.entryVariables});
+            this.entryVariablesGridView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.entryVariablesGridView.Location = new System.Drawing.Point(0, 0);
+            this.entryVariablesGridView.Name = "entryVariablesGridView";
+            this.entryVariablesGridView.RowHeadersWidth = 62;
+            this.entryVariablesGridView.RowTemplate.Height = 28;
+            this.entryVariablesGridView.Size = new System.Drawing.Size(365, 431);
+            this.entryVariablesGridView.TabIndex = 0;
+            // 
+            // entryVariables
+            // 
+            this.entryVariables.HeaderText = "\"Entry Title\" Variables";
+            this.entryVariables.MinimumWidth = 8;
+            this.entryVariables.Name = "entryVariables";
+            this.entryVariables.ReadOnly = true;
+            this.entryVariables.Width = 365;
             // 
             // MasterForm
             // 
@@ -437,11 +480,13 @@ namespace FirstPass
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
+            this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.entryVariablesGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -485,6 +530,9 @@ namespace FirstPass
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button AddNewEntry;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView entryVariablesGridView;
+        private System.Windows.Forms.RichTextBox entryNotes;
+        private System.Windows.Forms.DataGridViewTextBoxColumn entryVariables;
     }
 }
 
