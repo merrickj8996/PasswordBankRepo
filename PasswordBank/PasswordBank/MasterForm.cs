@@ -200,5 +200,10 @@ namespace FirstPass {
                 dataTable.AcceptChanges();
             }
         }
+
+        private void quickGuideToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            UserGuide guide = new UserGuide();
+            guide.Show();
+        }
     }
 }
