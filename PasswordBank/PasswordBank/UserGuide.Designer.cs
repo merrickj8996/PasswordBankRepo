@@ -55,7 +55,7 @@ namespace FirstPass {
             this.pictureBox2.Image = global::FirstPass.Properties.Resources.createNewFileDropdown;
             this.pictureBox2.Location = new System.Drawing.Point(200, 68);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(192, 210);
+            this.pictureBox2.Size = new System.Drawing.Size(196, 207);
             this.pictureBox2.TabIndex = 5;
             this.pictureBox2.TabStop = false;
             // 
@@ -80,9 +80,9 @@ namespace FirstPass {
             // pictureBox1
             // 
             this.pictureBox1.Image = global::FirstPass.Properties.Resources.CreateNewButton;
-            this.pictureBox1.Location = new System.Drawing.Point(38, 141);
+            this.pictureBox1.Location = new System.Drawing.Point(34, 141);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(29, 27);
+            this.pictureBox1.Size = new System.Drawing.Size(30, 27);
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
@@ -127,7 +127,7 @@ namespace FirstPass {
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(896, 635);
+            this.ClientSize = new System.Drawing.Size(792, 466);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.PreviousButton);

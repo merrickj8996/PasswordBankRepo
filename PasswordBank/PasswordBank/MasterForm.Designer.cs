@@ -29,11 +29,11 @@ namespace FirstPass
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
@@ -349,7 +349,7 @@ namespace FirstPass
             this.helpToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.quickGuideToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // quickGuideToolStripMenuItem
@@ -380,14 +380,14 @@ namespace FirstPass
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node4";
-            treeNode1.Text = "Node4";
-            treeNode2.Name = "Node5";
-            treeNode2.Text = "Node5";
-            treeNode3.Name = "Root";
-            treeNode3.Text = "Root";
+            treeNode4.Name = "Node4";
+            treeNode4.Text = "Node4";
+            treeNode5.Name = "Node5";
+            treeNode5.Text = "Node5";
+            treeNode6.Name = "Root";
+            treeNode6.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode6});
             this.treeView1.Size = new System.Drawing.Size(236, 515);
             this.treeView1.TabIndex = 0;
             // 
@@ -404,7 +404,7 @@ namespace FirstPass
             this.splitContainer2.Panel1.Controls.Add(this.AddNewEntry);
             this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
             this.splitContainer2.Size = new System.Drawing.Size(732, 515);
-            this.splitContainer2.SplitterDistance = 238;
+            this.splitContainer2.SplitterDistance = 239;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -412,13 +412,14 @@ namespace FirstPass
             // 
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 215);
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 216);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2);
             this.AddNewEntry.Name = "AddNewEntry";
             this.AddNewEntry.Size = new System.Drawing.Size(732, 23);
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";
             this.AddNewEntry.UseVisualStyleBackColor = true;
+            this.AddNewEntry.Click += new System.EventHandler(this.AddNewEntry_Click);
             // 
             // dataGridView1
             // 
@@ -428,8 +429,9 @@ namespace FirstPass
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.Size = new System.Drawing.Size(732, 238);
+            this.dataGridView1.Size = new System.Drawing.Size(732, 239);
             this.dataGridView1.TabIndex = 0;
             // 
             // MasterForm
