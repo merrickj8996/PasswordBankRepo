@@ -16,6 +16,7 @@ namespace FirstPass {
         /// </summary>
         public MasterForm() {
             InitializeComponent();
+            initializeEntryVariables();
         }
         /// <summary>
         /// Sets the datagridviews datasource to be the datatable consturcted by the readfile method.
@@ -28,6 +29,33 @@ namespace FirstPass {
             }
             
         }
+
+        /// <summary>
+        /// Initializes the grid view to store the entry varaibles. It adds 4 rows and sets the names of the header cells.
+        /// </summary>
+        public void initializeEntryVariables() {
+            entryVariablesGridView.RowCount = 4;
+
+            entryVariablesGridView.Columns[0].HeaderCell.Value = "Entry Variables";
+
+            entryVariablesGridView.Rows[0].HeaderCell.Value = "Title";
+            entryVariablesGridView.Rows[0].Cells[0].Value = "Test Title";
+
+            entryVariablesGridView.Rows[1].HeaderCell.Value = "Username";
+            entryVariablesGridView.Rows[1].Cells[0].Value = "TestUsername";
+
+            entryVariablesGridView.Rows[2].HeaderCell.Value = "Password";
+            entryVariablesGridView.Rows[2].Cells[0].Value = "***************";
+
+            entryVariablesGridView.Rows[3].HeaderCell.Value = "URL";
+            entryVariablesGridView.Rows[3].Cells[0].Value = "www.testurl.com";
+
+            // Sets the row headers width to fit all the headers.
+            entryVariablesGridView.RowHeadersWidth = 100;
+
+            entryNotes.Text = "This is some test notes";
+        }
+
         /// <summary>
         /// Calls the createfilewarning method when the user clicks on the save button.
         /// </summary>
@@ -139,16 +167,5 @@ namespace FirstPass {
             this.PerformRefresh();
         }
 
-<<<<<<< HEAD
-        private void splitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
-
-        }
-
-        private void AddNewEntry_Click(object sender, EventArgs e) {
-            entryVariables.ReadOnly = false;
-            entryNotes.ReadOnly = false;
-        }
-=======
->>>>>>> ce2647e8ef7ffd9ddaf0a70eee05c298fb8d1f9f
     }
 }
