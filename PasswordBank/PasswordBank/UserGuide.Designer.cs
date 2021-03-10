@@ -34,20 +34,20 @@ namespace FirstPass {
             this.NextPage = new System.Windows.Forms.Button();
             this.PreviousButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
@@ -64,11 +64,6 @@ namespace FirstPass {
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.label21 = new System.Windows.Forms.Label();
-            this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
             this.label24 = new System.Windows.Forms.Label();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
             this.label25 = new System.Windows.Forms.Label();
@@ -77,11 +72,11 @@ namespace FirstPass {
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel6.SuspendLayout();
@@ -89,8 +84,6 @@ namespace FirstPass {
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).BeginInit();
             this.SuspendLayout();
             // 
@@ -162,6 +155,7 @@ namespace FirstPass {
             this.NextPage.TabIndex = 0;
             this.NextPage.Text = "Next";
             this.NextPage.UseVisualStyleBackColor = true;
+            this.NextPage.Click += new System.EventHandler(this.NextPage_Click);
             // 
             // PreviousButton
             // 
@@ -171,10 +165,10 @@ namespace FirstPass {
             this.PreviousButton.TabIndex = 1;
             this.PreviousButton.Text = "Previous";
             this.PreviousButton.UseVisualStyleBackColor = true;
+            this.PreviousButton.Click += new System.EventHandler(this.PreviousButton_Click);
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.pictureBox3);
             this.panel2.Controls.Add(this.label5);
@@ -184,107 +178,16 @@ namespace FirstPass {
             this.panel2.Size = new System.Drawing.Size(433, 327);
             this.panel2.TabIndex = 3;
             // 
-            // label5
-            // 
-            this.label5.Location = new System.Drawing.Point(3, 33);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(426, 32);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "You will be presented with a pop up dialog confirming that you wish to make a new" +
-    " entry";
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(163, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Creating a new password file pt 2";
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
-            this.pictureBox3.Location = new System.Drawing.Point(53, 68);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(321, 130);
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 262);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(302, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Hit yes inorder to continue on to a windows file explorer pop up";
-            // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.pictureBox4);
-            this.panel3.Controls.Add(this.label7);
-            this.panel3.Controls.Add(this.label8);
+            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.pictureBox5);
+            this.panel3.Controls.Add(this.label10);
+            this.panel3.Controls.Add(this.label11);
             this.panel3.Location = new System.Drawing.Point(12, 12);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(433, 327);
-            this.panel3.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(87, 261);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 13);
-            this.label4.TabIndex = 5;
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(3, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(426, 42);
-            this.label7.TabIndex = 3;
-            this.label7.Text = "You will be taken to a screen that where you enter in a password inorder to acces" +
-    "s the file. You optionally can include a key file which can be any file on your " +
-    "computer for extra security.";
-            // 
-            // label8
-            // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(5, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(163, 13);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Creating a new password file pt 5";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
-            this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
-            this.pictureBox4.Location = new System.Drawing.Point(53, 68);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(311, 179);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 4;
-            this.pictureBox4.TabStop = false;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.label9);
-            this.panel4.Controls.Add(this.pictureBox5);
-            this.panel4.Controls.Add(this.label10);
-            this.panel4.Controls.Add(this.label11);
-            this.panel4.Location = new System.Drawing.Point(0, 1);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(433, 327);
-            this.panel4.TabIndex = 5;
+            this.panel3.TabIndex = 5;
             // 
             // label9
             // 
@@ -324,7 +227,97 @@ namespace FirstPass {
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(163, 13);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Creating a new password file pt 4";
+            this.label11.Text = "Creating a new password file pt 3";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(62, 262);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(302, 13);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Hit yes inorder to continue on to a windows file explorer pop up";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
+            this.pictureBox3.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.InitialImage")));
+            this.pictureBox3.Location = new System.Drawing.Point(53, 68);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(321, 130);
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.Location = new System.Drawing.Point(3, 33);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(426, 32);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "You will be presented with a pop up dialog confirming that you wish to make a new" +
+    " entry";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(5, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(163, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Creating a new password file pt 2";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.label4);
+            this.panel4.Controls.Add(this.pictureBox4);
+            this.panel4.Controls.Add(this.label7);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Location = new System.Drawing.Point(12, 12);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(433, 327);
+            this.panel4.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(87, 261);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 13);
+            this.label4.TabIndex = 5;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox4.Image")));
+            this.pictureBox4.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.InitialImage")));
+            this.pictureBox4.Location = new System.Drawing.Point(53, 68);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(311, 179);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 4;
+            this.pictureBox4.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.Location = new System.Drawing.Point(3, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(426, 42);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "You will be taken to a screen that where you enter in a password inorder to acces" +
+    "s the file. You optionally can include a key file which can be any file on your " +
+    "computer for extra security.";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(5, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(163, 13);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "Creating a new password file pt 4";
             // 
             // panel5
             // 
@@ -332,7 +325,7 @@ namespace FirstPass {
             this.panel5.Controls.Add(this.pictureBox6);
             this.panel5.Controls.Add(this.label13);
             this.panel5.Controls.Add(this.label14);
-            this.panel5.Location = new System.Drawing.Point(0, 1);
+            this.panel5.Location = new System.Drawing.Point(12, 12);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(433, 327);
             this.panel5.TabIndex = 5;
@@ -374,11 +367,10 @@ namespace FirstPass {
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(163, 13);
             this.label14.TabIndex = 1;
-            this.label14.Text = "Creating a new password file pt 6";
+            this.label14.Text = "Creating a new password file pt 5";
             // 
             // panel6
             // 
-            this.panel6.Controls.Add(this.panel7);
             this.panel6.Controls.Add(this.label15);
             this.panel6.Controls.Add(this.pictureBox7);
             this.panel6.Controls.Add(this.label16);
@@ -409,7 +401,7 @@ namespace FirstPass {
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(3, 22);
+            this.label16.Location = new System.Drawing.Point(2, 22);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(426, 42);
             this.label16.TabIndex = 3;
@@ -425,7 +417,7 @@ namespace FirstPass {
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(163, 13);
             this.label17.TabIndex = 1;
-            this.label17.Text = "Creating a new password file pt 7";
+            this.label17.Text = "Creating a new password file pt 6";
             // 
             // panel7
             // 
@@ -433,7 +425,7 @@ namespace FirstPass {
             this.panel7.Controls.Add(this.pictureBox8);
             this.panel7.Controls.Add(this.label19);
             this.panel7.Controls.Add(this.label20);
-            this.panel7.Location = new System.Drawing.Point(0, 1);
+            this.panel7.Location = new System.Drawing.Point(12, 12);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(433, 327);
             this.panel7.TabIndex = 7;
@@ -476,70 +468,18 @@ namespace FirstPass {
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(163, 13);
             this.label20.TabIndex = 1;
-            this.label20.Text = "Creating a new password file pt 8";
+            this.label20.Text = "Creating a new password file pt 7";
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.panel9);
-            this.panel8.Controls.Add(this.label21);
-            this.panel8.Controls.Add(this.pictureBox9);
-            this.panel8.Controls.Add(this.label22);
-            this.panel8.Controls.Add(this.label23);
-            this.panel8.Location = new System.Drawing.Point(12, 10);
+            this.panel8.Controls.Add(this.label24);
+            this.panel8.Controls.Add(this.pictureBox10);
+            this.panel8.Controls.Add(this.label25);
+            this.panel8.Controls.Add(this.label26);
+            this.panel8.Location = new System.Drawing.Point(12, 12);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(433, 327);
-            this.panel8.TabIndex = 8;
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(87, 261);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(0, 13);
-            this.label21.TabIndex = 5;
-            // 
-            // pictureBox9
-            // 
-            this.pictureBox9.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox9.Image")));
-            this.pictureBox9.InitialImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.InitialImage")));
-            this.pictureBox9.Location = new System.Drawing.Point(53, 68);
-            this.pictureBox9.Name = "pictureBox9";
-            this.pictureBox9.Size = new System.Drawing.Size(311, 179);
-            this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox9.TabIndex = 4;
-            this.pictureBox9.TabStop = false;
-            // 
-            // label22
-            // 
-            this.label22.Location = new System.Drawing.Point(3, 22);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(426, 42);
-            this.label22.TabIndex = 3;
-            this.label22.Text = "Once you move on from the password creation screen, you are presented with the op" +
-    "tion for printing our your password for the file incase you think you might forg" +
-    "et it.";
-            // 
-            // label23
-            // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(5, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(163, 13);
-            this.label23.TabIndex = 1;
-            this.label23.Text = "Creating a new password file pt 9";
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.label24);
-            this.panel9.Controls.Add(this.pictureBox10);
-            this.panel9.Controls.Add(this.label25);
-            this.panel9.Controls.Add(this.label26);
-            this.panel9.Location = new System.Drawing.Point(0, 0);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(433, 327);
-            this.panel9.TabIndex = 9;
+            this.panel8.TabIndex = 9;
             // 
             // label24
             // 
@@ -576,37 +516,42 @@ namespace FirstPass {
             this.label26.AutoSize = true;
             this.label26.Location = new System.Drawing.Point(5, 0);
             this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(169, 13);
+            this.label26.Size = new System.Drawing.Size(163, 13);
             this.label26.TabIndex = 1;
-            this.label26.Text = "Creating a new password file pt 10";
+            this.label26.Text = "Creating a new password file pt 8";
             // 
             // UserGuide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(792, 466);
+            this.ClientSize = new System.Drawing.Size(464, 391);
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel8);
             this.Controls.Add(this.panel6);
-            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.PreviousButton);
             this.Controls.Add(this.NextPage);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "UserGuide";
             this.Text = "UserGuide";
+            this.Load += new System.EventHandler(this.UserGuide_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
@@ -618,9 +563,6 @@ namespace FirstPass {
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox10)).EndInit();
             this.ResumeLayout(false);
 
@@ -641,11 +583,11 @@ namespace FirstPass {
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.Label label10;
@@ -667,14 +609,9 @@ namespace FirstPass {
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.PictureBox pictureBox10;
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.PictureBox pictureBox9;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.Label label23;
     }
 }
