@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
@@ -183,21 +184,23 @@ namespace FirstPass {
         /// Writes all the password entries to the file.
         /// </summary>
         public static void WriteToFile(DataTable dataTable) {
-            string filepath = GetFile();
+            string origFilePath = GetFile();
+            string tempFile = "temp_file.csv";
+            using (FileStream fs = File.Create(tempFile)) { }
 
             // Create stream to write to file with
-            using (StreamWriter writer = new StreamWriter(filepath)) {
+            using (StreamWriter writer = new StreamWriter(tempFile)) {
                 // Create csvwriter to write to the file as a csv
                 using (CsvWriter csvWrite = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
                     // Setting the map so that entries get written into the correct columns
                     csvWrite.Context.RegisterClassMap<PasswordEntryMap>();
 
                     // Creating a list for the password entries
-                    List<PasswordEntry> passwordEntries = new List<PasswordEntry>();
+                    List<PasswordEntry> passwordEntries = new List<PasswordEntry>() { };
 
                     // Adding all the passwords to a list
                     foreach (DataRow row in dataTable.Rows) {
-                        PasswordEntry passwordEntry = new PasswordEntry(Int32.Parse(row["id"].ToString()), row["group"].ToString(), row["title"].ToString(), row["user name"].ToString(),
+                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["group"].ToString(), row["title"].ToString(), row["user name"].ToString(),
                                                                                     row["password"].ToString(), row["url"].ToString(), row["notes"].ToString());
                         passwordEntries.Add(passwordEntry);
                     }
@@ -208,6 +211,10 @@ namespace FirstPass {
                     csvWrite.WriteRecords(enumData);
                 }
             }
+
+            File.Delete(origFilePath);
+            File.Move(tempFile, origFilePath);
+            FileOP.LoadFile(origFilePath);
         }
 
         /// <summary>
