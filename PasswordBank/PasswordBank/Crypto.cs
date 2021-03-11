@@ -7,7 +7,7 @@ using System.Text;
 namespace FirstPass {
 
     /// <summary>
-    /// Contains all the methods for file compression and decompression.
+    /// Contains all the methods for file encryption and decryption
     /// </summary>
     public static class Crypto {
 
@@ -15,10 +15,12 @@ namespace FirstPass {
         private static readonly int mIter = 50000;
         private static readonly int mKeyLength = 256;
         private static readonly int mBlockSize = 128;
+
+        //Stores password so it can be automatically used to lock the database after closing the file. 
+        //This should be stored as a secure string in the future.
         public static String mPassTemp = "";
         //public static SecureString mPassTemp;
         #endregion
-
 
         //Generates Salt for use with password. 
         public static byte[] SaltGen() {
@@ -84,7 +86,7 @@ namespace FirstPass {
                     KeySize = mKeyLength,
                     BlockSize = mBlockSize,
                     Padding = PaddingMode.PKCS7
-            };
+                };
                 var key = new Rfc2898DeriveBytes(passwords, salt, mIter);
                 AES.Key = key.GetBytes(AES.KeySize / 8);
                 AES.IV = key.GetBytes(AES.BlockSize / 8);

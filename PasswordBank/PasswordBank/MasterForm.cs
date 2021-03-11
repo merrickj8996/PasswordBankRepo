@@ -22,21 +22,22 @@ namespace FirstPass {
         /// Sets the datagridviews datasource to be the datatable consturcted by the readfile method.
         /// </summary>
         public void PerformRefresh() {
-            if(FileOP.GetFile() != "") {
+            if (FileOP.GetFile() != "") {
                 dataGridView1.DataSource = FileOP.ReadFile();
-            } else {
+            }
+            else {
                 dataGridView1.DataSource = null;
             }
-            
+
         }
 
         public void selectedRowsButton_Click(object sender, System.EventArgs e) {
             Int32 selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
 
-            if(selectedRowCount > 0) {
+            if (selectedRowCount > 0) {
                 System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-                for(int i = 0; i < selectedRowCount; i++) {
+                for (int i = 0; i < selectedRowCount; i++) {
                     sb.Append("Row: ");
                     sb.Append(dataGridView1.SelectedRows[i].Index.ToString());
                     sb.Append(Environment.NewLine);
@@ -92,7 +93,7 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked.
         /// </summary>
         private void OpenFileButton_Click(object sender, EventArgs e) {
-           
+
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
@@ -106,7 +107,7 @@ namespace FirstPass {
                 };
                 frm.Show();
             }
-            
+
         }
         /// <summary>
         /// Calls the select file method and shows the next form when the open button is clicked from the file dropdown menu.
@@ -185,7 +186,7 @@ namespace FirstPass {
             UserGuide frm = new UserGuide();
             frm.Show();
         }
-        
+
         //add a new empty row
         private void AddNewEntry_Click(object sender, EventArgs e) {
             String id = "0";
@@ -197,8 +198,8 @@ namespace FirstPass {
             else {
                 //Read in the id's in the datagridview
                 foreach (DataGridViewRow rw in this.dataGridView1.Rows) {
-                    if(rw.Cells[0].Value != null)
-                    id = rw.Cells[0].Value.ToString();
+                    if (rw.Cells[0].Value != null)
+                        id = rw.Cells[0].Value.ToString();
                 }
 
 
@@ -227,7 +228,7 @@ namespace FirstPass {
         }
 
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
-            
+
         }
     }
 }

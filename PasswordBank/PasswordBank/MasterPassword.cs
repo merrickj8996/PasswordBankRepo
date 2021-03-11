@@ -27,21 +27,23 @@ namespace FirstPass {
         private void OkButton_Click(object sender, EventArgs e) {
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
                 if (KeyFileCheckBox.Checked) {
-                     if (FileOP.GetKeyFile() != "" && FileOP.GetKeyFile() != null && File.Exists(FileOP.GetKeyFile())) {
+                    if (FileOP.GetKeyFile() != "" && FileOP.GetKeyFile() != null && File.Exists(FileOP.GetKeyFile())) {
                         Compressor.Compress(FileOP.GetFile());
                         Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
                         Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
                         KeyFileLocationText.Text = FileOP.GetKeyFile();
                         FileOP.ClearKeyFile();
-                        
+
                         MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                         printPopUp.ShowDialog();
                         FileOP.ClearFile();
                         this.Close();
-                    } else {
-                       MessageBox.Show("Your key file is invalid. Please reselect your keyfile.", "File Error", MessageBoxButtons.OK);
                     }
-                } else {
+                    else {
+                        MessageBox.Show("Your key file is invalid. Please reselect your keyfile.", "File Error", MessageBoxButtons.OK);
+                    }
+                }
+                else {
                     Compressor.Compress(FileOP.GetFile());
                     Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
 
@@ -106,9 +108,9 @@ namespace FirstPass {
         }
 
         private void ExitButton_Click(object sender, EventArgs e) {
-           
+
             this.Hide();
-            
+
         }
 
         private void FindKeyFile_Click(object sender, EventArgs e) {
