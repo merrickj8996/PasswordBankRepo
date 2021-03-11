@@ -152,15 +152,6 @@ namespace FirstPass {
             }
         }
 
-
-        private void MasterForm_Load(object sender, EventArgs e) {
-
-        }
-
-        private void SplitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
-
-        }
-
         private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
             if (FileOP.GetFile() != "") {
                 if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
@@ -244,7 +235,7 @@ namespace FirstPass {
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
             SetSelectedEntryData();
         }
-            
+        //button press to edit a row that the consumer has selected
         private void EditRowButton_Click(object sender, EventArgs e) {
             //if the datagrid view doesnt have a datasource AKA no file is open
             if (dataGridView1.DataSource == null) {
@@ -255,30 +246,30 @@ namespace FirstPass {
                 GetSelectedEntryData();
             }
         }
-
+        //button press to copy the username of the row selected
         private void CopyUsernameButton_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new row cant be added
+                //pop open a dialog box explaining why a new cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
             }
         }
-
+        //button press to copy the passwrod of the row selected
         private void CopyPassword_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new row cant be added
+                //pop open a dialog box explaining why a new cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
             }
         }
-
+        //button to copy and open the link of the row selected.
         private void CopyButton_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new row cant be added
+                //pop open a dialog box explaining why a new cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to open a url.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {
