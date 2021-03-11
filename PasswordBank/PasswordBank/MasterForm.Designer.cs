@@ -29,13 +29,13 @@ namespace FirstPass
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8});
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
@@ -69,6 +69,8 @@ namespace FirstPass
             this.settignsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.quickGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openingAFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addingEntriesToTheFielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
@@ -78,8 +80,6 @@ namespace FirstPass
             this.entryVariablesGridView = new System.Windows.Forms.DataGridView();
             this.entryVariables = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.openingAFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addingEntriesToTheFielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -176,6 +176,7 @@ namespace FirstPass
             this.CopyUsernameButton.Name = "CopyUsernameButton";
             this.CopyUsernameButton.Size = new System.Drawing.Size(28, 28);
             this.CopyUsernameButton.Text = "Copy Username";
+            this.CopyUsernameButton.Click += new System.EventHandler(this.CopyUsernameButton_Click);
             // 
             // CopyPassword
             // 
@@ -350,7 +351,7 @@ namespace FirstPass
             // settignsToolStripMenuItem
             // 
             this.settignsToolStripMenuItem.Name = "settignsToolStripMenuItem";
-            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.settignsToolStripMenuItem.Text = "Settings";
             // 
             // helpToolStripMenuItem1
@@ -360,7 +361,7 @@ namespace FirstPass
             this.openingAFileToolStripMenuItem,
             this.addingEntriesToTheFielToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // quickGuideToolStripMenuItem
@@ -369,6 +370,18 @@ namespace FirstPass
             this.quickGuideToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
             this.quickGuideToolStripMenuItem.Text = "Creating a new file";
             this.quickGuideToolStripMenuItem.Click += new System.EventHandler(this.quickGuideToolStripMenuItem_Click_1);
+            // 
+            // openingAFileToolStripMenuItem
+            // 
+            this.openingAFileToolStripMenuItem.Name = "openingAFileToolStripMenuItem";
+            this.openingAFileToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.openingAFileToolStripMenuItem.Text = "Opening a file";
+            // 
+            // addingEntriesToTheFielToolStripMenuItem
+            // 
+            this.addingEntriesToTheFielToolStripMenuItem.Name = "addingEntriesToTheFielToolStripMenuItem";
+            this.addingEntriesToTheFielToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.addingEntriesToTheFielToolStripMenuItem.Text = "Adding entries to the file";
             // 
             // splitContainer1
             // 
@@ -392,14 +405,14 @@ namespace FirstPass
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode4.Name = "";
-            treeNode4.Text = "Node4";
-            treeNode5.Name = "";
-            treeNode5.Text = "Node5";
-            treeNode6.Name = "";
-            treeNode6.Text = "Root";
+            treeNode7.Name = "";
+            treeNode7.Text = "Node4";
+            treeNode8.Name = "";
+            treeNode8.Text = "Node5";
+            treeNode9.Name = "";
+            treeNode9.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
+            treeNode9});
             this.treeView1.Size = new System.Drawing.Size(236, 515);
             this.treeView1.TabIndex = 0;
             // 
@@ -407,7 +420,7 @@ namespace FirstPass
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -430,7 +443,7 @@ namespace FirstPass
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.AddNewEntry.Location = new System.Drawing.Point(0, 207);
-            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2);
             this.AddNewEntry.Name = "AddNewEntry";
             this.AddNewEntry.Size = new System.Drawing.Size(732, 30);
             this.AddNewEntry.TabIndex = 1;
@@ -440,12 +453,14 @@ namespace FirstPass
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
@@ -469,28 +484,28 @@ namespace FirstPass
             this.entryVariablesGridView.AllowUserToResizeColumns = false;
             this.entryVariablesGridView.AllowUserToResizeRows = false;
             this.entryVariablesGridView.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.entryVariablesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.entryVariablesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.entryVariablesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.entryVariablesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.entryVariables});
             this.entryVariablesGridView.Dock = System.Windows.Forms.DockStyle.Left;
             this.entryVariablesGridView.Location = new System.Drawing.Point(0, 0);
             this.entryVariablesGridView.Name = "entryVariablesGridView";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.entryVariablesGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.entryVariablesGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.entryVariablesGridView.RowHeadersWidth = 62;
             this.entryVariablesGridView.RowTemplate.Height = 28;
             this.entryVariablesGridView.Size = new System.Drawing.Size(365, 275);
@@ -503,18 +518,6 @@ namespace FirstPass
             this.entryVariables.Name = "entryVariables";
             this.entryVariables.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.entryVariables.Width = 365;
-            // 
-            // openingAFileToolStripMenuItem
-            // 
-            this.openingAFileToolStripMenuItem.Name = "openingAFileToolStripMenuItem";
-            this.openingAFileToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.openingAFileToolStripMenuItem.Text = "Opening a file";
-            // 
-            // addingEntriesToTheFielToolStripMenuItem
-            // 
-            this.addingEntriesToTheFielToolStripMenuItem.Name = "addingEntriesToTheFielToolStripMenuItem";
-            this.addingEntriesToTheFielToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.addingEntriesToTheFielToolStripMenuItem.Text = "Adding entries to the file";
             // 
             // MasterForm
             // 
