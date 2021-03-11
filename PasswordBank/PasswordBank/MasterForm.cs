@@ -110,9 +110,19 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked from the file dropdown menu.
         /// </summary>
         private void OpenFileDropDown_Click(object sender, EventArgs e) {
-            FileOP.SelectFile();
-            EnterPasswordForFile frm = new EnterPasswordForFile();
-            frm.Show();
+            if (FileOP.GetFile() != "") {
+                DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                if (savePrompt == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                }
+                LockFile();
+            }
+            if (FileOP.SelectFile()) {
+                EnterPasswordForFile frm = new EnterPasswordForFile {
+                    TheParent = this
+                };
+                frm.Show();
+            }
         }
         /// <summary>
         /// Calls the save function when the user clicks the save file button.
@@ -133,6 +143,15 @@ namespace FirstPass {
 
         private void SplitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
 
+        }
+
+        private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
+            if (FileOP.GetFile() != "") {
+                if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                }
+                LockFile();
+            }
         }
 
         private void LockFile() {
@@ -167,6 +186,7 @@ namespace FirstPass {
         
         //add a new empty row
         private void AddNewEntry_Click(object sender, EventArgs e) {
+            String id = "0";
             //if the datagrid view doesnt have a datasource AKA no file is open
             if (dataGridView1.DataSource == null) {
                 //pop open a dialog box explaining why a new row cant be added
@@ -174,10 +194,16 @@ namespace FirstPass {
             }
             else {
                 //add an empty row under each respective field
+
+                foreach (DataGridViewRow rw in this.dataGridView1.Rows) {
+                    if(rw.Cells[0].Value != null)
+                    id = rw.Cells[0].Value.ToString();
+                }
+
                 DataTable dataTable = (DataTable)dataGridView1.DataSource;
                 DataRow drToAdd = dataTable.NewRow();
 
-                drToAdd["id"] = "";
+                drToAdd["id"] = Int32.Parse(id) + 1;
                 drToAdd["group"] = "";
                 drToAdd["title"] = "";
                 drToAdd["user name"] = "";
@@ -196,8 +222,13 @@ namespace FirstPass {
             guide.Show();
         }
 
+<<<<<<< HEAD
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
             
+=======
+        private void CopyUsernameButton_Click(object sender, EventArgs e) {
+
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
         }
     }
 }

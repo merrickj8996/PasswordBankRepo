@@ -29,11 +29,21 @@ namespace FirstPass
         /// </summary>
         private void InitializeComponent()
         {
+<<<<<<< HEAD
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node4");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node5");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
+=======
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode7,
+            treeNode8});
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
@@ -183,6 +193,7 @@ namespace FirstPass
             this.CopyUsernameButton.Name = "CopyUsernameButton";
             this.CopyUsernameButton.Size = new System.Drawing.Size(34, 28);
             this.CopyUsernameButton.Text = "Copy Username";
+            this.CopyUsernameButton.Click += new System.EventHandler(this.CopyUsernameButton_Click);
             // 
             // CopyPassword
             // 
@@ -357,7 +368,11 @@ namespace FirstPass
             // settignsToolStripMenuItem
             // 
             this.settignsToolStripMenuItem.Name = "settignsToolStripMenuItem";
+<<<<<<< HEAD
             this.settignsToolStripMenuItem.Size = new System.Drawing.Size(178, 34);
+=======
+            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.settignsToolStripMenuItem.Text = "Settings";
             // 
             // helpToolStripMenuItem1
@@ -367,7 +382,11 @@ namespace FirstPass
             this.openingAFileToolStripMenuItem,
             this.addingEntriesToTheFielToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
+<<<<<<< HEAD
             this.helpToolStripMenuItem1.Size = new System.Drawing.Size(178, 34);
+=======
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // quickGuideToolStripMenuItem
@@ -380,13 +399,21 @@ namespace FirstPass
             // openingAFileToolStripMenuItem
             // 
             this.openingAFileToolStripMenuItem.Name = "openingAFileToolStripMenuItem";
+<<<<<<< HEAD
             this.openingAFileToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+=======
+            this.openingAFileToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.openingAFileToolStripMenuItem.Text = "Opening a file";
             // 
             // addingEntriesToTheFielToolStripMenuItem
             // 
             this.addingEntriesToTheFielToolStripMenuItem.Name = "addingEntriesToTheFielToolStripMenuItem";
+<<<<<<< HEAD
             this.addingEntriesToTheFielToolStripMenuItem.Size = new System.Drawing.Size(310, 34);
+=======
+            this.addingEntriesToTheFielToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.addingEntriesToTheFielToolStripMenuItem.Text = "Adding entries to the file";
             // 
             // splitContainer1
@@ -414,6 +441,7 @@ namespace FirstPass
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeView1.Name = "treeView1";
+<<<<<<< HEAD
             treeNode1.Name = "";
             treeNode1.Text = "Node4";
             treeNode2.Name = "";
@@ -423,12 +451,27 @@ namespace FirstPass
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3});
             this.treeView1.Size = new System.Drawing.Size(354, 811);
+=======
+            treeNode7.Name = "";
+            treeNode7.Text = "Node4";
+            treeNode8.Name = "";
+            treeNode8.Text = "Node5";
+            treeNode9.Name = "";
+            treeNode9.Text = "Root";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode9});
+            this.treeView1.Size = new System.Drawing.Size(236, 515);
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.treeView1.TabIndex = 0;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+<<<<<<< HEAD
+=======
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -450,10 +493,17 @@ namespace FirstPass
             // 
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
+<<<<<<< HEAD
             this.AddNewEntry.Location = new System.Drawing.Point(0, 343);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2);
             this.AddNewEntry.Name = "AddNewEntry";
             this.AddNewEntry.Size = new System.Drawing.Size(1098, 30);
+=======
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 207);
+            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2);
+            this.AddNewEntry.Name = "AddNewEntry";
+            this.AddNewEntry.Size = new System.Drawing.Size(732, 30);
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";
             this.AddNewEntry.UseVisualStyleBackColor = true;
@@ -461,12 +511,18 @@ namespace FirstPass
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+<<<<<<< HEAD
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+=======
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.MultiSelect = false;
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
@@ -622,7 +678,53 @@ namespace FirstPass
             this.entryNotes.Name = "entryNotes";
             this.entryNotes.Size = new System.Drawing.Size(732, 433);
             this.entryNotes.TabIndex = 1;
+<<<<<<< HEAD
             this.entryNotes.Text = "These are test notes";
+=======
+            this.entryNotes.Text = "";
+            // 
+            // entryVariablesGridView
+            // 
+            this.entryVariablesGridView.AllowUserToAddRows = false;
+            this.entryVariablesGridView.AllowUserToDeleteRows = false;
+            this.entryVariablesGridView.AllowUserToResizeColumns = false;
+            this.entryVariablesGridView.AllowUserToResizeRows = false;
+            this.entryVariablesGridView.BackgroundColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.entryVariablesGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.entryVariablesGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.entryVariablesGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.entryVariables});
+            this.entryVariablesGridView.Dock = System.Windows.Forms.DockStyle.Left;
+            this.entryVariablesGridView.Location = new System.Drawing.Point(0, 0);
+            this.entryVariablesGridView.Name = "entryVariablesGridView";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.entryVariablesGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.entryVariablesGridView.RowHeadersWidth = 62;
+            this.entryVariablesGridView.RowTemplate.Height = 28;
+            this.entryVariablesGridView.Size = new System.Drawing.Size(365, 275);
+            this.entryVariablesGridView.TabIndex = 0;
+            // 
+            // entryVariables
+            // 
+            this.entryVariables.HeaderText = "Entry Variables";
+            this.entryVariables.MinimumWidth = 8;
+            this.entryVariables.Name = "entryVariables";
+            this.entryVariables.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.entryVariables.Width = 365;
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
             // 
             // MasterForm
             // 
@@ -636,6 +738,7 @@ namespace FirstPass
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MasterForm";
             this.Text = "PasswordKeeper";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterForm_FormClosing);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -695,6 +798,11 @@ namespace FirstPass
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button AddNewEntry;
         private System.Windows.Forms.DataGridView dataGridView1;
+<<<<<<< HEAD
+=======
+        
+        private System.Windows.Forms.DataGridView entryVariablesGridView;
+>>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
         private System.Windows.Forms.RichTextBox entryNotes;
 
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
