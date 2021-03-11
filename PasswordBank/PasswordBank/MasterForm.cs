@@ -78,9 +78,10 @@ namespace FirstPass {
                     LockFile();
                 }
                 //call the create file method and inflate the next form
-                FileOP.CreateFile();
-                PasswordOptions form = new PasswordOptions();
-                form.Show();
+                if (FileOP.CreateFile()) {
+                    PasswordOptions form = new PasswordOptions();
+                    form.Show();
+                };
             }
         }
 

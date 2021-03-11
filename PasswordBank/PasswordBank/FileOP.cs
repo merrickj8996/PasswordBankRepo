@@ -80,7 +80,7 @@ namespace FirstPass {
         /// <summary>
         /// Opens up the dialog for creating a new password file
         /// </summary>
-        public static void CreateFile() {
+        public static bool CreateFile() {
             Stream myStream;
             //default to creating a .csv file
             SaveFileDialog save = new SaveFileDialog {
@@ -100,6 +100,9 @@ namespace FirstPass {
                     file.WriteLine("ID,Group,Title,User Name,Password,URL,Notes");
                     file.Close();
                 }
+                return true;
+            } else {
+                return false;
             }
         }
 

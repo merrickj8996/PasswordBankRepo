@@ -33,10 +33,10 @@ namespace FirstPass {
                         Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
                         KeyFileLocationText.Text = FileOP.GetKeyFile();
                         FileOP.ClearKeyFile();
-
+                        
                         MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                         printPopUp.ShowDialog();
-
+                        FileOP.ClearFile();
                         this.Close();
                     } else {
                        MessageBox.Show("Your key file is invalid. Please reselect your keyfile.", "File Error", MessageBoxButtons.OK);
@@ -47,7 +47,7 @@ namespace FirstPass {
 
                     MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                     printPopUp.ShowDialog();
-
+                    FileOP.ClearFile();
                     this.Close();
                 }
             }
