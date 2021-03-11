@@ -29,11 +29,11 @@ namespace FirstPass
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2});
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
@@ -75,6 +75,7 @@ namespace FirstPass
             this.AddNewEntry = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.EntryVariablesPanel = new System.Windows.Forms.Panel();
+            this.EntryVariablesConfirmButton = new System.Windows.Forms.Button();
             this.EntryVariablesUrlTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesPasswordTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesUsernameTextBox = new System.Windows.Forms.TextBox();
@@ -86,7 +87,6 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.EntryVariablesConfirmButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -414,14 +414,14 @@ namespace FirstPass
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.treeView1.Name = "treeView1";
-            treeNode4.Name = "";
-            treeNode4.Text = "Node4";
-            treeNode5.Name = "";
-            treeNode5.Text = "Node5";
-            treeNode6.Name = "";
-            treeNode6.Text = "Root";
+            treeNode1.Name = "";
+            treeNode1.Text = "Node4";
+            treeNode2.Name = "";
+            treeNode2.Text = "Node5";
+            treeNode3.Name = "";
+            treeNode3.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode6});
+            treeNode3});
             this.treeView1.Size = new System.Drawing.Size(354, 811);
             this.treeView1.TabIndex = 0;
             // 
@@ -446,20 +446,14 @@ namespace FirstPass
             this.splitContainer2.SplitterWidth = 5;
             this.splitContainer2.TabIndex = 0;
             // 
-            // WriteToFile
+            // AddNewEntry
             // 
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-<<<<<<< HEAD
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 327);
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 343);
+            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2);
             this.AddNewEntry.Name = "AddNewEntry";
-            this.AddNewEntry.Size = new System.Drawing.Size(1098, 46);
-=======
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 207);
-            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.AddNewEntry.Name = "WriteToFile";
-            this.AddNewEntry.Size = new System.Drawing.Size(732, 30);
->>>>>>> bb9330cab3c12e7cc83b4b1a86c9eb5f01e88250
+            this.AddNewEntry.Size = new System.Drawing.Size(1098, 30);
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";
             this.AddNewEntry.UseVisualStyleBackColor = true;
@@ -498,6 +492,18 @@ namespace FirstPass
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
             this.EntryVariablesPanel.Size = new System.Drawing.Size(366, 433);
             this.EntryVariablesPanel.TabIndex = 2;
+            // 
+            // EntryVariablesConfirmButton
+            // 
+            this.EntryVariablesConfirmButton.AutoSize = true;
+            this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 403);
+            this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
+            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(366, 30);
+            this.EntryVariablesConfirmButton.TabIndex = 9;
+            this.EntryVariablesConfirmButton.Text = "Confirm";
+            this.EntryVariablesConfirmButton.UseVisualStyleBackColor = true;
+            this.EntryVariablesConfirmButton.Click += new System.EventHandler(this.EntryVariablesConfirmButton_Click);
             // 
             // EntryVariablesUrlTextBox
             // 
@@ -617,17 +623,6 @@ namespace FirstPass
             this.entryNotes.Size = new System.Drawing.Size(732, 433);
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "These are test notes";
-            // 
-            // EntryVariablesConfirmButton
-            // 
-            this.EntryVariablesConfirmButton.AutoSize = true;
-            this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 403);
-            this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
-            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(366, 30);
-            this.EntryVariablesConfirmButton.TabIndex = 9;
-            this.EntryVariablesConfirmButton.Text = "Confirm";
-            this.EntryVariablesConfirmButton.UseVisualStyleBackColor = true;
             // 
             // MasterForm
             // 
