@@ -235,8 +235,14 @@ namespace FirstPass {
             SetSelectedEntryData();
         }
             
+
         private void CopyUsernameButton_Click(object sender, EventArgs e) {
 
+
+        }
+
+        private void EditRowButton_Click(object sender, EventArgs e) {
+            GetSelectedEntryData();
         }
     }
 }
