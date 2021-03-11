@@ -3,14 +3,14 @@
     using System.Security.Cryptography;
     using System.Security;
     static partial class Password {
-        public static String randomizePassword(int length, bool includeUppercase, bool includeNumbers, bool includeSymbols, bool includeBrackets) {
+        public static string randomizePassword(int length, bool includeUppercase, bool includeNumbers, bool includeSymbols, bool includeBrackets) {
             string chars = "abcdefghijklmnopqrstuvwxyz"; //series of lowercase letters
             string uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //series of uppercase letters
             string numbers = "1234567890"; //series of numbers
             string symbols = "~`!@#$%^&*_-+'=.;:?/"; //series of symbols
             string brackets = "(){}[]"; //series of brackets
 
-            String genPass = ""; //blank string to be used as the final generated password
+            string genPass = ""; //blank string to be used as the final generated password
 
             if (includeUppercase) { //if passed in that the consumer wants uppercase letters, append "uppercase" to the chars string 
                 chars += uppers;
