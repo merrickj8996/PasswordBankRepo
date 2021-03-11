@@ -134,7 +134,7 @@ namespace FirstPass {
         /// Calls the save function when the user clicks the save file button.
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
-            FileOP.SaveFile();
+            FileOP.SaveFile(dataGridView1);
         }
 
         //Lock button to Encrypt and close the currently opened file.
