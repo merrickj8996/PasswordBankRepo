@@ -29,21 +29,24 @@ namespace FirstPass {
             
         }
 
-        public void selectedRowsButton_Click(object sender, System.EventArgs e) {
-            Int32 selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
+        public void GetSelectedEntryData() {
 
-            if(selectedRowCount > 0) {
-                System.Text.StringBuilder sb = new System.Text.StringBuilder();
+            EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+            EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+            EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+            EntryVariablesUrlTextBox.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+            entryNotes.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
 
-                for(int i = 0; i < selectedRowCount; i++) {
-                    sb.Append("Row: ");
-                    sb.Append(dataGridView1.SelectedRows[i].Index.ToString());
-                    sb.Append(Environment.NewLine);
-                }
+        }
 
-                sb.Append("Total: " + selectedRowCount.ToString());
-                EntryVariablesTitleTextBox.Text = (sb.ToString());
-            }
+        public void SetSelectedEntryData() {
+
+            dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
+            dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
+            dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
+            dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
+            dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+
         }
 
         /// <summary>
@@ -222,13 +225,13 @@ namespace FirstPass {
             guide.Show();
         }
 
-<<<<<<< HEAD
+
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
+            SetSelectedEntryData();
+        }
             
-=======
         private void CopyUsernameButton_Click(object sender, EventArgs e) {
 
->>>>>>> 37c110e6f3d4cedd3c5cab417cc12ef95e1a6773
         }
     }
 }
