@@ -145,6 +145,15 @@ namespace FirstPass {
 
         }
 
+        private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
+            if (FileOP.GetFile() != "") {
+                if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                }
+                LockFile();
+            }
+        }
+
         private void LockFile() {
             //Compresses File
             Compressor.Compress(FileOP.GetFile());
