@@ -123,6 +123,16 @@ namespace FirstPass {
                 return builder.ToString();
             }
         }
+
+        public static SecureString ConvertToSecureString(string str) {
+            SecureString final = new SecureString();
+
+            for (int i = 0; i < str.Length; i++) {
+                final.AppendChar(str[i]);
+            }
+
+            return final;
+        }
         public static bool compare(SecureString compared, SecureString toCompare) {
             if (toCompare == null) {
                 throw new ArgumentNullException("toCompareIsNull");
