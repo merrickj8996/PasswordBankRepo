@@ -29,11 +29,16 @@ namespace FirstPass
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Node4");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Node5");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode31,
+            treeNode32});
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("Node4");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("Node5");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("Root", new System.Windows.Forms.TreeNode[] {
+            treeNode34,
+            treeNode35});
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
@@ -412,14 +417,21 @@ namespace FirstPass
             this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "";
-            treeNode1.Text = "Node4";
-            treeNode2.Name = "";
-            treeNode2.Text = "Node5";
-            treeNode3.Name = "";
-            treeNode3.Text = "Root";
+            treeNode31.Name = "";
+            treeNode31.Text = "Node4";
+            treeNode32.Name = "";
+            treeNode32.Text = "Node5";
+            treeNode33.Name = "";
+            treeNode33.Text = "Root";
+            treeNode34.Name = "";
+            treeNode34.Text = "Node4";
+            treeNode35.Name = "";
+            treeNode35.Text = "Node5";
+            treeNode36.Name = "";
+            treeNode36.Text = "Root";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3});
+            treeNode33,
+            treeNode36});
             this.treeView1.Size = new System.Drawing.Size(236, 515);
             this.treeView1.TabIndex = 0;
             // 
@@ -442,27 +454,31 @@ namespace FirstPass
             this.splitContainer2.Panel2.Controls.Add(this.EntryVariablesPanel);
             this.splitContainer2.Panel2.Controls.Add(this.entryNotes);
             this.splitContainer2.Size = new System.Drawing.Size(732, 515);
-            this.splitContainer2.SplitterDistance = 236;
+            this.splitContainer2.SplitterDistance = 235;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 0;
             // 
             // EditRowButton
             // 
-            this.EditRowButton.Location = new System.Drawing.Point(358, 212);
+            this.EditRowButton.AutoSize = true;
+            this.EditRowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.EditRowButton.Location = new System.Drawing.Point(0, 176);
             this.EditRowButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EditRowButton.Name = "EditRowButton";
-            this.EditRowButton.Size = new System.Drawing.Size(372, 24);
+            this.EditRowButton.Size = new System.Drawing.Size(732, 29);
             this.EditRowButton.TabIndex = 2;
             this.EditRowButton.Text = "Edit selected row";
             this.EditRowButton.UseVisualStyleBackColor = true;
+            this.EditRowButton.Click += new System.EventHandler(this.EditRowButton_Click);
             // 
             // AddNewEntry
             // 
             this.AddNewEntry.AutoSize = true;
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 212);
+            this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 205);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.AddNewEntry.Name = "AddNewEntry";
-            this.AddNewEntry.Size = new System.Drawing.Size(355, 23);
+            this.AddNewEntry.Size = new System.Drawing.Size(732, 30);
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";
             this.AddNewEntry.UseVisualStyleBackColor = true;
@@ -471,17 +487,20 @@ namespace FirstPass
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(732, 236);
+            this.dataGridView1.Size = new System.Drawing.Size(732, 179);
             this.dataGridView1.TabIndex = 0;
             // 
             // EntryVariablesPanel
@@ -501,17 +520,17 @@ namespace FirstPass
             this.EntryVariablesPanel.Location = new System.Drawing.Point(0, 0);
             this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
-            this.EntryVariablesPanel.Size = new System.Drawing.Size(368, 276);
+            this.EntryVariablesPanel.Size = new System.Drawing.Size(368, 277);
             this.EntryVariablesPanel.TabIndex = 2;
             // 
             // EntryVariablesConfirmButton
             // 
             this.EntryVariablesConfirmButton.AutoSize = true;
             this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 253);
+            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 247);
             this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
-            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(368, 23);
+            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(368, 30);
             this.EntryVariablesConfirmButton.TabIndex = 9;
             this.EntryVariablesConfirmButton.Text = "Confirm";
             this.EntryVariablesConfirmButton.UseVisualStyleBackColor = true;
@@ -539,7 +558,7 @@ namespace FirstPass
             this.EntryVariablesPasswordTextBox.Location = new System.Drawing.Point(63, 88);
             this.EntryVariablesPasswordTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesPasswordTextBox.Name = "EntryVariablesPasswordTextBox";
-            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(297, 13);
+            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(298, 13);
             this.EntryVariablesPasswordTextBox.TabIndex = 7;
             this.EntryVariablesPasswordTextBox.Text = "************";
             // 
@@ -640,9 +659,9 @@ namespace FirstPass
             this.entryNotes.Dock = System.Windows.Forms.DockStyle.Right;
             this.entryNotes.Location = new System.Drawing.Point(368, 0);
             this.entryNotes.Name = "entryNotes";
-            this.entryNotes.Size = new System.Drawing.Size(364, 276);
+            this.entryNotes.Size = new System.Drawing.Size(364, 277);
             this.entryNotes.TabIndex = 1;
-            this.entryNotes.Text = "These are test notes";
+            this.entryNotes.Text = "";
             // 
             // MasterForm
             // 
@@ -715,6 +734,13 @@ namespace FirstPass
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button AddNewEntry;
         private System.Windows.Forms.DataGridView dataGridView1;
+
+
+
+        
+        private System.Windows.Forms.DataGridView entryVariablesGridView;
+
+
         private System.Windows.Forms.RichTextBox entryNotes;
 
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;

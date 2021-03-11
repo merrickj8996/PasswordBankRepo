@@ -19,11 +19,16 @@ namespace FirstPass {
         private void CloseButton_Click(object sender, EventArgs e) {
 
             int count = Convert.ToInt32(Math.Round(passSize.Value, 0));
+
+            //string pass = Password.randomizePassword(count, UpperCase.Checked, Digits.Checked, Special.Checked, Brackets.Checked);
+            //Console.WriteLine(pass);
+
             String pass = Password.randomizePassword(count, UpperCase.Checked, Digits.Checked, Special.Checked, Brackets.Checked);
             Console.WriteLine(pass);
+
             PasswordOptions frm = new PasswordOptions();
             frm.Show();
-            frm.UpdateTextBox(pass);
+            //frm.UpdateTextBox(pass);
             this.Hide();
         }
 
