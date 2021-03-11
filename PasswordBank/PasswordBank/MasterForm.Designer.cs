@@ -177,6 +177,7 @@ namespace FirstPass
             this.CopyUsernameButton.Name = "CopyUsernameButton";
             this.CopyUsernameButton.Size = new System.Drawing.Size(28, 28);
             this.CopyUsernameButton.Text = "Copy Username";
+            this.CopyUsernameButton.Click += new System.EventHandler(this.CopyUsernameButton_Click);
             // 
             // CopyPassword
             // 
@@ -186,6 +187,7 @@ namespace FirstPass
             this.CopyPassword.Name = "CopyPassword";
             this.CopyPassword.Size = new System.Drawing.Size(28, 28);
             this.CopyPassword.Text = "Copy Password";
+            this.CopyPassword.Click += new System.EventHandler(this.CopyPassword_Click);
             // 
             // CopyButton
             // 
@@ -195,6 +197,7 @@ namespace FirstPass
             this.CopyButton.Name = "CopyButton";
             this.CopyButton.Size = new System.Drawing.Size(28, 28);
             this.CopyButton.Text = "Copy URL";
+            this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
             // 
             // toolStripSeparator6
             // 

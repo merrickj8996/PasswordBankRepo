@@ -235,14 +235,46 @@ namespace FirstPass {
             SetSelectedEntryData();
         }
             
-
-        private void CopyUsernameButton_Click(object sender, EventArgs e) {
-
-
+        private void EditRowButton_Click(object sender, EventArgs e) {
+            //if the datagrid view doesnt have a datasource AKA no file is open
+            if (dataGridView1.DataSource == null) {
+                //pop open a dialog box explaining why a new row cant be added
+                DialogResult res = MessageBox.Show("Please open a file before trying to edit a row.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else {
+                GetSelectedEntryData();
+            }
         }
 
-        private void EditRowButton_Click(object sender, EventArgs e) {
-            GetSelectedEntryData();
+        private void CopyUsernameButton_Click(object sender, EventArgs e) {
+            if (dataGridView1.DataSource == null) {
+                //pop open a dialog box explaining why a new row cant be added
+                DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (dataGridView1.SelectedRows.Count > 0) {
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+            }
+        }
+
+        private void CopyPassword_Click(object sender, EventArgs e) {
+            if (dataGridView1.DataSource == null) {
+                //pop open a dialog box explaining why a new row cant be added
+                DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (dataGridView1.SelectedRows.Count > 0) {
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
+            }
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e) {
+            if (dataGridView1.DataSource == null) {
+                //pop open a dialog box explaining why a new row cant be added
+                DialogResult res = MessageBox.Show("Please open a file before trying to open a url.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (dataGridView1.SelectedRows.Count > 0) {
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+                System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+            }
         }
     }
 }
