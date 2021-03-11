@@ -17,7 +17,6 @@ namespace FirstPass {
         /// </summary>
         public MasterForm() {
             InitializeComponent();
-            initializeEntryVariables();
         }
         /// <summary>
         /// Sets the datagridviews datasource to be the datatable consturcted by the readfile method.
@@ -31,30 +30,21 @@ namespace FirstPass {
             
         }
 
-        /// <summary>
-        /// Initializes the grid view to store the entry varaibles. It adds 4 rows and sets the names of the header cells.
-        /// </summary>
-        public void initializeEntryVariables() {
-            entryVariablesGridView.RowCount = 4;
+        public void selectedRowsButton_Click(object sender, System.EventArgs e) {
+            Int32 selectedRowCount = dataGridView1.Rows.GetRowCount(DataGridViewElementStates.Selected);
 
-            entryVariablesGridView.Columns[0].HeaderCell.Value = "Entry Variables";
+            if(selectedRowCount > 0) {
+                System.Text.StringBuilder sb = new System.Text.StringBuilder();
 
-            entryVariablesGridView.Rows[0].HeaderCell.Value = "Title";
-            entryVariablesGridView.Rows[0].Cells[0].Value = "Test Title";
+                for(int i = 0; i < selectedRowCount; i++) {
+                    sb.Append("Row: ");
+                    sb.Append(dataGridView1.SelectedRows[i].Index.ToString());
+                    sb.Append(Environment.NewLine);
+                }
 
-            entryVariablesGridView.Rows[1].HeaderCell.Value = "Username";
-            entryVariablesGridView.Rows[1].Cells[0].Value = "TestUsername";
-
-            entryVariablesGridView.Rows[2].HeaderCell.Value = "Password";
-            entryVariablesGridView.Rows[2].Cells[0].Value = "***************";
-
-            entryVariablesGridView.Rows[3].HeaderCell.Value = "URL";
-            entryVariablesGridView.Rows[3].Cells[0].Value = "www.testurl.com";
-
-            // Sets the row headers width to fit all the headers.
-            entryVariablesGridView.RowHeadersWidth = 100;
-
-            entryNotes.Text = "This is some test notes";
+                sb.Append("Total: " + selectedRowCount.ToString());
+                EntryVariablesTitleTextBox.Text = (sb.ToString());
+            }
         }
 
         /// <summary>
@@ -156,6 +146,15 @@ namespace FirstPass {
 
         }
 
+        private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
+            if (FileOP.GetFile() != "") {
+                if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                }
+                LockFile();
+            }
+        }
+
         private void LockFile() {
             //Compresses File
             Compressor.Compress(FileOP.GetFile());
@@ -226,11 +225,8 @@ namespace FirstPass {
             guide.Show();
         }
 
-        private void CopyUsernameButton_Click(object sender, EventArgs e) {
-            if (dataGridView1.SelectedRows.Count != 0) {
-                DataGridViewRow row = this.dataGridView1.SelectedRows[0];
-                //row.Cells["User Name"].Value;
-            }
+        private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
+            
         }
     }
 }

@@ -6,6 +6,8 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using System.Data;
+using System.Security;
+using System.Runtime.InteropServices;
 
 namespace FirstPass {
 
@@ -121,8 +123,51 @@ namespace FirstPass {
                 return builder.ToString();
             }
         }
+
+        public static SecureString ConvertToSecureString(string str) {
+            SecureString final = new SecureString();
+
+            for (int i = 0; i < str.Length; i++) {
+                final.AppendChar(str[i]);
+            }
+
+            return final;
+        }
+        public static bool compare(SecureString compared, SecureString toCompare) {
+            if (toCompare == null) {
+                throw new ArgumentNullException("toCompareIsNull");
+            }
+            if (compared == null) {
+                throw new ArgumentNullException("comparedIsNull");
+            }
+
+            if (toCompare.Length != compared.Length) {
+                return false;
+            }
+
+            IntPtr toComparePtr = IntPtr.Zero;
+            IntPtr comparedPtr = IntPtr.Zero;
+
+            try {
+                toComparePtr = Marshal.SecureStringToBSTR(toCompare);
+                comparedPtr = Marshal.SecureStringToBSTR(compared);
+
+                String str1 = Marshal.PtrToStringBSTR(toComparePtr);
+                String str2 = Marshal.PtrToStringBSTR(comparedPtr);
+
+                return str1.Equals(str2);
+            }
+
+            finally {
+                if (toComparePtr != IntPtr.Zero) {
+                    Marshal.ZeroFreeBSTR(toComparePtr);
+                }
+
+                if (comparedPtr != IntPtr.Zero) {
+                    Marshal.ZeroFreeBSTR(comparedPtr);
+                }
+            }
+        }
     }
-
-
 }
 
