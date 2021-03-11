@@ -228,19 +228,19 @@ namespace FirstPass {
             guide.Show();
         }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> f055fa0a4a8917e315ef7ddac71af50ff266466d
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
             SetSelectedEntryData();
         }
             
-<<<<<<< HEAD
+
         private void CopyUsernameButton_Click(object sender, EventArgs e) {
 
-=======
->>>>>>> f055fa0a4a8917e315ef7ddac71af50ff266466d
+
+        }
+
+        private void EditRowButton_Click(object sender, EventArgs e) {
+            GetSelectedEntryData();
         }
     }
 }
