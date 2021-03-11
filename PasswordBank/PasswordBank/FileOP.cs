@@ -64,17 +64,30 @@ namespace FirstPass {
         /// <summary>
         /// used to save a file DOES NOT COMPLETELY WORK AS OF NOW
         /// </summary>
-        public static void SaveFile() {
+        public static void SaveFile(DataGridView dataGrid) {
             //TODO: Implement/move saveFile from MasterForm.cs
             SaveFileDialog save = new SaveFileDialog {
                 Filter = "CSV |*.csv",
                 Title = "Save file"
             };
-            //if (save.ShowDialog() == DialogResult.OK) {
-            //    StreamWriter write = new StreamWriter(File.Create(save.FileName));
-            //    write.Write(dataGridView1);
-            //    write.Dispose();
-            //}
+
+            // Converting DataGridView to DataTable
+            DataTable dataTable = new DataTable();
+
+            foreach (DataGridViewColumn column in dataGrid.Columns) {
+                dataTable.Columns.Add(column.HeaderText, column.ValueType);
+            }
+
+            foreach (DataGridViewRow row in dataGrid.Rows) {
+                dataTable.Rows.Add();
+                foreach (DataGridViewCell cell in row.Cells) {
+                    dataTable.Rows[dataTable.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+                }
+            }
+
+            if (save.ShowDialog() == DialogResult.OK) {
+                WriteToFile(dataTable);
+            }
         }
 
         /// <summary>
