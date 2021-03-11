@@ -77,6 +77,8 @@ namespace FirstPass {
             }
 
         }
+
+        //Takes a file name and string password and decrypts the file. Returns true if sucessful and fails if password is incorrect or other errors occur. 
         public static bool DecryptFile(string inFile, string password) {
             byte[] passwords = Encoding.UTF8.GetBytes(password);
             byte[] salt = new byte[32];
@@ -91,6 +93,8 @@ namespace FirstPass {
                 AES.Key = key.GetBytes(AES.KeySize / 8);
                 AES.IV = key.GetBytes(AES.BlockSize / 8);
                 //AES.Mode = CipherMode.CFB;
+                
+                //Try catch to assure that the file is decrypted without error. This will determine if the correct password has been entered.
                 try {
                     using (CryptoStream cryptoStream = new CryptoStream(fileCrypto, AES.CreateDecryptor(), CryptoStreamMode.Read)) {
                         using (FileStream fileStreamOut = new FileStream(inFile + ".temp", FileMode.Create)) {
