@@ -75,6 +75,7 @@ namespace FirstPass {
                     DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                     if (savePrompt == DialogResult.Yes) {
                         //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                        FileOP.SaveFile(dataGridView1);
                     }
                     LockFile();
                 }
@@ -101,6 +102,7 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    FileOP.SaveFile(dataGridView1);
                 }
                 LockFile();
             }
@@ -120,6 +122,7 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    FileOP.SaveFile(dataGridView1);
                 }
                 LockFile();
             }
@@ -139,7 +142,14 @@ namespace FirstPass {
 
         //Lock button to Encrypt and close the currently opened file.
         private void LockButton_Click(object sender, EventArgs e) {
-            LockFile();
+            if (FileOP.GetFile() != "") {
+                DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                if (savePrompt == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    FileOP.SaveFile(dataGridView1);
+                }
+                LockFile();
+            }
         }
 
 
@@ -214,7 +224,7 @@ namespace FirstPass {
                 drToAdd["id"] = Int32.Parse(id) + 1;
                 drToAdd["group"] = "";
                 drToAdd["title"] = "";
-                drToAdd["user name"] = "";
+                drToAdd["username"] = "";
                 drToAdd["password"] = "";
                 drToAdd["url"] = "";
                 drToAdd["notes"] = "";
