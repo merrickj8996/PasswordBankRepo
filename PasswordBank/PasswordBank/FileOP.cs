@@ -65,13 +65,7 @@ namespace FirstPass {
         /// used to save a file DOES NOT COMPLETELY WORK AS OF NOW
         /// </summary>
         public static void SaveFile(DataGridView dataGrid) {
-            //TODO: Implement/move saveFile from MasterForm.cs
-            SaveFileDialog save = new SaveFileDialog {
-                Filter = "CSV |*.csv",
-                Title = "Save file"
-            };
-
-            // Converting DataGridView to DataTable
+           
             DataTable dataTable = new DataTable();
 
             foreach (DataGridViewColumn column in dataGrid.Columns) {
@@ -84,10 +78,7 @@ namespace FirstPass {
                     dataTable.Rows[dataTable.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
                 }
             }
-
-            if (save.ShowDialog() == DialogResult.OK) {
-                WriteToFile(dataTable);
-            }
+            WriteToFile(dataTable);
         }
 
         /// <summary>
@@ -110,7 +101,7 @@ namespace FirstPass {
                 }
                 //Write the first line of the file to the file.
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
-                    file.WriteLine("ID,Group,Title,User Name,Password,URL,Notes");
+                    file.WriteLine("ID,Group,Title,UserName,Password,URL,Notes");
                     file.Close();
                 }
                 return true;
@@ -210,7 +201,7 @@ namespace FirstPass {
                     // Creates a list for the password entries and adds the entries to it
                     List<PasswordEntry> passwordEntries = new List<PasswordEntry>() { };
                     foreach (DataRow row in dataTable.Rows) {
-                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["group"].ToString(), row["title"].ToString(), row["user name"].ToString(),
+                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["group"].ToString(), row["title"].ToString(), row["username"].ToString(),
                                                                                     row["password"].ToString(), row["url"].ToString(), row["notes"].ToString());
                         passwordEntries.Add(passwordEntry);
                     }

@@ -22,12 +22,13 @@ namespace FirstPass {
         /// Sets the datagridviews datasource to be the datatable consturcted by the readfile method.
         /// </summary>
         public void PerformRefresh() {
-            if(FileOP.GetFile() != "") {
+            if (FileOP.GetFile() != "") {
                 dataGridView1.DataSource = FileOP.ReadFile();
-            } else {
+            }
+            else {
                 dataGridView1.DataSource = null;
             }
-            
+
         }
 
         public void GetSelectedEntryData() {
@@ -74,6 +75,7 @@ namespace FirstPass {
                     DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                     if (savePrompt == DialogResult.Yes) {
                         //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                        FileOP.SaveFile(dataGridView1);
                     }
                     LockFile();
                 }
@@ -95,11 +97,12 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked.
         /// </summary>
         private void OpenFileButton_Click(object sender, EventArgs e) {
-           
+
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    FileOP.SaveFile(dataGridView1);
                 }
                 LockFile();
             }
@@ -109,7 +112,7 @@ namespace FirstPass {
                 };
                 frm.Show();
             }
-            
+
         }
         /// <summary>
         /// Calls the select file method and shows the next form when the open button is clicked from the file dropdown menu.
@@ -119,6 +122,7 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    FileOP.SaveFile(dataGridView1);
                 }
                 LockFile();
             }
@@ -138,16 +142,14 @@ namespace FirstPass {
 
         //Lock button to Encrypt and close the currently opened file.
         private void LockButton_Click(object sender, EventArgs e) {
-            LockFile();
-        }
-
-
-        private void MasterForm_Load(object sender, EventArgs e) {
-
-        }
-
-        private void SplitContainer1_SplitterMoved(object sender, SplitterEventArgs e) {
-
+            if (FileOP.GetFile() != "") {
+                DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                if (savePrompt == DialogResult.Yes) {
+                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    FileOP.SaveFile(dataGridView1);
+                }
+                LockFile();
+            }
         }
 
         private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
@@ -188,7 +190,7 @@ namespace FirstPass {
             UserGuide frm = new UserGuide();
             frm.Show();
         }
-        
+
         //add a new empty row
         private void AddNewEntry_Click(object sender, EventArgs e) {
             String id = "0";
@@ -200,8 +202,8 @@ namespace FirstPass {
             else {
                 //Read in the id's in the datagridview
                 foreach (DataGridViewRow rw in this.dataGridView1.Rows) {
-                    if(rw.Cells[0].Value != null)
-                    id = rw.Cells[0].Value.ToString();
+                    if (rw.Cells[0].Value != null)
+                        id = rw.Cells[0].Value.ToString();
                 }
 
 
@@ -213,7 +215,7 @@ namespace FirstPass {
                 drToAdd["id"] = Int32.Parse(id) + 1;
                 drToAdd["group"] = "";
                 drToAdd["title"] = "";
-                drToAdd["user name"] = "";
+                drToAdd["username"] = "";
                 drToAdd["password"] = "";
                 drToAdd["url"] = "";
                 drToAdd["notes"] = "";
@@ -233,7 +235,7 @@ namespace FirstPass {
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
             SetSelectedEntryData();
         }
-            
+        //button press to edit a row that the consumer has selected
         private void EditRowButton_Click(object sender, EventArgs e) {
             //if the datagrid view doesnt have a datasource AKA no file is open
             if (dataGridView1.DataSource == null) {
@@ -244,30 +246,30 @@ namespace FirstPass {
                 GetSelectedEntryData();
             }
         }
-
+        //button press to copy the username of the row selected
         private void CopyUsernameButton_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new row cant be added
+                //pop open a dialog box explaining why a new cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
             }
         }
-
+        //button press to copy the passwrod of the row selected
         private void CopyPassword_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new row cant be added
+                //pop open a dialog box explaining why a new cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
             }
         }
-
+        //button to copy and open the link of the row selected.
         private void CopyButton_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new row cant be added
+                //pop open a dialog box explaining why a new cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to open a url.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {

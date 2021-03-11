@@ -509,7 +509,6 @@ namespace FirstPass
             this.EntryVariablesUrlTextBox.Name = "EntryVariablesUrlTextBox";
             this.EntryVariablesUrlTextBox.Size = new System.Drawing.Size(488, 19);
             this.EntryVariablesUrlTextBox.TabIndex = 8;
-            this.EntryVariablesUrlTextBox.Text = "www.testurl.com";
             // 
             // EntryVariablesPasswordTextBox
             // 
@@ -521,7 +520,6 @@ namespace FirstPass
             this.EntryVariablesPasswordTextBox.Name = "EntryVariablesPasswordTextBox";
             this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(449, 19);
             this.EntryVariablesPasswordTextBox.TabIndex = 7;
-            this.EntryVariablesPasswordTextBox.Text = "************";
             // 
             // EntryVariablesUsernameTextBox
             // 
@@ -533,7 +531,6 @@ namespace FirstPass
             this.EntryVariablesUsernameTextBox.Name = "EntryVariablesUsernameTextBox";
             this.EntryVariablesUsernameTextBox.Size = new System.Drawing.Size(443, 19);
             this.EntryVariablesUsernameTextBox.TabIndex = 6;
-            this.EntryVariablesUsernameTextBox.Text = "TestUsername";
             // 
             // EntryVariablesTitleTextBox
             // 
@@ -545,7 +542,6 @@ namespace FirstPass
             this.EntryVariablesTitleTextBox.Name = "EntryVariablesTitleTextBox";
             this.EntryVariablesTitleTextBox.Size = new System.Drawing.Size(488, 19);
             this.EntryVariablesTitleTextBox.TabIndex = 5;
-            this.EntryVariablesTitleTextBox.Text = "Test Title";
             // 
             // EntryVariablesUrlLabel
             // 
