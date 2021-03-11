@@ -167,5 +167,43 @@ namespace FirstPass {
             this.PerformRefresh();
         }
 
+
+        //click event for the help option to teach you how to use the program
+        private void quickGuideToolStripMenuItem_Click(object sender, EventArgs e) {
+            //open the new form
+            UserGuide frm = new UserGuide();
+            frm.Show();
+        }
+        
+        //add a new empty row
+        private void AddNewEntry_Click(object sender, EventArgs e) {
+            //if the datagrid view doesnt have a datasource AKA no file is open
+            if (dataGridView1.DataSource == null) {
+                //pop open a dialog box explaining why a new row cant be added
+                DialogResult res = MessageBox.Show("Please open a file before adding a new row.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else {
+                //add an empty row under each respective field
+                DataTable dataTable = (DataTable)dataGridView1.DataSource;
+                DataRow drToAdd = dataTable.NewRow();
+
+                drToAdd["id"] = "";
+                drToAdd["group"] = "";
+                drToAdd["title"] = "";
+                drToAdd["user name"] = "";
+                drToAdd["password"] = "";
+                drToAdd["url"] = "";
+                drToAdd["notes"] = "";
+
+
+                dataTable.Rows.Add(drToAdd);
+                dataTable.AcceptChanges();
+            }
+        }
+
+        private void quickGuideToolStripMenuItem_Click_1(object sender, EventArgs e) {
+            UserGuide guide = new UserGuide();
+            guide.Show();
+        }
     }
 }
