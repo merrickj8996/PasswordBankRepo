@@ -438,13 +438,13 @@ namespace FirstPass
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 0;
             // 
-            // AddNewEntry
+            // WriteToFile
             // 
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.AddNewEntry.Location = new System.Drawing.Point(0, 207);
-            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2);
-            this.AddNewEntry.Name = "AddNewEntry";
+            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AddNewEntry.Name = "WriteToFile";
             this.AddNewEntry.Size = new System.Drawing.Size(732, 30);
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";

@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
+using CsvHelper;
+using CsvHelper.Configuration;
 
 namespace FirstPass {
     /// <summary>
     /// Contains all the methods for file operations such as opening a file, creating a new file and saving a file.
     /// </summary>
-    class FileOP {
+    public class FileOP {
         #region memberVariables
         public static String mFileName = "";
         public static String mKeyFileName = "";
@@ -174,10 +178,63 @@ namespace FirstPass {
         }
 
         /// <summary>
+        /// Writes all the password entries to the CSV file.
+        /// </summary>
+        public static void WriteToFile(DataTable dataTable) {
+            string origFilePath = GetFile();
+            string tempFile = "temp_file.csv";
+            using (FileStream fs = File.Create(tempFile)) { }
+
+            // Write all of the password entries in the data table to the temp file
+            using (StreamWriter writer = new StreamWriter(tempFile)) {
+                using (CsvWriter csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
+                    // Setting the map so that entries get written into the correct columns
+                    csvWriter.Context.RegisterClassMap<PasswordEntryMap>();
+
+                    // Creates a list for the password entries and adds the entries to it
+                    List<PasswordEntry> passwordEntries = new List<PasswordEntry>() { };
+                    foreach (DataRow row in dataTable.Rows) {
+                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["group"].ToString(), row["title"].ToString(), row["user name"].ToString(),
+                                                                                    row["password"].ToString(), row["url"].ToString(), row["notes"].ToString());
+                        passwordEntries.Add(passwordEntry);
+                    }
+
+                    // Casting the password list to an IEnumerable
+                    IEnumerable<PasswordEntry> enumData = passwordEntries;
+
+                    // Write the entries to the CSV
+                    csvWriter.WriteRecords(enumData);
+                }
+            }
+
+            // Replace the original file with the temp file
+            File.Delete(origFilePath);
+            File.Move(tempFile, origFilePath);
+
+            // Update the file currently being used by the program
+            FileOP.LoadFile(origFilePath);
+        }
+
+        /// <summary>
         /// Logs the filepath to the console. Use for testing purposes.
         /// </summary>
         public static void PrintFileName() {
             Console.WriteLine(FileOP.GetFile());
+        }
+    }
+
+    /// <summary>
+    /// Maps the columns of the CSV file to the member variables in PasswordEntry class.
+    /// </summary>
+    sealed public class PasswordEntryMap : ClassMap<PasswordEntry> {
+        private PasswordEntryMap() {
+            Map(m => m.Id).Index(0).Name("id");
+            Map(m => m.Group).Index(1).Name("group");
+            Map(m => m.Title).Index(2).Name("title");
+            Map(m => m.Username).Index(3).Name("username");
+            Map(m => m.Password).Index(4).Name("password");
+            Map(m => m.Url).Index(5).Name("url");
+            Map(m => m.Notes).Index(6).Name("notes");
         }
     }
 }

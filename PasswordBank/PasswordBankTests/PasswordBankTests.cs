@@ -1,7 +1,9 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FirstPass;
+using System.Data;
 using System.IO;
 using System.Linq;
+using System;
 
 namespace PasswordBankTests {
     [TestClass]
@@ -178,6 +180,102 @@ namespace PasswordBankTests {
 
             //Assert
             Assert.IsFalse(hashedPassword.Equals(hashedPassword2));
+        }
+
+        [TestMethod]
+        public void WriteToFileTest() {
+            // Tests that a single new entry gets to an empty CSV correctly
+
+            // Arrange
+            string testFilePath = @"..\..\..\TestResources\WriteToFileTestFile.csv";
+            string comparatorFilePath = @"..\..\..\TestResources\WriteToFileTestComparator.csv";
+            FileOP.LoadFile(testFilePath);
+
+            DataTable testTable = new DataTable();
+            testTable.Clear();
+            testTable.Columns.Add("id");
+            testTable.Columns.Add("group");
+            testTable.Columns.Add("title");
+            testTable.Columns.Add("user name");
+            testTable.Columns.Add("password");
+            testTable.Columns.Add("url");
+            testTable.Columns.Add("notes");
+
+            testTable.Rows.Add("0", "test group", "test title", "test username", "test password", "test url", "test notes");
+            testTable.AcceptChanges();
+
+            // Act
+            FileOP.WriteToFile(testTable);
+
+            // Assert
+            bool equals = File.ReadAllBytes(testFilePath).SequenceEqual(File.ReadAllBytes(comparatorFilePath));
+            Assert.IsTrue(equals);
+        }
+
+        [TestMethod]
+        public void WriteMultipleLinesTest() {
+            // Tests that a multiple entries to a new file
+
+            // Arrange
+            string testFilePath = @"..\..\..\TestResources\WriteMultipleLinesTestFile.csv";
+            string comparatorFilePath = @"..\..\..\TestResources\WriteMultipleLinesTestComparator.csv";
+            FileOP.LoadFile(testFilePath);
+
+            DataTable multiLineTestTable = new DataTable();
+            multiLineTestTable.Clear();
+            multiLineTestTable.Columns.Add("id");
+            multiLineTestTable.Columns.Add("group");
+            multiLineTestTable.Columns.Add("title");
+            multiLineTestTable.Columns.Add("user name");
+            multiLineTestTable.Columns.Add("password");
+            multiLineTestTable.Columns.Add("url");
+            multiLineTestTable.Columns.Add("notes");
+
+            multiLineTestTable.Rows.Add("0", "test group", "test title", "test username", "test password", "test url", "test notes");
+            multiLineTestTable.Rows.Add("0", "test group2", "test title2", "test username2", "test password2", "test url2", "test notes2");
+            multiLineTestTable.Rows.Add("0", "test group3", "test title3", "test username3", "test password3", "test url3", "test notes3");
+            multiLineTestTable.Rows.Add("0", "test group4", "test title4", "test username4", "test password4", "test url4", "test notes4");
+            multiLineTestTable.Rows.Add("0", "test group5", "test title5", "test username5", "test password5", "test url5", "test notes5");
+            multiLineTestTable.AcceptChanges();
+
+            // Act
+            FileOP.WriteToFile(multiLineTestTable);
+
+            // Assert
+            bool equals = File.ReadAllBytes(testFilePath).SequenceEqual(File.ReadAllBytes(comparatorFilePath));
+            Assert.IsTrue(equals);
+        }
+
+        [TestMethod]
+        public void WriteLessLinesTest() {
+            // Tests that a multiple entries to a new file
+
+            // Arrange
+            string testFilePath = @"..\..\..\TestResources\WriteLessLinesTestFile.csv";
+            string comparatorFilePath = @"..\..\..\TestResources\WriteLessLinesTestComparator.csv";
+            FileOP.LoadFile(testFilePath);
+
+            DataTable lessLinesTestTable = new DataTable();
+            lessLinesTestTable.Clear();
+            lessLinesTestTable.Columns.Add("id");
+            lessLinesTestTable.Columns.Add("group");
+            lessLinesTestTable.Columns.Add("title");
+            lessLinesTestTable.Columns.Add("user name");
+            lessLinesTestTable.Columns.Add("password");
+            lessLinesTestTable.Columns.Add("url");
+            lessLinesTestTable.Columns.Add("notes");
+
+            lessLinesTestTable.Rows.Add("0", "test group", "test title", "test username", "test password", "test url", "test notes");
+            lessLinesTestTable.Rows.Add("0", "test group2", "test title2", "test username2", "test password2", "test url2", "test notes2");
+            lessLinesTestTable.Rows.Add("0", "test group3", "test title3", "test username3", "test password3", "test url3", "test notes3");
+            lessLinesTestTable.AcceptChanges();
+
+            // Act
+            FileOP.WriteToFile(lessLinesTestTable);
+
+            // Assert
+            bool equals = File.ReadAllBytes(testFilePath).SequenceEqual(File.ReadAllBytes(comparatorFilePath));
+            Assert.IsTrue(equals);
         }
     }
 }
