@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -194,16 +195,18 @@ namespace FirstPass {
                 DialogResult res = MessageBox.Show("Please open a file before adding a new row.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else {
-                //add an empty row under each respective field
-
+                //Read in the id's in the datagridview
                 foreach (DataGridViewRow rw in this.dataGridView1.Rows) {
                     if(rw.Cells[0].Value != null)
                     id = rw.Cells[0].Value.ToString();
                 }
 
-                DataTable dataTable = (DataTable)dataGridView1.DataSource;
-                DataRow drToAdd = dataTable.NewRow();
 
+                //make a new datatable
+                DataTable dataTable = (DataTable)dataGridView1.DataSource;
+                //Make a new row
+                DataRow drToAdd = dataTable.NewRow();
+                //add values to each of the rows
                 drToAdd["id"] = Int32.Parse(id) + 1;
                 drToAdd["group"] = "";
                 drToAdd["title"] = "";
