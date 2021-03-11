@@ -1,16 +1,11 @@
-﻿using CsvHelper.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FirstPass {
+﻿namespace FirstPass {
 
     /// <summary>
     /// Contains all the data for a password entry.
     /// </summary>
     public class PasswordEntry {
+
+        // Declaration of all the variables corresponding to columns in the data table
         public string Id { get; set; }
         public string Group { get; set; }
         public string Title { get; set; }
