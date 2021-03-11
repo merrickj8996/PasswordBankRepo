@@ -175,8 +175,6 @@ namespace FirstPass {
                 dt.Rows.Add(Row);
             }
             return dt;
-            //dataGridView1.DataSource = dt;
-
         }
 
         /// <summary>
