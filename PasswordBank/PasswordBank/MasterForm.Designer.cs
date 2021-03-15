@@ -82,6 +82,7 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.removeRowButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -409,6 +410,7 @@ namespace FirstPass
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.removeRowButton);
             this.splitContainer2.Panel1.Controls.Add(this.EditRowButton);
             this.splitContainer2.Panel1.Controls.Add(this.AddNewEntry);
             this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
@@ -464,7 +466,7 @@ namespace FirstPass
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(732, 179);
+            this.dataGridView1.Size = new System.Drawing.Size(732, 155);
             this.dataGridView1.TabIndex = 0;
             // 
             // EntryVariablesPanel
@@ -623,6 +625,16 @@ namespace FirstPass
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 
+            // removeRowButton
+            // 
+            this.removeRowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.removeRowButton.Location = new System.Drawing.Point(0, 153);
+            this.removeRowButton.Name = "removeRowButton";
+            this.removeRowButton.Size = new System.Drawing.Size(732, 23);
+            this.removeRowButton.TabIndex = 3;
+            this.removeRowButton.Text = "Remove selected row";
+            this.removeRowButton.UseVisualStyleBackColor = true;
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -717,6 +729,7 @@ namespace FirstPass
         private System.Windows.Forms.TextBox EntryVariablesUsernameTextBox;
         private System.Windows.Forms.TextBox EntryVariablesUrlTextBox;
         private System.Windows.Forms.Button EntryVariablesConfirmButton;
+        private System.Windows.Forms.Button removeRowButton;
     }
 }
 
