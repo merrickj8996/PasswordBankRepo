@@ -66,6 +66,7 @@ namespace FirstPass
             this.addingEntriesToTheFielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.removeRowButton = new System.Windows.Forms.Button();
             this.EditRowButton = new System.Windows.Forms.Button();
             this.AddNewEntry = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -82,7 +83,6 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.removeRowButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -404,7 +404,7 @@ namespace FirstPass
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -420,18 +420,29 @@ namespace FirstPass
             this.splitContainer2.Panel2.Controls.Add(this.EntryVariablesPanel);
             this.splitContainer2.Panel2.Controls.Add(this.entryNotes);
             this.splitContainer2.Size = new System.Drawing.Size(732, 515);
-            this.splitContainer2.SplitterDistance = 235;
+            this.splitContainer2.SplitterDistance = 234;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // removeRowButton
+            // 
+            this.removeRowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.removeRowButton.Location = new System.Drawing.Point(0, 159);
+            this.removeRowButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.removeRowButton.Name = "removeRowButton";
+            this.removeRowButton.Size = new System.Drawing.Size(732, 15);
+            this.removeRowButton.TabIndex = 3;
+            this.removeRowButton.Text = "Remove selected row";
+            this.removeRowButton.UseVisualStyleBackColor = true;
             // 
             // EditRowButton
             // 
             this.EditRowButton.AutoSize = true;
             this.EditRowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EditRowButton.Location = new System.Drawing.Point(0, 176);
-            this.EditRowButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EditRowButton.Location = new System.Drawing.Point(0, 174);
+            this.EditRowButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EditRowButton.Name = "EditRowButton";
-            this.EditRowButton.Size = new System.Drawing.Size(732, 29);
+            this.EditRowButton.Size = new System.Drawing.Size(732, 30);
             this.EditRowButton.TabIndex = 2;
             this.EditRowButton.Text = "Edit selected row";
             this.EditRowButton.UseVisualStyleBackColor = true;
@@ -441,8 +452,8 @@ namespace FirstPass
             // 
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 205);
-            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1);
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 204);
+            this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.AddNewEntry.Name = "AddNewEntry";
             this.AddNewEntry.Size = new System.Drawing.Size(732, 30);
             this.AddNewEntry.TabIndex = 1;
@@ -466,7 +477,7 @@ namespace FirstPass
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(732, 155);
+            this.dataGridView1.Size = new System.Drawing.Size(488, 95);
             this.dataGridView1.TabIndex = 0;
             // 
             // EntryVariablesPanel
@@ -484,17 +495,17 @@ namespace FirstPass
             this.EntryVariablesPanel.Controls.Add(this.EntryVariablesHeaderLabel);
             this.EntryVariablesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EntryVariablesPanel.Location = new System.Drawing.Point(0, 0);
-            this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2);
+            this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
-            this.EntryVariablesPanel.Size = new System.Drawing.Size(368, 277);
+            this.EntryVariablesPanel.Size = new System.Drawing.Size(368, 278);
             this.EntryVariablesPanel.TabIndex = 2;
             // 
             // EntryVariablesConfirmButton
             // 
             this.EntryVariablesConfirmButton.AutoSize = true;
             this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 247);
-            this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 248);
+            this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(368, 30);
             this.EntryVariablesConfirmButton.TabIndex = 9;
@@ -509,7 +520,7 @@ namespace FirstPass
             this.EntryVariablesUrlTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.EntryVariablesUrlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EntryVariablesUrlTextBox.Location = new System.Drawing.Point(36, 117);
-            this.EntryVariablesUrlTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.EntryVariablesUrlTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesUrlTextBox.Name = "EntryVariablesUrlTextBox";
             this.EntryVariablesUrlTextBox.Size = new System.Drawing.Size(324, 13);
             this.EntryVariablesUrlTextBox.TabIndex = 8;
@@ -521,7 +532,7 @@ namespace FirstPass
             this.EntryVariablesPasswordTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.EntryVariablesPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EntryVariablesPasswordTextBox.Location = new System.Drawing.Point(63, 88);
-            this.EntryVariablesPasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.EntryVariablesPasswordTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesPasswordTextBox.Name = "EntryVariablesPasswordTextBox";
             this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(298, 13);
             this.EntryVariablesPasswordTextBox.TabIndex = 7;
@@ -533,7 +544,7 @@ namespace FirstPass
             this.EntryVariablesUsernameTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.EntryVariablesUsernameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EntryVariablesUsernameTextBox.Location = new System.Drawing.Point(66, 58);
-            this.EntryVariablesUsernameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.EntryVariablesUsernameTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesUsernameTextBox.Name = "EntryVariablesUsernameTextBox";
             this.EntryVariablesUsernameTextBox.Size = new System.Drawing.Size(294, 13);
             this.EntryVariablesUsernameTextBox.TabIndex = 6;
@@ -545,7 +556,7 @@ namespace FirstPass
             this.EntryVariablesTitleTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.EntryVariablesTitleTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.EntryVariablesTitleTextBox.Location = new System.Drawing.Point(36, 29);
-            this.EntryVariablesTitleTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.EntryVariablesTitleTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.EntryVariablesTitleTextBox.Name = "EntryVariablesTitleTextBox";
             this.EntryVariablesTitleTextBox.Size = new System.Drawing.Size(324, 13);
             this.EntryVariablesTitleTextBox.TabIndex = 5;
@@ -621,19 +632,9 @@ namespace FirstPass
             this.entryNotes.Dock = System.Windows.Forms.DockStyle.Right;
             this.entryNotes.Location = new System.Drawing.Point(368, 0);
             this.entryNotes.Name = "entryNotes";
-            this.entryNotes.Size = new System.Drawing.Size(364, 277);
+            this.entryNotes.Size = new System.Drawing.Size(364, 278);
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
-            // 
-            // removeRowButton
-            // 
-            this.removeRowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.removeRowButton.Location = new System.Drawing.Point(0, 153);
-            this.removeRowButton.Name = "removeRowButton";
-            this.removeRowButton.Size = new System.Drawing.Size(732, 23);
-            this.removeRowButton.TabIndex = 3;
-            this.removeRowButton.Text = "Remove selected row";
-            this.removeRowButton.UseVisualStyleBackColor = true;
             // 
             // MasterForm
             // 
