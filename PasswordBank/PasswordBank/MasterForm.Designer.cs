@@ -427,10 +427,10 @@ namespace FirstPass
             // removeRowButton
             // 
             this.removeRowButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.removeRowButton.Location = new System.Drawing.Point(0, 159);
+            this.removeRowButton.Location = new System.Drawing.Point(0, 145);
             this.removeRowButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.removeRowButton.Name = "removeRowButton";
-            this.removeRowButton.Size = new System.Drawing.Size(732, 15);
+            this.removeRowButton.Size = new System.Drawing.Size(732, 29);
             this.removeRowButton.TabIndex = 3;
             this.removeRowButton.Text = "Remove selected row";
             this.removeRowButton.UseVisualStyleBackColor = true;
@@ -464,12 +464,10 @@ namespace FirstPass
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Top;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.MultiSelect = false;
@@ -477,7 +475,7 @@ namespace FirstPass
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(488, 95);
+            this.dataGridView1.Size = new System.Drawing.Size(732, 146);
             this.dataGridView1.TabIndex = 0;
             // 
             // EntryVariablesPanel
