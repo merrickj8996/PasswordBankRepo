@@ -123,6 +123,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "EnterPasswordForFile";
             this.Text = "EnterPasswordForFile";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EnterPasswordForFile_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

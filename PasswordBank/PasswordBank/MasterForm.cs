@@ -110,7 +110,7 @@ namespace FirstPass {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
-                frm.Show();
+                frm.ShowDialog();
             }
 
         }
@@ -130,7 +130,7 @@ namespace FirstPass {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
-                frm.Show();
+                frm.ShowDialog();
             }
         }
         /// <summary>

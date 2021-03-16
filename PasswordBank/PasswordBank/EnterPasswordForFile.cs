@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace FirstPass {
     public partial class EnterPasswordForFile : Form {
-
+        bool success = false;
         public MasterForm TheParent;
         public EnterPasswordForFile() {
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace FirstPass {
                     Crypto.mPassTemp = passwordEntry.Text;
                     Compressor.Decompress(FileOP.GetFile());
                     TheParent.PerformRefresh();
+                    success = true;
                     this.Close();
                 }
 
@@ -43,6 +44,7 @@ namespace FirstPass {
                 Crypto.mPassTemp = passwordEntry.Text;
                 Compressor.Decompress(FileOP.GetFile());
                 TheParent.PerformRefresh();
+                success = true;
                 this.Close();
             }
 
@@ -51,6 +53,15 @@ namespace FirstPass {
         private void FindKeyFile_Click(object sender, EventArgs e) {
             if (FileOP.SelectKeyFile()) {
                 KeyfileLocation.Text = FileOP.GetKeyFile();
+            }
+        }
+
+        private void EnterPasswordForFile_FormClosing(object sender, FormClosingEventArgs e) {
+            if (!success) {
+                FileOP.ClearFile();
+                FileOP.ClearKeyFile();
+            } else {
+                success = false;
             }
         }
     }
