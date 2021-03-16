@@ -83,6 +83,7 @@ namespace FirstPass {
 
         /// <summary>
         /// Opens up the dialog for creating a new password file
+        /// Returns true upon success and false upon premature closing.
         /// </summary>
         public static bool CreateFile() {
             Stream myStream;
