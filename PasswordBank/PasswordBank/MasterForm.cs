@@ -110,7 +110,7 @@ namespace FirstPass {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
-                frm.Show();
+                frm.ShowDialog();
             }
 
         }
@@ -130,7 +130,7 @@ namespace FirstPass {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
-                frm.Show();
+                frm.ShowDialog();
             }
         }
         /// <summary>
@@ -276,6 +276,16 @@ namespace FirstPass {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
                 System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
             }
+        }
+
+        private void openingAFileToolStripMenuItem_Click(object sender, EventArgs e) {
+            OpeningAFileHelpMenu guide = new OpeningAFileHelpMenu();
+            guide.Show();
+        }
+
+        private void addingEntriesToTheFielToolStripMenuItem_Click(object sender, EventArgs e) {
+            EditingAFileHelpMenu guide = new EditingAFileHelpMenu();
+            guide.Show();
         }
     }
 }

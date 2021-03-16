@@ -9,26 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstPass {
-    public partial class UserGuide : Form {
+    public partial class EditingAFileHelpMenu : Form {
+
         List<Panel> listPanel = new List<Panel>();
         int index;
 
-
-        public UserGuide() {
+        public EditingAFileHelpMenu() {
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e) {
-
-        }
-
-        private void PreviousButton_Click(object sender, EventArgs e) {
-            if (index > 0) {
-                listPanel[--index].BringToFront();
-            }
-        }
-
-        private void NextPage_Click(object sender, EventArgs e) {
+        private void NextButton_Click(object sender, EventArgs e) {
             if (index < listPanel.Count - 1) {
                 listPanel[++index].BringToFront();
             }
@@ -39,12 +29,13 @@ namespace FirstPass {
             listPanel.Add(panel2);
             listPanel.Add(panel3);
             listPanel.Add(panel4);
-            listPanel.Add(panel5);
-            listPanel.Add(panel6);
-            listPanel.Add(panel7);
-            listPanel.Add(panel8);
-            listPanel.Add(panel8);
             listPanel[index].BringToFront();
+        }
+
+        private void PreviousButton_Click(object sender, EventArgs e) {
+            if (index > 0) {
+                listPanel[--index].BringToFront();
+            }
         }
     }
 }
