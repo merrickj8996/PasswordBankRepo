@@ -9,42 +9,34 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstPass {
-    public partial class UserGuide : Form {
+    public partial class OpeningAFileHelpMenu : Form {
+
         List<Panel> listPanel = new List<Panel>();
         int index;
 
-
-        public UserGuide() {
+        public OpeningAFileHelpMenu() {
             InitializeComponent();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e) {
-
+        //go to the next page
+        private void NextButton_Click(object sender, EventArgs e) {
+            if (index < listPanel.Count - 1) {
+                listPanel[++index].BringToFront();
+            }
+        }
+        //add panels to a list panel control.
+        private void OpeningAFileHelpMenu_Load(object sender, EventArgs e) {
+            listPanel.Add(panel1);
+            listPanel.Add(panel2);
+            listPanel.Add(panel3);
+            listPanel.Add(panel4);
+            listPanel[index].BringToFront();
         }
 
         private void PreviousButton_Click(object sender, EventArgs e) {
             if (index > 0) {
                 listPanel[--index].BringToFront();
             }
-        }
-
-        private void NextPage_Click(object sender, EventArgs e) {
-            if (index < listPanel.Count - 1) {
-                listPanel[++index].BringToFront();
-            }
-        }
-
-        private void UserGuide_Load(object sender, EventArgs e) {
-            listPanel.Add(panel1);
-            listPanel.Add(panel2);
-            listPanel.Add(panel3);
-            listPanel.Add(panel4);
-            listPanel.Add(panel5);
-            listPanel.Add(panel6);
-            listPanel.Add(panel7);
-            listPanel.Add(panel8);
-            listPanel.Add(panel8);
-            listPanel[index].BringToFront();
         }
     }
 }
