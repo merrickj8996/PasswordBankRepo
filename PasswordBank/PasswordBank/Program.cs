@@ -134,37 +134,37 @@ namespace FirstPass {
             return final;
         }
         public static bool compare(SecureString compared, SecureString toCompare) {
-            if (toCompare == null) {
+            if (toCompare == null) { //if first SecureString is null, throw exception
                 throw new ArgumentNullException("toCompareIsNull");
             }
-            if (compared == null) {
+            if (compared == null) { //if second SecureString is null, throw exception
                 throw new ArgumentNullException("comparedIsNull");
             }
 
-            if (toCompare.Length != compared.Length) {
+            if (toCompare.Length != compared.Length) { //if SecureStrings are not of equal length, return false
                 return false;
             }
 
-            IntPtr toComparePtr = IntPtr.Zero;
-            IntPtr comparedPtr = IntPtr.Zero;
+            IntPtr toComparePtr = IntPtr.Zero; //create pointer for first SecureString
+            IntPtr comparedPtr = IntPtr.Zero; //create pointer for second SecureString
 
             try {
-                toComparePtr = Marshal.SecureStringToBSTR(toCompare);
-                comparedPtr = Marshal.SecureStringToBSTR(compared);
+                toComparePtr = Marshal.SecureStringToBSTR(toCompare); //set pointer to point to first SecureString
+                comparedPtr = Marshal.SecureStringToBSTR(compared); //set pointer to point to second SecureString
 
-                String str1 = Marshal.PtrToStringBSTR(toComparePtr);
-                String str2 = Marshal.PtrToStringBSTR(comparedPtr);
+                String str1 = Marshal.PtrToStringBSTR(toComparePtr); //make string equal to encrypted value of first SecureString
+                String str2 = Marshal.PtrToStringBSTR(comparedPtr); //make string equal to encrypted value of second SecureString
 
-                return str1.Equals(str2);
+                return str1.Equals(str2); //return if encrypted values of the SecureStrings are equal
             }
 
             finally {
                 if (toComparePtr != IntPtr.Zero) {
-                    Marshal.ZeroFreeBSTR(toComparePtr);
+                    Marshal.ZeroFreeBSTR(toComparePtr); //frees first pointer if needed
                 }
 
                 if (comparedPtr != IntPtr.Zero) {
-                    Marshal.ZeroFreeBSTR(comparedPtr);
+                    Marshal.ZeroFreeBSTR(comparedPtr); //frees second pointer if needed
                 }
             }
         }
