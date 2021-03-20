@@ -31,23 +31,35 @@ namespace FirstPass {
 
         }
 
+        /// <summary>
+        /// Added method to grab data from the above data table and display it in the cooresponding text boxes.
+        /// </summary>
         public void GetSelectedEntryData() {
 
-            EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-            EntryVariablesUrlTextBox.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            entryNotes.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            if (dataGridView1.Rows.Count > 0) {
+
+                EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                EntryVariablesUrlTextBox.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+                entryNotes.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            }
 
         }
 
+        /// <summary>
+        /// Added method to set the data in the data table to the values in the corresponding text boxes.
+        /// </summary>
         public void SetSelectedEntryData() {
 
-            dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+            if (dataGridView1.Rows.Count > 0) {
+
+                dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+            }
 
         }
 
