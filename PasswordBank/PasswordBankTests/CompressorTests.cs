@@ -20,7 +20,6 @@ namespace PasswordBankTests {
         public void CompressTest() {
             // Arrange
             CompressTestReset();
-            FileOP.LoadFile(UncompressedFile);
 
             // Act
             Compressor.Compress(UncompressedFile);
@@ -36,7 +35,6 @@ namespace PasswordBankTests {
         public void DeleteAfterCompressTest() {
             // Arrange
             CompressTestReset();
-            FileOP.LoadFile(UncompressedFile);
 
             // Act
             Compressor.Compress(UncompressedFile);
@@ -52,7 +50,6 @@ namespace PasswordBankTests {
         public void DecompressTest() {
             // Arrange
             DecompressTestReset();
-            FileOP.LoadFile(CompressedFile);
 
             // Act
             Compressor.Decompress(CompressedFile);
@@ -68,7 +65,6 @@ namespace PasswordBankTests {
         public void DecompressCorrectlyTest() {
             // Arrange
             DecompressTestReset();
-            FileOP.LoadFile(CompressedFile);
 
             // Act
             Compressor.Decompress(CompressedFile);
@@ -82,10 +78,9 @@ namespace PasswordBankTests {
         /// Tests that the compressed file gets deleted after decompression.
         /// </summary>
         [TestMethod]
-        public void _DeletionAfterDecompressTest() {
+        public void DeletionAfterDecompressTest() {
             // Arrange
             DecompressTestReset();
-            FileOP.LoadFile(CompressedFile);
 
             // Act
             Compressor.Decompress(CompressedFile);
@@ -109,6 +104,8 @@ namespace PasswordBankTests {
                 File.Delete(CompressedFile);
             }
 
+            FileOP.LoadFile(UncompressedFile);
+
             return;
         }
 
@@ -126,6 +123,8 @@ namespace PasswordBankTests {
             if (File.Exists(UncompressedFile)) {
                 File.Delete(UncompressedFile);
             }
+
+            FileOP.LoadFile(CompressedFile);
 
             return;
         }
