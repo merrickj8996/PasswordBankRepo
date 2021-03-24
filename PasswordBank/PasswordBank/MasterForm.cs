@@ -277,12 +277,12 @@ namespace FirstPass {
                 System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
             }
         }
-
+        //open a help menu for opening a file
         private void openingAFileToolStripMenuItem_Click(object sender, EventArgs e) {
             OpeningAFileHelpMenu guide = new OpeningAFileHelpMenu();
             guide.Show();
         }
-
+        //open a help
         private void addingEntriesToTheFielToolStripMenuItem_Click(object sender, EventArgs e) {
             EditingAFileHelpMenu guide = new EditingAFileHelpMenu();
             guide.Show();
