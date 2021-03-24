@@ -62,23 +62,25 @@ namespace FirstPass {
         }
 
         /// <summary>
-        /// used to save a file DOES NOT COMPLETELY WORK AS OF NOW
+        /// Saves the file.
         /// </summary>
         public static void SaveFile(DataGridView dataGrid) {
-           
-            DataTable dataTable = new DataTable();
-
-            foreach (DataGridViewColumn column in dataGrid.Columns) {
-                dataTable.Columns.Add(column.HeaderText, column.ValueType);
-            }
-
-            foreach (DataGridViewRow row in dataGrid.Rows) {
-                dataTable.Rows.Add();
-                foreach (DataGridViewCell cell in row.Cells) {
-                    dataTable.Rows[dataTable.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+            if (File.Exists(GetFile())) {
+                // Turning the DataGridView into a DataTable
+                DataTable dataTable = new DataTable();
+                foreach (DataGridViewColumn column in dataGrid.Columns) {
+                    dataTable.Columns.Add(column.HeaderText, column.ValueType);
                 }
+                foreach (DataGridViewRow row in dataGrid.Rows) {
+                    dataTable.Rows.Add();
+                    foreach (DataGridViewCell cell in row.Cells) {
+                        dataTable.Rows[dataTable.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+                    }
+                }
+
+                // Write the data to the file
+                WriteToFile(dataTable);
             }
-            WriteToFile(dataTable);
         }
 
         /// <summary>
@@ -189,6 +191,8 @@ namespace FirstPass {
         /// </summary>
         public static void WriteToFile(DataTable dataTable) {
             string origFilePath = GetFile();
+
+            // Creation of temp file to rewrite file
             string tempFile = "temp_file.csv";
             using (FileStream fs = File.Create(tempFile)) { }
 

@@ -436,6 +436,7 @@ namespace FirstPass
             this.removeRowButton.TabIndex = 3;
             this.removeRowButton.Text = "Remove selected row";
             this.removeRowButton.UseVisualStyleBackColor = true;
+            this.removeRowButton.Click += new System.EventHandler(this.removeRowButton_Click);
             // 
             // EditRowButton
             // 
