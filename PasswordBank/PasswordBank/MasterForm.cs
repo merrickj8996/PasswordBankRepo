@@ -156,6 +156,7 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    FileOP.SaveFile(dataGridView1);
                 }
                 LockFile();
             }
