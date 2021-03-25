@@ -74,8 +74,8 @@ namespace FirstPass {
                 if (FileOP.GetFile() != "") {
                     DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                     if (savePrompt == DialogResult.Yes) {
-                        //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                        FileOP.SaveFile(dataGridView1);
+                        DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                        FileOP.WriteToFile(dataTable);
                     }
                     LockFile();
                 }
@@ -101,8 +101,8 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                    FileOP.SaveFile(dataGridView1);
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
@@ -121,8 +121,8 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                    FileOP.SaveFile(dataGridView1);
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
@@ -137,7 +137,8 @@ namespace FirstPass {
         /// Calls the save function when the user clicks the save file button.
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
-            FileOP.SaveFile(dataGridView1);
+            DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+            FileOP.WriteToFile(dataTable);
         }
 
         //Lock button to Encrypt and close the currently opened file.
@@ -145,8 +146,8 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                    FileOP.SaveFile(dataGridView1);
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
@@ -155,8 +156,8 @@ namespace FirstPass {
         private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
             if (FileOP.GetFile() != "") {
                 if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                    FileOP.SaveFile(dataGridView1);
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
@@ -278,15 +279,21 @@ namespace FirstPass {
                 System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
             }
         }
-
+        //open a help menu for opening a file
         private void openingAFileToolStripMenuItem_Click(object sender, EventArgs e) {
             OpeningAFileHelpMenu guide = new OpeningAFileHelpMenu();
             guide.Show();
         }
-
+        //open a help
         private void addingEntriesToTheFielToolStripMenuItem_Click(object sender, EventArgs e) {
             EditingAFileHelpMenu guide = new EditingAFileHelpMenu();
             guide.Show();
+        }
+
+        private void removeRowButton_Click(object sender, EventArgs e) {
+            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
+                dataGridView1.Rows.RemoveAt(item.Index);
+            }
         }
     }
 }
