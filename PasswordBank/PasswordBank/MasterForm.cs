@@ -252,7 +252,7 @@ namespace FirstPass {
             EditingAFileHelpMenu guide = new EditingAFileHelpMenu();
             guide.Show();
         }
-
+        // remove the row at a current selected row.
         private void removeRowButton_Click(object sender, EventArgs e) {
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
                 dataGridView1.Rows.RemoveAt(item.Index);
@@ -261,17 +261,20 @@ namespace FirstPass {
 
         // search the datagrdiview depending on what the consumer has enterd in the text box
         private void SearchBox_TextChanged(object sender, EventArgs e) {
-            // if the consumer has 'Title' selected
-            if (SearchByComboBox.SelectedIndex == 0) {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("title like '%" + SearchBox.Text + "%'");
-            }
-            // Otherwise if the consumer has 'Username' selected
-            else if (SearchByComboBox.SelectedIndex == 1) {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("username like '%" + SearchBox.Text + "%'");
-            }
-            // Otherwise if the consumer has 'URL' selected
-            else if (SearchByComboBox.SelectedIndex == 2) {
-                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("url like '%" + SearchBox.Text + "%'");
+            // if the datagrid view doesn't have a source do nothing
+            if (dataGridView1.DataSource != null) {
+                // if the consumer has 'Title' selected
+                if (SearchByComboBox.SelectedIndex == 0) {
+                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("title like '%" + SearchBox.Text + "%'");
+                }
+                // Otherwise if the consumer has 'Username' selected
+                else if (SearchByComboBox.SelectedIndex == 1) {
+                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("username like '%" + SearchBox.Text + "%'");
+                }
+                // Otherwise if the consumer has 'URL' selected
+                else if (SearchByComboBox.SelectedIndex == 2) {
+                    (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("url like '%" + SearchBox.Text + "%'");
+                }
             }
         }
 
@@ -280,9 +283,12 @@ namespace FirstPass {
             SearchByComboBox.SelectedIndex = 0;
         }
 
+        // event for the mouse being hovered over a cell
         private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e) {
+            // if the right click button is clicked
             if(e.Button == MouseButtons.Right) {
                 try {
+                    // make sure that the selected item is actually a row.
                     if(e.RowIndex > -1) {
                         this.dataGridView1.Rows[e.RowIndex].Selected = true;
                         this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
@@ -296,9 +302,10 @@ namespace FirstPass {
             }
         }
 
+        // copy the username on click of the toolstrip item for copying a username
         private void copyUserNameToolStripMenuItem_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                // pop open a dialog box explaining why a new cant be copied
+                // pop open a dialog box explaining why the username can't be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {
@@ -306,16 +313,18 @@ namespace FirstPass {
             }
         }
 
+        // copy the password on click of the toolstip item for copying a passwrod
         private void copyPasswordToolStripMenuItem_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
-                // pop open a dialog box explaining why a new cant be copied
+                // pop open a dialog box explaining why a password cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else if (dataGridView1.SelectedRows.Count > 0) {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
             }
         }
-        // Copy the current rows url
+
+        // Copy the current rows url and open a new url
         private void copyURLToolStripMenuItem_Click(object sender, EventArgs e) {
             // make sure the datagrid view has a source
             if (dataGridView1.DataSource == null) {

@@ -33,13 +33,8 @@ namespace FirstPass
         {
             this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
-            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
-            this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.LockButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileDropDown = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateNewFileDropDown = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,9 +82,16 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
+            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
+            this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
+            this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
+            this.LockButton = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
@@ -99,6 +101,7 @@ namespace FirstPass
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.CopyAndDeleteCMS.SuspendLayout();
             this.EntryVariablesPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -119,66 +122,15 @@ namespace FirstPass
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "ToolBar";
             // 
-            // CreateNewButton
-            // 
-            this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
-            this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CreateNewButton.Name = "CreateNewButton";
-            this.CreateNewButton.Size = new System.Drawing.Size(28, 28);
-            this.CreateNewButton.Text = "New Password File";
-            this.CreateNewButton.Click += new System.EventHandler(this.CreateNewButton_Click);
-            // 
-            // OpenFileButton
-            // 
-            this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
-            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.OpenFileButton.Name = "OpenFileButton";
-            this.OpenFileButton.Size = new System.Drawing.Size(28, 28);
-            this.OpenFileButton.Text = "Open File";
-            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
-            // 
-            // SaveFilebutton
-            // 
-            this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
-            this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveFilebutton.Name = "SaveFilebutton";
-            this.SaveFilebutton.Size = new System.Drawing.Size(28, 28);
-            this.SaveFilebutton.Text = "Save";
-            this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
             // 
-            // NewEntryButton
-            // 
-            this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
-            this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.NewEntryButton.Name = "NewEntryButton";
-            this.NewEntryButton.Size = new System.Drawing.Size(28, 28);
-            this.NewEntryButton.Text = "toolStripButton4";
-            this.NewEntryButton.ToolTipText = "New Entry";
-            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 31);
-            // 
-            // LockButton
-            // 
-            this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
-            this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LockButton.Name = "LockButton";
-            this.LockButton.Size = new System.Drawing.Size(28, 28);
-            this.LockButton.Text = "Lock File";
-            this.LockButton.ToolTipText = "Lock File";
-            this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
             // 
             // menuStrip1
             // 
@@ -321,6 +273,10 @@ namespace FirstPass
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 55);
             this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.pictureBox1);
             // 
             // splitContainer1.Panel2
             // 
@@ -656,6 +612,68 @@ namespace FirstPass
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::FirstPass.Properties.Resources.person;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(232, 515);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // CreateNewButton
+            // 
+            this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
+            this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CreateNewButton.Name = "CreateNewButton";
+            this.CreateNewButton.Size = new System.Drawing.Size(28, 28);
+            this.CreateNewButton.Text = "New Password File";
+            this.CreateNewButton.Click += new System.EventHandler(this.CreateNewButton_Click);
+            // 
+            // OpenFileButton
+            // 
+            this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
+            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OpenFileButton.Name = "OpenFileButton";
+            this.OpenFileButton.Size = new System.Drawing.Size(28, 28);
+            this.OpenFileButton.Text = "Open File";
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // SaveFilebutton
+            // 
+            this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
+            this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveFilebutton.Name = "SaveFilebutton";
+            this.SaveFilebutton.Size = new System.Drawing.Size(28, 28);
+            this.SaveFilebutton.Text = "Save";
+            this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // NewEntryButton
+            // 
+            this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
+            this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NewEntryButton.Name = "NewEntryButton";
+            this.NewEntryButton.Size = new System.Drawing.Size(28, 28);
+            this.NewEntryButton.Text = "toolStripButton4";
+            this.NewEntryButton.ToolTipText = "New Entry";
+            // 
+            // LockButton
+            // 
+            this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
+            this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LockButton.Name = "LockButton";
+            this.LockButton.Size = new System.Drawing.Size(28, 28);
+            this.LockButton.Text = "Lock File";
+            this.LockButton.ToolTipText = "Lock File";
+            this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -673,6 +691,7 @@ namespace FirstPass
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
@@ -685,6 +704,7 @@ namespace FirstPass
             this.CopyAndDeleteCMS.ResumeLayout(false);
             this.EntryVariablesPanel.ResumeLayout(false);
             this.EntryVariablesPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -754,6 +774,7 @@ namespace FirstPass
         private ToolStripMenuItem copyUserNameToolStripMenuItem;
         private ToolStripMenuItem copyPasswordToolStripMenuItem;
         private ToolStripMenuItem copyURLToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }
 
