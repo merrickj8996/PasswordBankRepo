@@ -62,25 +62,65 @@ namespace FirstPass {
         }
 
         /// <summary>
-        /// Saves the file.
+        /// Writes all the password entries to the CSV file.
         /// </summary>
-        public static void SaveFile(DataGridView dataGrid) {
-            if (File.Exists(GetFile())) {
-                // Turning the DataGridView into a DataTable
-                DataTable dataTable = new DataTable();
-                foreach (DataGridViewColumn column in dataGrid.Columns) {
-                    dataTable.Columns.Add(column.HeaderText, column.ValueType);
-                }
-                foreach (DataGridViewRow row in dataGrid.Rows) {
-                    dataTable.Rows.Add();
-                    foreach (DataGridViewCell cell in row.Cells) {
-                        dataTable.Rows[dataTable.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
-                    }
-                }
+        public static void WriteToFile(DataTable dataTable) {
 
-                // Write the data to the file
-                WriteToFile(dataTable);
+            string origFilePath = GetFile();
+
+            // Creation of temp file to rewrite file
+            string tempFile = "temp_file.csv";
+            using (FileStream fs = File.Create(tempFile)) { }
+
+            // Write all of the password entries in the data table to the temp file
+            using (StreamWriter writer = new StreamWriter(tempFile)) {
+                using (CsvWriter csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
+                    // Setting the map so that entries get written into the correct columns
+                    csvWriter.Context.RegisterClassMap<PasswordEntryMap>();
+
+                    // Creates a list for the password entries and adds the entries to it
+                    List<PasswordEntry> passwordEntries = new List<PasswordEntry>() { };
+                    foreach (DataRow row in dataTable.Rows) {
+                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["group"].ToString(), row["title"].ToString(), row["username"].ToString(),
+                                                                                    row["password"].ToString(), row["url"].ToString(), row["notes"].ToString());
+                        passwordEntries.Add(passwordEntry);
+                    }
+
+                    // Casting the password list to an IEnumerable
+                    IEnumerable<PasswordEntry> enumData = passwordEntries;
+
+                    // Write the entries to the CSV
+                    csvWriter.WriteRecords(enumData);
+                }
             }
+
+            // Replace the original file with the temp file
+            File.Delete(origFilePath);
+            File.Move(tempFile, origFilePath);
+
+            // Update the file currently being used by the program
+            FileOP.LoadFile(origFilePath);
+        }
+
+        /// <summary>
+        /// Converts the data in the DataGridView into a DataTable.
+        /// </summary>
+        /// <param name="dataGrid">DataGridView containing data from the form.</param>
+        /// <returns>DataTable containing data from DataGridView</returns>
+        public static DataTable DataGridViewToDataTable(DataGridView dataGridView) {
+            // Turning the DataGridView into a DataTable
+            DataTable dataTable = new DataTable();
+            foreach (DataGridViewColumn column in dataGridView.Columns) {
+                dataTable.Columns.Add(column.HeaderText, column.ValueType);
+            }
+            foreach (DataGridViewRow row in dataGridView.Rows) {
+                dataTable.Rows.Add();
+                foreach (DataGridViewCell cell in row.Cells) {
+                    dataTable.Rows[dataTable.Rows.Count - 1][cell.ColumnIndex] = cell.Value.ToString();
+                }
+            }
+
+            return dataTable;
         }
 
         /// <summary>
@@ -184,46 +224,6 @@ namespace FirstPass {
                 dt.Rows.Add(Row);
             }
             return dt;
-        }
-
-        /// <summary>
-        /// Writes all the password entries to the CSV file.
-        /// </summary>
-        public static void WriteToFile(DataTable dataTable) {
-            string origFilePath = GetFile();
-
-            // Creation of temp file to rewrite file
-            string tempFile = "temp_file.csv";
-            using (FileStream fs = File.Create(tempFile)) { }
-
-            // Write all of the password entries in the data table to the temp file
-            using (StreamWriter writer = new StreamWriter(tempFile)) {
-                using (CsvWriter csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
-                    // Setting the map so that entries get written into the correct columns
-                    csvWriter.Context.RegisterClassMap<PasswordEntryMap>();
-
-                    // Creates a list for the password entries and adds the entries to it
-                    List<PasswordEntry> passwordEntries = new List<PasswordEntry>() { };
-                    foreach (DataRow row in dataTable.Rows) {
-                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["group"].ToString(), row["title"].ToString(), row["username"].ToString(),
-                                                                                    row["password"].ToString(), row["url"].ToString(), row["notes"].ToString());
-                        passwordEntries.Add(passwordEntry);
-                    }
-
-                    // Casting the password list to an IEnumerable
-                    IEnumerable<PasswordEntry> enumData = passwordEntries;
-
-                    // Write the entries to the CSV
-                    csvWriter.WriteRecords(enumData);
-                }
-            }
-
-            // Replace the original file with the temp file
-            File.Delete(origFilePath);
-            File.Move(tempFile, origFilePath);
-
-            // Update the file currently being used by the program
-            FileOP.LoadFile(origFilePath);
         }
 
         /// <summary>
