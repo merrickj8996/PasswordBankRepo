@@ -17,23 +17,19 @@ namespace FirstPass {
         public UserGuide() {
             InitializeComponent();
         }
-
-        private void pictureBox1_Click(object sender, EventArgs e) {
-
-        }
-
+        //bring up the previous pannel to the front
         private void PreviousButton_Click(object sender, EventArgs e) {
             if (index > 0) {
                 listPanel[--index].BringToFront();
             }
         }
-
+        //Bring up the next pannel to the front
         private void NextPage_Click(object sender, EventArgs e) {
             if (index < listPanel.Count - 1) {
                 listPanel[++index].BringToFront();
             }
         }
-
+        //once the form loads
         private void UserGuide_Load(object sender, EventArgs e) {
             listPanel.Add(panel1);
             listPanel.Add(panel2);
