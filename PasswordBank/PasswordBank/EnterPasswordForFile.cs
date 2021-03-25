@@ -22,15 +22,18 @@ namespace FirstPass {
             if (KeyfileLocation.TextLength > 0) {
                 if (!Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text))) {
                     MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+                    KeyfileLocation.ResetText();
                 }
                 else if (!Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text)) {
                     Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(KeyfileLocation.Text));
                     MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+                    KeyfileLocation.ResetText();
                 }
                 else {
+                    FileOP.LoadKeyFile(KeyfileLocation.Text);
                     Crypto.mPassTemp = passwordEntry.Text;
                     Compressor.Decompress(FileOP.GetFile());
-                    TheParent.PerformRefresh();
+                    TheParent.PerformRefresh(true);
                     success = true;
                     this.Close();
                 }
@@ -38,12 +41,12 @@ namespace FirstPass {
             }
             else if (!Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text)) {
                 MessageBox.Show("Inncorrect Credentials. Please Try Again.", "Access Denied", MessageBoxButtons.OK);
+                KeyfileLocation.ResetText();
             }
             else {
-                Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
                 Crypto.mPassTemp = passwordEntry.Text;
                 Compressor.Decompress(FileOP.GetFile());
-                TheParent.PerformRefresh();
+                TheParent.PerformRefresh(true);
                 success = true;
                 this.Close();
             }

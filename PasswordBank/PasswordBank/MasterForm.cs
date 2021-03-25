@@ -12,11 +12,15 @@ namespace FirstPass {
             InitializeComponent();
         }
         /// <summary>
-        /// Sets the datagridviews datasource to be the datatable consturcted by the readfile method.
+        /// Sets the datagridviews datasource to be the datatable constructed by the readfile method.
         /// </summary>
-        public void PerformRefresh() {
+        public void PerformRefresh(bool opened) {
             if (FileOP.GetFile() != "") {
+                if (!opened) {
+                    UnlockFile();
+                }
                 dataGridView1.DataSource = FileOP.ReadFile();
+                LockFile();
             }
             else {
                 dataGridView1.DataSource = null;
@@ -80,7 +84,6 @@ namespace FirstPass {
         /// </summary>
         private void CreateNewButton_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
-
         }
         /// <summary>
         /// Displays a warning to the user that they are about to create a new file.
@@ -101,12 +104,14 @@ namespace FirstPass {
                         DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
                         FileOP.WriteToFile(dataTable);
                     }
-                    LockFile();
+                    ClearMem();
                 }
                 //call the create file method and inflate the next form
                 if (FileOP.CreateFile()) {
-                    PasswordOptions form = new PasswordOptions();
-                    form.Show();
+                    PasswordOptions form = new PasswordOptions() {
+                        TheParent = this
+                    };
+                    form.ShowDialog();
                 };
             }
         }
@@ -126,9 +131,11 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
             if (FileOP.SelectFile()) {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
@@ -146,9 +153,11 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
             if (FileOP.SelectFile()) {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
@@ -162,7 +171,9 @@ namespace FirstPass {
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
             DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+            UnlockFile();
             FileOP.WriteToFile(dataTable);
+            LockFile();
         }
 
         //Lock button to Encrypt and close the currently opened file.
@@ -171,9 +182,11 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
         }
 
@@ -181,10 +194,21 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
+        }
+
+        private void UnlockFile() {
+            if (FileOP.GetKeyFile().Length > 0) {
+                Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+            }
+            Crypto.DecryptFile(FileOP.GetFile(), Crypto.mPassTemp);
+            Compressor.Decompress(FileOP.GetFile());
+
         }
 
         private void LockFile() {
@@ -199,14 +223,20 @@ namespace FirstPass {
 
                 //Encrypt the file with the KeyFile
                 Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
-
-                //Clear the keyFile from memory
-                FileOP.ClearKeyFile();
             }
+        }
 
-            //Clear the file from memory
+        private void ClearMem() {
+            FileOP.ClearKeyFile();
             FileOP.ClearFile();
-            this.PerformRefresh();
+            Crypto.mPassTemp = "";
+            this.PerformRefresh(false);
+        }
+        //click event for the help option to teach you how to use the program
+        private void quickGuideToolStripMenuItem_Click(object sender, EventArgs e) {
+            //open the new form
+            UserGuide frm = new UserGuide();
+            frm.Show();
         }
 
         //add a new empty row
