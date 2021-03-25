@@ -139,7 +139,7 @@ namespace FirstPass {
                 //as long as the stream is not null load the file name and optionally print it for testing purposes
                 if ((myStream = save.OpenFile()) != null) {
                     FileOP.LoadFile(save.FileName);
-                    //FileOP.PrintFileName();
+                    FileOP.PrintFileName();
                     myStream.Close();
                 }
                 //Write the first line of the file to the file.

@@ -55,8 +55,6 @@ namespace FirstPass {
                 masterPasswordDoc.Print();
 
             File.Delete("password.txt");
-            FileOP.ClearFile();
-            FileOP.ClearKeyFile();
             this.Close();
         }
 
@@ -97,8 +95,6 @@ namespace FirstPass {
         /// Closes the pop-up when user clicks cancel button.
         /// </summary>
         private void noPrintButton_Click(object sender, EventArgs e) {
-            FileOP.ClearFile();
-            FileOP.ClearKeyFile();
             this.Close();
         }
     }

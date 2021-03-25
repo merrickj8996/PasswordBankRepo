@@ -30,9 +30,10 @@ namespace FirstPass {
                     KeyfileLocation.ResetText();
                 }
                 else {
+                    FileOP.LoadKeyFile(KeyfileLocation.Text);
                     Crypto.mPassTemp = passwordEntry.Text;
                     Compressor.Decompress(FileOP.GetFile());
-                    TheParent.PerformRefresh();
+                    TheParent.PerformRefresh(true);
                     success = true;
                     this.Close();
                 }
@@ -43,10 +44,9 @@ namespace FirstPass {
                 KeyfileLocation.ResetText();
             }
             else {
-                Crypto.DecryptFile(FileOP.GetFile(), passwordEntry.Text);
                 Crypto.mPassTemp = passwordEntry.Text;
                 Compressor.Decompress(FileOP.GetFile());
-                TheParent.PerformRefresh();
+                TheParent.PerformRefresh(true);
                 success = true;
                 this.Close();
             }
