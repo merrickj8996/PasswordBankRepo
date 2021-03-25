@@ -1,0 +1,165 @@
+﻿
+namespace FirstPass {
+    partial class EntryPassword {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent() {
+            this.entryPasswordStrengthBar = new System.Windows.Forms.ProgressBar();
+            this.entryPasswordStrengthLabel = new System.Windows.Forms.Label();
+            this.entryPasswordRandomizeButton = new System.Windows.Forms.Button();
+            this.confirmEntryPasswordLabel = new System.Windows.Forms.Label();
+            this.confirmEntryPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.entryPasswordTextBox = new System.Windows.Forms.TextBox();
+            this.EntryPasswordLabel = new System.Windows.Forms.Label();
+            this.entryPasswordCancelButton = new System.Windows.Forms.Button();
+            this.entryPasswordOkButton = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // entryPasswordStrengthBar
+            // 
+            this.entryPasswordStrengthBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.entryPasswordStrengthBar.Location = new System.Drawing.Point(424, 114);
+            this.entryPasswordStrengthBar.Name = "entryPasswordStrengthBar";
+            this.entryPasswordStrengthBar.Size = new System.Drawing.Size(134, 23);
+            this.entryPasswordStrengthBar.TabIndex = 20;
+            // 
+            // entryPasswordStrengthLabel
+            // 
+            this.entryPasswordStrengthLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.entryPasswordStrengthLabel.Location = new System.Drawing.Point(50, 114);
+            this.entryPasswordStrengthLabel.Name = "entryPasswordStrengthLabel";
+            this.entryPasswordStrengthLabel.Size = new System.Drawing.Size(368, 20);
+            this.entryPasswordStrengthLabel.TabIndex = 19;
+            this.entryPasswordStrengthLabel.Text = "Password Strength: ";
+            this.entryPasswordStrengthLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // entryPasswordRandomizeButton
+            // 
+            this.entryPasswordRandomizeButton.Location = new System.Drawing.Point(592, 55);
+            this.entryPasswordRandomizeButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.entryPasswordRandomizeButton.Name = "entryPasswordRandomizeButton";
+            this.entryPasswordRandomizeButton.Size = new System.Drawing.Size(112, 35);
+            this.entryPasswordRandomizeButton.TabIndex = 18;
+            this.entryPasswordRandomizeButton.Text = "Randomize";
+            this.entryPasswordRandomizeButton.UseVisualStyleBackColor = true;
+            this.entryPasswordRandomizeButton.Click += new System.EventHandler(this.entryPasswordRandomizeButton_Click);
+            // 
+            // confirmEntryPasswordLabel
+            // 
+            this.confirmEntryPasswordLabel.AutoSize = true;
+            this.confirmEntryPasswordLabel.Location = new System.Drawing.Point(40, 77);
+            this.confirmEntryPasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.confirmEntryPasswordLabel.Name = "confirmEntryPasswordLabel";
+            this.confirmEntryPasswordLabel.Size = new System.Drawing.Size(141, 20);
+            this.confirmEntryPasswordLabel.TabIndex = 17;
+            this.confirmEntryPasswordLabel.Text = "Confirm Password:";
+            // 
+            // confirmEntryPasswordTextBox
+            // 
+            this.confirmEntryPasswordTextBox.Location = new System.Drawing.Point(190, 72);
+            this.confirmEntryPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.confirmEntryPasswordTextBox.MaxLength = 20;
+            this.confirmEntryPasswordTextBox.Name = "confirmEntryPasswordTextBox";
+            this.confirmEntryPasswordTextBox.PasswordChar = '*';
+            this.confirmEntryPasswordTextBox.Size = new System.Drawing.Size(368, 26);
+            this.confirmEntryPasswordTextBox.TabIndex = 16;
+            // 
+            // entryPasswordTextBox
+            // 
+            this.entryPasswordTextBox.Location = new System.Drawing.Point(190, 32);
+            this.entryPasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.entryPasswordTextBox.MaxLength = 20;
+            this.entryPasswordTextBox.Name = "entryPasswordTextBox";
+            this.entryPasswordTextBox.PasswordChar = '*';
+            this.entryPasswordTextBox.Size = new System.Drawing.Size(368, 26);
+            this.entryPasswordTextBox.TabIndex = 15;
+            this.entryPasswordTextBox.TextChanged += new System.EventHandler(this.entryPasswordTextBox_TextChanged);
+            // 
+            // EntryPasswordLabel
+            // 
+            this.EntryPasswordLabel.AutoSize = true;
+            this.EntryPasswordLabel.Location = new System.Drawing.Point(50, 37);
+            this.EntryPasswordLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EntryPasswordLabel.Name = "EntryPasswordLabel";
+            this.EntryPasswordLabel.Size = new System.Drawing.Size(82, 20);
+            this.EntryPasswordLabel.TabIndex = 14;
+            this.EntryPasswordLabel.Text = "Password:";
+            // 
+            // entryPasswordCancelButton
+            // 
+            this.entryPasswordCancelButton.Location = new System.Drawing.Point(69, 154);
+            this.entryPasswordCancelButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.entryPasswordCancelButton.Name = "entryPasswordCancelButton";
+            this.entryPasswordCancelButton.Size = new System.Drawing.Size(112, 35);
+            this.entryPasswordCancelButton.TabIndex = 22;
+            this.entryPasswordCancelButton.Text = "Cancel";
+            this.entryPasswordCancelButton.UseVisualStyleBackColor = true;
+            this.entryPasswordCancelButton.Click += new System.EventHandler(this.entryPasswordCancelButton_Click);
+            // 
+            // entryPasswordOkButton
+            // 
+            this.entryPasswordOkButton.Location = new System.Drawing.Point(623, 154);
+            this.entryPasswordOkButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.entryPasswordOkButton.Name = "entryPasswordOkButton";
+            this.entryPasswordOkButton.Size = new System.Drawing.Size(112, 35);
+            this.entryPasswordOkButton.TabIndex = 21;
+            this.entryPasswordOkButton.Text = "Ok";
+            this.entryPasswordOkButton.UseVisualStyleBackColor = true;
+            this.entryPasswordOkButton.Click += new System.EventHandler(this.entryPasswordOkButton_Click);
+            // 
+            // EntryPassword
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(800, 203);
+            this.Controls.Add(this.entryPasswordCancelButton);
+            this.Controls.Add(this.entryPasswordOkButton);
+            this.Controls.Add(this.entryPasswordStrengthBar);
+            this.Controls.Add(this.entryPasswordStrengthLabel);
+            this.Controls.Add(this.entryPasswordRandomizeButton);
+            this.Controls.Add(this.confirmEntryPasswordLabel);
+            this.Controls.Add(this.confirmEntryPasswordTextBox);
+            this.Controls.Add(this.entryPasswordTextBox);
+            this.Controls.Add(this.EntryPasswordLabel);
+            this.Name = "EntryPassword";
+            this.Text = "EntryPassword";
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.ProgressBar entryPasswordStrengthBar;
+        private System.Windows.Forms.Label entryPasswordStrengthLabel;
+        private System.Windows.Forms.Button entryPasswordRandomizeButton;
+        private System.Windows.Forms.Label confirmEntryPasswordLabel;
+        private System.Windows.Forms.Label EntryPasswordLabel;
+        private System.Windows.Forms.Button entryPasswordCancelButton;
+        private System.Windows.Forms.Button entryPasswordOkButton;
+        public System.Windows.Forms.TextBox confirmEntryPasswordTextBox;
+        public System.Windows.Forms.TextBox entryPasswordTextBox;
+    }
+}

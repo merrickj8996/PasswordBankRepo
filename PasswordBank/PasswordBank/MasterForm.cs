@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Security;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FirstPass {
@@ -19,11 +12,15 @@ namespace FirstPass {
             InitializeComponent();
         }
         /// <summary>
-        /// Sets the datagridviews datasource to be the datatable consturcted by the readfile method.
+        /// Sets the datagridviews datasource to be the datatable constructed by the readfile method.
         /// </summary>
-        public void PerformRefresh() {
+        public void PerformRefresh(bool opened) {
             if (FileOP.GetFile() != "") {
+                if (!opened) {
+                    UnlockFile();
+                }
                 dataGridView1.DataSource = FileOP.ReadFile();
+                LockFile();
             }
             else {
                 dataGridView1.DataSource = null;
@@ -31,23 +28,54 @@ namespace FirstPass {
 
         }
 
+        /// <summary>
+        /// Clears all the data for the entry variables.
+        /// </summary>
+        public void ClearEntryData() {
+            EntryVariablesTitleTextBox.Text = "";
+            EntryVariablesUsernameTextBox.Text = "";
+            EntryVariablesPasswordTextBox.Text = "";
+            EntryVariablesUrlTextBox.Text = "";
+            entryNotes.Text = "";
+        }
+
+        /// <summary>
+        /// Added method to grab data from the above data table and display it in the cooresponding text boxes.
+        /// </summary>
         public void GetSelectedEntryData() {
 
-            EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-            EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-            EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-            EntryVariablesUrlTextBox.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-            entryNotes.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+            if (dataGridView1.Rows.Count > 0) {
+                try {
+                    // Checks to make sure that cells in row are not null.
+                    if (dataGridView1.SelectedRows[0].Cells[2].Value != null) {
+                        EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                        EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                        EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                        EntryVariablesUrlTextBox.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
+                        entryNotes.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+                    }
+                }
+                // When adding a first row to the dataGridView1 an exception is thrown due to know rows existing. So instead it only initalizing the text in the entry variables.
+                catch(ArgumentOutOfRangeException) {
+                    ClearEntryData();
+                }
+            }
 
         }
 
+        /// <summary>
+        /// Added method to set the data in the data table to the values in the corresponding text boxes.
+        /// </summary>
         public void SetSelectedEntryData() {
 
-            dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
-            dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+            if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells.Count > 0) {
+
+                dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+            }
 
         }
 
@@ -56,7 +84,6 @@ namespace FirstPass {
         /// </summary>
         private void CreateNewButton_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
-
         }
         /// <summary>
         /// Displays a warning to the user that they are about to create a new file.
@@ -77,12 +104,14 @@ namespace FirstPass {
                         DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
                         FileOP.WriteToFile(dataTable);
                     }
-                    LockFile();
+                    ClearMem();
                 }
                 //call the create file method and inflate the next form
                 if (FileOP.CreateFile()) {
-                    PasswordOptions form = new PasswordOptions();
-                    form.Show();
+                    PasswordOptions form = new PasswordOptions() {
+                        TheParent = this
+                    };
+                    form.ShowDialog();
                 };
             }
         }
@@ -102,9 +131,11 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
             if (FileOP.SelectFile()) {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
@@ -122,9 +153,11 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
             if (FileOP.SelectFile()) {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
@@ -138,7 +171,9 @@ namespace FirstPass {
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
             DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+            UnlockFile();
             FileOP.WriteToFile(dataTable);
+            LockFile();
         }
 
         //Lock button to Encrypt and close the currently opened file.
@@ -147,9 +182,11 @@ namespace FirstPass {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
         }
 
@@ -157,10 +194,21 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
                     FileOP.WriteToFile(dataTable);
+                    LockFile();
                 }
-                LockFile();
+                ClearMem();
             }
+        }
+
+        private void UnlockFile() {
+            if (FileOP.GetKeyFile().Length > 0) {
+                Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+            }
+            Crypto.DecryptFile(FileOP.GetFile(), Crypto.mPassTemp);
+            Compressor.Decompress(FileOP.GetFile());
+
         }
 
         private void LockFile() {
@@ -175,14 +223,20 @@ namespace FirstPass {
 
                 //Encrypt the file with the KeyFile
                 Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
-
-                //Clear the keyFile from memory
-                FileOP.ClearKeyFile();
             }
+        }
 
-            //Clear the file from memory
+        private void ClearMem() {
+            FileOP.ClearKeyFile();
             FileOP.ClearFile();
-            this.PerformRefresh();
+            Crypto.mPassTemp = "";
+            this.PerformRefresh(false);
+        }
+        //click event for the help option to teach you how to use the program
+        private void quickGuideToolStripMenuItem_Click(object sender, EventArgs e) {
+            //open the new form
+            UserGuide frm = new UserGuide();
+            frm.Show();
         }
 
         //add a new empty row
@@ -217,6 +271,15 @@ namespace FirstPass {
 
                 dataTable.Rows.Add(drToAdd);
                 dataTable.AcceptChanges();
+
+                // Stores the number of rows in dataGridView1 to int numberOfRows
+                int numberOfRows = dataGridView1.Rows.Count;
+                // Makes sure there is at least 1 row in dataGridView1
+                if (numberOfRows > 0) {
+                    // When a new row is added it will automatically select the row to be editable.
+                    dataGridView1.Rows[numberOfRows - 1].Selected = true;
+                    ClearEntryData();
+                }
             }
         }
 
@@ -233,14 +296,7 @@ namespace FirstPass {
         }
         //button press to edit a row that the consumer has selected
         private void EditRowButton_Click(object sender, EventArgs e) {
-            //if the datagrid view doesnt have a datasource AKA no file is open
-            if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new row cant be added
-                DialogResult res = MessageBox.Show("Please open a file before trying to edit a row.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else {
-                GetSelectedEntryData();
-            }
+           
         }
         //open a help menu for opening a file
         private void openingAFileToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -346,6 +402,36 @@ namespace FirstPass {
                     MessageBox.Show("The URL is not a valid URL");
                 }
             }
+
+            // stores the number of rows in dataGridView1 to int numberOfRows
+            int numberOfRows = dataGridView1.Rows.Count;
+            // checks to make sure there at least 1 row in dataGridView1
+            if (numberOfRows > 0) {
+                // When row is deleted it will select to bottom most row. 
+                dataGridView1.Rows[numberOfRows - 1].Selected = true;
+                // After bottom most row is selected it gets the data from the row.
+                GetSelectedEntryData();
+            }
+            else {
+                // If last row is deleted, clear the entry data.
+                ClearEntryData();
+            }
+
+        }
+
+        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e) {
+            GetSelectedEntryData();
+        }
+
+
+        private void EntryVariablesPasswordTextBox_Enter(object sender, EventArgs e) {
+            EntryPassword form = new EntryPassword(this);
+            form.Show();
+        }
+
+        private void EntryVariablesPasswordTextBox_Enter_1(object sender, EventArgs e) {
+            EntryPassword form = new EntryPassword(this);
+            form.Show();
         }
     }
 }

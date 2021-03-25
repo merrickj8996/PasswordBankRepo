@@ -11,6 +11,14 @@ using System.Windows.Forms;
 
 namespace FirstPass {
     public partial class MasterPasswordGenForm : Form {
+
+        private EntryPassword currentEntryPasswordform;
+        public MasterPasswordGenForm(EntryPassword form) {
+            InitializeComponent();
+            LowerCase.Enabled = false;
+            currentEntryPasswordform = form;
+        }
+
         public MasterPasswordGenForm() {
             InitializeComponent();
             LowerCase.Enabled = false;
@@ -21,12 +29,11 @@ namespace FirstPass {
             int count = Convert.ToInt32(Math.Round(passSize.Value, 0));
 
             string pass = Password.randomizePassword(count, UpperCase.Checked, Digits.Checked, Special.Checked, Brackets.Checked);
-            Console.WriteLine(pass);
 
-            PasswordOptions frm = new PasswordOptions();
-            frm.Show();
-            frm.UpdateTextBox(pass);
-            this.Hide();
+            currentEntryPasswordform.entryPasswordTextBox.Text = pass;
+            currentEntryPasswordform.confirmEntryPasswordTextBox.Text = pass;
+            this.Close();
+            currentEntryPasswordform.Show();
         }
 
     }
