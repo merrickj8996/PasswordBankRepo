@@ -74,8 +74,8 @@ namespace FirstPass {
                 if (FileOP.GetFile() != "") {
                     DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                     if (savePrompt == DialogResult.Yes) {
-                        //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                        FileOP.SaveFile(dataGridView1);
+                        DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                        FileOP.WriteToFile(dataTable);
                     }
                     LockFile();
                 }
@@ -101,8 +101,8 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                    FileOP.SaveFile(dataGridView1);
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
@@ -121,8 +121,8 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                    FileOP.SaveFile(dataGridView1);
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
@@ -137,7 +137,8 @@ namespace FirstPass {
         /// Calls the save function when the user clicks the save file button.
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
-            FileOP.SaveFile(dataGridView1);
+            DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+            FileOP.WriteToFile(dataTable);
         }
 
         //Lock button to Encrypt and close the currently opened file.
@@ -145,8 +146,8 @@ namespace FirstPass {
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
-                    FileOP.SaveFile(dataGridView1);
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
@@ -155,7 +156,8 @@ namespace FirstPass {
         private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
             if (FileOP.GetFile() != "") {
                 if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
-                    //!!TODO!! Write current information in the datastructure to the current working file in FileOP.getFile().
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    FileOP.WriteToFile(dataTable);
                 }
                 LockFile();
             }
