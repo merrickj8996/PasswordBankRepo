@@ -183,14 +183,6 @@ namespace FirstPass {
             this.PerformRefresh();
         }
 
-
-        //click event for the help option to teach you how to use the program
-        private void quickGuideToolStripMenuItem_Click(object sender, EventArgs e) {
-            //open the new form
-            UserGuide frm = new UserGuide();
-            frm.Show();
-        }
-
         //add a new empty row
         private void AddNewEntry_Click(object sender, EventArgs e) {
             String id = "0";
@@ -213,7 +205,7 @@ namespace FirstPass {
                 DataRow drToAdd = dataTable.NewRow();
                 //add values to each of the rows
                 drToAdd["id"] = Int32.Parse(id) + 1;
-                drToAdd["group"] = "";
+                drToAdd["expiration date"] = "";
                 drToAdd["title"] = "";
                 drToAdd["username"] = "";
                 drToAdd["password"] = "";
@@ -234,6 +226,8 @@ namespace FirstPass {
 
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
             SetSelectedEntryData();
+            DataTable dataTable = (DataTable)dataGridView1.DataSource;
+            dataTable.AcceptChanges();
         }
         //button press to edit a row that the consumer has selected
         private void EditRowButton_Click(object sender, EventArgs e) {
@@ -246,43 +240,12 @@ namespace FirstPass {
                 GetSelectedEntryData();
             }
         }
-        //button press to copy the username of the row selected
-        private void CopyUsernameButton_Click(object sender, EventArgs e) {
-            if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new cant be copied
-                DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (dataGridView1.SelectedRows.Count > 0) {
-                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
-            }
-        }
-        //button press to copy the passwrod of the row selected
-        private void CopyPassword_Click(object sender, EventArgs e) {
-            if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new cant be copied
-                DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (dataGridView1.SelectedRows.Count > 0) {
-                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
-            }
-        }
-        //button to copy and open the link of the row selected.
-        private void CopyButton_Click(object sender, EventArgs e) {
-            if (dataGridView1.DataSource == null) {
-                //pop open a dialog box explaining why a new cant be copied
-                DialogResult res = MessageBox.Show("Please open a file before trying to open a url.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (dataGridView1.SelectedRows.Count > 0) {
-                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
-                System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
-            }
-        }
         //open a help menu for opening a file
         private void openingAFileToolStripMenuItem_Click(object sender, EventArgs e) {
             OpeningAFileHelpMenu guide = new OpeningAFileHelpMenu();
             guide.Show();
         }
-        //open a help
+        //open a help menu for editing a file
         private void addingEntriesToTheFielToolStripMenuItem_Click(object sender, EventArgs e) {
             EditingAFileHelpMenu guide = new EditingAFileHelpMenu();
             guide.Show();
@@ -291,6 +254,86 @@ namespace FirstPass {
         private void removeRowButton_Click(object sender, EventArgs e) {
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
                 dataGridView1.Rows.RemoveAt(item.Index);
+            }
+        }
+
+        // search the datagrdiview depending on what the consumer has enterd in the text box
+        private void SearchBox_TextChanged(object sender, EventArgs e) {
+            // if the consumer has 'Title' selected
+            if (SearchByComboBox.SelectedIndex == 0) {
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("title like '%" + SearchBox.Text + "%'");
+            }
+            // Otherwise if the consumer has 'Username' selected
+            else if (SearchByComboBox.SelectedIndex == 1) {
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("username like '%" + SearchBox.Text + "%'");
+            }
+            // Otherwise if the consumer has 'URL' selected
+            else if (SearchByComboBox.SelectedIndex == 2) {
+                (dataGridView1.DataSource as DataTable).DefaultView.RowFilter = String.Format("url like '%" + SearchBox.Text + "%'");
+            }
+        }
+
+        // set the default value of the serach by title combo box to be 'title'
+        private void MasterForm_Load(object sender, EventArgs e) {
+            SearchByComboBox.SelectedIndex = 0;
+        }
+
+        private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e) {
+            if(e.Button == MouseButtons.Right) {
+                try {
+                    if(e.RowIndex > -1) {
+                        this.dataGridView1.Rows[e.RowIndex].Selected = true;
+                        this.dataGridView1.CurrentCell = this.dataGridView1.Rows[e.RowIndex].Cells[1];
+                        this.CopyAndDeleteCMS.Show(this.dataGridView1, e.Location);
+                        CopyAndDeleteCMS.Show(Cursor.Position);
+                    }
+                }
+                catch (ArgumentOutOfRangeException outOfRange) {
+                    Console.WriteLine("Out of range exception", outOfRange.Message);
+                }
+            }
+        }
+
+        private void copyUserNameToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (dataGridView1.DataSource == null) {
+                // pop open a dialog box explaining why a new cant be copied
+                DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (dataGridView1.SelectedRows.Count > 0) {
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+            }
+        }
+
+        private void copyPasswordToolStripMenuItem_Click(object sender, EventArgs e) {
+            if (dataGridView1.DataSource == null) {
+                // pop open a dialog box explaining why a new cant be copied
+                DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (dataGridView1.SelectedRows.Count > 0) {
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
+            }
+        }
+        // Copy the current rows url
+        private void copyURLToolStripMenuItem_Click(object sender, EventArgs e) {
+            // make sure the datagrid view has a source
+            if (dataGridView1.DataSource == null) {
+                // pop open a dialog box explaining why a new cant be copied
+                DialogResult res = MessageBox.Show("Please open a file before trying to open a url.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            // datagrid view has a source and make sure that the count of selectd rows is > 0
+            else if (dataGridView1.SelectedRows.Count > 0) {
+                // set the URL to be on the clipboard of the user
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+                // make sure the url is a valid url
+                try {
+                    // open the url
+                    System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+                }
+                // catch any invalid urls
+                catch (Win32Exception w) {
+                    Console.WriteLine("invalid URL selected", w.Message);
+                    MessageBox.Show("The URL is not a valid URL");
+                }
             }
         }
     }

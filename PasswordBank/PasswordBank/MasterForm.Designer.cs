@@ -1,4 +1,6 @@
 ﻿
+using System.Windows.Forms;
+
 namespace FirstPass
 {
     partial class MasterForm
@@ -29,18 +31,13 @@ namespace FirstPass
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.CopyUsernameButton = new System.Windows.Forms.ToolStripButton();
-            this.CopyPassword = new System.Windows.Forms.ToolStripButton();
-            this.CopyButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.SearchButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.LockButton = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -55,9 +52,6 @@ namespace FirstPass
             this.passwordFileSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.settignsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,10 +60,20 @@ namespace FirstPass
             this.addingEntriesToTheFielToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.SearchbyLabel = new System.Windows.Forms.Label();
+            this.SearchByComboBox = new System.Windows.Forms.ComboBox();
+            this.SearchBox = new System.Windows.Forms.TextBox();
+            this.SearchLabel = new System.Windows.Forms.Label();
             this.removeRowButton = new System.Windows.Forms.Button();
             this.EditRowButton = new System.Windows.Forms.Button();
             this.AddNewEntry = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CopyAndDeleteCMS = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyUserNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EntryVariablesPanel = new System.Windows.Forms.Panel();
             this.EntryVariablesConfirmButton = new System.Windows.Forms.Button();
             this.EntryVariablesUrlTextBox = new System.Windows.Forms.TextBox();
@@ -93,6 +97,7 @@ namespace FirstPass
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.CopyAndDeleteCMS.SuspendLayout();
             this.EntryVariablesPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -105,12 +110,6 @@ namespace FirstPass
             this.SaveFilebutton,
             this.toolStripSeparator4,
             this.NewEntryButton,
-            this.toolStripSeparator5,
-            this.CopyUsernameButton,
-            this.CopyPassword,
-            this.CopyButton,
-            this.toolStripSeparator6,
-            this.SearchButton,
             this.toolStripSeparator7,
             this.LockButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
@@ -165,56 +164,6 @@ namespace FirstPass
             this.NewEntryButton.Text = "toolStripButton4";
             this.NewEntryButton.ToolTipText = "New Entry";
             // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 31);
-            // 
-            // CopyUsernameButton
-            // 
-            this.CopyUsernameButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyUsernameButton.Image = global::FirstPass.Properties.Resources.copyUsername;
-            this.CopyUsernameButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CopyUsernameButton.Name = "CopyUsernameButton";
-            this.CopyUsernameButton.Size = new System.Drawing.Size(28, 28);
-            this.CopyUsernameButton.Text = "Copy Username";
-            this.CopyUsernameButton.Click += new System.EventHandler(this.CopyUsernameButton_Click);
-            // 
-            // CopyPassword
-            // 
-            this.CopyPassword.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyPassword.Image = global::FirstPass.Properties.Resources.copyPassword;
-            this.CopyPassword.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CopyPassword.Name = "CopyPassword";
-            this.CopyPassword.Size = new System.Drawing.Size(28, 28);
-            this.CopyPassword.Text = "Copy Password";
-            this.CopyPassword.Click += new System.EventHandler(this.CopyPassword_Click);
-            // 
-            // CopyButton
-            // 
-            this.CopyButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CopyButton.Image = global::FirstPass.Properties.Resources.copyLink;
-            this.CopyButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CopyButton.Name = "CopyButton";
-            this.CopyButton.Size = new System.Drawing.Size(28, 28);
-            this.CopyButton.Text = "Copy URL";
-            this.CopyButton.Click += new System.EventHandler(this.CopyButton_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 31);
-            // 
-            // SearchButton
-            // 
-            this.SearchButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SearchButton.Image = global::FirstPass.Properties.Resources.MagnifyingGlass;
-            this.SearchButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SearchButton.Name = "SearchButton";
-            this.SearchButton.Size = new System.Drawing.Size(28, 28);
-            this.SearchButton.Text = "Search";
-            this.SearchButton.ToolTipText = "Search";
-            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
@@ -236,7 +185,6 @@ namespace FirstPass
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileDropDown,
-            this.groupToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -322,27 +270,6 @@ namespace FirstPass
             this.printToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.printToolStripMenuItem.Text = "Print";
             // 
-            // groupToolStripMenuItem
-            // 
-            this.groupToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addGroupToolStripMenuItem,
-            this.editGroupToolStripMenuItem});
-            this.groupToolStripMenuItem.Name = "groupToolStripMenuItem";
-            this.groupToolStripMenuItem.Size = new System.Drawing.Size(52, 22);
-            this.groupToolStripMenuItem.Text = "Group";
-            // 
-            // addGroupToolStripMenuItem
-            // 
-            this.addGroupToolStripMenuItem.Name = "addGroupToolStripMenuItem";
-            this.addGroupToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.addGroupToolStripMenuItem.Text = "Add Group";
-            // 
-            // editGroupToolStripMenuItem
-            // 
-            this.editGroupToolStripMenuItem.Name = "editGroupToolStripMenuItem";
-            this.editGroupToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.editGroupToolStripMenuItem.Text = "Edit Group";
-            // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -399,7 +326,7 @@ namespace FirstPass
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(972, 515);
-            this.splitContainer1.SplitterDistance = 236;
+            this.splitContainer1.SplitterDistance = 232;
             this.splitContainer1.TabIndex = 4;
             // 
             // splitContainer2
@@ -412,6 +339,10 @@ namespace FirstPass
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.SearchbyLabel);
+            this.splitContainer2.Panel1.Controls.Add(this.SearchByComboBox);
+            this.splitContainer2.Panel1.Controls.Add(this.SearchBox);
+            this.splitContainer2.Panel1.Controls.Add(this.SearchLabel);
             this.splitContainer2.Panel1.Controls.Add(this.removeRowButton);
             this.splitContainer2.Panel1.Controls.Add(this.EditRowButton);
             this.splitContainer2.Panel1.Controls.Add(this.AddNewEntry);
@@ -421,10 +352,49 @@ namespace FirstPass
             // 
             this.splitContainer2.Panel2.Controls.Add(this.EntryVariablesPanel);
             this.splitContainer2.Panel2.Controls.Add(this.entryNotes);
-            this.splitContainer2.Size = new System.Drawing.Size(732, 515);
+            this.splitContainer2.Size = new System.Drawing.Size(736, 515);
             this.splitContainer2.SplitterDistance = 233;
             this.splitContainer2.SplitterWidth = 3;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // SearchbyLabel
+            // 
+            this.SearchbyLabel.AutoSize = true;
+            this.SearchbyLabel.Location = new System.Drawing.Point(535, 4);
+            this.SearchbyLabel.Name = "SearchbyLabel";
+            this.SearchbyLabel.Size = new System.Drawing.Size(58, 13);
+            this.SearchbyLabel.TabIndex = 7;
+            this.SearchbyLabel.Text = "Search by:";
+            // 
+            // SearchByComboBox
+            // 
+            this.SearchByComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.SearchByComboBox.FormattingEnabled = true;
+            this.SearchByComboBox.Items.AddRange(new object[] {
+            "Title",
+            "Username",
+            "URL"});
+            this.SearchByComboBox.Location = new System.Drawing.Point(599, 1);
+            this.SearchByComboBox.Name = "SearchByComboBox";
+            this.SearchByComboBox.Size = new System.Drawing.Size(121, 21);
+            this.SearchByComboBox.TabIndex = 6;
+            // 
+            // SearchBox
+            // 
+            this.SearchBox.Location = new System.Drawing.Point(53, 1);
+            this.SearchBox.Name = "SearchBox";
+            this.SearchBox.Size = new System.Drawing.Size(476, 20);
+            this.SearchBox.TabIndex = 5;
+            this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
+            // 
+            // SearchLabel
+            // 
+            this.SearchLabel.AutoSize = true;
+            this.SearchLabel.Location = new System.Drawing.Point(3, 4);
+            this.SearchLabel.Name = "SearchLabel";
+            this.SearchLabel.Size = new System.Drawing.Size(44, 13);
+            this.SearchLabel.TabIndex = 4;
+            this.SearchLabel.Text = "Search:";
             // 
             // removeRowButton
             // 
@@ -432,7 +402,7 @@ namespace FirstPass
             this.removeRowButton.Location = new System.Drawing.Point(0, 144);
             this.removeRowButton.Margin = new System.Windows.Forms.Padding(2);
             this.removeRowButton.Name = "removeRowButton";
-            this.removeRowButton.Size = new System.Drawing.Size(732, 29);
+            this.removeRowButton.Size = new System.Drawing.Size(736, 29);
             this.removeRowButton.TabIndex = 3;
             this.removeRowButton.Text = "Remove selected row";
             this.removeRowButton.UseVisualStyleBackColor = true;
@@ -445,7 +415,7 @@ namespace FirstPass
             this.EditRowButton.Location = new System.Drawing.Point(0, 173);
             this.EditRowButton.Margin = new System.Windows.Forms.Padding(2);
             this.EditRowButton.Name = "EditRowButton";
-            this.EditRowButton.Size = new System.Drawing.Size(732, 30);
+            this.EditRowButton.Size = new System.Drawing.Size(736, 30);
             this.EditRowButton.TabIndex = 2;
             this.EditRowButton.Text = "Edit selected row";
             this.EditRowButton.UseVisualStyleBackColor = true;
@@ -458,7 +428,7 @@ namespace FirstPass
             this.AddNewEntry.Location = new System.Drawing.Point(0, 203);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1);
             this.AddNewEntry.Name = "AddNewEntry";
-            this.AddNewEntry.Size = new System.Drawing.Size(732, 30);
+            this.AddNewEntry.Size = new System.Drawing.Size(736, 30);
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";
             this.AddNewEntry.UseVisualStyleBackColor = true;
@@ -473,15 +443,62 @@ namespace FirstPass
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.ContextMenuStrip = this.CopyAndDeleteCMS;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 22);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(732, 145);
+            this.dataGridView1.Size = new System.Drawing.Size(736, 123);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
+            // 
+            // CopyAndDeleteCMS
+            // 
+            this.CopyAndDeleteCMS.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteRowToolStripMenuItem,
+            this.copyToolStripMenuItem});
+            this.CopyAndDeleteCMS.Name = "CopyAndDeleteCMS";
+            this.CopyAndDeleteCMS.Size = new System.Drawing.Size(131, 48);
+            // 
+            // deleteRowToolStripMenuItem
+            // 
+            this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.deleteRowToolStripMenuItem.Text = "Delete row";
+            // 
+            // copyToolStripMenuItem
+            // 
+            this.copyToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyUserNameToolStripMenuItem,
+            this.copyPasswordToolStripMenuItem,
+            this.copyURLToolStripMenuItem});
+            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.copyToolStripMenuItem.Text = "Copy";
+            // 
+            // copyUserNameToolStripMenuItem
+            // 
+            this.copyUserNameToolStripMenuItem.Name = "copyUserNameToolStripMenuItem";
+            this.copyUserNameToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.copyUserNameToolStripMenuItem.Text = "Copy user name";
+            this.copyUserNameToolStripMenuItem.Click += new System.EventHandler(this.copyUserNameToolStripMenuItem_Click);
+            // 
+            // copyPasswordToolStripMenuItem
+            // 
+            this.copyPasswordToolStripMenuItem.Name = "copyPasswordToolStripMenuItem";
+            this.copyPasswordToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.copyPasswordToolStripMenuItem.Text = "Copy password";
+            this.copyPasswordToolStripMenuItem.Click += new System.EventHandler(this.copyPasswordToolStripMenuItem_Click);
+            // 
+            // copyURLToolStripMenuItem
+            // 
+            this.copyURLToolStripMenuItem.Name = "copyURLToolStripMenuItem";
+            this.copyURLToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.copyURLToolStripMenuItem.Text = "Copy URL";
+            this.copyURLToolStripMenuItem.Click += new System.EventHandler(this.copyURLToolStripMenuItem_Click);
             // 
             // EntryVariablesPanel
             // 
@@ -500,7 +517,7 @@ namespace FirstPass
             this.EntryVariablesPanel.Location = new System.Drawing.Point(0, 0);
             this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
-            this.EntryVariablesPanel.Size = new System.Drawing.Size(368, 279);
+            this.EntryVariablesPanel.Size = new System.Drawing.Size(372, 279);
             this.EntryVariablesPanel.TabIndex = 2;
             // 
             // EntryVariablesConfirmButton
@@ -510,7 +527,7 @@ namespace FirstPass
             this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 249);
             this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
-            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(368, 30);
+            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(372, 30);
             this.EntryVariablesConfirmButton.TabIndex = 9;
             this.EntryVariablesConfirmButton.Text = "Confirm";
             this.EntryVariablesConfirmButton.UseVisualStyleBackColor = true;
@@ -525,7 +542,7 @@ namespace FirstPass
             this.EntryVariablesUrlTextBox.Location = new System.Drawing.Point(36, 117);
             this.EntryVariablesUrlTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesUrlTextBox.Name = "EntryVariablesUrlTextBox";
-            this.EntryVariablesUrlTextBox.Size = new System.Drawing.Size(324, 13);
+            this.EntryVariablesUrlTextBox.Size = new System.Drawing.Size(328, 13);
             this.EntryVariablesUrlTextBox.TabIndex = 8;
             // 
             // EntryVariablesPasswordTextBox
@@ -537,7 +554,7 @@ namespace FirstPass
             this.EntryVariablesPasswordTextBox.Location = new System.Drawing.Point(63, 88);
             this.EntryVariablesPasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesPasswordTextBox.Name = "EntryVariablesPasswordTextBox";
-            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(298, 13);
+            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(302, 13);
             this.EntryVariablesPasswordTextBox.TabIndex = 7;
             // 
             // EntryVariablesUsernameTextBox
@@ -549,7 +566,7 @@ namespace FirstPass
             this.EntryVariablesUsernameTextBox.Location = new System.Drawing.Point(66, 58);
             this.EntryVariablesUsernameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesUsernameTextBox.Name = "EntryVariablesUsernameTextBox";
-            this.EntryVariablesUsernameTextBox.Size = new System.Drawing.Size(294, 13);
+            this.EntryVariablesUsernameTextBox.Size = new System.Drawing.Size(298, 13);
             this.EntryVariablesUsernameTextBox.TabIndex = 6;
             // 
             // EntryVariablesTitleTextBox
@@ -561,7 +578,7 @@ namespace FirstPass
             this.EntryVariablesTitleTextBox.Location = new System.Drawing.Point(36, 29);
             this.EntryVariablesTitleTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesTitleTextBox.Name = "EntryVariablesTitleTextBox";
-            this.EntryVariablesTitleTextBox.Size = new System.Drawing.Size(324, 13);
+            this.EntryVariablesTitleTextBox.Size = new System.Drawing.Size(328, 13);
             this.EntryVariablesTitleTextBox.TabIndex = 5;
             // 
             // EntryVariablesUrlLabel
@@ -625,7 +642,7 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel.Location = new System.Drawing.Point(0, 0);
             this.EntryVariablesHeaderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EntryVariablesHeaderLabel.Name = "EntryVariablesHeaderLabel";
-            this.EntryVariablesHeaderLabel.Size = new System.Drawing.Size(368, 13);
+            this.EntryVariablesHeaderLabel.Size = new System.Drawing.Size(372, 13);
             this.EntryVariablesHeaderLabel.TabIndex = 0;
             this.EntryVariablesHeaderLabel.Text = "Entry Variables";
             this.EntryVariablesHeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -633,7 +650,7 @@ namespace FirstPass
             // entryNotes
             // 
             this.entryNotes.Dock = System.Windows.Forms.DockStyle.Right;
-            this.entryNotes.Location = new System.Drawing.Point(368, 0);
+            this.entryNotes.Location = new System.Drawing.Point(372, 0);
             this.entryNotes.Name = "entryNotes";
             this.entryNotes.Size = new System.Drawing.Size(364, 279);
             this.entryNotes.TabIndex = 1;
@@ -651,6 +668,7 @@ namespace FirstPass
             this.Name = "MasterForm";
             this.Text = "PasswordKeeper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterForm_FormClosing);
+            this.Load += new System.EventHandler(this.MasterForm_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -664,6 +682,7 @@ namespace FirstPass
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.CopyAndDeleteCMS.ResumeLayout(false);
             this.EntryVariablesPanel.ResumeLayout(false);
             this.EntryVariablesPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -690,18 +709,9 @@ namespace FirstPass
         private System.Windows.Forms.ToolStripButton SaveFilebutton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton NewEntryButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton CopyUsernameButton;
-        private System.Windows.Forms.ToolStripButton CopyPassword;
-        private System.Windows.Forms.ToolStripButton CopyButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton SearchButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton LockButton;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStripMenuItem groupToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addGroupToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editGroupToolStripMenuItem;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem settignsToolStripMenuItem;
@@ -734,6 +744,16 @@ namespace FirstPass
         private System.Windows.Forms.Button EntryVariablesConfirmButton;
         private System.Windows.Forms.Button removeRowButton;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.TextBox SearchBox;
+        private System.Windows.Forms.Label SearchLabel;
+        private System.Windows.Forms.Label SearchbyLabel;
+        private System.Windows.Forms.ComboBox SearchByComboBox;
+        private ContextMenuStrip CopyAndDeleteCMS;
+        private ToolStripMenuItem deleteRowToolStripMenuItem;
+        private ToolStripMenuItem copyToolStripMenuItem;
+        private ToolStripMenuItem copyUserNameToolStripMenuItem;
+        private ToolStripMenuItem copyPasswordToolStripMenuItem;
+        private ToolStripMenuItem copyURLToolStripMenuItem;
     }
 }
 
