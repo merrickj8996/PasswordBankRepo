@@ -7,7 +7,7 @@
 
         // Declaration of all the variables corresponding to columns in the data table
         public string Id { get; set; }
-        public string Group { get; set; }
+        public string Expiration_Date { get; set; }
         public string Title { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
@@ -16,7 +16,7 @@
 
         public PasswordEntry(string id, string group, string title, string username, string password, string url, string notes) {
             Id = id;
-            Group = group;
+            Expiration_Date = group;
             Title = title;
             Username = username;
             Password = password;

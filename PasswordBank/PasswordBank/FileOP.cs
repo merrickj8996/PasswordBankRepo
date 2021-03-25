@@ -81,7 +81,7 @@ namespace FirstPass {
                     // Creates a list for the password entries and adds the entries to it
                     List<PasswordEntry> passwordEntries = new List<PasswordEntry>() { };
                     foreach (DataRow row in dataTable.Rows) {
-                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["group"].ToString(), row["title"].ToString(), row["username"].ToString(),
+                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["expiration date"].ToString(), row["title"].ToString(), row["username"].ToString(),
                                                                                     row["password"].ToString(), row["url"].ToString(), row["notes"].ToString());
                         passwordEntries.Add(passwordEntry);
                     }
@@ -144,7 +144,7 @@ namespace FirstPass {
                 }
                 //Write the first line of the file to the file.
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
-                    file.WriteLine("ID,Group,Title,UserName,Password,URL,Notes");
+                    file.WriteLine("ID,Expiration Date,Title,UserName,Password,URL,Notes");
                     file.Close();
                 }
                 return true;
@@ -241,7 +241,7 @@ namespace FirstPass {
     sealed public class PasswordEntryMap : ClassMap<PasswordEntry> {
         private PasswordEntryMap() {
             Map(m => m.Id).Index(0).Name("id");
-            Map(m => m.Group).Index(1).Name("group");
+            Map(m => m.Expiration_Date).Index(1).Name("expiration date");
             Map(m => m.Title).Index(2).Name("title");
             Map(m => m.Username).Index(3).Name("username");
             Map(m => m.Password).Index(4).Name("password");
