@@ -75,6 +75,7 @@ namespace FirstPass
             this.copyPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.EntryVariablesPanel = new System.Windows.Forms.Panel();
+            this.EntryVariablesPasswordTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesConfirmButton = new System.Windows.Forms.Button();
             this.EntryVariablesUrlTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesUsernameTextBox = new System.Windows.Forms.TextBox();
@@ -86,7 +87,6 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.EntryVariablesPasswordTextBox = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -456,6 +456,7 @@ namespace FirstPass
             this.dataGridView1.Size = new System.Drawing.Size(1106, 236);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
+            this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter_1);
             // 
             // CopyAndDeleteCMS
             // 
@@ -521,6 +522,20 @@ namespace FirstPass
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
             this.EntryVariablesPanel.Size = new System.Drawing.Size(562, 442);
             this.EntryVariablesPanel.TabIndex = 2;
+            // 
+            // EntryVariablesPasswordTextBox
+            // 
+            this.EntryVariablesPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EntryVariablesPasswordTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.EntryVariablesPasswordTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.EntryVariablesPasswordTextBox.Location = new System.Drawing.Point(99, 132);
+            this.EntryVariablesPasswordTextBox.Name = "EntryVariablesPasswordTextBox";
+            this.EntryVariablesPasswordTextBox.PasswordChar = '*';
+            this.EntryVariablesPasswordTextBox.ReadOnly = true;
+            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(457, 19);
+            this.EntryVariablesPasswordTextBox.TabIndex = 10;
+            this.EntryVariablesPasswordTextBox.Enter += new System.EventHandler(this.EntryVariablesPasswordTextBox_Enter_1);
             // 
             // EntryVariablesConfirmButton
             // 
@@ -636,19 +651,6 @@ namespace FirstPass
             this.entryNotes.Size = new System.Drawing.Size(544, 442);
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
-            // 
-            // EntryVariablesPasswordTextBox
-            // 
-            this.EntryVariablesPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EntryVariablesPasswordTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EntryVariablesPasswordTextBox.Location = new System.Drawing.Point(99, 132);
-            this.EntryVariablesPasswordTextBox.Name = "EntryVariablesPasswordTextBox";
-            this.EntryVariablesPasswordTextBox.PasswordChar = '*';
-            this.EntryVariablesPasswordTextBox.ReadOnly = true;
-            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(457, 26);
-            this.EntryVariablesPasswordTextBox.TabIndex = 10;
-            this.EntryVariablesPasswordTextBox.Enter += new System.EventHandler(this.EntryVariablesPasswordTextBox_Enter_1);
             // 
             // MasterForm
             // 

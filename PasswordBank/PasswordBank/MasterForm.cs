@@ -419,19 +419,14 @@ namespace FirstPass {
 
         }
 
-        private void dataGridView1_RowEnter(object sender, DataGridViewCellEventArgs e) {
+        private void dataGridView1_RowEnter_1(object sender, DataGridViewCellEventArgs e) {
             GetSelectedEntryData();
-        }
-
-
-        private void EntryVariablesPasswordTextBox_Enter(object sender, EventArgs e) {
-            EntryPassword form = new EntryPassword(this);
-            form.Show();
         }
 
         private void EntryVariablesPasswordTextBox_Enter_1(object sender, EventArgs e) {
             EntryPassword form = new EntryPassword(this);
             form.Show();
         }
+
     }
 }
