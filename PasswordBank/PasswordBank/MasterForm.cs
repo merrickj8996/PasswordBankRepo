@@ -413,7 +413,9 @@ namespace FirstPass {
             LockFile();
         }
 
-        //Lock button to Encrypt and close the currently opened file.
+        /// <summary>
+        /// Lock and encrypt the currently open file.
+        /// </summary>
         private void LockButton_Click(object sender, EventArgs e) {
             if (FileOP.GetFile() != "") {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
@@ -427,6 +429,9 @@ namespace FirstPass {
             }
         }
 
+        /// <summary>
+        /// Function for when the form closes. Asks the consumer if they would like to save the file they currently have open
+        /// </summary>
         private void MasterForm_FormClosing(Object sender, FormClosingEventArgs e) {
             if (FileOP.GetFile() != "") {
                 if (MessageBox.Show("Would you like to save the current working file?", "Close Program", MessageBoxButtons.YesNo) == DialogResult.Yes) {
@@ -439,6 +444,9 @@ namespace FirstPass {
             }
         }
 
+        /// <summary>
+        /// Unlocks the current file
+        /// </summary>
         private void UnlockFile() {
             if (FileOP.GetKeyFile().Length > 0) {
                 Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
@@ -448,6 +456,9 @@ namespace FirstPass {
 
         }
 
+        /// <summary>
+        /// Locks the file when called
+        /// </summary>
         private void LockFile() {
             //Compresses File
             Compressor.Compress(FileOP.GetFile());
@@ -463,21 +474,25 @@ namespace FirstPass {
             }
         }
 
+        /// <summary>
+        /// Clears the local memory by clearing any bariables used in fileOP and crypto
+        /// </summary>
         private void ClearMem() {
             FileOP.ClearKeyFile();
             FileOP.ClearFile();
             Crypto.mPassTemp = "";
             this.PerformRefresh(false);
         }
-        //click event for the help option to teach you how to use the program
-        private void quickGuideToolStripMenuItem_Click(object sender, EventArgs e) {
-            //open the new form
-            UserGuide frm = new UserGuide();
-            frm.Show();
-        }
 
         //add a new empty row
         private void AddNewEntry_Click(object sender, EventArgs e) {
+            AddANewEntry();
+        }
+
+        /// <summary>
+        /// Adds a new entry to the datagrid view when a file is currently open
+        /// </summary>
+        private void AddANewEntry() {
             String id = "0";
             //if the datagrid view doesnt have a datasource AKA no file is open
             if (dataGridView1.DataSource == null) {
@@ -491,7 +506,6 @@ namespace FirstPass {
                         id = rw.Cells[0].Value.ToString();
                 }
 
-
                 //make a new datatable
                 DataTable dataTable = (DataTable)dataGridView1.DataSource;
                 //Make a new row
@@ -504,7 +518,6 @@ namespace FirstPass {
                 drToAdd["password"] = "";
                 drToAdd["url"] = "";
                 drToAdd["notes"] = "";
-
 
                 dataTable.Rows.Add(drToAdd);
                 dataTable.AcceptChanges();
@@ -520,12 +533,17 @@ namespace FirstPass {
             }
         }
 
+        /// <summary>
+        /// Opens up the file creation help menu
+        /// </summary>
         private void quickGuideToolStripMenuItem_Click_1(object sender, EventArgs e) {
             UserGuide guide = new UserGuide();
             guide.Show();
         }
 
-
+        /// <summary>
+        /// Updates the datagridview with the data entered in the entry variables panel
+        /// </summary>
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
             SetSelectedEntryData();
             DataTable dataTable = (DataTable)dataGridView1.DataSource;
@@ -545,19 +563,18 @@ namespace FirstPass {
             OpeningAFileHelpMenu guide = new OpeningAFileHelpMenu();
             guide.Show();
         }
-        //open a help menu for editing a file
+
+        /// <summary>
+        /// Opens the help menu for editing the contents of a file
+        /// </summary>
         private void addingEntriesToTheFielToolStripMenuItem_Click(object sender, EventArgs e) {
             EditingAFileHelpMenu guide = new EditingAFileHelpMenu();
             guide.Show();
         }
-        // remove the row at a current selected row.
-        private void removeRowButton_Click(object sender, EventArgs e) {
-            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
-                dataGridView1.Rows.RemoveAt(item.Index);
-            }
-        }
 
-        // search the datagrdiview depending on what the consumer has enterd in the text box
+        /// <summary>
+        /// Searches the datagrid view as the user enters text and filters the results depending on what they wish to search by
+        /// </summary>
         private void SearchBox_TextChanged(object sender, EventArgs e) {
             // if the datagrid view doesn't have a source do nothing
             if (dataGridView1.DataSource != null) {
@@ -576,12 +593,16 @@ namespace FirstPass {
             }
         }
 
-        // set the default value of the serach by title combo box to be 'title'
+        /// <summary>
+        /// Sets the default value of the search by combo box to be by entry title
+        /// </summary>
         private void MasterForm_Load(object sender, EventArgs e) {
             SearchByComboBox.SelectedIndex = 0;
         }
 
-        // event for the mouse being hovered over a cell
+        /// <summary>
+        /// Event for when the mouse is hovered over the cell. for the purpose of our program it's used for opening a context menu strip on right click
+        /// </summary>
         private void dataGridView1_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e) {
             // if the right click button is clicked
             if(e.Button == MouseButtons.Right) {
@@ -600,7 +621,9 @@ namespace FirstPass {
             }
         }
 
-        // copy the username on click of the toolstrip item for copying a username
+        /// <summary>
+        /// Function for a click on the context menu strip for copying a username
+        /// </summary>
         private void copyUserNameToolStripMenuItem_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
                 // pop open a dialog box explaining why the username can't be copied
@@ -611,7 +634,9 @@ namespace FirstPass {
             }
         }
 
-        // copy the password on click of the toolstip item for copying a passwrod
+        /// <summary>
+        /// Function for a click on the context menu strip for copying a password
+        /// </summary>
         private void copyPasswordToolStripMenuItem_Click(object sender, EventArgs e) {
             if (dataGridView1.DataSource == null) {
                 // pop open a dialog box explaining why a password cant be copied
@@ -622,7 +647,9 @@ namespace FirstPass {
             }
         }
 
-        // Copy the current rows url and open a new url
+        /// <summary>
+        /// Function for a click on the context menu strip for copying a URL
+        /// </summary>
         private void copyURLToolStripMenuItem_Click(object sender, EventArgs e) {
             // make sure the datagrid view has a source
             if (dataGridView1.DataSource == null) {
@@ -661,11 +688,17 @@ namespace FirstPass {
 
         }
 
+        /// <summary>
+        /// Gets the selected rows data when a row is clicked
+        /// </summary>
         private void dataGridView1_RowEnter_1(object sender, DataGridViewCellEventArgs e) {
             GetSelectedEntryData();
             CheckExpirationDate();
         }
 
+        /// <summary>
+        /// Opens up the password entry options when the user clicks on the password box
+        /// </summary>
         private void EntryVariablesPasswordTextBox_Enter_1(object sender, EventArgs e) {
             EntryPassword form = new EntryPassword(this);
             form.Show();
@@ -706,6 +739,46 @@ namespace FirstPass {
         private void defaultThemeOption_Click(object sender, EventArgs e) {
             ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
             darkThemeEnabled = false;
+        }
+
+        /// <summary>
+        /// Function that tracks the key inputs on the master form. It's used to add shortcuts to the buttons
+        /// </summary>
+        private void MasterForm_KeyDown(object sender, KeyEventArgs e) {
+            // Shortcut for locking (ctrl + L)
+            if(e.Modifiers == Keys.Control && e.KeyCode == Keys.L && dataGridView1.DataSource != null) {
+                DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                if (savePrompt == DialogResult.Yes) {
+                    DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                    UnlockFile();
+                    FileOP.WriteToFile(dataTable);
+                    LockFile();
+                   }
+                ClearMem();
+            }
+            // Shortcut for adding a new line to the gridview (shift + N)
+            else if(e.Modifiers == Keys.Shift && e.KeyCode == Keys.N && dataGridView1.DataSource != null) {
+                AddANewEntry();
+            }
+        }
+
+        /// <summary>
+        /// Function to save when the file dropdown menu is clicked
+        /// </summary>
+        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+            DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+            UnlockFile();
+            FileOP.WriteToFile(dataTable);
+            LockFile();
+        }
+
+        /// <summary>
+        /// Deletes the row the consumer has selected by rickclicking and using the context strip
+        /// </summary>
+        private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e) {
+            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
+                dataGridView1.Rows.RemoveAt(item.Index);
+            }
         }
     }
 }
