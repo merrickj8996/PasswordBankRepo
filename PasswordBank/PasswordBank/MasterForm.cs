@@ -54,7 +54,6 @@ namespace FirstPass {
 
             // Stores all buttons
             buttons.Add(AddNewEntry);
-            buttons.Add(removeRowButton);
             buttons.Add(EntryVariablesConfirmButton);
 
             // Stores all tool strips
@@ -779,6 +778,18 @@ namespace FirstPass {
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
                 dataGridView1.Rows.RemoveAt(item.Index);
             }
+        }
+
+        private void StegImport_Click(object sender, EventArgs e)
+        {
+            StegImport frm = new StegImport();
+            frm.ShowDialog();
+        }
+
+        private void StegExort_Click(object sender, EventArgs e)
+        {
+            StegExport frm = new StegExport();
+            frm.ShowDialog();
         }
     }
 }
