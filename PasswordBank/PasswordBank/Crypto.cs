@@ -43,7 +43,7 @@ namespace FirstPass {
             var key = new Rfc2898DeriveBytes(passwords, salt, mIter);
             AES.Key = key.GetBytes(AES.KeySize / 8);
             AES.IV = key.GetBytes(AES.BlockSize / 8);
-            //AES.Mode = CipherMode.CFB;
+            AES.Mode = CipherMode.CBC;
             try {
 
                 //Creates a new file stream to temporarilty store encrypted data.
@@ -92,8 +92,8 @@ namespace FirstPass {
                 var key = new Rfc2898DeriveBytes(passwords, salt, mIter);
                 AES.Key = key.GetBytes(AES.KeySize / 8);
                 AES.IV = key.GetBytes(AES.BlockSize / 8);
-                //AES.Mode = CipherMode.CFB;
-                
+                AES.Mode = CipherMode.CBC;
+
                 //Try catch to assure that the file is decrypted without error. This will determine if the correct password has been entered.
                 try {
                     using (CryptoStream cryptoStream = new CryptoStream(fileCrypto, AES.CreateDecryptor(), CryptoStreamMode.Read)) {

@@ -203,6 +203,26 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fileexport {
+            get {
+                object obj = ResourceManager.GetObject("fileexport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap fileimport {
+            get {
+                object obj = ResourceManager.GetObject("fileimport", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fileopened {
             get {
                 object obj = ResourceManager.GetObject("fileopened", resourceCulture);
@@ -266,6 +286,16 @@ namespace FirstPass.Properties {
         internal static System.Drawing.Bitmap openWindow {
             get {
                 object obj = ResourceManager.GetObject("openWindow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap person {
+            get {
+                object obj = ResourceManager.GetObject("person", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

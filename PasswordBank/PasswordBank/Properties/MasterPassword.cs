@@ -12,9 +12,6 @@ using System.Windows.Forms;
 
 namespace FirstPass {
     public partial class PasswordOptions : Form {
-
-        public MasterForm TheParent;
-
         public PasswordOptions() {
             InitializeComponent();
         }
@@ -31,11 +28,15 @@ namespace FirstPass {
             if ((PassEntry1.Text == PassEntry2.Text) && String.IsNullOrEmpty(PassEntry1.Text) == false && String.IsNullOrEmpty(PassEntry2.Text) == false) {
                 if (KeyFileCheckBox.Checked) {
                     if (FileOP.GetKeyFile() != "" && FileOP.GetKeyFile() != null && File.Exists(FileOP.GetKeyFile())) {
+                        Compressor.Compress(FileOP.GetFile());
+                        Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
+                        Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
                         KeyFileLocationText.Text = FileOP.GetKeyFile();
-                        Crypto.mPassTemp = PassEntry1.Text;
+                        FileOP.ClearKeyFile();
+
                         MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                         printPopUp.ShowDialog();
-                        TheParent.PerformRefresh(true);
+                        FileOP.ClearFile();
                         this.Close();
                     }
                     else {
@@ -43,10 +44,12 @@ namespace FirstPass {
                     }
                 }
                 else {
-                    Crypto.mPassTemp = PassEntry1.Text;
+                    Compressor.Compress(FileOP.GetFile());
+                    Crypto.EncryptFile(FileOP.GetFile(), PassEntry1.Text);
+
                     MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                     printPopUp.ShowDialog();
-                    TheParent.PerformRefresh(true);
+                    FileOP.ClearFile();
                     this.Close();
                 }
             }
