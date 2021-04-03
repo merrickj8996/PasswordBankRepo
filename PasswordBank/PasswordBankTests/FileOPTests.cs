@@ -16,6 +16,7 @@ namespace PasswordBankTests {
         private const string WriteToFileBase = @"..\..\..\TestResources\FileOPTestResources\WriteToFileBase.csv";
         private const string WriteToFileExpected = @"..\..\..\TestResources\FileOPTestResources\WriteToFileExpected.csv";
         private const string WriteLessLinesToFileBase = @"..\..\..\TestResources\FileOPTestResources\WriteLessLinesToFileBase.csv";
+        private const string ReadFileTestFile = @"..\..\..\TestResources\FileOPTestResources\ReadFileTestFile.csv";
 
         /// <summary>
         /// Tests that data is written to a file.
@@ -30,7 +31,7 @@ namespace PasswordBankTests {
             FileOP.WriteToFile(dataTable);
 
             // Assert
-            Assert.IsTrue(CompareCSVs(TestFile, WriteToFileExpected));
+            Assert.IsTrue(AreCSVsEqual(TestFile, WriteToFileExpected));
         }
 
         /// <summary>
@@ -46,7 +47,23 @@ namespace PasswordBankTests {
             FileOP.WriteToFile(dataTable);
 
             // Assert
-            Assert.IsTrue(CompareCSVs(TestFile, WriteToFileExpected));
+            Assert.IsTrue(AreCSVsEqual(TestFile, WriteToFileExpected));
+        }
+
+        /// <summary>
+        /// Tests that a file gets read correctly.
+        /// </summary>
+        [TestMethod()]
+        public void ReadFileTest() {
+            // Arrange
+            FileOP.LoadFile(ReadFileTestFile);
+            DataTable expected = CreateDataTable();
+
+            // Act
+            DataTable actual = FileOP.ReadFile();
+
+            // Assert
+            Assert.IsTrue(AreDataTablesEqual(actual, expected));
         }
 
         /// <summary>
@@ -117,11 +134,39 @@ namespace PasswordBankTests {
         /// <param name="path1">First filepath</param>
         /// <param name="path2">Second filepath</param>
         /// <returns>Whether or not the files match</returns>
-        public static bool CompareCSVs(string path1, string path2) {
+        public static bool AreCSVsEqual(string path1, string path2) {
             FileInfo file1 = new FileInfo(path1);
             FileInfo file2 = new FileInfo(path2);
 
             return file1.Length == file2.Length && (file1.Length == 0 || File.ReadAllBytes(file1.FullName).SequenceEqual(File.ReadAllBytes(file2.FullName)));
+        }
+
+        /// <summary>
+        /// Checks that two DataTables are equivalent.
+        /// </summary>
+        /// <param name="dataTable1">First DataTable</param>
+        /// <param name="dataTable2">Second DataTable</param>
+        /// <returns>Boolean indicating if the DataTables were equivalent</returns>
+        public static bool AreDataTablesEqual(DataTable dataTable1, DataTable dataTable2) {
+            // Check that the number of rows and columns are equivalent
+            if (dataTable1.Rows.Count != dataTable2.Rows.Count || dataTable1.Columns.Count != dataTable2.Columns.Count) {
+                return false;
+            }
+            // Go through each row and check that they are equivalent
+            else {
+                foreach (DataRow dataTable1Row in dataTable1.Rows) {
+                    foreach (DataRow dataTable2Row in dataTable2.Rows) {
+                        var array1 = dataTable1Row.ItemArray;
+                        var array2 = dataTable2Row.ItemArray;
+
+                        if (!array1.SequenceEqual(array2)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+
+            return true;
         }
     }
 }
