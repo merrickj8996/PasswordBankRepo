@@ -5,11 +5,13 @@ using System.IO;
 using System.Linq;
 
 namespace PasswordBankTests {
+    /// <summary>
+    /// Tests the methods in the Compressor class.
+    /// </summary>
     [TestClass()]
     public class CompressorTests {
-
-        private const string CompressedTestCSV = @"..\..\..\TestResources\DataFilledFile.csv.gz";
-        private const string UncompressedTestCSV = @"..\..\..\TestResources\DataFilledFile.csv";
+        private const string OriginalCompressedFile = @"..\..\..\TestResources\CompressorTestResources\OriginalCompressedFile.csv.gz";
+        private const string OriginalUncompressedFile = @"..\..\..\TestResources\CompressorTestResources\OriginalUncompressedFile.csv";
         private const string CompressedFile = @"TestCSV.csv.gz";
         private const string UncompressedFile = @"TestCSV.csv";
 
@@ -70,7 +72,7 @@ namespace PasswordBankTests {
             Compressor.Decompress(CompressedFile);
 
             // Assert
-            Assert.IsTrue(CompareCSVs(UncompressedFile, UncompressedTestCSV));
+            Assert.IsTrue(CompareCSVs(UncompressedFile, OriginalUncompressedFile));
         }
 
 
@@ -96,7 +98,7 @@ namespace PasswordBankTests {
         private void CompressTestReset() {
 
             if (!File.Exists(UncompressedFile)) {
-                DirectoryInfo TestCSVInfo = new DirectoryInfo(UncompressedTestCSV);
+                DirectoryInfo TestCSVInfo = new DirectoryInfo(OriginalUncompressedFile);
                 File.Copy(TestCSVInfo.FullName, UncompressedFile);
             }
 
@@ -104,7 +106,7 @@ namespace PasswordBankTests {
                 File.Delete(CompressedFile);
             }
 
-            FileOP.LoadFile(UncompressedFile);
+            FileOP.ClearFile();
 
             return;
         }
@@ -116,7 +118,7 @@ namespace PasswordBankTests {
         private void DecompressTestReset() {
 
             if (!File.Exists(CompressedFile)) {
-                DirectoryInfo TestCSVInfo = new DirectoryInfo(CompressedTestCSV);
+                DirectoryInfo TestCSVInfo = new DirectoryInfo(OriginalCompressedFile);
                 File.Copy(TestCSVInfo.FullName, CompressedFile);
             }
 
