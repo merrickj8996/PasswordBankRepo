@@ -39,6 +39,10 @@ namespace FirstPass {
             listPanel.Add(panel2);
             listPanel.Add(panel3);
             listPanel.Add(panel4);
+            listPanel.Add(panel5);
+            listPanel.Add(panel6);
+            listPanel.Add(panel7);
+            listPanel.Add(panel8);
             listPanel[index].BringToFront();
         }
         /// <summary>

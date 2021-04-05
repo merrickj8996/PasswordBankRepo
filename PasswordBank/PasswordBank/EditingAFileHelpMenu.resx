@@ -118,7 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label6.Text" xml:space="preserve">
-    <value>A new row will be added to the file. From there click the edit button inorder to edit details in the row. In the "Entry Variables" box, click next to the spot you would like to edit and type in what you wish the field to be. Once you are done click the button that says confirm.
-</value>
+    <value>Once inside the entry variables box, type in the information you would like to add to the file. Once you click on the password box you will recieve a pop window with options to randomize the password and see the password strength.</value>
   </data>
 </root>
