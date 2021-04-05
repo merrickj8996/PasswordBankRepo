@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace FirstPass {
@@ -10,6 +12,204 @@ namespace FirstPass {
         /// </summary>
         public MasterForm() {
             InitializeComponent();
+            InitializeControlList();
+        }
+        
+        // Initializing lists for textBoxes and Labels.
+        private List<Control> textBoxes;
+        private List<Control> labels;
+        private List<Control> buttons;
+        private List<ToolStripMenuItem> toolStrips;
+        private List<ToolStripButton> toolStripButtons;
+        private bool darkThemeEnabled = false;
+
+        /// <summary>
+        /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
+        /// </summary>
+        public void InitializeControlList() {
+            textBoxes = new List<Control>();
+            labels = new List<Control>();
+            buttons = new List<Control>();
+            toolStrips = new List<ToolStripMenuItem>();
+            toolStripButtons = new List<ToolStripButton>();
+
+            // Stores all texboxes
+            textBoxes.Add(EntryVariablesExpirationTextBox);
+            textBoxes.Add(EntryVariablesTitleTextBox);
+            textBoxes.Add(EntryVariablesUsernameTextBox);
+            textBoxes.Add(EntryVariablesPasswordTextBox);
+            textBoxes.Add(EntryVariablesUrlTextBox);
+            textBoxes.Add(entryNotes);
+            textBoxes.Add(SearchBox);
+
+            // Stores all labels
+            labels.Add(EntryVariablesHeaderLabel);
+            labels.Add(EntryVariablesExpirationLabel);
+            labels.Add(EntryVariablesTitleLabel);
+            labels.Add(EntryVariablesUsernameLabel);
+            labels.Add(EntryVariablesPasswordLabel);
+            labels.Add(EntryVariablesUrlLabel);
+            labels.Add(SearchLabel);
+            labels.Add(SearchbyLabel);
+
+            // Stores all buttons
+            buttons.Add(AddNewEntry);
+            buttons.Add(EntryVariablesConfirmButton);
+
+            // Stores all tool strips
+            toolStrips.Add(FileDropDown);
+            toolStrips.Add(helpToolStripMenuItem);
+            toolStrips.Add(settingsToolStripMenuItem);
+        }
+
+        /// <summary>
+        /// Changes the font size of all the objects in the MasterForm to the desired font size.
+        /// </summary>
+        /// <param name="fontSize"></param>
+        public void ChangeFontSize(float fontSize) {
+
+            // Creating a font that represents a new font and the same font with a Bold FontStyle.
+            Font newFont = new Font("Microsoft Sans Serif", fontSize);
+            Font newFontBold = new Font("Microsoft Sans Serif", fontSize, FontStyle.Bold);
+
+            // Applying the new font to all of the rows in the DataGridView
+            foreach (DataGridViewRow row in dataGridView1.Rows) {
+                if (row != null) {
+                    row.DefaultCellStyle.Font = newFont;
+                }
+            }
+
+            // Applying the new font to all of the column headers in the DataGridView
+            foreach (DataGridViewColumn column in dataGridView1.Columns) {
+                if (column != null) {
+                    column.HeaderCell.Style.Font = newFont;
+                }
+            }
+
+            // Applying the new font to all of the ToolStripMenuItems
+            foreach (ToolStripMenuItem toolStrip in toolStrips) {
+                toolStrip.Font = newFont;
+            }
+
+            // Applying the new font to all of the textBoxes
+            foreach (Control item in textBoxes) {
+                if (item.Font.Bold) {
+                    item.Font = newFontBold;
+                    item.AutoSize = true;
+                }
+                else {
+                    item.Font = newFont;
+                    item.AutoSize = true;
+                }
+            }
+
+            // Applying the new font to all of the labels.
+            foreach (Control item in labels) {
+                if (item.Font.Bold) {
+                    item.Font = newFontBold;
+                    if (!item.Text.Equals("Entry Variables")) {
+                        item.AutoSize = true;
+                    }
+                }
+                else {
+                    item.Font = newFont;
+                    if (!item.Text.Equals("Entry Variables")) {
+                        item.AutoSize = true;
+                    }
+                }
+            }
+
+            // Applying the new font to all of the buttons.
+            foreach (Control item in buttons) {
+                if (item.Font.Bold) {
+                    item.Font = newFontBold;
+                    if (!item.Text.Equals("Entry Variables")) {
+                        item.AutoSize = true;
+                    }
+                }
+                else {
+                    item.Font = newFont;
+                    if (!item.Text.Equals("Entry Variables")) {
+                        item.AutoSize = true;
+                    }
+                }
+            }
+
+            // Applying the snew font to the SearchByComboBox.
+            SearchByComboBox.Font = newFont;
+        }
+
+        public void ChangeTheme(System.Drawing.Color textColor, System.Drawing.Color backgroundColor, System.Drawing.Color panelColor) {
+
+            // Applying the new theme to all of the rows in the DataGridView
+            foreach (DataGridViewRow row in dataGridView1.Rows) {
+                if (row != null) {
+                    row.DefaultCellStyle.BackColor = backgroundColor;
+                    row.DefaultCellStyle.ForeColor = textColor;
+                }
+            }
+
+            // Applying the new theme to all of the column headers in the DataGridView
+            foreach (DataGridViewColumn column in dataGridView1.Columns) {
+                if (column != null) {
+                    column.HeaderCell.Style.BackColor = backgroundColor;
+                    column.HeaderCell.Style.ForeColor = textColor;
+                }
+            }
+
+            // Applying the new theme to all of the ToolStripMenuItems
+            foreach (ToolStripMenuItem toolStrip in toolStrips) {
+                toolStrip.BackColor = panelColor;
+                toolStrip.ForeColor = textColor;
+            }
+
+            // Applying the new theme to all of the textBoxes
+            foreach (Control item in textBoxes) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
+
+            // Applying the new theme to all of the labels.
+            foreach (Control item in labels) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
+
+            // Applying the new theme to all of the buttons.
+            foreach (Control item in buttons) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
+
+            // Applying the new theme to the SearchByComboBox.
+            SearchByComboBox.BackColor = backgroundColor;
+            SearchByComboBox.ForeColor = textColor;
+
+            // Applying the new theme to the menu strip
+            menuStrip1.BackColor = panelColor;
+
+            // Applying the new theme to the tool strip
+            toolStrip1.BackColor = panelColor;
+
+            // Applying the new theme to the entryVariablesPanel
+            EntryVariablesPanel.BackColor = panelColor;
+
+            // Applying the new theme to dataGridView
+            dataGridView1.BackColor = panelColor;
+
+            // Applying the new theme to the splitContainer2.Panel1
+            splitContainer2.Panel1.BackColor = panelColor;
+
+            // Applying the new theme to the toolStripButtons
+            foreach(ToolStripButton buttons in toolStripButtons) {
+                buttons.BackColor = panelColor;
+            }
+
+            // Applying the new theme to the notes background
+            entryNotes.BackColor = backgroundColor;
+
+            // Applying the new theme to the search box
+            SearchBox.BackColor = backgroundColor;
         }
 
         /// <summary>
@@ -28,11 +228,13 @@ namespace FirstPass {
             }
 
         }
-
+        
         /// <summary>
         /// Clears all the data for the entry variables.
         /// </summary>
         public void ClearEntryData() {
+            EntryVariablesExpirationTextBox.Text = "";
+            EntryVariablesExpirationTextBox.ForeColor = System.Drawing.Color.Black;
             EntryVariablesTitleTextBox.Text = "";
             EntryVariablesUsernameTextBox.Text = "";
             EntryVariablesPasswordTextBox.Text = "";
@@ -49,6 +251,7 @@ namespace FirstPass {
                 try {
                     // Checks to make sure that cells in row are not null.
                     if (dataGridView1.SelectedRows[0].Cells[2].Value != null) {
+                        EntryVariablesExpirationTextBox.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
                         EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
                         EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
                         EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
@@ -71,6 +274,7 @@ namespace FirstPass {
 
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells.Count > 0) {
 
+                dataGridView1.SelectedRows[0].Cells[1].Value = EntryVariablesExpirationTextBox.Text;
                 dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
                 dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
                 dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
@@ -78,6 +282,37 @@ namespace FirstPass {
                 dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
             }
 
+        }
+        /// <summary>
+        /// Checks the number of days betweeen the current date and the day of expiration.
+        /// </summary>
+        /// <param name="expirationDate"></param> 
+        /// This parameter is for the date that the entry expires on.
+        /// <returns></returns>
+        public void CheckExpirationDate() {
+            
+            double daysTillExpiration = 100;
+            
+            try {
+                DateTime expirationDate = Convert.ToDateTime(EntryVariablesExpirationTextBox.Text.ToString());
+                DateTime currentDate = DateTime.Now;
+                daysTillExpiration = (expirationDate - currentDate ).TotalDays;
+            }
+            catch (System.FormatException) {
+
+            }
+            if (daysTillExpiration <= 3) {
+                MessageBox.Show("Your password for this entry expires in " + Math.Ceiling(daysTillExpiration) + " day(s). Please update your password or remove the expiration date.", "Password Expiration Warning", MessageBoxButtons.OK);
+                EntryVariablesExpirationTextBox.ForeColor = System.Drawing.Color.Red;
+            }
+            else {
+                if (darkThemeEnabled) {
+                    EntryVariablesExpirationTextBox.ForeColor = System.Drawing.Color.White;
+                }
+                else {
+                    EntryVariablesExpirationTextBox.ForeColor = System.Drawing.Color.Black;
+                }
+            }
         }
 
         /// <summary>
@@ -311,12 +546,18 @@ namespace FirstPass {
         private void EntryVariablesConfirmButton_Click(object sender, EventArgs e) {
             SetSelectedEntryData();
             DataTable dataTable = (DataTable)dataGridView1.DataSource;
-            dataTable.AcceptChanges();
+            if (dataTable != null) {
+                dataTable.AcceptChanges();
+            }
+            else {
+                MessageBox.Show("Please open a file before confirming entry data", "No Data Table Warning", MessageBoxButtons.OK);
+            }
         }
-
-        /// <summary>
-        /// opens the help menu form for opening a file
-        /// </summary>
+        //button press to edit a row that the consumer has selected
+        private void EditRowButton_Click(object sender, EventArgs e) {
+           
+        }
+        //open a help menu for opening a file
         private void openingAFileToolStripMenuItem_Click(object sender, EventArgs e) {
             OpeningAFileHelpMenu guide = new OpeningAFileHelpMenu();
             guide.Show();
@@ -451,6 +692,7 @@ namespace FirstPass {
         /// </summary>
         private void dataGridView1_RowEnter_1(object sender, DataGridViewCellEventArgs e) {
             GetSelectedEntryData();
+            CheckExpirationDate();
         }
 
         /// <summary>
@@ -459,6 +701,43 @@ namespace FirstPass {
         private void EntryVariablesPasswordTextBox_Enter_1(object sender, EventArgs e) {
             EntryPassword form = new EntryPassword(this);
             form.Show();
+        }
+        
+        /// <summary>
+        /// Sets text size to the Master From to a smaller size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void smallTextSizeOption_Click(object sender, EventArgs e) {
+            ChangeFontSize(6.0f);
+        }
+
+        /// <summary>
+        /// Sets text size to the Master From to a larger size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void largeTextSizeOption_Click(object sender, EventArgs e) {
+            ChangeFontSize(10.0f);
+        }
+
+        /// <summary>
+        /// Sets text size to the Master From to the default size.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void defaultTextSizeOption_Click(object sender, EventArgs e) {
+            ChangeFontSize(8.0f);
+        }
+
+        private void darkThemeOption_Click(object sender, EventArgs e) {
+            ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
+            darkThemeEnabled = true;
+        }
+
+        private void defaultThemeOption_Click(object sender, EventArgs e) {
+            ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
+            darkThemeEnabled = false;
         }
 
         /// <summary>
@@ -499,6 +778,18 @@ namespace FirstPass {
             foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
                 dataGridView1.Rows.RemoveAt(item.Index);
             }
+        }
+
+        private void StegImport_Click(object sender, EventArgs e)
+        {
+            StegImport frm = new StegImport();
+            frm.ShowDialog();
+        }
+
+        private void StegExort_Click(object sender, EventArgs e)
+        {
+            StegExport frm = new StegExport();
+            frm.ShowDialog();
         }
     }
 }

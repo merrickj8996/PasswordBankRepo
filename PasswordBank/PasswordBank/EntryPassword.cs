@@ -52,6 +52,14 @@ namespace FirstPass {
         private void entryPasswordOkButton_Click(object sender, EventArgs e) {
             if ((entryPasswordTextBox.Text == confirmEntryPasswordTextBox.Text) && String.IsNullOrEmpty(entryPasswordTextBox.Text) == false && String.IsNullOrEmpty(confirmEntryPasswordTextBox.Text) == false) {
                 currentMasterform.EntryVariablesPasswordTextBox.Text = entryPasswordTextBox.Text;
+                try {
+                    DateTime expirationDate = Convert.ToDateTime(currentMasterform.EntryVariablesExpirationTextBox.Text);
+                    expirationDate = expirationDate.AddMonths(1);
+                    currentMasterform.EntryVariablesExpirationTextBox.Text = expirationDate.ToShortDateString();
+                }
+                catch (System.FormatException) {
+
+                }
                 this.Close();
             }
             else {
