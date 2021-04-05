@@ -17,19 +17,32 @@ namespace FirstPass {
         public UserGuide() {
             InitializeComponent();
         }
-        //bring up the previous pannel to the front
+
+        /// <summary>
+        /// Bring up the previous pannel to the front
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviousButton_Click(object sender, EventArgs e) {
             if (index > 0) {
                 listPanel[--index].BringToFront();
             }
         }
-        //Bring up the next pannel to the front
+
+        /// <summary>
+        /// Bring up the next pannel to the front
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextPage_Click(object sender, EventArgs e) {
             if (index < listPanel.Count - 1) {
                 listPanel[++index].BringToFront();
             }
         }
-        //once the form loads
+
+        /// <summary>
+        /// Once the form loads add panels to a list panel and bring up the first panel
+        /// </summary>
         private void UserGuide_Load(object sender, EventArgs e) {
             listPanel.Add(panel1);
             listPanel.Add(panel2);

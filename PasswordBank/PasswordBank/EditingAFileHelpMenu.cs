@@ -18,13 +18,22 @@ namespace FirstPass {
             InitializeComponent();
         }
 
-        // goes to the next pannel/page/part
+        /// <summary>
+        /// goes to the next pannel/page/part
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextButton_Click(object sender, EventArgs e) {
             if (index < listPanel.Count - 1) {
                 listPanel[++index].BringToFront();
             }
         }
-        // Adds the pannel to a list pannel group and displays the first pannel
+
+        /// <summary>
+        /// Adds the pannel to a list pannel group and displays the first pannel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserGuide_Load(object sender, EventArgs e) {
             listPanel.Add(panel1);
             listPanel.Add(panel2);
@@ -32,8 +41,11 @@ namespace FirstPass {
             listPanel.Add(panel4);
             listPanel[index].BringToFront();
         }
-
-        // goes to the previous pannel/page/part
+        /// <summary>
+        /// goes to the previous pannel/page/part
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviousButton_Click(object sender, EventArgs e) {
             if (index > 0) {
                 listPanel[--index].BringToFront();
