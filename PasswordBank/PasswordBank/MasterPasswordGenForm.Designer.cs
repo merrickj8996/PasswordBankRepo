@@ -47,6 +47,7 @@ namespace FirstPass {
             // 
             // UpperCase
             // 
+            this.UpperCase.AccessibleName = "UpperCase";
             this.UpperCase.AutoSize = true;
             this.UpperCase.Location = new System.Drawing.Point(19, 123);
             this.UpperCase.Name = "UpperCase";
@@ -69,6 +70,7 @@ namespace FirstPass {
             // 
             // Digits
             // 
+            this.Digits.AccessibleName = "Digits";
             this.Digits.AutoSize = true;
             this.Digits.Location = new System.Drawing.Point(19, 146);
             this.Digits.Name = "Digits";
@@ -79,6 +81,7 @@ namespace FirstPass {
             // 
             // Special
             // 
+            this.Special.AccessibleName = "Special";
             this.Special.AutoSize = true;
             this.Special.Location = new System.Drawing.Point(161, 98);
             this.Special.Name = "Special";
@@ -89,6 +92,7 @@ namespace FirstPass {
             // 
             // Brackets
             // 
+            this.Brackets.AccessibleName = "Brackets";
             this.Brackets.AutoSize = true;
             this.Brackets.Location = new System.Drawing.Point(164, 123);
             this.Brackets.Name = "Brackets";
@@ -99,6 +103,7 @@ namespace FirstPass {
             // 
             // CloseButton
             // 
+            this.CloseButton.AccessibleName = "CloseButton";
             this.CloseButton.Location = new System.Drawing.Point(247, 272);
             this.CloseButton.Name = "CloseButton";
             this.CloseButton.Size = new System.Drawing.Size(75, 23);

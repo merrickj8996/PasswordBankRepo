@@ -408,10 +408,12 @@ namespace FirstPass {
         /// Calls the save function when the user clicks the save file button.
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
-            DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
-            UnlockFile();
-            FileOP.WriteToFile(dataTable);
-            LockFile();
+            if (FileOP.GetFile() != "") {
+                DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                UnlockFile();
+                FileOP.WriteToFile(dataTable);
+                LockFile();
+            }
         }
 
         /// <summary>
@@ -629,7 +631,7 @@ namespace FirstPass {
                 // pop open a dialog box explaining why the username can't be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (dataGridView1.SelectedRows.Count > 0) {
+            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[3].Value != null) {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
             }
         }
@@ -642,7 +644,7 @@ namespace FirstPass {
                 // pop open a dialog box explaining why a password cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (dataGridView1.SelectedRows.Count > 0) {
+            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[4].Value != null) {
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
             }
         }
@@ -657,7 +659,7 @@ namespace FirstPass {
                 DialogResult res = MessageBox.Show("Please open a file before trying to open a url.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // datagrid view has a source and make sure that the count of selectd rows is > 0
-            else if (dataGridView1.SelectedRows.Count > 0) {
+            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[5].Value != null) {
                 // set the URL to be on the clipboard of the user
                 Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
                 // make sure the url is a valid url
@@ -701,7 +703,7 @@ namespace FirstPass {
         /// </summary>
         private void EntryVariablesPasswordTextBox_Enter_1(object sender, EventArgs e) {
             EntryPassword form = new EntryPassword(this);
-            form.Show();
+            form.ShowDialog();
         }
         
         /// <summary>
@@ -775,6 +777,22 @@ namespace FirstPass {
         /// <summary>
         /// Deletes the row the consumer has selected by rickclicking and using the context strip
         /// </summary>
-        
+        private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e) {
+            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
+                dataGridView1.Rows.RemoveAt(item.Index);
+            }
+        }
+
+        private void StegImport_Click(object sender, EventArgs e)
+        {
+            StegImport frm = new StegImport();
+            frm.ShowDialog();
+        }
+
+        private void StegExort_Click(object sender, EventArgs e)
+        {
+            StegExport frm = new StegExport();
+            frm.ShowDialog();
+        }
     }
 }

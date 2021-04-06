@@ -17,9 +17,7 @@ namespace FirstPass {
         private static readonly int mBlockSize = 128;
 
         //Stores password so it can be automatically used to lock the database after closing the file. 
-        //This should be stored as a secure string in the future.
         public static String mPassTemp = "";
-        //public static SecureString mPassTemp;
         #endregion
 
         //Generates Salt for use with password. 
@@ -34,7 +32,7 @@ namespace FirstPass {
         //Takes a file name and string password and encrypts the file. 
         public static bool EncryptFile(string inFile, string password) {
             byte[] salt = SaltGen();
-            byte[] passwords = Encoding.UTF8.GetBytes(password);
+            byte[] passwords = Encoding.UTF8.GetBytes(HashSHA256(password));
             AesManaged AES = new AesManaged {
                 KeySize = mKeyLength,
                 BlockSize = mBlockSize,
@@ -80,7 +78,7 @@ namespace FirstPass {
 
         //Takes a file name and string password and decrypts the file. Returns true if sucessful and fails if password is incorrect or other errors occur. 
         public static bool DecryptFile(string inFile, string password) {
-            byte[] passwords = Encoding.UTF8.GetBytes(password);
+            byte[] passwords = Encoding.UTF8.GetBytes(HashSHA256(password));
             byte[] salt = new byte[32];
             using (FileStream fileCrypto = new FileStream(inFile, FileMode.Open)) {
                 fileCrypto.Read(salt, 0, salt.Length);
@@ -122,6 +120,23 @@ namespace FirstPass {
 
             }
 
+        }
+
+        //Hashes data using SHA256
+        private static string HashSHA256(string data)
+        {
+            using (SHA256 sha256Hash = SHA256.Create())
+            {
+                //compute the hash. store in byte array
+                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
+                // Convert byte array to a string   
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < bytes.Length; i++)
+                {
+                    builder.Append(bytes[i].ToString("x2"));
+                }
+                return builder.ToString();
+            }
         }
     }
 }
