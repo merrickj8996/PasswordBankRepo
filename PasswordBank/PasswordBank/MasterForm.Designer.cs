@@ -158,6 +158,7 @@ namespace FirstPass
             // 
             // SaveFilebutton
             // 
+            this.SaveFilebutton.AccessibleName = "SaveFileButton";
             this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
             this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -269,7 +270,7 @@ namespace FirstPass
             // 
             this.OpenFileDropDown.Name = "OpenFileDropDown";
             this.OpenFileDropDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenFileDropDown.Size = new System.Drawing.Size(167, 22);
+            this.OpenFileDropDown.Size = new System.Drawing.Size(180, 22);
             this.OpenFileDropDown.Text = "Open File";
             this.OpenFileDropDown.Click += new System.EventHandler(this.OpenFileDropDown_Click);
             // 
@@ -536,6 +537,7 @@ namespace FirstPass
             // 
             // AddNewEntry
             // 
+            this.AddNewEntry.AccessibleName = "AddNewEntry";
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.AddNewEntry.Location = new System.Drawing.Point(0, 199);
@@ -643,6 +645,7 @@ namespace FirstPass
             // 
             // EntryVariablesExpirationTextBox
             // 
+            this.EntryVariablesExpirationTextBox.AccessibleName = "EntryVariablesExpirationTextBox";
             this.EntryVariablesExpirationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesExpirationTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -665,6 +668,7 @@ namespace FirstPass
             // 
             // EntryVariablesPasswordTextBox
             // 
+            this.EntryVariablesPasswordTextBox.AccessibleName = "EntryVariablesPasswordTextBox";
             this.EntryVariablesPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesPasswordTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -678,6 +682,7 @@ namespace FirstPass
             // 
             // EntryVariablesConfirmButton
             // 
+            this.EntryVariablesConfirmButton.AccessibleName = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.AutoSize = true;
             this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 258);
@@ -691,6 +696,7 @@ namespace FirstPass
             // 
             // EntryVariablesUrlTextBox
             // 
+            this.EntryVariablesUrlTextBox.AccessibleName = "EntryVariablesUrlTextBox";
             this.EntryVariablesUrlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesUrlTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -701,6 +707,7 @@ namespace FirstPass
             // 
             // EntryVariablesUsernameTextBox
             // 
+            this.EntryVariablesUsernameTextBox.AccessibleName = "EntryVariablesUsernameTextBox";
             this.EntryVariablesUsernameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesUsernameTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -711,6 +718,7 @@ namespace FirstPass
             // 
             // EntryVariablesTitleTextBox
             // 
+            this.EntryVariablesTitleTextBox.AccessibleName = "EntryVariablesTitleTextBox";
             this.EntryVariablesTitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesTitleTextBox.BackColor = System.Drawing.SystemColors.Control;
