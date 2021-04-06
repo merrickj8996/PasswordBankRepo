@@ -32,6 +32,7 @@ namespace FirstPass {
             // 
             // printButton
             // 
+            this.printButton.AccessibleName = "Yes";
             this.printButton.Location = new System.Drawing.Point(60, 53);
             this.printButton.Name = "printButton";
             this.printButton.Size = new System.Drawing.Size(75, 23);
@@ -56,6 +57,7 @@ namespace FirstPass {
             // 
             // noPrintButton
             // 
+            this.noPrintButton.AccessibleName = "No";
             this.noPrintButton.Location = new System.Drawing.Point(194, 53);
             this.noPrintButton.Name = "noPrintButton";
             this.noPrintButton.Size = new System.Drawing.Size(75, 23);
