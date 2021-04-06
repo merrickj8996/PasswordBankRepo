@@ -15,12 +15,19 @@ namespace PasswordBankTests {
         private const string TestFileName = @"\SaveTestFile";
         private string TargetSaveLocation = Directory.GetCurrentDirectory();
 
+        /// <summary>
+        /// Goes through the process of creating a new password bank file.
+        /// </summary>
         [TestMethod()]
         public void CreateFileTest() {
+            // Act
+
+            // Working in the master form
             ApplicationSession.FindElementByName("CreateNewButton").Click();
             ApplicationSession.FindElementByName("Yes").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(1)); // Wait for next dialog box to pop up
 
-            Thread.Sleep(TimeSpan.FromSeconds(1)); // Wait for 1 second until the save dialog appears
+            // Working in the save dialog
             ApplicationSession.FindElementByAccessibilityId("FileNameControlHost").SendKeys(SanitizeBackslashes(TargetSaveLocation + TestFileName));
             ApplicationSession.FindElementByName("Save").Click();
 
@@ -30,17 +37,19 @@ namespace PasswordBankTests {
                 ApplicationSession.FindElementByName("Confirm Save As").FindElementByName("Yes").Click();
             }
             catch { }
-
             Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            // Working in master password gen form
             ApplicationSession.FindElementByName("PassEntry1").SendKeys("password");
             ApplicationSession.FindElementByName("PassEntry2").SendKeys("password");
             ApplicationSession.FindElementByName("Ok").Click();
-
             Thread.Sleep(TimeSpan.FromSeconds(1));
-            ApplicationSession.FindElementByName("No").Click();
 
-            // Verify that Notepad has saved the edited text file with the given name
+            // Working in master password print pop up form
+            ApplicationSession.FindElementByName("No").Click();
             Thread.Sleep(TimeSpan.FromSeconds(3)); // Wait for 1.5 seconds until the window title is updated
+
+            // Assert
             Assert.IsTrue(File.Exists(TargetSaveLocation + TestFileName + ".csv.gz"));
         }
 
