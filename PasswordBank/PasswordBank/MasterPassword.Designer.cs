@@ -135,6 +135,7 @@ namespace FirstPass {
             // 
             // KeyFileCheckBox
             // 
+            this.KeyFileCheckBox.AccessibleName = "KeyFileCheckBox";
             this.KeyFileCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyFileCheckBox.AutoSize = true;
@@ -170,6 +171,7 @@ namespace FirstPass {
             // 
             // FindKeyFile
             // 
+            this.FindKeyFile.AccessibleName = "FindKeyFile";
             this.FindKeyFile.Location = new System.Drawing.Point(381, 172);
             this.FindKeyFile.Name = "FindKeyFile";
             this.FindKeyFile.Size = new System.Drawing.Size(75, 23);

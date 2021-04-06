@@ -17,12 +17,18 @@ namespace PasswordBankTests {
         private const string TestFileCSV = "TestFile.csv";
         private const string TestFileGZ = "TestFile.csv.gz";
         private const string BaseGzFile = @"..\..\..\TestResources\MasterFormTestResources\BaseGzFile.csv.gz";
+        private const string BaseGzFileWithKey = @"..\..\..\TestResources\MasterFormTestResources\BaseGzFileWithKey.csv.gz";
+        private const string TestKeyFile = @"..\..\..\TestResources\MasterFormTestResources\TestKeyFile.png";
 
         /// <summary>
         /// Goes through the process of creating a new password bank file.
         /// </summary>
         [TestMethod()]
         public void CreateFileTest() {
+            // Arrange
+            DirectoryInfo keyFileInfo = new DirectoryInfo(TestKeyFile);
+            string keyFilePath = keyFileInfo.FullName;
+
             // Act
 
             // Working in the master form
@@ -38,7 +44,7 @@ namespace PasswordBankTests {
 
             Thread.Sleep(TimeSpan.FromSeconds(1));
 
-            // Working in the save dialog
+            // Working in the windows save dialog
             ApplicationSession.FindElementByAccessibilityId("FileNameControlHost").SendKeys(TargetFileLocation + TestFileCSV);
             ApplicationSession.FindElementByName("Save").Click();
 
@@ -48,22 +54,90 @@ namespace PasswordBankTests {
                 ApplicationSession.FindElementByName("Confirm Save As").FindElementByName("Yes").Click();
             }
             catch { }
+
             Thread.Sleep(TimeSpan.FromSeconds(1));
 
             // Working in master password gen form
             ApplicationSession.FindElementByName("PassEntry1").SendKeys("password");
             ApplicationSession.FindElementByName("PassEntry2").SendKeys("password");
             ApplicationSession.FindElementByName("Ok").Click();
+
             Thread.Sleep(TimeSpan.FromSeconds(1));
 
             // Working in master password print pop up form
             ApplicationSession.FindElementByName("No").Click();
-            Thread.Sleep(TimeSpan.FromSeconds(3)); // Wait for 1.5 seconds until the window title is updated
+
+            Thread.Sleep(TimeSpan.FromSeconds(3));
 
             // Assert
             Assert.IsTrue(File.Exists(TargetFileLocation + TestFileGZ));
         }
-        
+
+        /// <summary>
+        /// Goes through the process of creating a new password bank file that uses a key file.
+        /// </summary>
+        [TestMethod()]
+        public void CreateFileWithKeyTest() {
+            // Arrange
+            DirectoryInfo keyFileInfo = new DirectoryInfo(TestKeyFile);
+            string keyFilePath = keyFileInfo.FullName;
+
+            // Act
+
+            // Working in the master form
+            ApplicationSession.FindElementByName("CreateNewButton").Click();
+            ApplicationSession.FindElementByName("Yes").Click();
+
+            // Save current working file if one is opened
+            try {
+                Thread.Sleep(TimeSpan.FromSeconds(1)); // Wait for 1 second in case save as dialog appears
+                ApplicationSession.FindElementByName("Yes").Click();
+            }
+            catch { }
+
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            // Working in the windows save dialog
+            ApplicationSession.FindElementByAccessibilityId("FileNameControlHost").SendKeys(TargetFileLocation + TestFileCSV);
+            ApplicationSession.FindElementByName("Save").Click();
+
+            // Check if the Save As dialog appears when there's a leftover test file from previous test run
+            try {
+                Thread.Sleep(TimeSpan.FromSeconds(1)); // Wait for 1 second in case save as dialog appears
+                ApplicationSession.FindElementByName("Confirm Save As").FindElementByName("Yes").Click();
+            }
+            catch { }
+
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            // Working in master password gen form
+            ApplicationSession.FindElementByName("PassEntry1").SendKeys("password");
+            ApplicationSession.FindElementByName("PassEntry2").SendKeys("password");
+            ApplicationSession.FindElementByName("KeyFileCheckBox").Click();
+            ApplicationSession.FindElementByName("FindKeyFile").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            // Working in the windows open dialog
+            ApplicationSession.FindElementByClassName("Edit").SendKeys(keyFilePath);
+            ApplicationSession.FindElementByClassName("Button").FindElementByName("Open").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            // Working in the master password gen form
+            ApplicationSession.FindElementByName("Ok").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(1));
+
+            // Working in master password print pop up form
+            ApplicationSession.FindElementByName("No").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+
+            // Assert
+            Assert.IsTrue(File.Exists(TargetFileLocation + TestFileGZ));
+        }
+
         /// <summary>
         /// Goes through the process of loading a password bank file.
         /// </summary>
@@ -80,7 +154,7 @@ namespace PasswordBankTests {
             // Save current working file if one is opened
             try {
                 Thread.Sleep(TimeSpan.FromSeconds(2)); // Wait for 1 second in case save as dialog appears
-                ApplicationSession.FindElementByName("Yes").Click();
+                ApplicationSession.FindElementByName("No").Click();
             }
             catch { }
             Thread.Sleep(TimeSpan.FromSeconds(5));
@@ -88,14 +162,78 @@ namespace PasswordBankTests {
             // Working in the load dialog
             ApplicationSession.FindElementByClassName("Edit").SendKeys(TargetFileLocation + TestFileGZ);
             ApplicationSession.FindElementByClassName("Button").FindElementByName("Open").Click();
-            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
 
             // Working in enter password for file form
             ApplicationSession.FindElementByName("PasswordEntry").SendKeys("password");
             ApplicationSession.FindElementByName("Ok").Click();
 
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
+            // Assert
+            Assert.AreEqual(TestFileCSV, FileOP.GetFile());
+
+            ApplicationSession.FindElementByName("LockButton").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            ApplicationSession.FindElementByName("Yes").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+        }
+
+        /// <summary>
+        /// Goes through the process of loading a password bank file.
+        /// </summary>
+        [TestMethod()]
+        public void LoadFileWithKeyTest() {
+            // Arrange
+            LoadFileWithKeyTestReset();
+            DirectoryInfo keyFileInfo = new DirectoryInfo(TestKeyFile);
+            string keyFilePath = keyFileInfo.FullName;
+
+            // Act
+
+            // Working in the master form
+            ApplicationSession.FindElementByName("OpenFileButton").Click();
+
+            // Save current working file if one is opened
+            try {
+                Thread.Sleep(TimeSpan.FromSeconds(2)); // Wait for 1 second in case save as dialog appears
+                ApplicationSession.FindElementByName("No").Click();
+            }
+            catch { }
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
+            // Working in the load dialog
+            ApplicationSession.FindElementByClassName("Edit").SendKeys(TargetFileLocation + TestFileGZ);
+            ApplicationSession.FindElementByClassName("Button").FindElementByName("Open").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            // Working in enter password for file form
+            ApplicationSession.FindElementByName("PasswordEntry").SendKeys("password");
+            ApplicationSession.FindElementByName("FindKeyFile").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            // Working in Windows' open file dialog
+            ApplicationSession.FindElementByClassName("Edit").SendKeys(keyFilePath);
+            ApplicationSession.FindElementByClassName("Button").FindElementByName("Open").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
+            // Working in enter password for file form
+            ApplicationSession.FindElementByName("Ok").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+
             // Assert
             Assert.AreEqual(FileOP.GetFile(), TestFileCSV);
+
+            ApplicationSession.FindElementByName("LockButton").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            ApplicationSession.FindElementByName("Yes").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(5));
         }
 
         /// <summary>
@@ -115,6 +253,7 @@ namespace PasswordBankTests {
             ApplicationSession.FindElementByName("EntryVariablesUsernameTextBox").SendKeys("user1");
             ApplicationSession.FindElementByName("EntryVariablesUrlTextBox").SendKeys("url1");
             ApplicationSession.FindElementByName("EntryVariablesPasswordTextBox").Click();
+
             Thread.Sleep(TimeSpan.FromSeconds(2));
 
             // Working in entry password form
@@ -126,8 +265,69 @@ namespace PasswordBankTests {
             ApplicationSession.FindElementByName("EntryVariablesConfirmButton").Click();
             ApplicationSession.FindElementByName("SaveFileButton").Click();
 
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
             // Assert
             Assert.IsTrue(File.Exists(TargetFileLocation + TestFileGZ));
+
+            ApplicationSession.FindElementByName("LockButton").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            ApplicationSession.FindElementByName("Yes").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(5));
+        }
+
+        /// <summary>
+        /// Goes through the process of editing and then saving a file.
+        /// </summary>
+        [TestMethod()]
+        public void EditWithRandomPasswordTest() {
+            // Arrange
+            OpenTestFile();
+
+            // Act
+
+            // Working in master form
+            ApplicationSession.FindElementByName("AddNewEntry").Click();
+            ApplicationSession.FindElementByName("EntryVariablesExpirationTextBox").SendKeys("expdate1");
+            ApplicationSession.FindElementByName("EntryVariablesTitleTextBox").SendKeys("title1");
+            ApplicationSession.FindElementByName("EntryVariablesUsernameTextBox").SendKeys("user1");
+            ApplicationSession.FindElementByName("EntryVariablesUrlTextBox").SendKeys("url1");
+            ApplicationSession.FindElementByName("EntryVariablesPasswordTextBox").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            // Working in entry password form
+            ApplicationSession.FindElementByName("EntryPasswordRandomizeButton").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            // Working in random password generator form
+            ApplicationSession.FindElementByName("Special").Click();
+            ApplicationSession.FindElementByName("UpperCase").Click();
+            ApplicationSession.FindElementByName("Brackets").Click();
+            ApplicationSession.FindElementByName("Digits").Click();
+            ApplicationSession.FindElementByName("CloseButton").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            // Working in entry password form
+            ApplicationSession.FindElementByName("entryPasswordOkButton").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            // Working in master form
+            ApplicationSession.FindElementByName("EntryVariablesConfirmButton").Click();
+            ApplicationSession.FindElementByName("SaveFileButton").Click();
+
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            // Assert
+            Assert.IsTrue(File.Exists(TargetFileLocation + TestFileGZ));
+
+            ApplicationSession.FindElementByName("LockButton").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+            ApplicationSession.FindElementByName("Yes").Click();
+            Thread.Sleep(TimeSpan.FromSeconds(5));
         }
 
         [ClassInitialize]
@@ -138,18 +338,6 @@ namespace PasswordBankTests {
         [ClassCleanup]
         public static void ClassCleanup() {
             TearDown();
-        }
-
-        /// <summary>
-        /// Makes sure there is a file to be loaded by the load file test.
-        /// </summary>
-        private static void LoadFileTestReset() {
-            if (File.Exists(TestFileGZ)) {
-                File.Delete(TestFileGZ);
-            }
-
-            DirectoryInfo TestCSVInfo = new DirectoryInfo(BaseGzFile);
-            File.Copy(TestCSVInfo.FullName, TestFileGZ);
         }
 
         /// <summary>
@@ -164,7 +352,7 @@ namespace PasswordBankTests {
             // Save current working file if one is opened
             try {
                 Thread.Sleep(TimeSpan.FromSeconds(2)); // Wait for 1 second in case save as dialog appears
-                ApplicationSession.FindElementByName("Yes").Click();
+                ApplicationSession.FindElementByName("No").Click();
             }
             catch { }
             Thread.Sleep(TimeSpan.FromSeconds(5));
@@ -182,16 +370,27 @@ namespace PasswordBankTests {
         }
 
         /// <summary>
-        /// Compares two CSVs and return false if they don't match.
+        /// Makes sure there is a file to be loaded by the load file test.
         /// </summary>
-        /// <param name="path1">First filepath</param>
-        /// <param name="path2">Second filepath</param>
-        /// <returns>Whether or not the files match</returns>
-        public static bool AreCSVsEqual(string path1, string path2) {
-            FileInfo file1 = new FileInfo(path1);
-            FileInfo file2 = new FileInfo(path2);
+        private static void LoadFileTestReset() {
+            if (File.Exists(TestFileGZ)) {
+                File.Delete(TestFileGZ);
+            }
 
-            return file1.Length == file2.Length && (file1.Length == 0 || File.ReadAllBytes(file1.FullName).SequenceEqual(File.ReadAllBytes(file2.FullName)));
+            DirectoryInfo TestCSVInfo = new DirectoryInfo(BaseGzFile);
+            File.Copy(TestCSVInfo.FullName, TestFileGZ);
+        }
+
+        /// <summary>
+        /// Makes sure there is a file to be loaded by the load file test.
+        /// </summary>
+        private static void LoadFileWithKeyTestReset() {
+            if (File.Exists(TestFileGZ)) {
+                File.Delete(TestFileGZ);
+            }
+
+            DirectoryInfo TestCSVInfo = new DirectoryInfo(BaseGzFileWithKey);
+            File.Copy(TestCSVInfo.FullName, TestFileGZ);
         }
     }
 }

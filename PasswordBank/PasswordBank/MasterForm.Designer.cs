@@ -189,6 +189,7 @@ namespace FirstPass
             // 
             // LockButton
             // 
+            this.LockButton.AccessibleName = "LockButton";
             this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
             this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -270,7 +271,7 @@ namespace FirstPass
             // 
             this.OpenFileDropDown.Name = "OpenFileDropDown";
             this.OpenFileDropDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenFileDropDown.Size = new System.Drawing.Size(180, 22);
+            this.OpenFileDropDown.Size = new System.Drawing.Size(167, 22);
             this.OpenFileDropDown.Text = "Open File";
             this.OpenFileDropDown.Click += new System.EventHandler(this.OpenFileDropDown_Click);
             // 
@@ -312,6 +313,7 @@ namespace FirstPass
             // 
             // printToolStripMenuItem
             // 
+            this.printToolStripMenuItem.AccessibleName = "DropDownPrint";
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.printToolStripMenuItem.Size = new System.Drawing.Size(227, 22);

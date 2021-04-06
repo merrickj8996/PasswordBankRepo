@@ -40,7 +40,7 @@ namespace FirstPass {
             this.entryPasswordStrengthBar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.entryPasswordStrengthBar.Location = new System.Drawing.Point(283, 74);
-            this.entryPasswordStrengthBar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.entryPasswordStrengthBar.Margin = new System.Windows.Forms.Padding(2);
             this.entryPasswordStrengthBar.Name = "entryPasswordStrengthBar";
             this.entryPasswordStrengthBar.Size = new System.Drawing.Size(89, 15);
             this.entryPasswordStrengthBar.TabIndex = 20;
@@ -59,6 +59,7 @@ namespace FirstPass {
             // 
             // entryPasswordRandomizeButton
             // 
+            this.entryPasswordRandomizeButton.AccessibleName = "EntryPasswordRandomizeButton";
             this.entryPasswordRandomizeButton.Location = new System.Drawing.Point(395, 36);
             this.entryPasswordRandomizeButton.Name = "entryPasswordRandomizeButton";
             this.entryPasswordRandomizeButton.Size = new System.Drawing.Size(75, 23);
@@ -142,7 +143,7 @@ namespace FirstPass {
             this.Controls.Add(this.confirmEntryPasswordTextBox);
             this.Controls.Add(this.entryPasswordTextBox);
             this.Controls.Add(this.EntryPasswordLabel);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EntryPassword";
             this.Text = "EntryPassword";
             this.ResumeLayout(false);

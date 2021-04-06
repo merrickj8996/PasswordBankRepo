@@ -92,6 +92,7 @@
             // 
             // FindKeyFile
             // 
+            this.FindKeyFile.AccessibleName = "FindKeyFile";
             this.FindKeyFile.Location = new System.Drawing.Point(185, 148);
             this.FindKeyFile.Name = "FindKeyFile";
             this.FindKeyFile.Size = new System.Drawing.Size(75, 23);
