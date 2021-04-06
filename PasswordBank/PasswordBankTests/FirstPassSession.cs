@@ -38,8 +38,9 @@ namespace PasswordBankTests {
         public static void TearDown() {
 
             if (ApplicationSession != null) {
-                // Send escape key to close Cortana window
-                ApplicationSession.Keyboard.SendKeys(Keys.Escape + Keys.Escape);
+                ApplicationSession.FindElementByName("Close").Click();
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                ApplicationSession.FindElementByName("Yes").Click();
                 ApplicationSession.Quit();
                 ApplicationSession = null;
             }

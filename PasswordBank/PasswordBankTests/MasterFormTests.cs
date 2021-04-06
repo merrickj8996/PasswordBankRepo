@@ -28,7 +28,7 @@ namespace PasswordBankTests {
             Thread.Sleep(TimeSpan.FromSeconds(1)); // Wait for next dialog box to pop up
 
             // Working in the save dialog
-            ApplicationSession.FindElementByAccessibilityId("FileNameControlHost").SendKeys(SanitizeBackslashes(TargetSaveLocation + TestFileName));
+            ApplicationSession.FindElementByAccessibilityId("FileNameControlHost").SendKeys(TargetSaveLocation + TestFileName);
             ApplicationSession.FindElementByName("Save").Click();
 
             // Check if the Save As dialog appears when there's a leftover test file from previous test run
@@ -53,9 +53,16 @@ namespace PasswordBankTests {
             Assert.IsTrue(File.Exists(TargetSaveLocation + TestFileName + ".csv.gz"));
         }
 
+
+
         [ClassInitialize]
         public static void ClassInitialize(TestContext context) {
             Setup(context);
+        }
+
+        [ClassCleanup]
+        public static void ClassCleanup() {
+            TearDown();
         }
     }
 }
