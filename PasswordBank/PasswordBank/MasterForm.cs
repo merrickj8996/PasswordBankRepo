@@ -406,10 +406,12 @@ namespace FirstPass {
         /// Calls the save function when the user clicks the save file button.
         /// </summary>
         private void SaveButton_Click(object sender, EventArgs e) {
-            DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
-            UnlockFile();
-            FileOP.WriteToFile(dataTable);
-            LockFile();
+            if (FileOP.GetFile() != "") {
+                DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
+                UnlockFile();
+                FileOP.WriteToFile(dataTable);
+                LockFile();
+            }
         }
 
         /// <summary>
