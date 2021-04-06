@@ -14,6 +14,7 @@ namespace FirstPass {
             InitializeComponent();
             InitializeControlList();
         }
+
         
         // Initializing lists for textBoxes and Labels.
         private List<Control> textBoxes;
@@ -54,7 +55,6 @@ namespace FirstPass {
 
             // Stores all buttons
             buttons.Add(AddNewEntry);
-            buttons.Add(removeRowButton);
             buttons.Add(EntryVariablesConfirmButton);
 
             // Stores all tool strips
@@ -212,6 +212,7 @@ namespace FirstPass {
             // Applying the new theme to the search box
             SearchBox.BackColor = backgroundColor;
         }
+
 
         /// <summary>
         /// Sets the datagridviews datasource to be the datatable constructed by the readfile method.
@@ -554,11 +555,10 @@ namespace FirstPass {
                 MessageBox.Show("Please open a file before confirming entry data", "No Data Table Warning", MessageBoxButtons.OK);
             }
         }
-        //button press to edit a row that the consumer has selected
-        private void EditRowButton_Click(object sender, EventArgs e) {
-           
-        }
-        //open a help menu for opening a file
+
+        /// <summary>
+        /// opens the help menu form for opening a file
+        /// </summary>
         private void openingAFileToolStripMenuItem_Click(object sender, EventArgs e) {
             OpeningAFileHelpMenu guide = new OpeningAFileHelpMenu();
             guide.Show();
@@ -714,6 +714,7 @@ namespace FirstPass {
         }
 
         /// <summary>
+
         /// Sets text size to the Master From to a larger size.
         /// </summary>
         /// <param name="sender"></param>
@@ -741,10 +742,9 @@ namespace FirstPass {
             darkThemeEnabled = false;
         }
 
-        /// <summary>
         /// Function that tracks the key inputs on the master form. It's used to add shortcuts to the buttons
         /// </summary>
-        private void MasterForm_KeyDown(object sender, KeyEventArgs e) {
+        /*private void MasterForm_KeyDown(object sender, KeyEventArgs e) {
             // Shortcut for locking (ctrl + L)
             if(e.Modifiers == Keys.Control && e.KeyCode == Keys.L && dataGridView1.DataSource != null) {
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
@@ -760,25 +760,21 @@ namespace FirstPass {
             else if(e.Modifiers == Keys.Shift && e.KeyCode == Keys.N && dataGridView1.DataSource != null) {
                 AddANewEntry();
             }
-        }
+        }*/
 
         /// <summary>
         /// Function to save when the file dropdown menu is clicked
         /// </summary>
-        private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
+        /*private void saveToolStripMenuItem_Click(object sender, EventArgs e) {
             DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
             UnlockFile();
             FileOP.WriteToFile(dataTable);
             LockFile();
-        }
+        }*/
 
         /// <summary>
         /// Deletes the row the consumer has selected by rickclicking and using the context strip
         /// </summary>
-        private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e) {
-            foreach (DataGridViewRow item in this.dataGridView1.SelectedRows) {
-                dataGridView1.Rows.RemoveAt(item.Index);
-            }
-        }
+        
     }
 }
