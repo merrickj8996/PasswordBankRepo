@@ -17,9 +17,7 @@ namespace FirstPass {
         private static readonly int mBlockSize = 128;
 
         //Stores password so it can be automatically used to lock the database after closing the file. 
-        //This should be stored as a secure string in the future.
         public static String mPassTemp = "";
-        //public static SecureString mPassTemp;
         #endregion
 
         //Generates Salt for use with password. 
