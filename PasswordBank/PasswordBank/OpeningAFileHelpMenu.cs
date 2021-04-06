@@ -18,13 +18,22 @@ namespace FirstPass {
             InitializeComponent();
         }
 
-        //go to the next page
+        /// <summary>
+        /// Go to the next page
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void NextButton_Click(object sender, EventArgs e) {
             if (index < listPanel.Count - 1) {
                 listPanel[++index].BringToFront();
             }
         }
-        //add panels to a list panel control.
+
+        /// <summary>
+        /// Add panels to a list panel control.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OpeningAFileHelpMenu_Load(object sender, EventArgs e) {
             listPanel.Add(panel1);
             listPanel.Add(panel2);
@@ -33,6 +42,11 @@ namespace FirstPass {
             listPanel[index].BringToFront();
         }
 
+        /// <summary>
+        /// Brings back the previous panel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PreviousButton_Click(object sender, EventArgs e) {
             if (index > 0) {
                 listPanel[--index].BringToFront();

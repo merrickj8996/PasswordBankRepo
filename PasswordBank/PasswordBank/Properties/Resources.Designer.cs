@@ -73,9 +73,19 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap addnewrow {
+        internal static System.Drawing.Bitmap addnewrow1 {
             get {
-                object obj = ResourceManager.GetObject("addnewrow", resourceCulture);
+                object obj = ResourceManager.GetObject("addnewrow1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap allDataEntered1 {
+            get {
+                object obj = ResourceManager.GetObject("allDataEntered1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,6 +143,16 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap createNewFileDropdown1 {
+            get {
+                object obj = ResourceManager.GetObject("createNewFileDropdown1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap edit {
             get {
                 object obj = ResourceManager.GetObject("edit", resourceCulture);
@@ -143,9 +163,9 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap editedRow {
+        internal static System.Drawing.Bitmap editedRow1 {
             get {
-                object obj = ResourceManager.GetObject("editedRow", resourceCulture);
+                object obj = ResourceManager.GetObject("editedRow1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +186,16 @@ namespace FirstPass.Properties {
         internal static System.Drawing.Bitmap editrow {
             get {
                 object obj = ResourceManager.GetObject("editrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap enterDetailsForRow {
+            get {
+                object obj = ResourceManager.GetObject("enterDetailsForRow", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,6 +233,16 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap entryPasswordForm {
+            get {
+                object obj = ResourceManager.GetObject("entryPasswordForm", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fileexport {
             get {
                 object obj = ResourceManager.GetObject("fileexport", resourceCulture);
@@ -233,6 +273,16 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap fileopened1 {
+            get {
+                object obj = ResourceManager.GetObject("fileopened1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MagnifyingGlass {
             get {
                 object obj = ResourceManager.GetObject("MagnifyingGlass", resourceCulture);
@@ -243,9 +293,9 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap newrowadded {
+        internal static System.Drawing.Bitmap newrowadded2 {
             get {
-                object obj = ResourceManager.GetObject("newrowadded", resourceCulture);
+                object obj = ResourceManager.GetObject("newrowadded2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -273,9 +323,9 @@ namespace FirstPass.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap openfiledropdown {
+        internal static System.Drawing.Bitmap openfiledropdown1 {
             get {
-                object obj = ResourceManager.GetObject("openfiledropdown", resourceCulture);
+                object obj = ResourceManager.GetObject("openfiledropdown1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -306,6 +356,26 @@ namespace FirstPass.Properties {
         internal static System.Drawing.Bitmap plus {
             get {
                 object obj = ResourceManager.GetObject("plus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap randomize_password {
+            get {
+                object obj = ResourceManager.GetObject("randomize password", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap randomizedpassword {
+            get {
+                object obj = ResourceManager.GetObject("randomizedpassword", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
