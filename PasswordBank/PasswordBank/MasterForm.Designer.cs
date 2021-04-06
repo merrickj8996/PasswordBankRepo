@@ -299,6 +299,7 @@ namespace FirstPass
             // 
             // printToolStripMenuItem
             // 
+            this.printToolStripMenuItem.AccessibleName = "DropDownPrint";
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
             this.printToolStripMenuItem.Size = new System.Drawing.Size(227, 22);
@@ -464,7 +465,7 @@ namespace FirstPass
             this.splitContainer2.Panel2.Controls.Add(this.EntryVariablesPanel);
             this.splitContainer2.Panel2.Controls.Add(this.entryNotes);
             this.splitContainer2.Size = new System.Drawing.Size(737, 515);
-            this.splitContainer2.SplitterDistance = 232;
+            this.splitContainer2.SplitterDistance = 222;
             this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -517,9 +518,10 @@ namespace FirstPass
             // 
             // AddNewEntry
             // 
+            this.AddNewEntry.AccessibleName = "AddNewEntry";
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 199);
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 189);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1);
             this.AddNewEntry.Name = "AddNewEntry";
             this.AddNewEntry.Size = new System.Drawing.Size(737, 33);
@@ -544,7 +546,7 @@ namespace FirstPass
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(737, 163);
+            this.dataGridView1.Size = new System.Drawing.Size(737, 153);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter_1);
@@ -619,11 +621,12 @@ namespace FirstPass
             this.EntryVariablesPanel.Location = new System.Drawing.Point(0, 0);
             this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
-            this.EntryVariablesPanel.Size = new System.Drawing.Size(354, 281);
+            this.EntryVariablesPanel.Size = new System.Drawing.Size(354, 291);
             this.EntryVariablesPanel.TabIndex = 2;
             // 
             // EntryVariablesExpirationTextBox
             // 
+            this.EntryVariablesExpirationTextBox.AccessibleName = "EntryVariablesExpirationTextBox";
             this.EntryVariablesExpirationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesExpirationTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -646,6 +649,7 @@ namespace FirstPass
             // 
             // EntryVariablesPasswordTextBox
             // 
+            this.EntryVariablesPasswordTextBox.AccessibleName = "EntryVariablesPasswordTextBox";
             this.EntryVariablesPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesPasswordTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -659,9 +663,10 @@ namespace FirstPass
             // 
             // EntryVariablesConfirmButton
             // 
+            this.EntryVariablesConfirmButton.AccessibleName = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.AutoSize = true;
             this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 258);
+            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 268);
             this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(354, 23);
@@ -672,6 +677,7 @@ namespace FirstPass
             // 
             // EntryVariablesUrlTextBox
             // 
+            this.EntryVariablesUrlTextBox.AccessibleName = "EntryVariablesUrlTextBox";
             this.EntryVariablesUrlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesUrlTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -682,6 +688,7 @@ namespace FirstPass
             // 
             // EntryVariablesUsernameTextBox
             // 
+            this.EntryVariablesUsernameTextBox.AccessibleName = "EntryVariablesUsernameTextBox";
             this.EntryVariablesUsernameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesUsernameTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -692,6 +699,7 @@ namespace FirstPass
             // 
             // EntryVariablesTitleTextBox
             // 
+            this.EntryVariablesTitleTextBox.AccessibleName = "EntryVariablesTitleTextBox";
             this.EntryVariablesTitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesTitleTextBox.BackColor = System.Drawing.SystemColors.Control;
@@ -764,7 +772,7 @@ namespace FirstPass
             this.entryNotes.Location = new System.Drawing.Point(354, 0);
             this.entryNotes.Margin = new System.Windows.Forms.Padding(2);
             this.entryNotes.Name = "entryNotes";
-            this.entryNotes.Size = new System.Drawing.Size(383, 281);
+            this.entryNotes.Size = new System.Drawing.Size(383, 291);
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 

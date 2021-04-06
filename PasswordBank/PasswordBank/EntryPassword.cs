@@ -73,8 +73,7 @@ namespace FirstPass {
 
         private void entryPasswordRandomizeButton_Click(object sender, EventArgs e) {
             MasterPasswordGenForm randomPasswordFrom = new MasterPasswordGenForm(this);
-            randomPasswordFrom.Show();
-            this.Hide();
+            randomPasswordFrom.ShowDialog();
         }
     }
 }
