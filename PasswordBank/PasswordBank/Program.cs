@@ -124,6 +124,8 @@ namespace FirstPass {
             }
         }
 
+
+        //!!This method exists for proof of work and concept. SecureString will not be implemented in this program.!!
         public static SecureString ConvertToSecureString(string str) {
             SecureString final = new SecureString();
 
@@ -133,6 +135,8 @@ namespace FirstPass {
 
             return final;
         }
+
+        //!!This method exists for proof of work and concept. SecureString will not be implemented in this program.!!
         public static bool compare(SecureString compared, SecureString toCompare) {
             if (toCompare == null) { //if first SecureString is null, throw exception
                 throw new ArgumentNullException("toCompareIsNull");
