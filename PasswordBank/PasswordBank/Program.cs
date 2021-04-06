@@ -111,19 +111,6 @@ namespace FirstPass {
                 return passwordStrength;
             }
         }
-        public static string HashSHA256(string data) {
-            using (SHA256 sha256Hash = SHA256.Create()) {
-                //compute the hash. store in byte array
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(data));
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();
-                for (int i = 0; i < bytes.Length; i++) {
-                    builder.Append(bytes[i].ToString("x2"));
-                }
-                return builder.ToString();
-            }
-        }
-
 
         //!!This method exists for proof of work and concept. SecureString will not be implemented in this program.!!
         public static SecureString ConvertToSecureString(string str) {

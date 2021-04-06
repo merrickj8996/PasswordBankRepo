@@ -14,7 +14,7 @@ namespace FirstPass {
     public partial class PasswordOptions : Form {
 
         public MasterForm TheParent;
-
+        public bool success = false;
         public PasswordOptions() {
             InitializeComponent();
         }
@@ -36,6 +36,7 @@ namespace FirstPass {
                         MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                         printPopUp.ShowDialog();
                         TheParent.PerformRefresh(true);
+                        success = true;
                         this.Close();
                     }
                     else {
@@ -47,6 +48,7 @@ namespace FirstPass {
                     MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
                     printPopUp.ShowDialog();
                     TheParent.PerformRefresh(true);
+                    success = true;
                     this.Close();
                 }
             }
@@ -113,6 +115,21 @@ namespace FirstPass {
         private void FindKeyFile_Click(object sender, EventArgs e) {
             FileOP.SelectKeyFile();
             KeyFileLocationText.Text = FileOP.GetKeyFile();
+        }
+
+        private void KeyFileHelpButton_Click(object sender, EventArgs e) {
+            MessageBox.Show("A key file is any file that contains lots of data, is non-replecatible, and does not change. Pictures work well as key files as they contain many bits", "Key File Help", MessageBoxButtons.OK);
+        }
+
+        private void PasswordOptions_FormClosing(object sender, FormClosingEventArgs e) {
+            if (!success) {
+                File.Delete(FileOP.GetFile());
+                FileOP.ClearFile();
+                FileOP.ClearKeyFile();
+            }
+            else {
+                success = false;
+            }
         }
     }
 }

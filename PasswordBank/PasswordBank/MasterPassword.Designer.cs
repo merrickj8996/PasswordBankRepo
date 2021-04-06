@@ -37,6 +37,7 @@ namespace FirstPass {
             this.KeyFileLocationText = new System.Windows.Forms.TextBox();
             this.PasswordStrengthBar = new System.Windows.Forms.ProgressBar();
             this.FindKeyFile = new System.Windows.Forms.Button();
+            this.KeyFileHelpButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -137,7 +138,7 @@ namespace FirstPass {
             this.KeyFileCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyFileCheckBox.AutoSize = true;
-            this.KeyFileCheckBox.Location = new System.Drawing.Point(136, 176);
+            this.KeyFileCheckBox.Location = new System.Drawing.Point(124, 176);
             this.KeyFileCheckBox.Margin = new System.Windows.Forms.Padding(2);
             this.KeyFileCheckBox.Name = "KeyFileCheckBox";
             this.KeyFileCheckBox.Size = new System.Drawing.Size(63, 17);
@@ -149,7 +150,8 @@ namespace FirstPass {
             // 
             this.KeyFileLocationText.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.KeyFileLocationText.Location = new System.Drawing.Point(203, 174);
+            this.KeyFileLocationText.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.KeyFileLocationText.Location = new System.Drawing.Point(191, 174);
             this.KeyFileLocationText.Margin = new System.Windows.Forms.Padding(2);
             this.KeyFileLocationText.Name = "KeyFileLocationText";
             this.KeyFileLocationText.ReadOnly = true;
@@ -176,11 +178,23 @@ namespace FirstPass {
             this.FindKeyFile.UseVisualStyleBackColor = true;
             this.FindKeyFile.Click += new System.EventHandler(this.FindKeyFile_Click);
             // 
+            // KeyFileHelpButton
+            // 
+            this.KeyFileHelpButton.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.KeyFileHelpButton.Location = new System.Drawing.Point(353, 173);
+            this.KeyFileHelpButton.Name = "KeyFileHelpButton";
+            this.KeyFileHelpButton.Size = new System.Drawing.Size(22, 21);
+            this.KeyFileHelpButton.TabIndex = 15;
+            this.KeyFileHelpButton.Text = "?";
+            this.KeyFileHelpButton.UseVisualStyleBackColor = false;
+            this.KeyFileHelpButton.Click += new System.EventHandler(this.KeyFileHelpButton_Click);
+            // 
             // PasswordOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(468, 351);
+            this.Controls.Add(this.KeyFileHelpButton);
             this.Controls.Add(this.FindKeyFile);
             this.Controls.Add(this.PasswordStrengthBar);
             this.Controls.Add(this.KeyFileLocationText);
@@ -197,6 +211,7 @@ namespace FirstPass {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "PasswordOptions";
             this.Text = "passwordOptions";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PasswordOptions_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +232,6 @@ namespace FirstPass {
         private System.Windows.Forms.TextBox KeyFileLocationText;
         private System.Windows.Forms.ProgressBar PasswordStrengthBar;
         private System.Windows.Forms.Button FindKeyFile;
+        private System.Windows.Forms.Button KeyFileHelpButton;
     }
 }
