@@ -382,7 +382,7 @@ namespace FirstPass
             this.defaultThemeOption,
             this.darkThemeOption});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // defaultThemeOption
@@ -406,27 +406,27 @@ namespace FirstPass
             this.smallTextSizeOption,
             this.largeTextSizeOption});
             this.textSizeToolStripMenuItem.Name = "textSizeToolStripMenuItem";
-            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.textSizeToolStripMenuItem.Text = "Text Size";
             // 
             // defaultTextSizeOption
             // 
             this.defaultTextSizeOption.Name = "defaultTextSizeOption";
-            this.defaultTextSizeOption.Size = new System.Drawing.Size(180, 22);
+            this.defaultTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.defaultTextSizeOption.Text = "Default";
             this.defaultTextSizeOption.Click += new System.EventHandler(this.defaultTextSizeOption_Click);
             // 
             // smallTextSizeOption
             // 
             this.smallTextSizeOption.Name = "smallTextSizeOption";
-            this.smallTextSizeOption.Size = new System.Drawing.Size(180, 22);
+            this.smallTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.smallTextSizeOption.Text = "Small";
             this.smallTextSizeOption.Click += new System.EventHandler(this.smallTextSizeOption_Click);
             // 
             // largeTextSizeOption
             // 
             this.largeTextSizeOption.Name = "largeTextSizeOption";
-            this.largeTextSizeOption.Size = new System.Drawing.Size(180, 22);
+            this.largeTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.largeTextSizeOption.Text = "Large";
             this.largeTextSizeOption.Click += new System.EventHandler(this.largeTextSizeOption_Click);
             // 
@@ -482,7 +482,7 @@ namespace FirstPass
             this.splitContainer2.Panel2.Controls.Add(this.EntryVariablesPanel);
             this.splitContainer2.Panel2.Controls.Add(this.entryNotes);
             this.splitContainer2.Size = new System.Drawing.Size(737, 515);
-            this.splitContainer2.SplitterDistance = 232;
+            this.splitContainer2.SplitterDistance = 222;
             this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -537,7 +537,7 @@ namespace FirstPass
             // 
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 199);
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 189);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1);
             this.AddNewEntry.Name = "AddNewEntry";
             this.AddNewEntry.Size = new System.Drawing.Size(737, 33);
@@ -562,7 +562,7 @@ namespace FirstPass
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(737, 163);
+            this.dataGridView1.Size = new System.Drawing.Size(737, 153);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter_1);
@@ -637,7 +637,7 @@ namespace FirstPass
             this.EntryVariablesPanel.Location = new System.Drawing.Point(0, 0);
             this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
-            this.EntryVariablesPanel.Size = new System.Drawing.Size(354, 281);
+            this.EntryVariablesPanel.Size = new System.Drawing.Size(354, 291);
             this.EntryVariablesPanel.TabIndex = 2;
             // 
             // EntryVariablesExpirationTextBox
@@ -679,7 +679,7 @@ namespace FirstPass
             // 
             this.EntryVariablesConfirmButton.AutoSize = true;
             this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 258);
+            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 268);
             this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(354, 23);
@@ -782,7 +782,7 @@ namespace FirstPass
             this.entryNotes.Location = new System.Drawing.Point(354, 0);
             this.entryNotes.Margin = new System.Windows.Forms.Padding(2);
             this.entryNotes.Name = "entryNotes";
-            this.entryNotes.Size = new System.Drawing.Size(383, 281);
+            this.entryNotes.Size = new System.Drawing.Size(383, 291);
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 

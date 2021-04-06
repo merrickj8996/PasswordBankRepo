@@ -114,5 +114,9 @@ namespace FirstPass {
             FileOP.SelectKeyFile();
             KeyFileLocationText.Text = FileOP.GetKeyFile();
         }
+
+        private void KeyFileHelpButton_Click(object sender, EventArgs e) {
+            MessageBox.Show("A key file is any file that contains lots of data, is non-replecatible, and does not change. Pictures work well as key files as they contain many bits", "Key File Help", MessageBoxButtons.OK);
+        }
     }
 }
