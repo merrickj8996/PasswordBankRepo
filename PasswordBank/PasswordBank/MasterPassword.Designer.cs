@@ -211,6 +211,7 @@ namespace FirstPass {
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "PasswordOptions";
             this.Text = "passwordOptions";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PasswordOptions_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
