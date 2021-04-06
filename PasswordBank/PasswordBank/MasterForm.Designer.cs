@@ -147,6 +147,7 @@ namespace FirstPass
             // 
             // OpenFileButton
             // 
+            this.OpenFileButton.AccessibleName = "OpenFileButton";
             this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
             this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -382,7 +383,7 @@ namespace FirstPass
             this.defaultThemeOption,
             this.darkThemeOption});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // defaultThemeOption
@@ -406,27 +407,27 @@ namespace FirstPass
             this.smallTextSizeOption,
             this.largeTextSizeOption});
             this.textSizeToolStripMenuItem.Name = "textSizeToolStripMenuItem";
-            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.textSizeToolStripMenuItem.Text = "Text Size";
             // 
             // defaultTextSizeOption
             // 
             this.defaultTextSizeOption.Name = "defaultTextSizeOption";
-            this.defaultTextSizeOption.Size = new System.Drawing.Size(180, 22);
+            this.defaultTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.defaultTextSizeOption.Text = "Default";
             this.defaultTextSizeOption.Click += new System.EventHandler(this.defaultTextSizeOption_Click);
             // 
             // smallTextSizeOption
             // 
             this.smallTextSizeOption.Name = "smallTextSizeOption";
-            this.smallTextSizeOption.Size = new System.Drawing.Size(180, 22);
+            this.smallTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.smallTextSizeOption.Text = "Small";
             this.smallTextSizeOption.Click += new System.EventHandler(this.smallTextSizeOption_Click);
             // 
             // largeTextSizeOption
             // 
             this.largeTextSizeOption.Name = "largeTextSizeOption";
-            this.largeTextSizeOption.Size = new System.Drawing.Size(180, 22);
+            this.largeTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.largeTextSizeOption.Text = "Large";
             this.largeTextSizeOption.Click += new System.EventHandler(this.largeTextSizeOption_Click);
             // 

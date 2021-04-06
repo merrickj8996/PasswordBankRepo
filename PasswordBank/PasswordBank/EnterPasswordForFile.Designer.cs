@@ -35,6 +35,7 @@
             // 
             // OkButton
             // 
+            this.OkButton.AccessibleName = "Ok";
             this.OkButton.Location = new System.Drawing.Point(185, 197);
             this.OkButton.Name = "OkButton";
             this.OkButton.Size = new System.Drawing.Size(75, 23);
@@ -63,6 +64,7 @@
             // 
             // passwordEntry
             // 
+            this.passwordEntry.AccessibleName = "PasswordEntry";
             this.passwordEntry.Location = new System.Drawing.Point(79, 43);
             this.passwordEntry.MaxLength = 20;
             this.passwordEntry.Name = "passwordEntry";
