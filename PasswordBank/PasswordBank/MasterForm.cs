@@ -702,7 +702,7 @@ namespace FirstPass {
         /// </summary>
         private void EntryVariablesPasswordTextBox_Enter_1(object sender, EventArgs e) {
             EntryPassword form = new EntryPassword(this);
-            form.Show();
+            form.ShowDialog();
         }
         
         /// <summary>
