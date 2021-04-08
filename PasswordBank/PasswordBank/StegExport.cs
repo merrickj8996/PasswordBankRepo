@@ -36,8 +36,8 @@ namespace FirstPass
             // HERE WE COMPRESS AND ENCRYPT THE DATABASE FILE :)
 
             // LOAD IMAGE AND USE ALGORITHM TO CREATE IMAGE WITH DATABASE HELD WITHIN
-            Console.WriteLine(FileOP.mFileName);
-            string data = File.ReadAllText(FileOP.mFileName);
+            Console.WriteLine(FileOP.GetFile());
+            string data = File.ReadAllText(FileOP.GetFile());
             Bitmap png = new Bitmap(Image.FromFile(this.selectedFileLocation));
             Bitmap stegPng = StegImportExport.embedText(data, png);
 
