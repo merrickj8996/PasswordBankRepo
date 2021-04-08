@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -35,8 +36,12 @@ namespace FirstPass
             // HERE WE COMPRESS AND ENCRYPT THE DATABASE FILE :)
 
             // LOAD IMAGE AND USE ALGORITHM TO CREATE IMAGE WITH DATABASE HELD WITHIN
+            Console.WriteLine(FileOP.mFileName);
+            string data = File.ReadAllText(FileOP.mFileName);
             Bitmap png = new Bitmap(Image.FromFile(this.selectedFileLocation));
-            Bitmap stegPng = StegImportExport.embedText(PasswordTB.Text, png);
+            Bitmap stegPng = StegImportExport.embedText(data, png);
+
+            
 
             //----------SAVE STEG IMAGE WHERE SELECTED-----------
             using (SaveFileDialog saveFile = new SaveFileDialog()) {
