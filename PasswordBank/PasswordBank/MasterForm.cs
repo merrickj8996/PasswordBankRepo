@@ -782,16 +782,17 @@ namespace FirstPass {
             }
         }
 
-        private void StegImport_Click(object sender, EventArgs e)
-        {
+        private void StegImport_Click(object sender, EventArgs e) {
             StegImport frm = new StegImport();
             frm.ShowDialog();
         }
 
-        private void StegExort_Click(object sender, EventArgs e)
-        {
-            StegExport frm = new StegExport();
-            frm.ShowDialog();
+        private void StegExort_Click(object sender, EventArgs e) {
+            if (FileOP.GetFile() != "") {
+                StegExport frm = new StegExport();
+                frm.ShowDialog();
+            }
+            
         }
     }
 }
