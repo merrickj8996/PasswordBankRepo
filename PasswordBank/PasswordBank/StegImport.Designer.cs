@@ -60,8 +60,10 @@ namespace FirstPass
             // 
             this.ExportFileTB.Location = new System.Drawing.Point(91, 6);
             this.ExportFileTB.Name = "ExportFileTB";
+            this.ExportFileTB.ReadOnly = true;
             this.ExportFileTB.Size = new System.Drawing.Size(165, 20);
             this.ExportFileTB.TabIndex = 5;
+            this.ExportFileTB.TextChanged += new System.EventHandler(this.ExportFileTB_TextChanged);
             // 
             // ImportFile
             // 

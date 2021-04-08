@@ -21,34 +21,37 @@ namespace FirstPass
 
         private void Search_Click(object sender, EventArgs e) { // when the search button is clicked, open a selected image file
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "png file (*.png)|*.png";
+                openFileDialog.InitialDirectory = "c:\\"; // start search in the C drive
+                openFileDialog.Filter = "png file (*.png)|*.png"; // only allow PNG files to be opened
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
                     this.selectedFileLocation = openFileDialog.FileName.ToString(); // sets the new file location
-                    pictureBox8.ImageLocation = openFileDialog.FileName.ToString();
+                    pictureBox8.ImageLocation = openFileDialog.FileName.ToString(); // changes image to selected image
+                    ExportFileTB.Text = openFileDialog.FileName.ToString(); //changes text box to display file path
                 }
             }
         }
 
         private void ImportFile_Click_1(object sender, EventArgs e) {
-            Bitmap databasePng = new Bitmap(Image.FromFile(this.selectedFileLocation));
-            string data = "";
-            
+            Bitmap databasePng = new Bitmap(Image.FromFile(this.selectedFileLocation)); // create Bitmap from the selected image file
 
             // PULL DATA FROM IMAGE TO STRING
-            data = StegImportExport.extractText(databasePng);
-            //CONVERT STRING TO ENCRYPTED COMPRESSED FILE
+            string data = StegImportExport.extractText(databasePng); // create string which will contain data pulled from image
+
+            //CONVERT STRING TO ENCRYPTED COMPRESSED DATABASE FILE
             using (SaveFileDialog saveFile = new SaveFileDialog()) {
-                saveFile.Filter = "Password Database Files (*.csv.gz) | *.csv.gz";
-                saveFile.InitialDirectory = "c:\\";
+                saveFile.Filter = "Password Database Files (*.csv.gz) | *.csv.gz"; // save file only as .csv.gz file, which we use for databases
+                saveFile.InitialDirectory = "c:\\"; // start search in the C drive
 
                 if (saveFile.ShowDialog() == DialogResult.OK) {
-                    File.WriteAllText(saveFile.FileName.ToString(), data);
+                    File.WriteAllText(saveFile.FileName.ToString(), data); // write data to the database file if save is successful
                 }
             }
-            //SAVE NEW FILE TO BE OPENED WITH APP
+        }
+
+        private void ExportFileTB_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }
