@@ -359,7 +359,7 @@ namespace FirstPass
             this.defaultThemeOption,
             this.darkThemeOption});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // defaultThemeOption
@@ -383,7 +383,7 @@ namespace FirstPass
             this.smallTextSizeOption,
             this.largeTextSizeOption});
             this.textSizeToolStripMenuItem.Name = "textSizeToolStripMenuItem";
-            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
+            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.textSizeToolStripMenuItem.Text = "Text Size";
             // 
             // defaultTextSizeOption

@@ -21,13 +21,14 @@ namespace FirstPass
 
         private void Search_Click(object sender, EventArgs e) {
             using (OpenFileDialog openFileDialog = new OpenFileDialog()) {
-                openFileDialog.InitialDirectory = "c:\\";
-                openFileDialog.Filter = "png file (*.png)|*.png";
+                openFileDialog.InitialDirectory = "c:\\"; // start search in the C drive
+                openFileDialog.Filter = "png file (*.png)|*.png"; // only allow PNG files to be opened
                 openFileDialog.RestoreDirectory = true;
 
                 if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                    this.selectedFileLocation = openFileDialog.FileName.ToString();
-                    pictureBox8.ImageLocation = openFileDialog.FileName.ToString();
+                    this.selectedFileLocation = openFileDialog.FileName.ToString(); // sets the new file location
+                    pictureBox8.ImageLocation = openFileDialog.FileName.ToString(); // changes image to display selected image
+                    ExportFileTB.Text = openFileDialog.FileName.ToString(); // changes textbox to display file path
                 }
             }
         }
@@ -36,10 +37,11 @@ namespace FirstPass
             // HERE WE COMPRESS AND ENCRYPT THE DATABASE FILE :)
 
             // LOAD IMAGE AND USE ALGORITHM TO CREATE IMAGE WITH DATABASE HELD WITHIN
-            Console.WriteLine(FileOP.GetFile());
-            string data = File.ReadAllText(FileOP.GetFile());
+            //Console.WriteLine(File.ReadAllText(FileOP.GetFile()));
+            //string data = File.ReadAllText(FileOP.GetFile());
+
             Bitmap png = new Bitmap(Image.FromFile(this.selectedFileLocation));
-            Bitmap stegPng = StegImportExport.embedText(data, png);
+            Bitmap stegPng = StegImportExport.embedText(stegTextInfo.Text.ToString(), png);
 
             
 
@@ -50,6 +52,7 @@ namespace FirstPass
 
                 if (saveFile.ShowDialog() == DialogResult.OK) {
                     stegPng.Save(saveFile.FileName.ToString());
+                    
                 }
             }
         }
@@ -59,6 +62,14 @@ namespace FirstPass
         }
 
         private void PasswordTB_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void ExportFileTB_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void stegTextInfo_TextChanged(object sender, EventArgs e) {
 
         }
     }
