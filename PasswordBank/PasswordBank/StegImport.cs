@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,11 +34,20 @@ namespace FirstPass
 
         private void ImportFile_Click_1(object sender, EventArgs e) {
             Bitmap databasePng = new Bitmap(Image.FromFile(this.selectedFileLocation));
+            string data = "";
+            
 
             // PULL DATA FROM IMAGE TO STRING
-            Console.WriteLine(StegImportExport.extractText(databasePng));
+            data = StegImportExport.extractText(databasePng);
             //CONVERT STRING TO ENCRYPTED COMPRESSED FILE
+            using (SaveFileDialog saveFile = new SaveFileDialog()) {
+                saveFile.Filter = "Password Database Files (*.csv.gz) | *.csv.gz";
+                saveFile.InitialDirectory = "c:\\";
 
+                if (saveFile.ShowDialog() == DialogResult.OK) {
+                    File.WriteAllText(saveFile.FileName.ToString(), data);
+                }
+            }
             //SAVE NEW FILE TO BE OPENED WITH APP
         }
     }
