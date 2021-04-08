@@ -32,16 +32,10 @@ namespace FirstPass
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
-            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
-            this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.LockButton = new System.Windows.Forms.ToolStripButton();
-            this.StegImport = new System.Windows.Forms.ToolStripButton();
-            this.StegExort = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileDropDown = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateNewFileDropDown = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,11 +45,8 @@ namespace FirstPass
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saveAsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.passwordFileSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.printToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.settignsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.quickGuideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openingAFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +60,6 @@ namespace FirstPass
             this.smallTextSizeOption = new System.Windows.Forms.ToolStripMenuItem();
             this.largeTextSizeOption = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.SearchbyLabel = new System.Windows.Forms.Label();
             this.SearchByComboBox = new System.Windows.Forms.ComboBox();
@@ -98,13 +88,20 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
+            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
+            this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
+            this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
+            this.LockButton = new System.Windows.Forms.ToolStripButton();
+            this.StegImport = new System.Windows.Forms.ToolStripButton();
+            this.StegExort = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -112,6 +109,7 @@ namespace FirstPass
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.CopyAndDeleteCMS.SuspendLayout();
             this.EntryVariablesPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -132,92 +130,15 @@ namespace FirstPass
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "ToolBar";
             // 
-            // CreateNewButton
-            // 
-            this.CreateNewButton.AccessibleName = "CreateNewButton";
-            this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
-            this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CreateNewButton.Name = "CreateNewButton";
-            this.CreateNewButton.Size = new System.Drawing.Size(34, 28);
-            this.CreateNewButton.Text = "New Password File";
-            this.CreateNewButton.Click += new System.EventHandler(this.CreateNewButton_Click);
-            // 
-            // OpenFileButton
-            // 
-            this.OpenFileButton.AccessibleName = "OpenFileButton";
-            this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
-            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.OpenFileButton.Name = "OpenFileButton";
-            this.OpenFileButton.Size = new System.Drawing.Size(34, 28);
-            this.OpenFileButton.Text = "Open File";
-            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
-            // 
-            // SaveFilebutton
-            // 
-            this.SaveFilebutton.AccessibleName = "SaveFileButton";
-            this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
-            this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveFilebutton.Name = "SaveFilebutton";
-            this.SaveFilebutton.Size = new System.Drawing.Size(34, 28);
-            this.SaveFilebutton.Text = "Save";
-            this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 33);
             // 
-            // NewEntryButton
-            // 
-            this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
-            this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.NewEntryButton.Name = "NewEntryButton";
-            this.NewEntryButton.Size = new System.Drawing.Size(34, 28);
-            this.NewEntryButton.Text = "toolStripButton4";
-            this.NewEntryButton.ToolTipText = "New Entry";
-            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 33);
-            // 
-            // LockButton
-            // 
-            this.LockButton.AccessibleName = "LockButton";
-            this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
-            this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LockButton.Name = "LockButton";
-            this.LockButton.Size = new System.Drawing.Size(34, 28);
-            this.LockButton.Text = "Lock File";
-            this.LockButton.ToolTipText = "Lock File";
-            this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
-            // 
-            // StegImport
-            // 
-            this.StegImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StegImport.Image = global::FirstPass.Properties.Resources.fileimport;
-            this.StegImport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StegImport.Name = "StegImport";
-            this.StegImport.Size = new System.Drawing.Size(28, 28);
-            this.StegImport.Text = "StegImport";
-            this.StegImport.ToolTipText = "Import new file through Steganography";
-            this.StegImport.Click += new System.EventHandler(this.StegImport_Click);
-            // 
-            // StegExort
-            // 
-            this.StegExort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StegExort.Image = global::FirstPass.Properties.Resources.fileexport;
-            this.StegExort.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StegExort.Name = "StegExort";
-            this.StegExort.Size = new System.Drawing.Size(28, 28);
-            this.StegExort.Text = "StegExport";
-            this.StegExort.ToolTipText = "Export file to image through Steganography.";
-            this.StegExort.Click += new System.EventHandler(this.StegExort_Click);
             // 
             // menuStrip1
             // 
@@ -243,8 +164,6 @@ namespace FirstPass
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem1,
             this.toolStripSeparator2,
-            this.passwordFileSettingsToolStripMenuItem,
-            this.toolStripSeparator3,
             this.printToolStripMenuItem});
             this.FileDropDown.Name = "FileDropDown";
             this.FileDropDown.Size = new System.Drawing.Size(54, 29);
@@ -254,7 +173,7 @@ namespace FirstPass
             // 
             this.CreateNewFileDropDown.Name = "CreateNewFileDropDown";
             this.CreateNewFileDropDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.CreateNewFileDropDown.Size = new System.Drawing.Size(344, 34);
+            this.CreateNewFileDropDown.Size = new System.Drawing.Size(141, 22);
             this.CreateNewFileDropDown.Text = "New";
             this.CreateNewFileDropDown.Click += new System.EventHandler(this.CreateNewFileDropDown_Click);
             // 
@@ -263,7 +182,7 @@ namespace FirstPass
             this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenFileDropDown});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // OpenFileDropDown
@@ -277,60 +196,41 @@ namespace FirstPass
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(341, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(344, 34);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
             this.saveAsToolStripMenuItem1.Text = "Save As";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(341, 6);
-            // 
-            // passwordFileSettingsToolStripMenuItem
-            // 
-            this.passwordFileSettingsToolStripMenuItem.Name = "passwordFileSettingsToolStripMenuItem";
-            this.passwordFileSettingsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
-            this.passwordFileSettingsToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
-            this.passwordFileSettingsToolStripMenuItem.Text = "PasswordFile settings";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(341, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.AccessibleName = "DropDownPrint";
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(344, 34);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.printToolStripMenuItem.Text = "Print";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.settignsToolStripMenuItem,
             this.helpToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
             this.helpToolStripMenuItem.Text = "Help";
-            // 
-            // settignsToolStripMenuItem
-            // 
-            this.settignsToolStripMenuItem.Name = "settignsToolStripMenuItem";
-            this.settignsToolStripMenuItem.Size = new System.Drawing.Size(178, 34);
-            this.settignsToolStripMenuItem.Text = "Settings";
             // 
             // helpToolStripMenuItem1
             // 
@@ -339,7 +239,7 @@ namespace FirstPass
             this.openingAFileToolStripMenuItem,
             this.addingEntriesToTheFielToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(178, 34);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // quickGuideToolStripMenuItem
@@ -450,17 +350,6 @@ namespace FirstPass
             this.splitContainer1.SplitterDistance = 348;
             this.splitContainer1.TabIndex = 4;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::FirstPass.Properties.Resources.person;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(348, 811);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -488,8 +377,6 @@ namespace FirstPass
             // 
             // SearchbyLabel
             // 
-            this.SearchbyLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchbyLabel.AutoSize = true;
             this.SearchbyLabel.Location = new System.Drawing.Point(884, 5);
             this.SearchbyLabel.Name = "SearchbyLabel";
@@ -499,8 +386,6 @@ namespace FirstPass
             // 
             // SearchByComboBox
             // 
-            this.SearchByComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.SearchByComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SearchByComboBox.FormattingEnabled = true;
             this.SearchByComboBox.Items.AddRange(new object[] {
@@ -523,7 +408,9 @@ namespace FirstPass
             // SearchLabel
             // 
             this.SearchLabel.AutoSize = true;
-            this.SearchLabel.Location = new System.Drawing.Point(3, 5);
+            this.SearchLabel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.SearchLabel.Location = new System.Drawing.Point(0, 0);
+            this.SearchLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.SearchLabel.Name = "SearchLabel";
             this.SearchLabel.Size = new System.Drawing.Size(64, 20);
             this.SearchLabel.TabIndex = 4;
@@ -788,6 +675,91 @@ namespace FirstPass
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::FirstPass.Properties.Resources.firstpass_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(232, 515);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // CreateNewButton
+            // 
+            this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
+            this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CreateNewButton.Name = "CreateNewButton";
+            this.CreateNewButton.Size = new System.Drawing.Size(28, 28);
+            this.CreateNewButton.Text = "New Password File";
+            this.CreateNewButton.Click += new System.EventHandler(this.CreateNewButton_Click);
+            // 
+            // OpenFileButton
+            // 
+            this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
+            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OpenFileButton.Name = "OpenFileButton";
+            this.OpenFileButton.Size = new System.Drawing.Size(28, 28);
+            this.OpenFileButton.Text = "Open File";
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // SaveFilebutton
+            // 
+            this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
+            this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveFilebutton.Name = "SaveFilebutton";
+            this.SaveFilebutton.Size = new System.Drawing.Size(28, 28);
+            this.SaveFilebutton.Text = "Save";
+            this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
+            // NewEntryButton
+            // 
+            this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
+            this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NewEntryButton.Name = "NewEntryButton";
+            this.NewEntryButton.Size = new System.Drawing.Size(28, 28);
+            this.NewEntryButton.Text = "toolStripButton4";
+            this.NewEntryButton.ToolTipText = "New Entry";
+            // 
+            // LockButton
+            // 
+            this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
+            this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LockButton.Name = "LockButton";
+            this.LockButton.Size = new System.Drawing.Size(28, 28);
+            this.LockButton.Text = "Lock File";
+            this.LockButton.ToolTipText = "Lock File";
+            this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
+            // 
+            // StegImport
+            // 
+            this.StegImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StegImport.Image = global::FirstPass.Properties.Resources.fileimport;
+            this.StegImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StegImport.Name = "StegImport";
+            this.StegImport.Size = new System.Drawing.Size(28, 28);
+            this.StegImport.Text = "StegImport";
+            this.StegImport.ToolTipText = "Import new file through Steganography";
+            this.StegImport.Click += new System.EventHandler(this.StegImport_Click);
+            // 
+            // StegExort
+            // 
+            this.StegExort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StegExort.Image = global::FirstPass.Properties.Resources.fileexport;
+            this.StegExort.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StegExort.Name = "StegExort";
+            this.StegExort.Size = new System.Drawing.Size(28, 28);
+            this.StegExort.Text = "StegExport";
+            this.StegExort.ToolTipText = "Export file to image through Steganography.";
+            this.StegExort.Click += new System.EventHandler(this.StegExort_Click);
+            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -796,6 +768,7 @@ namespace FirstPass
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -811,7 +784,6 @@ namespace FirstPass
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -821,6 +793,7 @@ namespace FirstPass
             this.CopyAndDeleteCMS.ResumeLayout(false);
             this.EntryVariablesPanel.ResumeLayout(false);
             this.EntryVariablesPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -838,8 +811,6 @@ namespace FirstPass
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem passwordFileSettingsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton OpenFileButton;
         private System.Windows.Forms.ToolStripButton SaveFilebutton;
@@ -850,7 +821,6 @@ namespace FirstPass
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem settignsToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button AddNewEntry;
 
