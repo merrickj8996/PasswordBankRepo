@@ -49,7 +49,6 @@ namespace FirstPass {
             labels.Add(EntryVariablesUsernameLabel);
             labels.Add(EntryVariablesPasswordLabel);
             labels.Add(EntryVariablesUrlLabel);
-            labels.Add(SearchLabel);
             labels.Add(SearchbyLabel);
 
             // Stores all buttons
@@ -362,18 +361,23 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked.
         /// </summary>
         private void OpenFileButton_Click(object sender, EventArgs e) {
-
+            // if there is currently a file open
             if (FileOP.GetFile() != "") {
+                // open a dialog asking if the consumer would like to save
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
+                    // save the file contents
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
                     UnlockFile();
                     FileOP.WriteToFile(dataTable);
                     LockFile();
                 }
+                // clear any references to file paths in the memory
                 ClearMem();
             }
+            // if the dialog from fileOP returns true
             if (FileOP.SelectFile()) {
+                // inflate the next form
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
@@ -385,17 +389,23 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked from the file dropdown menu.
         /// </summary>
         private void OpenFileDropDown_Click(object sender, EventArgs e) {
+            // if there is currently a file open
             if (FileOP.GetFile() != "") {
+                //open a dialog asking if the consumer would like to save
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                // save the file contents
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
                     UnlockFile();
                     FileOP.WriteToFile(dataTable);
                     LockFile();
                 }
+                // clear any references to file paths in the memory
                 ClearMem();
             }
+            // if the dialog from fileOP returns true
             if (FileOP.SelectFile()) {
+                // inflate the next form
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
@@ -792,6 +802,18 @@ namespace FirstPass {
         {
             StegExport frm = new StegExport();
             frm.ShowDialog();
+        }
+
+        /// <summary>
+        /// Makes the datagridview password column display password chars rather than being visible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            if (dataGridView1.Columns[e.ColumnIndex].Index == 4 && e.Value != null) {
+                dataGridView1.Rows[e.RowIndex].Tag = e.Value;
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
         }
     }
 }

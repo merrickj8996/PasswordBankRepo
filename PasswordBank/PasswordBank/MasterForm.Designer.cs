@@ -34,8 +34,15 @@ namespace FirstPass
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MasterForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
+            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
+            this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.LockButton = new System.Windows.Forms.ToolStripButton();
+            this.StegImport = new System.Windows.Forms.ToolStripButton();
+            this.StegExort = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileDropDown = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateNewFileDropDown = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,11 +67,12 @@ namespace FirstPass
             this.smallTextSizeOption = new System.Windows.Forms.ToolStripMenuItem();
             this.largeTextSizeOption = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.label1 = new System.Windows.Forms.Label();
             this.SearchbyLabel = new System.Windows.Forms.Label();
             this.SearchByComboBox = new System.Windows.Forms.ComboBox();
             this.SearchBox = new System.Windows.Forms.TextBox();
-            this.SearchLabel = new System.Windows.Forms.Label();
             this.AddNewEntry = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.CopyAndDeleteCMS = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -88,20 +96,13 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
-            this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
-            this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
-            this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
-            this.LockButton = new System.Windows.Forms.ToolStripButton();
-            this.StegImport = new System.Windows.Forms.ToolStripButton();
-            this.StegExort = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
@@ -109,7 +110,6 @@ namespace FirstPass
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.CopyAndDeleteCMS.SuspendLayout();
             this.EntryVariablesPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -132,15 +132,88 @@ namespace FirstPass
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "ToolBar";
             // 
+            // CreateNewButton
+            // 
+            this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
+            this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.CreateNewButton.Name = "CreateNewButton";
+            this.CreateNewButton.Size = new System.Drawing.Size(28, 28);
+            this.CreateNewButton.Text = "New Password File";
+            this.CreateNewButton.Click += new System.EventHandler(this.CreateNewButton_Click);
+            // 
+            // OpenFileButton
+            // 
+            this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
+            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.OpenFileButton.Name = "OpenFileButton";
+            this.OpenFileButton.Size = new System.Drawing.Size(28, 28);
+            this.OpenFileButton.Text = "Open File";
+            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
+            // 
+            // SaveFilebutton
+            // 
+            this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
+            this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.SaveFilebutton.Name = "SaveFilebutton";
+            this.SaveFilebutton.Size = new System.Drawing.Size(28, 28);
+            this.SaveFilebutton.Text = "Save";
+            this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
+            // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(6, 31);
             // 
+            // NewEntryButton
+            // 
+            this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
+            this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.NewEntryButton.Name = "NewEntryButton";
+            this.NewEntryButton.Size = new System.Drawing.Size(28, 28);
+            this.NewEntryButton.Text = "toolStripButton4";
+            this.NewEntryButton.ToolTipText = "New Entry";
+            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 31);
+            // 
+            // LockButton
+            // 
+            this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
+            this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.LockButton.Name = "LockButton";
+            this.LockButton.Size = new System.Drawing.Size(28, 28);
+            this.LockButton.Text = "Lock File";
+            this.LockButton.ToolTipText = "Lock File";
+            this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
+            // 
+            // StegImport
+            // 
+            this.StegImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StegImport.Image = global::FirstPass.Properties.Resources.fileimport;
+            this.StegImport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StegImport.Name = "StegImport";
+            this.StegImport.Size = new System.Drawing.Size(28, 28);
+            this.StegImport.Text = "StegImport";
+            this.StegImport.ToolTipText = "Import new file through Steganography";
+            this.StegImport.Click += new System.EventHandler(this.StegImport_Click);
+            // 
+            // StegExort
+            // 
+            this.StegExort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StegExort.Image = global::FirstPass.Properties.Resources.fileexport;
+            this.StegExort.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StegExort.Name = "StegExort";
+            this.StegExort.Size = new System.Drawing.Size(28, 28);
+            this.StegExort.Text = "StegExport";
+            this.StegExort.ToolTipText = "Export file to image through Steganography.";
+            this.StegExort.Click += new System.EventHandler(this.StegExort_Click);
             // 
             // menuStrip1
             // 
@@ -241,7 +314,7 @@ namespace FirstPass
             this.openingAFileToolStripMenuItem,
             this.addingEntriesToTheFielToolStripMenuItem});
             this.helpToolStripMenuItem1.Name = "helpToolStripMenuItem1";
-            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.helpToolStripMenuItem1.Size = new System.Drawing.Size(99, 22);
             this.helpToolStripMenuItem1.Text = "Help";
             // 
             // quickGuideToolStripMenuItem
@@ -352,6 +425,18 @@ namespace FirstPass
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox1.Image = global::FirstPass.Properties.Resources.firstpass_icon;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(232, 515);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -362,10 +447,10 @@ namespace FirstPass
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.label1);
             this.splitContainer2.Panel1.Controls.Add(this.SearchbyLabel);
             this.splitContainer2.Panel1.Controls.Add(this.SearchByComboBox);
             this.splitContainer2.Panel1.Controls.Add(this.SearchBox);
-            this.splitContainer2.Panel1.Controls.Add(this.SearchLabel);
             this.splitContainer2.Panel1.Controls.Add(this.AddNewEntry);
             this.splitContainer2.Panel1.Controls.Add(this.dataGridView1);
             // 
@@ -377,6 +462,15 @@ namespace FirstPass
             this.splitContainer2.SplitterDistance = 222;
             this.splitContainer2.SplitterWidth = 2;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-3, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.TabIndex = 8;
+            this.label1.Text = "Search:";
             // 
             // SearchbyLabel
             // 
@@ -411,17 +505,6 @@ namespace FirstPass
             this.SearchBox.TabIndex = 5;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
-            // SearchLabel
-            // 
-            this.SearchLabel.AutoSize = true;
-            this.SearchLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.SearchLabel.Location = new System.Drawing.Point(0, 0);
-            this.SearchLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.SearchLabel.Name = "SearchLabel";
-            this.SearchLabel.Size = new System.Drawing.Size(44, 13);
-            this.SearchLabel.TabIndex = 4;
-            this.SearchLabel.Text = "Search:";
-            // 
             // AddNewEntry
             // 
             this.AddNewEntry.AccessibleName = "AddNewEntry";
@@ -454,6 +537,7 @@ namespace FirstPass
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(737, 153);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
             this.dataGridView1.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_RowEnter_1);
             // 
@@ -682,91 +766,6 @@ namespace FirstPass
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox1.Image = global::FirstPass.Properties.Resources.firstpass_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(232, 515);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
-            // 
-            // CreateNewButton
-            // 
-            this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
-            this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.CreateNewButton.Name = "CreateNewButton";
-            this.CreateNewButton.Size = new System.Drawing.Size(28, 28);
-            this.CreateNewButton.Text = "New Password File";
-            this.CreateNewButton.Click += new System.EventHandler(this.CreateNewButton_Click);
-            // 
-            // OpenFileButton
-            // 
-            this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
-            this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.OpenFileButton.Name = "OpenFileButton";
-            this.OpenFileButton.Size = new System.Drawing.Size(28, 28);
-            this.OpenFileButton.Text = "Open File";
-            this.OpenFileButton.Click += new System.EventHandler(this.OpenFileButton_Click);
-            // 
-            // SaveFilebutton
-            // 
-            this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
-            this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.SaveFilebutton.Name = "SaveFilebutton";
-            this.SaveFilebutton.Size = new System.Drawing.Size(28, 28);
-            this.SaveFilebutton.Text = "Save";
-            this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
-            // 
-            // NewEntryButton
-            // 
-            this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.NewEntryButton.Image = global::FirstPass.Properties.Resources.editIcon;
-            this.NewEntryButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.NewEntryButton.Name = "NewEntryButton";
-            this.NewEntryButton.Size = new System.Drawing.Size(28, 28);
-            this.NewEntryButton.Text = "toolStripButton4";
-            this.NewEntryButton.ToolTipText = "New Entry";
-            // 
-            // LockButton
-            // 
-            this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
-            this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.LockButton.Name = "LockButton";
-            this.LockButton.Size = new System.Drawing.Size(28, 28);
-            this.LockButton.Text = "Lock File";
-            this.LockButton.ToolTipText = "Lock File";
-            this.LockButton.Click += new System.EventHandler(this.LockButton_Click);
-            // 
-            // StegImport
-            // 
-            this.StegImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StegImport.Image = global::FirstPass.Properties.Resources.fileimport;
-            this.StegImport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StegImport.Name = "StegImport";
-            this.StegImport.Size = new System.Drawing.Size(28, 28);
-            this.StegImport.Text = "StegImport";
-            this.StegImport.ToolTipText = "Import new file through Steganography";
-            this.StegImport.Click += new System.EventHandler(this.StegImport_Click);
-            // 
-            // StegExort
-            // 
-            this.StegExort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StegExort.Image = global::FirstPass.Properties.Resources.fileexport;
-            this.StegExort.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StegExort.Name = "StegExort";
-            this.StegExort.Size = new System.Drawing.Size(28, 28);
-            this.StegExort.Text = "StegExport";
-            this.StegExort.ToolTipText = "Export file to image through Steganography.";
-            this.StegExort.Click += new System.EventHandler(this.StegExort_Click);
-            // 
             // MasterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -791,6 +790,7 @@ namespace FirstPass
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
@@ -800,7 +800,6 @@ namespace FirstPass
             this.CopyAndDeleteCMS.ResumeLayout(false);
             this.EntryVariablesPanel.ResumeLayout(false);
             this.EntryVariablesPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -858,7 +857,6 @@ namespace FirstPass
         private System.Windows.Forms.Button EntryVariablesConfirmButton;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox SearchBox;
-        private System.Windows.Forms.Label SearchLabel;
         private System.Windows.Forms.Label SearchbyLabel;
         private System.Windows.Forms.ComboBox SearchByComboBox;
         private ContextMenuStrip CopyAndDeleteCMS;
@@ -881,6 +879,7 @@ namespace FirstPass
         private ToolStripMenuItem defaultThemeOption;
         private ToolStripButton StegImport;
         private ToolStripButton StegExort;
+        private Label label1;
     }
 }
 
