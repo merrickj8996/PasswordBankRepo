@@ -39,15 +39,17 @@ namespace FirstPass
             // PULL DATA FROM IMAGE TO STRING
             string data = StegImportExport.extractText(databasePng); // create string which will contain data pulled from image
 
-            //CONVERT STRING TO ENCRYPTED COMPRESSED DATABASE FILE
-            using (SaveFileDialog saveFile = new SaveFileDialog()) {
-                saveFile.Filter = "Password Database Files (*.csv.gz) | *.csv.gz"; // save file only as .csv.gz file, which we use for databases
-                saveFile.InitialDirectory = "c:\\"; // start search in the C drive
+            stegTextRecieved.Text = data;
 
-                if (saveFile.ShowDialog() == DialogResult.OK) {
-                    File.WriteAllText(saveFile.FileName.ToString(), data); // write data to the database file if save is successful
-                }
-            }
+            //CONVERT STRING TO ENCRYPTED COMPRESSED DATABASE FILE
+            //using (SaveFileDialog saveFile = new SaveFileDialog()) {
+            //    saveFile.Filter = "Password Database Files (*.csv.gz) | *.csv.gz"; // save file only as .csv.gz file, which we use for databases
+            //    saveFile.InitialDirectory = "c:\\"; // start search in the C drive
+
+            //    if (saveFile.ShowDialog() == DialogResult.OK) {
+            //        File.WriteAllText(saveFile.FileName.ToString(), data); // write data to the database file if save is successful
+            //    }
+            //}
         }
 
         private void ExportFileTB_TextChanged(object sender, EventArgs e) {

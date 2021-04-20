@@ -34,6 +34,7 @@ namespace FirstPass
             this.ExportFileTB = new System.Windows.Forms.TextBox();
             this.ImportFile = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.stegTextRecieved = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,11 +86,20 @@ namespace FirstPass
             this.pictureBox8.TabIndex = 11;
             this.pictureBox8.TabStop = false;
             // 
+            // stegTextRecieved
+            // 
+            this.stegTextRecieved.Location = new System.Drawing.Point(14, 324);
+            this.stegTextRecieved.Name = "stegTextRecieved";
+            this.stegTextRecieved.ReadOnly = true;
+            this.stegTextRecieved.Size = new System.Drawing.Size(242, 20);
+            this.stegTextRecieved.TabIndex = 14;
+            // 
             // StegImport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 356);
+            this.Controls.Add(this.stegTextRecieved);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.ImportFile);
             this.Controls.Add(this.ImageFileLabel);
@@ -110,5 +120,6 @@ namespace FirstPass
         private System.Windows.Forms.TextBox ExportFileTB;
         private System.Windows.Forms.Button ImportFile;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.TextBox stegTextRecieved;
     }
 }

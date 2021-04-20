@@ -34,6 +34,7 @@ namespace FirstPass
             this.ImageFileLabel = new System.Windows.Forms.Label();
             this.ExportFile = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.stegTextInfo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,7 +68,7 @@ namespace FirstPass
             // 
             // ExportFile
             // 
-            this.ExportFile.Location = new System.Drawing.Point(279, 322);
+            this.ExportFile.Location = new System.Drawing.Point(279, 323);
             this.ExportFile.Name = "ExportFile";
             this.ExportFile.Size = new System.Drawing.Size(75, 23);
             this.ExportFile.TabIndex = 7;
@@ -85,11 +86,20 @@ namespace FirstPass
             this.pictureBox8.TabIndex = 12;
             this.pictureBox8.TabStop = false;
             // 
+            // stegTextInfo
+            // 
+            this.stegTextInfo.Location = new System.Drawing.Point(15, 325);
+            this.stegTextInfo.Name = "stegTextInfo";
+            this.stegTextInfo.Size = new System.Drawing.Size(242, 20);
+            this.stegTextInfo.TabIndex = 13;
+            this.stegTextInfo.TextChanged += new System.EventHandler(this.stegTextInfo_TextChanged);
+            // 
             // StegExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 357);
+            this.Controls.Add(this.stegTextInfo);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.ExportFile);
             this.Controls.Add(this.ImageFileLabel);
@@ -110,5 +120,6 @@ namespace FirstPass
         private System.Windows.Forms.Label ImageFileLabel;
         private System.Windows.Forms.Button ExportFile;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.TextBox stegTextInfo;
     }
 }
