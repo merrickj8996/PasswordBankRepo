@@ -82,8 +82,8 @@ namespace FirstPass
             this.copyUserNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.EntryVariablesPanel = new System.Windows.Forms.Panel();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.EntryVariablesPanel = new System.Windows.Forms.Panel();
             this.EntryVariablesExpirationTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesExpirationLabel = new System.Windows.Forms.Label();
             this.EntryVariablesPasswordTextBox = new System.Windows.Forms.TextBox();
@@ -112,11 +112,11 @@ namespace FirstPass
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.CopyAndDeleteCMS.SuspendLayout();
-            this.EntryVariablesPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
             this.splitContainer3.Panel1.SuspendLayout();
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
+            this.EntryVariablesPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -616,6 +616,23 @@ namespace FirstPass
             this.copyURLToolStripMenuItem.Text = "Copy URL";
             this.copyURLToolStripMenuItem.Click += new System.EventHandler(this.copyURLToolStripMenuItem_Click);
             // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.EntryVariablesPanel);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.entryNotes);
+            this.splitContainer3.Size = new System.Drawing.Size(733, 284);
+            this.splitContainer3.SplitterDistance = 360;
+            this.splitContainer3.TabIndex = 13;
+            // 
             // EntryVariablesPanel
             // 
             this.EntryVariablesPanel.AutoScroll = true;
@@ -637,23 +654,6 @@ namespace FirstPass
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
             this.EntryVariablesPanel.Size = new System.Drawing.Size(360, 284);
             this.EntryVariablesPanel.TabIndex = 2;
-            // 
-            // splitContainer3
-            // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer3.Name = "splitContainer3";
-            // 
-            // splitContainer3.Panel1
-            // 
-            this.splitContainer3.Panel1.Controls.Add(this.EntryVariablesPanel);
-            // 
-            // splitContainer3.Panel2
-            // 
-            this.splitContainer3.Panel2.Controls.Add(this.entryNotes);
-            this.splitContainer3.Size = new System.Drawing.Size(733, 284);
-            this.splitContainer3.SplitterDistance = 360;
-            this.splitContainer3.TabIndex = 13;
             // 
             // EntryVariablesExpirationTextBox
             // 
@@ -842,12 +842,12 @@ namespace FirstPass
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.CopyAndDeleteCMS.ResumeLayout(false);
-            this.EntryVariablesPanel.ResumeLayout(false);
-            this.EntryVariablesPanel.PerformLayout();
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
+            this.EntryVariablesPanel.ResumeLayout(false);
+            this.EntryVariablesPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
