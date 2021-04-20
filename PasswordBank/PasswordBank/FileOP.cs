@@ -81,7 +81,7 @@ namespace FirstPass {
                     // Creates a list for the password entries and adds the entries to it
                     List<PasswordEntry> passwordEntries = new List<PasswordEntry>() { };
                     foreach (DataRow row in dataTable.Rows) {
-                        PasswordEntry passwordEntry = new PasswordEntry(row["id"].ToString(), row["expiration date"].ToString(), row["title"].ToString(), row["username"].ToString(),
+                        PasswordEntry passwordEntry = new PasswordEntry(row["expiration date"].ToString(), row["title"].ToString(), row["username"].ToString(),
                                                                                     row["password"].ToString(), row["url"].ToString(), row["notes"].ToString());
                         passwordEntries.Add(passwordEntry);
                     }
@@ -144,7 +144,7 @@ namespace FirstPass {
                 }
                 //Write the first line of the file to the file.
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(save.FileName, true)) {
-                    file.WriteLine("ID,Expiration Date,Title,UserName,Password,URL,Notes");
+                    file.WriteLine("Expiration Date,Title,UserName,Password,URL,Notes");
                     file.Close();
                 }
                 return true;
@@ -204,23 +204,29 @@ namespace FirstPass {
         /// Reads the CSV file that the consumer has read.
         /// </summary>
         public static DataTable ReadFile() {
-            //TODO: Import/move ReadCSV from MasterForm.cs
-
-            //Read the CSV file that as just opened.
-            //set the columns to be equal to the first line of the CSV seperated by commas
+            //Store the lines of the csv file just opened
             string[] lines = File.ReadAllLines(GetFile());
             string[] fields;
+
+            //seperate the first set of lines (the header for the document)
             fields = lines[0].Split(new char[] { ',' });
             int Cols = fields.GetLength(0);
+
+            //make a new datatable
             DataTable dt = new DataTable();
+
             //1st row must be column names; force lower case to ensure matching later on.
             for (int i = 0; i < Cols; i++)
                 dt.Columns.Add(fields[i].ToLower(), typeof(string));
             DataRow Row;
+            
             for (int i = 1; i < lines.GetLength(0); i++) {
+                //split the fields by comma to be formatted correctly
                 fields = lines[i].Split(new char[] { ',' });
                 Row = dt.NewRow();
+                //for each column
                 for (int f = 0; f < Cols; f++)
+                    //set the row value of the row array to be equal to the fields at the time
                     Row[f] = fields[f];
                 dt.Rows.Add(Row);
             }
@@ -240,13 +246,12 @@ namespace FirstPass {
     /// </summary>
     sealed public class PasswordEntryMap : ClassMap<PasswordEntry> {
         private PasswordEntryMap() {
-            Map(m => m.Id).Index(0).Name("id");
-            Map(m => m.Expiration_Date).Index(1).Name("expiration date");
-            Map(m => m.Title).Index(2).Name("title");
-            Map(m => m.Username).Index(3).Name("username");
-            Map(m => m.Password).Index(4).Name("password");
-            Map(m => m.Url).Index(5).Name("url");
-            Map(m => m.Notes).Index(6).Name("notes");
+            Map(m => m.Expiration_Date).Index(0).Name("expiration date");
+            Map(m => m.Title).Index(1).Name("title");
+            Map(m => m.Username).Index(2).Name("username");
+            Map(m => m.Password).Index(3).Name("password");
+            Map(m => m.Url).Index(4).Name("url");
+            Map(m => m.Notes).Index(5).Name("notes");
         }
     }
 }

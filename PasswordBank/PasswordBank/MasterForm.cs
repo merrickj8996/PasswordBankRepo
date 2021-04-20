@@ -49,7 +49,6 @@ namespace FirstPass {
             labels.Add(EntryVariablesUsernameLabel);
             labels.Add(EntryVariablesPasswordLabel);
             labels.Add(EntryVariablesUrlLabel);
-            labels.Add(SearchLabel);
             labels.Add(SearchbyLabel);
 
             // Stores all buttons
@@ -250,13 +249,13 @@ namespace FirstPass {
             if (dataGridView1.Rows.Count > 0) {
                 try {
                     // Checks to make sure that cells in row are not null.
-                    if (dataGridView1.SelectedRows[0].Cells[2].Value != null) {
-                        EntryVariablesExpirationTextBox.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-                        EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
-                        EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
-                        EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
-                        EntryVariablesUrlTextBox.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
-                        entryNotes.Text = dataGridView1.SelectedRows[0].Cells[6].Value.ToString();
+                    if (dataGridView1.SelectedRows[0].Cells[1].Value != null) {
+                        EntryVariablesExpirationTextBox.Text = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
+                        EntryVariablesTitleTextBox.Text = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+                        EntryVariablesUsernameTextBox.Text = dataGridView1.SelectedRows[0].Cells[2].Value.ToString();
+                        EntryVariablesPasswordTextBox.Text = dataGridView1.SelectedRows[0].Cells[3].Value.ToString();
+                        EntryVariablesUrlTextBox.Text = dataGridView1.SelectedRows[0].Cells[4].Value.ToString();
+                        entryNotes.Text = dataGridView1.SelectedRows[0].Cells[5].Value.ToString();
                     }
                 }
                 // When adding a first row to the dataGridView1 an exception is thrown due to know rows existing. So instead it only initalizing the text in the entry variables.
@@ -274,12 +273,12 @@ namespace FirstPass {
 
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells.Count > 0) {
 
-                dataGridView1.SelectedRows[0].Cells[1].Value = EntryVariablesExpirationTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+                dataGridView1.SelectedRows[0].Cells[0].Value = EntryVariablesExpirationTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[1].Value = EntryVariablesTitleTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesUsernameTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesPasswordTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesUrlTextBox.Text;
+                dataGridView1.SelectedRows[0].Cells[5].Value = entryNotes.Text;
             }
 
         }
@@ -362,18 +361,23 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked.
         /// </summary>
         private void OpenFileButton_Click(object sender, EventArgs e) {
-
+            // if there is currently a file open
             if (FileOP.GetFile() != "") {
+                // open a dialog asking if the consumer would like to save
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
                 if (savePrompt == DialogResult.Yes) {
+                    // save the file contents
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
                     UnlockFile();
                     FileOP.WriteToFile(dataTable);
                     LockFile();
                 }
+                // clear any references to file paths in the memory
                 ClearMem();
             }
+            // if the dialog from fileOP returns true
             if (FileOP.SelectFile()) {
+                // inflate the next form
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
@@ -385,17 +389,23 @@ namespace FirstPass {
         /// Calls the select file method and shows the next form when the open button is clicked from the file dropdown menu.
         /// </summary>
         private void OpenFileDropDown_Click(object sender, EventArgs e) {
+            // if there is currently a file open
             if (FileOP.GetFile() != "") {
+                //open a dialog asking if the consumer would like to save
                 DialogResult savePrompt = MessageBox.Show("Would you like to save the current working file?", "Lock Current File", MessageBoxButtons.YesNo);
+                // save the file contents
                 if (savePrompt == DialogResult.Yes) {
                     DataTable dataTable = FileOP.DataGridViewToDataTable(dataGridView1);
                     UnlockFile();
                     FileOP.WriteToFile(dataTable);
                     LockFile();
                 }
+                // clear any references to file paths in the memory
                 ClearMem();
             }
+            // if the dialog from fileOP returns true
             if (FileOP.SelectFile()) {
+                // inflate the next form
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
@@ -511,18 +521,11 @@ namespace FirstPass {
                 DialogResult res = MessageBox.Show("Please open a file before adding a new row.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else {
-                //Read in the id's in the datagridview
-                foreach (DataGridViewRow rw in this.dataGridView1.Rows) {
-                    if (rw.Cells[0].Value != null)
-                        id = rw.Cells[0].Value.ToString();
-                }
-
                 //make a new datatable
                 DataTable dataTable = (DataTable)dataGridView1.DataSource;
                 //Make a new row
                 DataRow drToAdd = dataTable.NewRow();
                 //add values to each of the rows
-                drToAdd["id"] = Int32.Parse(id) + 1;
                 drToAdd["expiration date"] = "";
                 drToAdd["title"] = "";
                 drToAdd["username"] = "";
@@ -640,8 +643,8 @@ namespace FirstPass {
                 // pop open a dialog box explaining why the username can't be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a username.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[3].Value != null) {
-                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
+            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[2].Value != null) {
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[2].Value.ToString());
             }
         }
 
@@ -653,8 +656,8 @@ namespace FirstPass {
                 // pop open a dialog box explaining why a password cant be copied
                 DialogResult res = MessageBox.Show("Please open a file before trying to copy a password.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[4].Value != null) {
-                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
+            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[3].Value != null) {
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[3].Value.ToString());
             }
         }
 
@@ -668,13 +671,13 @@ namespace FirstPass {
                 DialogResult res = MessageBox.Show("Please open a file before trying to open a url.", "Confirmation", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // datagrid view has a source and make sure that the count of selectd rows is > 0
-            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[5].Value != null) {
+            else if (dataGridView1.SelectedRows.Count > 0 && dataGridView1.SelectedRows[0].Cells[4].Value != null) {
                 // set the URL to be on the clipboard of the user
-                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+                Clipboard.SetText(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
                 // make sure the url is a valid url
                 try {
                     // open the url
-                    System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[5].Value.ToString());
+                    System.Diagnostics.Process.Start(dataGridView1.SelectedRows[0].Cells[4].Value.ToString());
                 }
                 // catch any invalid urls
                 catch (Win32Exception w) {
@@ -803,6 +806,18 @@ namespace FirstPass {
                 frm.ShowDialog();
             }
             
+        }
+
+        /// <summary>
+        /// Makes the datagridview password column display password chars rather than being visible
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e) {
+            if (dataGridView1.Columns[e.ColumnIndex].Index == 3 && e.Value != null) {
+                dataGridView1.Rows[e.RowIndex].Tag = e.Value;
+                e.Value = new String('*', e.Value.ToString().Length);
+            }
         }
     }
 }
