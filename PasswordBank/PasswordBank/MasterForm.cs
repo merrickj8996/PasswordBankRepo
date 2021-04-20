@@ -451,9 +451,15 @@ namespace FirstPass {
         private void UnlockFile() {
             if (FileOP.GetKeyFile().Length > 0) {
                 Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+                CryptoProgressBar.ForeColor = System.Drawing.Color.Green;
+                CryptoProgressBar.Value = 16;
             }
             Crypto.DecryptFile(FileOP.GetFile(), Crypto.mPassTemp);
+            CryptoProgressBar.ForeColor = System.Drawing.Color.Green;
+            CryptoProgressBar.Value = 33;
             Compressor.Decompress(FileOP.GetFile());
+            CryptoProgressBar.ForeColor = System.Drawing.Color.Green;
+            CryptoProgressBar.Value = 50;
 
         }
 
@@ -463,20 +469,24 @@ namespace FirstPass {
         private void LockFile() {
             //Compresses File
             Compressor.Compress(FileOP.GetFile());
-
+            CryptoProgressBar.ForeColor = System.Drawing.Color.Green;
+            CryptoProgressBar.Value = 66;
             //Encrypt the file with stored password
             Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp);
-
+            CryptoProgressBar.ForeColor = System.Drawing.Color.Green;
+            CryptoProgressBar.Value = 83;
             //If a Keyfile was used to open the file, use it to encrypt the file when locking
             if (FileOP.GetKeyFile().Length > 0) {
-
                 //Encrypt the file with the KeyFile
                 Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+                CryptoProgressBar.ForeColor = System.Drawing.Color.Green;
+                CryptoProgressBar.Value = 100;
             }
+            CryptoProgressBar.Value = 0;
         }
 
         /// <summary>
-        /// Clears the local memory by clearing any bariables used in fileOP and crypto
+        /// Clears the local memory by clearing any variables used in fileOP and crypto
         /// </summary>
         private void ClearMem() {
             FileOP.ClearKeyFile();

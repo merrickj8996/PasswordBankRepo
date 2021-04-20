@@ -33,6 +33,8 @@ namespace FirstPass {
         public static bool EncryptFile(string inFile, string password) {
             byte[] salt = SaltGen();
             byte[] passwords = Encoding.UTF8.GetBytes(HashSHA256(password));
+
+            //Initialization of AesManaged object
             AesManaged AES = new AesManaged {
                 KeySize = mKeyLength,
                 BlockSize = mBlockSize,
@@ -82,6 +84,8 @@ namespace FirstPass {
             byte[] salt = new byte[32];
             using (FileStream fileCrypto = new FileStream(inFile, FileMode.Open)) {
                 fileCrypto.Read(salt, 0, salt.Length);
+
+                //initialization of AesManaged Object
                 AesManaged AES = new AesManaged {
                     KeySize = mKeyLength,
                     BlockSize = mBlockSize,
