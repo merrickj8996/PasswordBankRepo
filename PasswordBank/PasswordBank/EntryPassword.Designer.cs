@@ -143,6 +143,7 @@ namespace FirstPass {
             this.Controls.Add(this.confirmEntryPasswordTextBox);
             this.Controls.Add(this.entryPasswordTextBox);
             this.Controls.Add(this.EntryPasswordLabel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "EntryPassword";
             this.Text = "EntryPassword";
