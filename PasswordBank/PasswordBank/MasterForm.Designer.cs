@@ -137,6 +137,7 @@ namespace FirstPass
             // 
             // CreateNewButton
             // 
+            this.CreateNewButton.AccessibleName = "CreateNewButton";
             this.CreateNewButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.CreateNewButton.Image = global::FirstPass.Properties.Resources.plus;
             this.CreateNewButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -147,6 +148,7 @@ namespace FirstPass
             // 
             // OpenFileButton
             // 
+            this.OpenFileButton.AccessibleName = "OpenFileButton";
             this.OpenFileButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.OpenFileButton.Image = global::FirstPass.Properties.Resources.open_icon;
             this.OpenFileButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -157,6 +159,7 @@ namespace FirstPass
             // 
             // SaveFilebutton
             // 
+            this.SaveFilebutton.AccessibleName = "SaveFileButton";
             this.SaveFilebutton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.SaveFilebutton.Image = global::FirstPass.Properties.Resources.save;
             this.SaveFilebutton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -187,6 +190,7 @@ namespace FirstPass
             // 
             // LockButton
             // 
+            this.LockButton.AccessibleName = "LockButton";
             this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
             this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
