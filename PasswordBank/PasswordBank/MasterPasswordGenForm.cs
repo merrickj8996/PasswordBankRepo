@@ -15,13 +15,43 @@ namespace FirstPass {
         private EntryPassword currentEntryPasswordform;
         public MasterPasswordGenForm(EntryPassword form) {
             InitializeComponent();
+            InitializeControlList();
             LowerCase.Enabled = false;
             currentEntryPasswordform = form;
         }
 
         public MasterPasswordGenForm() {
             InitializeComponent();
+            InitializeControlList();
             LowerCase.Enabled = false;
+        }
+
+        public List<Control> passwordGenLabels;
+        public List<Control> passwordGenButtons;
+        public bool passwordGenDarkThemeEnabled;
+        public bool passwordGenDefaultTextSizeEnabled;
+        public bool passwordGenSmallTextSizeEnabled;
+        public bool passwordGenLargeTextSizeEnabled;
+
+        /// <summary>
+        /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
+        /// </summary>
+        private void InitializeControlList() {
+            passwordGenLabels = new List<Control>();
+            passwordGenButtons = new List<Control>();
+
+            // Stores all labels
+            passwordGenLabels.Add(label1);
+            passwordGenLabels.Add(label2);
+
+            // Stores all buttons
+            passwordGenButtons.Add(passSize);
+            passwordGenButtons.Add(LowerCase);
+            passwordGenButtons.Add(UpperCase);
+            passwordGenButtons.Add(Digits);
+            passwordGenButtons.Add(Special);
+            passwordGenButtons.Add(Brackets);
+            passwordGenButtons.Add(CloseButton);
         }
 
         private void CloseButton_Click(object sender, EventArgs e) {

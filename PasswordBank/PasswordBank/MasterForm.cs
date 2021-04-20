@@ -17,22 +17,27 @@ namespace FirstPass {
 
         
         // Initializing lists for textBoxes and Labels.
-        private List<Control> textBoxes;
-        private List<Control> labels;
-        private List<Control> buttons;
-        private List<ToolStripMenuItem> toolStrips;
-        private List<ToolStripButton> toolStripButtons;
-        private bool darkThemeEnabled = false;
+        public List<Control> textBoxes;
+        public List<Control> labels;
+        public List<Control> buttons;
+        public List<ToolStripMenuItem> toolStrips;
+        public List<ToolStripButton> toolStripButtons;
+        public List<Form> forms;
+        public bool darkThemeEnabled = false;
+        public bool smallTextSizeEnabled = false;
+        public bool defaultTextSizeEnabled = false;
+        public bool largeTextSizeEnabled = false;
 
         /// <summary>
         /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
         /// </summary>
-        public void InitializeControlList() {
+        private void InitializeControlList() {
             textBoxes = new List<Control>();
             labels = new List<Control>();
             buttons = new List<Control>();
             toolStrips = new List<ToolStripMenuItem>();
             toolStripButtons = new List<ToolStripButton>();
+            forms = new List<Form>();
 
             // Stores all texboxes
             textBoxes.Add(EntryVariablesExpirationTextBox);
@@ -182,6 +187,11 @@ namespace FirstPass {
                 item.ForeColor = textColor;
             }
 
+            // Applying the new theme to all of the forms
+            foreach (Form form in forms) {
+                form.BackColor = panelColor;
+            }
+
             // Applying the new theme to the SearchByComboBox.
             SearchByComboBox.BackColor = backgroundColor;
             SearchByComboBox.ForeColor = textColor;
@@ -274,14 +284,78 @@ namespace FirstPass {
         /// </summary>
         public void SetSelectedEntryData() {
 
+
             if (dataGridView1.Rows.Count > 0 && dataGridView1.Rows[0].Cells.Count > 0) {
 
-                dataGridView1.SelectedRows[0].Cells[1].Value = EntryVariablesExpirationTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
-                dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+                // Varaibles to store whether any entry variables has commas and the amount of entry variables that do.
+                bool containsComma = false;
+                int numberEntriesComma = 0;
+
+                // Checks for comma in the expiration date.
+                if (EntryVariablesExpirationTextBox.Text.Contains(",")) {
+                    containsComma = true;
+                    numberEntriesComma++;
+                    EntryVariablesExpirationTextBox.Clear();
+                }
+                else {
+                    dataGridView1.SelectedRows[0].Cells[1].Value = EntryVariablesExpirationTextBox.Text;
+                }
+
+                // Checks for comma in the title.
+                if (EntryVariablesTitleTextBox.Text.Contains(",")) {
+                    containsComma = true;
+                    numberEntriesComma++;
+                    EntryVariablesTitleTextBox.Clear();
+                }
+                else {
+                    dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
+                }
+
+                // Checks for comma in the username.
+                if (EntryVariablesUsernameTextBox.Text.Contains(",")) {
+                    containsComma = true;
+                    numberEntriesComma++;
+                    EntryVariablesUsernameTextBox.Clear();
+                }
+                else {
+                    dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
+                }
+
+                // Checks for comma in the password.
+                if (EntryVariablesPasswordTextBox.Text.Contains(",")) {
+                    containsComma = true;
+                    numberEntriesComma++;
+                    EntryVariablesPasswordTextBox.Clear();
+                }
+                else {
+                    dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
+                }
+
+                // Checks for comma in the url.
+                if (EntryVariablesUrlTextBox.Text.Contains(",")) {
+                    containsComma = true;
+                    numberEntriesComma++;
+                    EntryVariablesUrlTextBox.Clear();
+                }
+                else {
+                    dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
+                }
+
+                // Checks for comma in the notes.
+                if (entryNotes.Text.Contains(",")) {
+                    containsComma = true;
+                    numberEntriesComma++;
+                    entryNotes.Clear();
+                }
+                else {
+                    dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+                }
+
+                // Checks to make sure no entry variable's text contains commas. This is so the comma diliminated file doesn't have errors.
+                if (containsComma) {
+                    string message = "You have " + numberEntriesComma + " entrie(s) that have commas. They have been cleared to show which ones. Please enter that entry data again.";
+                    MessageBox.Show(message, "Entry Variables Warning", MessageBoxButtons.OK);
+                }
             }
 
         }
@@ -349,6 +423,47 @@ namespace FirstPass {
                     PasswordOptions form = new PasswordOptions() {
                         TheParent = this
                     };
+
+                    
+                    // Adding all the password options components to the list of components in the master from.
+                    // This is done to apply the same theme and text size to all of the forms
+                    textBoxes.AddRange(form.passwordOptionsTextBoxes);
+                    labels.AddRange(form.passwordOptionsLabels);
+                    this.buttons.AddRange(form.passwordOptionsButtons);
+                    forms.Add(form);
+
+                    // Changing theme of passwordOptions
+                    if (darkThemeEnabled) {
+                        ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
+                        form.passwordOptionsDarkThemeEnabled = true;
+                    }
+                    else {
+                        ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
+                        form.passwordOptionsDarkThemeEnabled = false;
+                    }
+
+                    // Changing text size of passwordOptions
+                    if (defaultTextSizeEnabled) {
+                        ChangeFontSize(8.0f);
+                        form.passwordOptionsDefaultTextSizeEnabled = true;
+                        form.passwordOptionsSmallTextSizeEnabled = false;
+                        form.passwordOptionsLargeTextSizeEnabled = false;
+                    }
+
+                    else if (smallTextSizeEnabled) {
+                        ChangeFontSize(6.0f);
+                        form.passwordOptionsDefaultTextSizeEnabled = false;
+                        form.passwordOptionsSmallTextSizeEnabled = true;
+                        form.passwordOptionsLargeTextSizeEnabled = false;
+                    }
+
+                    else if (largeTextSizeEnabled) {
+                        ChangeFontSize(10.0f);
+                        form.passwordOptionsDefaultTextSizeEnabled = false;
+                        form.passwordOptionsSmallTextSizeEnabled = false;
+                        form.passwordOptionsLargeTextSizeEnabled = true;
+                    }
+
                     form.ShowDialog();
                 };
             }
@@ -379,6 +494,46 @@ namespace FirstPass {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
+
+                // Adding all the enterPasswordForFile components to the list of components in the master from.
+                // This is done to apply the same theme and text size to all of the forms
+                textBoxes.AddRange(frm.enterPasswordForFileTextBoxes);
+                labels.AddRange(frm.enterPasswordForFileLabels);
+                this.buttons.AddRange(frm.enterPasswordForFileButtons);
+                forms.Add(frm);
+
+                // Changing theme of enterPasswordForFile
+                if (darkThemeEnabled) {
+                    ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
+                    frm.enterPasswordForFileDarkThemeEnabled = true;
+                }
+                else {
+                    ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
+                    frm.enterPasswordForFileDarkThemeEnabled = false;
+                }
+
+                // Changing text size of enterPasswordForFile
+                if (defaultTextSizeEnabled) {
+                    ChangeFontSize(8.0f);
+                    frm.enterPasswordForFileDefaultTextSizeEnabled = true;
+                    frm.enterPasswordForFileSmallTextSizeEnabled = false;
+                    frm.enterPasswordForFileLargeTextSizeEnabled = false;
+                }
+
+                else if (smallTextSizeEnabled) {
+                    ChangeFontSize(6.0f);
+                    frm.enterPasswordForFileDefaultTextSizeEnabled = false;
+                    frm.enterPasswordForFileSmallTextSizeEnabled = true;
+                    frm.enterPasswordForFileLargeTextSizeEnabled = false;
+                }
+
+                else if (largeTextSizeEnabled) {
+                    ChangeFontSize(10.0f);
+                    frm.enterPasswordForFileDefaultTextSizeEnabled = false;
+                    frm.enterPasswordForFileSmallTextSizeEnabled = false;
+                    frm.enterPasswordForFileLargeTextSizeEnabled = true;
+                }
+
                 frm.ShowDialog();
             }
 
@@ -401,6 +556,46 @@ namespace FirstPass {
                 EnterPasswordForFile frm = new EnterPasswordForFile {
                     TheParent = this
                 };
+
+                // Adding all the enterPasswordForFile components to the list of components in the master from.
+                // This is done to apply the same theme and text size to all of the forms
+                textBoxes.AddRange(frm.enterPasswordForFileTextBoxes);
+                labels.AddRange(frm.enterPasswordForFileLabels);
+                this.buttons.AddRange(frm.enterPasswordForFileButtons);
+                forms.Add(frm);
+
+                // Changing theme of enterPasswordForFile
+                if (darkThemeEnabled) {
+                    ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
+                    frm.enterPasswordForFileDarkThemeEnabled = true;
+                }
+                else {
+                    ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
+                    frm.enterPasswordForFileDarkThemeEnabled = false;
+                }
+
+                // Changing text size of enterPasswordForFile
+                if (defaultTextSizeEnabled) {
+                    ChangeFontSize(8.0f);
+                    frm.enterPasswordForFileDefaultTextSizeEnabled = true;
+                    frm.enterPasswordForFileSmallTextSizeEnabled = false;
+                    frm.enterPasswordForFileLargeTextSizeEnabled = false;
+                }
+
+                else if (smallTextSizeEnabled) {
+                    ChangeFontSize(6.0f);
+                    frm.enterPasswordForFileDefaultTextSizeEnabled = false;
+                    frm.enterPasswordForFileSmallTextSizeEnabled = true;
+                    frm.enterPasswordForFileLargeTextSizeEnabled = false;
+                }
+
+                else if (largeTextSizeEnabled) {
+                    ChangeFontSize(10.0f);
+                    frm.enterPasswordForFileDefaultTextSizeEnabled = false;
+                    frm.enterPasswordForFileSmallTextSizeEnabled = false;
+                    frm.enterPasswordForFileLargeTextSizeEnabled = true;
+                }
+
                 frm.ShowDialog();
             }
         }
@@ -555,6 +750,7 @@ namespace FirstPass {
             }
             else {
                 MessageBox.Show("Please open a file before confirming entry data", "No Data Table Warning", MessageBoxButtons.OK);
+                ClearEntryData();
             }
         }
 
@@ -703,6 +899,46 @@ namespace FirstPass {
         /// </summary>
         private void EntryVariablesPasswordTextBox_Enter_1(object sender, EventArgs e) {
             EntryPassword form = new EntryPassword(this);
+
+            // Adding all the Entry Password components to the list of components in the master from.
+            // This is done to apply the same theme and text size to all of the forms
+            textBoxes.AddRange(form.entryPasswordTextBoxes);
+            labels.AddRange(form.entryPasswordLabels);
+            this.buttons.AddRange(form.entryPasswordButtons);
+            forms.Add(form);
+
+            // Changing theme of EntryPassword
+            if (darkThemeEnabled) {
+                ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
+                form.entryPasswordDarkThemeEnabled = true;
+            }
+            else {
+                ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
+                form.entryPasswordDarkThemeEnabled = false;
+            }
+
+            // Changing text size of EntryPassword
+            if (defaultTextSizeEnabled) {
+                ChangeFontSize(8.0f);
+                form.entryPasswordDefaultTextSizeEnabled = true;
+                form.entryPasswordSmallTextSizeEnabled = false;
+                form.entryPasswordLargeTextSizeEnabled = false;
+            }
+
+            else if (smallTextSizeEnabled) {
+                ChangeFontSize(6.0f);
+                form.entryPasswordDefaultTextSizeEnabled = false;
+                form.entryPasswordSmallTextSizeEnabled = true;
+                form.entryPasswordLargeTextSizeEnabled = false;
+            }
+
+            else if (largeTextSizeEnabled) {
+                ChangeFontSize(10.0f);
+                form.entryPasswordDefaultTextSizeEnabled = false;
+                form.entryPasswordSmallTextSizeEnabled = false;
+                form.entryPasswordLargeTextSizeEnabled = true;
+            }
+
             form.ShowDialog();
         }
         
@@ -713,6 +949,9 @@ namespace FirstPass {
         /// <param name="e"></param>
         private void smallTextSizeOption_Click(object sender, EventArgs e) {
             ChangeFontSize(6.0f);
+            defaultTextSizeEnabled = false;
+            smallTextSizeEnabled = true;
+            largeTextSizeEnabled = false;
         }
 
         /// <summary>
@@ -723,6 +962,9 @@ namespace FirstPass {
         /// <param name="e"></param>
         private void largeTextSizeOption_Click(object sender, EventArgs e) {
             ChangeFontSize(10.0f);
+            defaultTextSizeEnabled = false;
+            smallTextSizeEnabled = false;
+            largeTextSizeEnabled = true;
         }
 
         /// <summary>
@@ -732,6 +974,9 @@ namespace FirstPass {
         /// <param name="e"></param>
         private void defaultTextSizeOption_Click(object sender, EventArgs e) {
             ChangeFontSize(8.0f);
+            defaultTextSizeEnabled = true;
+            smallTextSizeEnabled = false;
+            largeTextSizeEnabled = false;
         }
 
         private void darkThemeOption_Click(object sender, EventArgs e) {
@@ -793,6 +1038,10 @@ namespace FirstPass {
         {
             StegExport frm = new StegExport();
             frm.ShowDialog();
+        }
+
+        private void EntryVariablesExpirationTextBox_TextChanged(object sender, EventArgs e) {
+
         }
     }
 }

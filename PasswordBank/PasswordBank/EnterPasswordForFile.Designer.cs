@@ -36,9 +36,10 @@
             // OkButton
             // 
             this.OkButton.AccessibleName = "Ok";
-            this.OkButton.Location = new System.Drawing.Point(185, 197);
+            this.OkButton.Location = new System.Drawing.Point(278, 303);
+            this.OkButton.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.OkButton.Name = "OkButton";
-            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.Size = new System.Drawing.Size(112, 35);
             this.OkButton.TabIndex = 0;
             this.OkButton.Text = "Ok";
             this.OkButton.UseVisualStyleBackColor = true;
@@ -47,55 +48,63 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(20, 20);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(195, 13);
+            this.label1.Size = new System.Drawing.Size(291, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Please enter in the password for the file:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(17, 46);
+            this.label2.Location = new System.Drawing.Point(26, 71);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 13);
+            this.label2.Size = new System.Drawing.Size(82, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Password:";
             // 
             // passwordEntry
             // 
             this.passwordEntry.AccessibleName = "PasswordEntry";
-            this.passwordEntry.Location = new System.Drawing.Point(79, 43);
+            this.passwordEntry.Location = new System.Drawing.Point(118, 66);
+            this.passwordEntry.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.passwordEntry.MaxLength = 20;
             this.passwordEntry.Name = "passwordEntry";
             this.passwordEntry.PasswordChar = '*';
-            this.passwordEntry.Size = new System.Drawing.Size(100, 20);
+            this.passwordEntry.Size = new System.Drawing.Size(148, 26);
             this.passwordEntry.TabIndex = 3;
             // 
             // KeyfileLocation
             // 
-            this.KeyfileLocation.Location = new System.Drawing.Point(79, 150);
+            this.KeyfileLocation.AllowDrop = true;
+            this.KeyfileLocation.Location = new System.Drawing.Point(118, 231);
+            this.KeyfileLocation.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.KeyfileLocation.MaxLength = 20;
             this.KeyfileLocation.Name = "KeyfileLocation";
             this.KeyfileLocation.ReadOnly = true;
-            this.KeyfileLocation.Size = new System.Drawing.Size(100, 20);
+            this.KeyfileLocation.Size = new System.Drawing.Size(148, 26);
             this.KeyfileLocation.TabIndex = 5;
+            this.KeyfileLocation.DragOver += new System.Windows.Forms.DragEventHandler(this.KeyfileLocation_DragOver);
             // 
             // Keyfile
             // 
             this.Keyfile.AutoSize = true;
-            this.Keyfile.Location = new System.Drawing.Point(17, 153);
+            this.Keyfile.Location = new System.Drawing.Point(26, 235);
+            this.Keyfile.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Keyfile.Name = "Keyfile";
-            this.Keyfile.Size = new System.Drawing.Size(41, 13);
+            this.Keyfile.Size = new System.Drawing.Size(59, 20);
             this.Keyfile.TabIndex = 4;
             this.Keyfile.Text = "Keyfile:";
             // 
             // FindKeyFile
             // 
             this.FindKeyFile.AccessibleName = "FindKeyFile";
-            this.FindKeyFile.Location = new System.Drawing.Point(185, 148);
+            this.FindKeyFile.Location = new System.Drawing.Point(278, 228);
+            this.FindKeyFile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FindKeyFile.Name = "FindKeyFile";
-            this.FindKeyFile.Size = new System.Drawing.Size(75, 23);
+            this.FindKeyFile.Size = new System.Drawing.Size(112, 35);
             this.FindKeyFile.TabIndex = 6;
             this.FindKeyFile.Text = "Search";
             this.FindKeyFile.UseVisualStyleBackColor = true;
@@ -104,17 +113,18 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 122);
+            this.label3.Location = new System.Drawing.Point(20, 188);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 13);
+            this.label3.Size = new System.Drawing.Size(238, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "Please enter the Keyfile location:";
             // 
             // EnterPasswordForFile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(276, 242);
+            this.ClientSize = new System.Drawing.Size(414, 372);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.FindKeyFile);
             this.Controls.Add(this.KeyfileLocation);
@@ -124,6 +134,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.OkButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "EnterPasswordForFile";
             this.Text = "EnterPasswordForFile";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EnterPasswordForFile_FormClosing);

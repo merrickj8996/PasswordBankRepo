@@ -15,9 +15,47 @@ namespace FirstPass {
 
         public MasterForm TheParent;
         public bool success = false;
+        public List<Control> passwordOptionsTextBoxes;
+        public List<Control> passwordOptionsLabels;
+        public List<Control> passwordOptionsButtons;
+        public bool passwordOptionsDarkThemeEnabled;
+        public bool passwordOptionsDefaultTextSizeEnabled;
+        public bool passwordOptionsSmallTextSizeEnabled;
+        public bool passwordOptionsLargeTextSizeEnabled;
+
         public PasswordOptions() {
             InitializeComponent();
+            InitializeControlList();
         }
+
+        /// <summary>
+        /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
+        /// </summary>
+        private void InitializeControlList() {
+            passwordOptionsTextBoxes = new List<Control>();
+            passwordOptionsLabels = new List<Control>();
+            passwordOptionsButtons = new List<Control>();
+
+            // Stores all texboxes
+            passwordOptionsTextBoxes.Add(PassEntry1);
+            passwordOptionsTextBoxes.Add(PassEntry2);
+            passwordOptionsTextBoxes.Add(KeyFileLocationText);
+
+            // Stores all labels
+            passwordOptionsLabels.Add(label1);
+            passwordOptionsLabels.Add(label2);
+            passwordOptionsLabels.Add(label3);
+            passwordOptionsLabels.Add(label4);
+            passwordOptionsLabels.Add(passwordStrengthLabel);
+
+            // Stores all buttons
+            passwordOptionsButtons.Add(KeyFileCheckBox);
+            passwordOptionsButtons.Add(KeyFileHelpButton);
+            passwordOptionsButtons.Add(FindKeyFile);
+            passwordOptionsButtons.Add(ExitButton);
+            passwordOptionsButtons.Add(OkButton);
+        }
+
         public void UpdateTextBox(string pass) {
 
             PassEntry1.BeginInvoke((MethodInvoker)delegate {
@@ -34,6 +72,48 @@ namespace FirstPass {
                         KeyFileLocationText.Text = FileOP.GetKeyFile();
                         Crypto.mPassTemp = PassEntry1.Text;
                         MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
+
+                        // Adding all the printPopUp components to the list of components in the master from.
+                        // This is done to apply the same theme and text size to all of the forms
+
+                        MasterForm controlForm = new MasterForm();
+
+                        controlForm.labels.AddRange(printPopUp.printPopUpLabels);
+                        controlForm.buttons.AddRange(printPopUp.printPopUpButtons);
+                        controlForm.forms.Add(printPopUp);
+
+                        // Changing theme of printPopUp
+                        if (passwordOptionsDarkThemeEnabled) {
+                            controlForm.ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
+                            printPopUp.printPopUpDarkThemeEnabled = true;
+                        }
+                        else {
+                            controlForm.ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
+                            printPopUp.printPopUpDarkThemeEnabled = false;
+                        }
+
+                        // Changing text size of printPopUp
+                        if (passwordOptionsDefaultTextSizeEnabled) {
+                            controlForm.ChangeFontSize(8.0f);
+                            printPopUp.printPopUpDefaultTextSizeEnabled = true;
+                            printPopUp.printPopUpSmallTextSizeEnabled = false;
+                            printPopUp.printPopUpLargeTextSizeEnabled = false;
+                        }
+
+                        else if (passwordOptionsSmallTextSizeEnabled) {
+                            controlForm.ChangeFontSize(6.0f);
+                            printPopUp.printPopUpDefaultTextSizeEnabled = false;
+                            printPopUp.printPopUpSmallTextSizeEnabled = true;
+                            printPopUp.printPopUpLargeTextSizeEnabled = false;
+                        }
+
+                        else if (passwordOptionsLargeTextSizeEnabled) {
+                            controlForm.ChangeFontSize(10.0f);
+                            printPopUp.printPopUpDefaultTextSizeEnabled = false;
+                            printPopUp.printPopUpSmallTextSizeEnabled = false;
+                            printPopUp.printPopUpLargeTextSizeEnabled = true;
+                        }
+
                         printPopUp.ShowDialog();
                         TheParent.PerformRefresh(true);
                         success = true;
@@ -130,6 +210,23 @@ namespace FirstPass {
             else {
                 success = false;
             }
+        }
+
+        private void KeyFileLocationText_DragOver(object sender, DragEventArgs e) {
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+                e.Effect = DragDropEffects.Copy;
+            }
+            else {
+                e.Effect = DragDropEffects.None;
+            }
+
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            if (files != null && files.Length != 0) {
+                KeyFileLocationText.Text = files[0];
+                FileOP.LoadKeyFile(KeyFileLocationText.Text);
+            }
+
         }
     }
 }

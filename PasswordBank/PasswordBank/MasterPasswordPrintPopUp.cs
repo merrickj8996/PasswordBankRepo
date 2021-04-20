@@ -28,7 +28,30 @@ namespace FirstPass {
         /// <param name="masterPassword">Master password.</param>
         public MasterPasswordPrintPopUp(string masterPassword) {
             InitializeComponent();
+            InitializeControlList();
             m_masterPassword = masterPassword;
+        }
+
+        public List<Control> printPopUpLabels;
+        public List<Control> printPopUpButtons;
+        public bool printPopUpDarkThemeEnabled;
+        public bool printPopUpDefaultTextSizeEnabled;
+        public bool printPopUpSmallTextSizeEnabled;
+        public bool printPopUpLargeTextSizeEnabled;
+
+        /// <summary>
+        /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
+        /// </summary>
+        private void InitializeControlList() {
+            printPopUpLabels = new List<Control>();
+            printPopUpButtons = new List<Control>();
+
+            // Stores all labels
+            printPopUpLabels.Add(printText);
+
+            // Stores all buttons
+            printPopUpButtons.Add(printButton);
+            printPopUpButtons.Add(noPrintButton);
         }
 
         /// <summary>
