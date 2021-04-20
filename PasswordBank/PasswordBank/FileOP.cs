@@ -13,8 +13,8 @@ namespace FirstPass {
     /// </summary>
     public class FileOP {
         #region memberVariables
-        public static String mFileName = "";
-        public static String mKeyFileName = "";
+        private static String mFileName = "";
+        private static String mKeyFileName = "";
         #endregion
 
         /// <summary>

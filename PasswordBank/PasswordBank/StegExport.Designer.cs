@@ -31,11 +31,10 @@ namespace FirstPass
         {
             this.ExportFileTB = new System.Windows.Forms.TextBox();
             this.Search = new System.Windows.Forms.Button();
-            this.PasswordTB = new System.Windows.Forms.TextBox();
             this.ImageFileLabel = new System.Windows.Forms.Label();
-            this.PasswordLabel = new System.Windows.Forms.Label();
             this.ExportFile = new System.Windows.Forms.Button();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
+            this.stegTextInfo = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,8 +42,10 @@ namespace FirstPass
             // 
             this.ExportFileTB.Location = new System.Drawing.Point(76, 14);
             this.ExportFileTB.Name = "ExportFileTB";
+            this.ExportFileTB.ReadOnly = true;
             this.ExportFileTB.Size = new System.Drawing.Size(181, 20);
             this.ExportFileTB.TabIndex = 0;
+            this.ExportFileTB.TextChanged += new System.EventHandler(this.ExportFileTB_TextChanged);
             // 
             // Search
             // 
@@ -56,14 +57,6 @@ namespace FirstPass
             this.Search.UseVisualStyleBackColor = true;
             this.Search.Click += new System.EventHandler(this.Search_Click);
             // 
-            // PasswordTB
-            // 
-            this.PasswordTB.Location = new System.Drawing.Point(49, 322);
-            this.PasswordTB.Name = "PasswordTB";
-            this.PasswordTB.Size = new System.Drawing.Size(208, 20);
-            this.PasswordTB.TabIndex = 2;
-            this.PasswordTB.TextChanged += new System.EventHandler(this.PasswordTB_TextChanged);
-            // 
             // ImageFileLabel
             // 
             this.ImageFileLabel.AutoSize = true;
@@ -73,19 +66,9 @@ namespace FirstPass
             this.ImageFileLabel.TabIndex = 4;
             this.ImageFileLabel.Text = "Image File:";
             // 
-            // PasswordLabel
-            // 
-            this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Location = new System.Drawing.Point(12, 325);
-            this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(31, 13);
-            this.PasswordLabel.TabIndex = 5;
-            this.PasswordLabel.Text = "Text:";
-            this.PasswordLabel.Click += new System.EventHandler(this.PasswordLabel_Click);
-            // 
             // ExportFile
             // 
-            this.ExportFile.Location = new System.Drawing.Point(279, 322);
+            this.ExportFile.Location = new System.Drawing.Point(279, 323);
             this.ExportFile.Name = "ExportFile";
             this.ExportFile.Size = new System.Drawing.Size(75, 23);
             this.ExportFile.TabIndex = 7;
@@ -103,16 +86,23 @@ namespace FirstPass
             this.pictureBox8.TabIndex = 12;
             this.pictureBox8.TabStop = false;
             // 
+            // stegTextInfo
+            // 
+            this.stegTextInfo.Location = new System.Drawing.Point(15, 325);
+            this.stegTextInfo.Name = "stegTextInfo";
+            this.stegTextInfo.Size = new System.Drawing.Size(242, 20);
+            this.stegTextInfo.TabIndex = 13;
+            this.stegTextInfo.TextChanged += new System.EventHandler(this.stegTextInfo_TextChanged);
+            // 
             // StegExport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(366, 357);
+            this.Controls.Add(this.stegTextInfo);
             this.Controls.Add(this.pictureBox8);
             this.Controls.Add(this.ExportFile);
-            this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.ImageFileLabel);
-            this.Controls.Add(this.PasswordTB);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.ExportFileTB);
             this.Name = "StegExport";
@@ -127,10 +117,9 @@ namespace FirstPass
 
         private System.Windows.Forms.TextBox ExportFileTB;
         private System.Windows.Forms.Button Search;
-        private System.Windows.Forms.TextBox PasswordTB;
         private System.Windows.Forms.Label ImageFileLabel;
-        private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Button ExportFile;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private System.Windows.Forms.TextBox stegTextInfo;
     }
 }
