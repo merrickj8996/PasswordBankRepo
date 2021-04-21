@@ -8,13 +8,16 @@
 
     static partial class Password {
         public static string randomizePassword(int length, bool includeUppercase, bool includeNumbers, bool includeSymbols, bool includeBrackets) {
-            string chars = "abcdefghijklmnopqrstuvwxyz"; //series of lowercase letters
+            string lowers = "abcdefghijklmnopqrstuvwxyz"; //series of lowercase letters
             string uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //series of uppercase letters
             string numbers = "1234567890"; //series of numbers
             string symbols = "~`!@#$%^&*_-+'=.;:?/"; //series of symbols
             string brackets = "(){}[]"; //series of brackets
 
-            string genPass = ""; //blank string to be used as the final generated password
+            string chars = "";
+            string genPass = new string('*', length); //blank string to be used as the final generated password
+
+            chars += lowers;
 
             if (includeUppercase) { //if passed in that the consumer wants uppercase letters, append "uppercase" to the chars string 
                 chars += uppers;
@@ -39,20 +42,23 @@
 
                 int value = Math.Abs(BitConverter.ToInt32(data, 0) % chars.Length); //take random number generated (mod the length of the chars string) to append
 
-                genPass += (chars[value]); //add character at the index of the random number to the genPass variable
+                genPass = genPass.Remove(i, 1).Insert(i, chars[value].ToString()); //add character at the index of the random number to the genPass variable
             }
 
             return genPass;
         }
 
         public static SecureString SecureRandomizePassword(int length, bool includeUppercase, bool includeNumbers, bool includeSymbols, bool includeBrackets) {
-            string chars = "abcdefghijklmnopqrstuvwxyz"; //series of lowercase letters
+            string lowers = "abcdefghijklmnopqrstuvwxyz"; //series of lowercase letters
             string uppers = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"; //series of uppercase letters
             string numbers = "1234567890"; //series of numbers
             string symbols = "~`!@#$%^&*_-+'=.;:?/"; //series of symbols
             string brackets = "(){}[]"; //series of brackets
 
-            SecureString genPass = new SecureString(); //blank securely stored string to be used as the final generated password
+            string chars = "";
+            SecureString genPass = new SecureString(); //blank string to be used as the final generated password
+
+            chars += lowers;
 
             if (includeUppercase) { //if passed in that the consumer wants uppercase letters, append "uppercase" to the chars string 
                 chars += uppers;
