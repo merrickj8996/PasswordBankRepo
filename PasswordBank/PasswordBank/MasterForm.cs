@@ -701,7 +701,6 @@ namespace FirstPass {
         /// Adds a new entry to the datagrid view when a file is currently open
         /// </summary>
         private void AddANewEntry() {
-            String id = "0";
             //if the datagrid view doesnt have a datasource AKA no file is open
             if (dataGridView1.DataSource == null) {
                 //pop open a dialog box explaining why a new row cant be added

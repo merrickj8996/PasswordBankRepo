@@ -661,7 +661,6 @@ namespace FirstPass
             this.EntryVariablesExpirationTextBox.Name = "EntryVariablesExpirationTextBox";
             this.EntryVariablesExpirationTextBox.Size = new System.Drawing.Size(250, 20);
             this.EntryVariablesExpirationTextBox.TabIndex = 12;
-            this.EntryVariablesExpirationTextBox.TextChanged += new System.EventHandler(this.EntryVariablesExpirationTextBox_TextChanged);
             // 
             // EntryVariablesExpirationLabel
             // 
@@ -874,15 +873,7 @@ namespace FirstPass
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private System.Windows.Forms.Button AddNewEntry;
-
-
-
-        
-        private System.Windows.Forms.DataGridView entryVariablesGridView;
-
-
         private System.Windows.Forms.RichTextBox entryNotes;
-
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem quickGuideToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openingAFileToolStripMenuItem;
