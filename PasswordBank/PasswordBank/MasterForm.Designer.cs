@@ -82,6 +82,7 @@ namespace FirstPass
             this.copyURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.EntryVariablesPanel = new System.Windows.Forms.Panel();
+            this.EntryVariablesExpirationTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesExpirationLabel = new System.Windows.Forms.Label();
             this.EntryVariablesPasswordTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesConfirmButton = new System.Windows.Forms.Button();
@@ -95,7 +96,8 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
-            this.EntryVariablesExpirationTextBox = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.CryptoProgBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -115,6 +117,7 @@ namespace FirstPass
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.EntryVariablesPanel.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -641,6 +644,17 @@ namespace FirstPass
             this.EntryVariablesPanel.Size = new System.Drawing.Size(386, 324);
             this.EntryVariablesPanel.TabIndex = 2;
             // 
+            // EntryVariablesExpirationTextBox
+            // 
+            this.EntryVariablesExpirationTextBox.AccessibleName = "EntryVariablesExpirationTextBox";
+            this.EntryVariablesExpirationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EntryVariablesExpirationTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.EntryVariablesExpirationTextBox.Location = new System.Drawing.Point(111, 140);
+            this.EntryVariablesExpirationTextBox.Name = "EntryVariablesExpirationTextBox";
+            this.EntryVariablesExpirationTextBox.Size = new System.Drawing.Size(274, 20);
+            this.EntryVariablesExpirationTextBox.TabIndex = 12;
+            // 
             // EntryVariablesExpirationLabel
             // 
             this.EntryVariablesExpirationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -782,16 +796,24 @@ namespace FirstPass
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 
-            // EntryVariablesExpirationTextBox
+            // statusStrip1
             // 
-            this.EntryVariablesExpirationTextBox.AccessibleName = "EntryVariablesExpirationTextBox";
-            this.EntryVariablesExpirationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EntryVariablesExpirationTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EntryVariablesExpirationTextBox.Location = new System.Drawing.Point(111, 140);
-            this.EntryVariablesExpirationTextBox.Name = "EntryVariablesExpirationTextBox";
-            this.EntryVariablesExpirationTextBox.Size = new System.Drawing.Size(274, 20);
-            this.EntryVariablesExpirationTextBox.TabIndex = 12;
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CryptoProgBar});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 617);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1041, 22);
+            this.statusStrip1.TabIndex = 5;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // CryptoProgBar
+            // 
+            this.CryptoProgBar.ForeColor = System.Drawing.Color.Chartreuse;
+            this.CryptoProgBar.MarqueeAnimationSpeed = 70;
+            this.CryptoProgBar.Name = "CryptoProgBar";
+            this.CryptoProgBar.Size = new System.Drawing.Size(100, 16);
+            this.CryptoProgBar.Step = 1;
+            this.CryptoProgBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             // 
             // MasterForm
             // 
@@ -799,6 +821,7 @@ namespace FirstPass
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1041, 639);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -833,6 +856,8 @@ namespace FirstPass
             this.splitContainer3.ResumeLayout(false);
             this.EntryVariablesPanel.ResumeLayout(false);
             this.EntryVariablesPanel.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -905,6 +930,8 @@ namespace FirstPass
         private ToolStripButton StegImport;
         private ToolStripButton StegExport;
         public TextBox EntryVariablesExpirationTextBox;
+        private StatusStrip statusStrip1;
+        private ToolStripProgressBar CryptoProgBar;
     }
 }
 

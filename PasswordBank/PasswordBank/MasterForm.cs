@@ -657,11 +657,16 @@ namespace FirstPass {
         /// </summary>
         private void UnlockFile() {
             if (FileOP.GetKeyFile().Length > 0) {
+                
                 Crypto.DecryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+                CryptoProgBar.Value = 16;
             }
+            
             Crypto.DecryptFile(FileOP.GetFile(), Crypto.mPassTemp);
+            CryptoProgBar.Value = 33;
+            
             Compressor.Decompress(FileOP.GetFile());
-
+            CryptoProgBar.Value = 50;
         }
 
         /// <summary>
@@ -670,16 +675,18 @@ namespace FirstPass {
         private void LockFile() {
             //Compresses File
             Compressor.Compress(FileOP.GetFile());
-
+            CryptoProgBar.Value = 66;
             //Encrypt the file with stored password
             Crypto.EncryptFile(FileOP.GetFile(), Crypto.mPassTemp);
-
+            CryptoProgBar.Value = 83;
             //If a Keyfile was used to open the file, use it to encrypt the file when locking
             if (FileOP.GetKeyFile().Length > 0) {
 
                 //Encrypt the file with the KeyFile
                 Crypto.EncryptFile(FileOP.GetFile(), FileOP.KeyFileToBits(FileOP.GetKeyFile()));
+                CryptoProgBar.Value = 100;
             }
+            CryptoProgBar.Value = 0;
         }
 
         /// <summary>
