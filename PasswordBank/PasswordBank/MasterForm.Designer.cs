@@ -37,12 +37,10 @@ namespace FirstPass
             this.CreateNewButton = new System.Windows.Forms.ToolStripButton();
             this.OpenFileButton = new System.Windows.Forms.ToolStripButton();
             this.SaveFilebutton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.NewEntryButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.LockButton = new System.Windows.Forms.ToolStripButton();
             this.StegImport = new System.Windows.Forms.ToolStripButton();
-            this.StegExort = new System.Windows.Forms.ToolStripButton();
+            this.StegExport = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.FileDropDown = new System.Windows.Forms.ToolStripMenuItem();
             this.CreateNewFileDropDown = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +82,6 @@ namespace FirstPass
             this.copyURLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.EntryVariablesPanel = new System.Windows.Forms.Panel();
-            this.EntryVariablesExpirationTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesExpirationLabel = new System.Windows.Forms.Label();
             this.EntryVariablesPasswordTextBox = new System.Windows.Forms.TextBox();
             this.EntryVariablesConfirmButton = new System.Windows.Forms.Button();
@@ -98,6 +95,7 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel = new System.Windows.Forms.Label();
             this.entryNotes = new System.Windows.Forms.RichTextBox();
             this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.EntryVariablesExpirationTextBox = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -126,14 +124,14 @@ namespace FirstPass
             this.CreateNewButton,
             this.OpenFileButton,
             this.SaveFilebutton,
-            this.toolStripSeparator4,
             this.NewEntryButton,
-            this.toolStripSeparator7,
-            this.LockButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 33);
+            this.LockButton,
+            this.StegImport,
+            this.StegExport});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
-            this.toolStrip1.Size = new System.Drawing.Size(1458, 33);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
+            this.toolStrip1.Size = new System.Drawing.Size(1041, 31);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "ToolBar";
             // 
@@ -170,11 +168,6 @@ namespace FirstPass
             this.SaveFilebutton.Text = "Save";
             this.SaveFilebutton.Click += new System.EventHandler(this.SaveButton_Click);
             // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 33);
-            // 
             // NewEntryButton
             // 
             this.NewEntryButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -185,14 +178,8 @@ namespace FirstPass
             this.NewEntryButton.Text = "toolStripButton4";
             this.NewEntryButton.ToolTipText = "New Entry";
             // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(6, 33);
-            // 
             // LockButton
             // 
-            this.LockButton.AccessibleName = "LockButton";
             this.LockButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.LockButton.Image = global::FirstPass.Properties.Resources._lock;
             this.LockButton.ImageTransparentColor = System.Drawing.Color.Magenta;
@@ -210,23 +197,19 @@ namespace FirstPass
             this.StegImport.Name = "StegImport";
             this.StegImport.Size = new System.Drawing.Size(28, 28);
             this.StegImport.Text = "StegImport";
-            this.StegImport.ToolTipText = "Import new file through Steganography";
-            this.StegImport.Click += new System.EventHandler(this.StegImport_Click);
+            this.StegImport.Click += new System.EventHandler(this.StegExport_Click);
             // 
-            // StegExort
+            // StegExport
             // 
-            this.StegExort.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.StegExort.Image = global::FirstPass.Properties.Resources.fileexport;
-            this.StegExort.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StegExort.Name = "StegExort";
-            this.StegExort.Size = new System.Drawing.Size(28, 28);
-            this.StegExort.Text = "StegExport";
-            this.StegExort.ToolTipText = "Export file to image through Steganography.";
-            this.StegExort.Click += new System.EventHandler(this.StegExort_Click);
+            this.StegExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.StegExport.Image = global::FirstPass.Properties.Resources.fileexport;
+            this.StegExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.StegExport.Name = "StegExport";
+            this.StegExport.Size = new System.Drawing.Size(28, 28);
+            this.StegExport.Text = "StegExport";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.FileDropDown,
@@ -234,7 +217,8 @@ namespace FirstPass
             this.settingsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1458, 33);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
+            this.menuStrip1.Size = new System.Drawing.Size(1041, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "Menu Bar";
             // 
@@ -249,14 +233,14 @@ namespace FirstPass
             this.toolStripSeparator2,
             this.printToolStripMenuItem});
             this.FileDropDown.Name = "FileDropDown";
-            this.FileDropDown.Size = new System.Drawing.Size(54, 29);
+            this.FileDropDown.Size = new System.Drawing.Size(37, 22);
             this.FileDropDown.Text = "File";
             // 
             // CreateNewFileDropDown
             // 
             this.CreateNewFileDropDown.Name = "CreateNewFileDropDown";
             this.CreateNewFileDropDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.CreateNewFileDropDown.Size = new System.Drawing.Size(213, 34);
+            this.CreateNewFileDropDown.Size = new System.Drawing.Size(141, 22);
             this.CreateNewFileDropDown.Text = "New";
             this.CreateNewFileDropDown.Click += new System.EventHandler(this.CreateNewFileDropDown_Click);
             // 
@@ -265,46 +249,46 @@ namespace FirstPass
             this.openToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.OpenFileDropDown});
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(213, 34);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.openToolStripMenuItem.Text = "Open";
             // 
             // OpenFileDropDown
             // 
             this.OpenFileDropDown.Name = "OpenFileDropDown";
             this.OpenFileDropDown.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.OpenFileDropDown.Size = new System.Drawing.Size(254, 34);
+            this.OpenFileDropDown.Size = new System.Drawing.Size(167, 22);
             this.OpenFileDropDown.Text = "Open File";
             this.OpenFileDropDown.Click += new System.EventHandler(this.OpenFileDropDown_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(138, 6);
             // 
             // saveToolStripMenuItem
             // 
             this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
             this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveToolStripMenuItem.Size = new System.Drawing.Size(213, 34);
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.saveToolStripMenuItem.Text = "Save";
             // 
             // saveAsToolStripMenuItem1
             // 
             this.saveAsToolStripMenuItem1.Name = "saveAsToolStripMenuItem1";
-            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(213, 34);
+            this.saveAsToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
             this.saveAsToolStripMenuItem1.Text = "Save As";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(138, 6);
             // 
             // printToolStripMenuItem
             // 
             this.printToolStripMenuItem.AccessibleName = "DropDownPrint";
             this.printToolStripMenuItem.Name = "printToolStripMenuItem";
             this.printToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.printToolStripMenuItem.Size = new System.Drawing.Size(213, 34);
+            this.printToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
             this.printToolStripMenuItem.Text = "Print";
             // 
             // helpToolStripMenuItem
@@ -312,7 +296,7 @@ namespace FirstPass
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.helpToolStripMenuItem1});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(65, 29);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 22);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // helpToolStripMenuItem1
@@ -330,7 +314,7 @@ namespace FirstPass
             this.quickGuideToolStripMenuItem.Name = "quickGuideToolStripMenuItem";
             this.quickGuideToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.N)));
-            this.quickGuideToolStripMenuItem.Size = new System.Drawing.Size(407, 34);
+            this.quickGuideToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.quickGuideToolStripMenuItem.Text = "Creating a new file";
             this.quickGuideToolStripMenuItem.Click += new System.EventHandler(this.quickGuideToolStripMenuItem_Click_1);
             // 
@@ -339,7 +323,7 @@ namespace FirstPass
             this.openingAFileToolStripMenuItem.Name = "openingAFileToolStripMenuItem";
             this.openingAFileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.O)));
-            this.openingAFileToolStripMenuItem.Size = new System.Drawing.Size(407, 34);
+            this.openingAFileToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.openingAFileToolStripMenuItem.Text = "Opening a file";
             this.openingAFileToolStripMenuItem.Click += new System.EventHandler(this.openingAFileToolStripMenuItem_Click);
             // 
@@ -348,7 +332,7 @@ namespace FirstPass
             this.addingEntriesToTheFielToolStripMenuItem.Name = "addingEntriesToTheFielToolStripMenuItem";
             this.addingEntriesToTheFielToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.A)));
-            this.addingEntriesToTheFielToolStripMenuItem.Size = new System.Drawing.Size(407, 34);
+            this.addingEntriesToTheFielToolStripMenuItem.Size = new System.Drawing.Size(269, 22);
             this.addingEntriesToTheFielToolStripMenuItem.Text = "Adding entries to the file";
             this.addingEntriesToTheFielToolStripMenuItem.Click += new System.EventHandler(this.addingEntriesToTheFielToolStripMenuItem_Click);
             // 
@@ -358,7 +342,7 @@ namespace FirstPass
             this.themeToolStripMenuItem,
             this.textSizeToolStripMenuItem});
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
-            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(92, 29);
+            this.settingsToolStripMenuItem.Size = new System.Drawing.Size(61, 22);
             this.settingsToolStripMenuItem.Text = "Settings";
             // 
             // themeToolStripMenuItem
@@ -367,20 +351,20 @@ namespace FirstPass
             this.defaultThemeOption,
             this.darkThemeOption});
             this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
-            this.themeToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.themeToolStripMenuItem.Text = "Theme";
             // 
             // defaultThemeOption
             // 
             this.defaultThemeOption.Name = "defaultThemeOption";
-            this.defaultThemeOption.Size = new System.Drawing.Size(171, 34);
+            this.defaultThemeOption.Size = new System.Drawing.Size(112, 22);
             this.defaultThemeOption.Text = "Default";
             this.defaultThemeOption.Click += new System.EventHandler(this.defaultThemeOption_Click);
             // 
             // darkThemeOption
             // 
             this.darkThemeOption.Name = "darkThemeOption";
-            this.darkThemeOption.Size = new System.Drawing.Size(171, 34);
+            this.darkThemeOption.Size = new System.Drawing.Size(112, 22);
             this.darkThemeOption.Text = "Dark";
             this.darkThemeOption.Click += new System.EventHandler(this.darkThemeOption_Click);
             // 
@@ -391,35 +375,35 @@ namespace FirstPass
             this.smallTextSizeOption,
             this.largeTextSizeOption});
             this.textSizeToolStripMenuItem.Name = "textSizeToolStripMenuItem";
-            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 34);
+            this.textSizeToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.textSizeToolStripMenuItem.Text = "Text Size";
             // 
             // defaultTextSizeOption
             // 
             this.defaultTextSizeOption.Name = "defaultTextSizeOption";
-            this.defaultTextSizeOption.Size = new System.Drawing.Size(171, 34);
+            this.defaultTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.defaultTextSizeOption.Text = "Default";
             this.defaultTextSizeOption.Click += new System.EventHandler(this.defaultTextSizeOption_Click);
             // 
             // smallTextSizeOption
             // 
             this.smallTextSizeOption.Name = "smallTextSizeOption";
-            this.smallTextSizeOption.Size = new System.Drawing.Size(171, 34);
+            this.smallTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.smallTextSizeOption.Text = "Small";
             this.smallTextSizeOption.Click += new System.EventHandler(this.smallTextSizeOption_Click);
             // 
             // largeTextSizeOption
             // 
             this.largeTextSizeOption.Name = "largeTextSizeOption";
-            this.largeTextSizeOption.Size = new System.Drawing.Size(171, 34);
+            this.largeTextSizeOption.Size = new System.Drawing.Size(112, 22);
             this.largeTextSizeOption.Text = "Large";
             this.largeTextSizeOption.Click += new System.EventHandler(this.largeTextSizeOption_Click);
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 66);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 55);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -429,9 +413,9 @@ namespace FirstPass
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(972, 515);
-            this.splitContainer1.SplitterDistance = 236;
-            this.splitContainer1.SplitterWidth = 3;
+            this.splitContainer1.Size = new System.Drawing.Size(1041, 584);
+            this.splitContainer1.SplitterDistance = 251;
+            this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 4;
             // 
             // pictureBox1
@@ -439,9 +423,9 @@ namespace FirstPass
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Image = global::FirstPass.Properties.Resources.firstpass_icon;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(236, 515);
+            this.pictureBox1.Size = new System.Drawing.Size(251, 584);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -450,6 +434,7 @@ namespace FirstPass
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -462,9 +447,9 @@ namespace FirstPass
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(733, 515);
-            this.splitContainer2.SplitterDistance = 229;
-            this.splitContainer2.SplitterWidth = 2;
+            this.splitContainer2.Size = new System.Drawing.Size(788, 584);
+            this.splitContainer2.SplitterDistance = 259;
+            this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             // 
             // panel1
@@ -476,17 +461,18 @@ namespace FirstPass
             this.panel1.Controls.Add(this.SearchbyLabel);
             this.panel1.Controls.Add(this.SearchByComboBox);
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(730, 25);
+            this.panel1.Size = new System.Drawing.Size(786, 16);
             this.panel1.TabIndex = 9;
             // 
             // SearchBox
             // 
             this.SearchBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SearchBox.Location = new System.Drawing.Point(44, 0);
-            this.SearchBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchBox.Margin = new System.Windows.Forms.Padding(1);
             this.SearchBox.Name = "SearchBox";
-            this.SearchBox.Size = new System.Drawing.Size(544, 20);
+            this.SearchBox.Size = new System.Drawing.Size(627, 20);
             this.SearchBox.TabIndex = 5;
             this.SearchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged);
             // 
@@ -495,6 +481,7 @@ namespace FirstPass
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 8;
@@ -504,10 +491,10 @@ namespace FirstPass
             // 
             this.SearchbyLabel.AutoSize = true;
             this.SearchbyLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SearchbyLabel.Location = new System.Drawing.Point(588, 0);
-            this.SearchbyLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.SearchbyLabel.Location = new System.Drawing.Point(671, 0);
+            this.SearchbyLabel.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.SearchbyLabel.Name = "SearchbyLabel";
-            this.SearchbyLabel.Size = new System.Drawing.Size(84, 20);
+            this.SearchbyLabel.Size = new System.Drawing.Size(58, 13);
             this.SearchbyLabel.TabIndex = 7;
             this.SearchbyLabel.Text = "Search by:";
             // 
@@ -520,10 +507,10 @@ namespace FirstPass
             "Title",
             "Username",
             "URL"});
-            this.SearchByComboBox.Location = new System.Drawing.Point(646, 0);
-            this.SearchByComboBox.Margin = new System.Windows.Forms.Padding(2);
+            this.SearchByComboBox.Location = new System.Drawing.Point(729, 0);
+            this.SearchByComboBox.Margin = new System.Windows.Forms.Padding(1);
             this.SearchByComboBox.Name = "SearchByComboBox";
-            this.SearchByComboBox.Size = new System.Drawing.Size(84, 21);
+            this.SearchByComboBox.Size = new System.Drawing.Size(57, 21);
             this.SearchByComboBox.TabIndex = 6;
             // 
             // AddNewEntry
@@ -531,10 +518,10 @@ namespace FirstPass
             this.AddNewEntry.AccessibleName = "AddNewEntry";
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 196);
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 236);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1);
             this.AddNewEntry.Name = "AddNewEntry";
-            this.AddNewEntry.Size = new System.Drawing.Size(733, 33);
+            this.AddNewEntry.Size = new System.Drawing.Size(788, 23);
             this.AddNewEntry.TabIndex = 1;
             this.AddNewEntry.Text = "Add new entry";
             this.AddNewEntry.UseVisualStyleBackColor = true;
@@ -550,13 +537,14 @@ namespace FirstPass
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.ContextMenuStrip = this.CopyAndDeleteCMS;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 31);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 20);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(733, 162);
+            this.dataGridView1.Size = new System.Drawing.Size(788, 215);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
@@ -569,13 +557,13 @@ namespace FirstPass
             this.deleteRowToolStripMenuItem,
             this.copyToolStripMenuItem});
             this.CopyAndDeleteCMS.Name = "CopyAndDeleteCMS";
-            this.CopyAndDeleteCMS.Size = new System.Drawing.Size(247, 68);
+            this.CopyAndDeleteCMS.Size = new System.Drawing.Size(182, 48);
             // 
             // deleteRowToolStripMenuItem
             // 
             this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
             this.deleteRowToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Delete)));
-            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.deleteRowToolStripMenuItem.Text = "Delete row";
             // 
             // copyToolStripMenuItem
@@ -585,14 +573,14 @@ namespace FirstPass
             this.copyPasswordToolStripMenuItem,
             this.copyURLToolStripMenuItem});
             this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(246, 32);
+            this.copyToolStripMenuItem.Size = new System.Drawing.Size(181, 22);
             this.copyToolStripMenuItem.Text = "Copy";
             // 
             // copyUserNameToolStripMenuItem
             // 
             this.copyUserNameToolStripMenuItem.Name = "copyUserNameToolStripMenuItem";
             this.copyUserNameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.B)));
-            this.copyUserNameToolStripMenuItem.Size = new System.Drawing.Size(304, 34);
+            this.copyUserNameToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.copyUserNameToolStripMenuItem.Text = "Copy user name";
             this.copyUserNameToolStripMenuItem.Click += new System.EventHandler(this.copyUserNameToolStripMenuItem_Click);
             // 
@@ -600,7 +588,7 @@ namespace FirstPass
             // 
             this.copyPasswordToolStripMenuItem.Name = "copyPasswordToolStripMenuItem";
             this.copyPasswordToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
-            this.copyPasswordToolStripMenuItem.Size = new System.Drawing.Size(304, 34);
+            this.copyPasswordToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.copyPasswordToolStripMenuItem.Text = "Copy password";
             this.copyPasswordToolStripMenuItem.Click += new System.EventHandler(this.copyPasswordToolStripMenuItem_Click);
             // 
@@ -608,7 +596,7 @@ namespace FirstPass
             // 
             this.copyURLToolStripMenuItem.Name = "copyURLToolStripMenuItem";
             this.copyURLToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.U)));
-            this.copyURLToolStripMenuItem.Size = new System.Drawing.Size(304, 34);
+            this.copyURLToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
             this.copyURLToolStripMenuItem.Text = "Copy URL";
             this.copyURLToolStripMenuItem.Click += new System.EventHandler(this.copyURLToolStripMenuItem_Click);
             // 
@@ -616,6 +604,7 @@ namespace FirstPass
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer3.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer3.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -625,8 +614,9 @@ namespace FirstPass
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.entryNotes);
-            this.splitContainer3.Size = new System.Drawing.Size(733, 284);
-            this.splitContainer3.SplitterDistance = 360;
+            this.splitContainer3.Size = new System.Drawing.Size(788, 324);
+            this.splitContainer3.SplitterDistance = 386;
+            this.splitContainer3.SplitterWidth = 3;
             this.splitContainer3.TabIndex = 13;
             // 
             // EntryVariablesPanel
@@ -646,31 +636,17 @@ namespace FirstPass
             this.EntryVariablesPanel.Controls.Add(this.EntryVariablesHeaderLabel);
             this.EntryVariablesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.EntryVariablesPanel.Location = new System.Drawing.Point(0, 0);
+            this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
-            this.EntryVariablesPanel.Size = new System.Drawing.Size(360, 284);
+            this.EntryVariablesPanel.Size = new System.Drawing.Size(386, 324);
             this.EntryVariablesPanel.TabIndex = 2;
-            // 
-            // EntryVariablesExpirationTextBox
-            // 
-            this.EntryVariablesExpirationTextBox.AccessibleName = "EntryVariablesExpirationTextBox";
-            this.EntryVariablesExpirationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.EntryVariablesExpirationTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EntryVariablesExpirationTextBox.Location = new System.Drawing.Point(352, 218);
-            this.EntryVariablesExpirationTextBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.EntryVariablesExpirationTextBox.Name = "EntryVariablesExpirationTextBox";
-            this.EntryVariablesExpirationTextBox.Size = new System.Drawing.Size(250, 20);
-            this.EntryVariablesExpirationTextBox.TabIndex = 12;
             // 
             // EntryVariablesExpirationLabel
             // 
-            this.EntryVariablesExpirationLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesExpirationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EntryVariablesExpirationLabel.Location = new System.Drawing.Point(4, 216);
-            this.EntryVariablesExpirationLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.EntryVariablesExpirationLabel.Location = new System.Drawing.Point(3, 143);
             this.EntryVariablesExpirationLabel.Name = "EntryVariablesExpirationLabel";
-            this.EntryVariablesExpirationLabel.Size = new System.Drawing.Size(219, 20);
+            this.EntryVariablesExpirationLabel.Size = new System.Drawing.Size(105, 13);
             this.EntryVariablesExpirationLabel.TabIndex = 11;
             this.EntryVariablesExpirationLabel.Text = "Expiration Date:";
             this.EntryVariablesExpirationLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -681,11 +657,12 @@ namespace FirstPass
             this.EntryVariablesPasswordTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesPasswordTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EntryVariablesPasswordTextBox.Location = new System.Drawing.Point(352, 132);
+            this.EntryVariablesPasswordTextBox.Location = new System.Drawing.Point(111, 82);
+            this.EntryVariablesPasswordTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesPasswordTextBox.Name = "EntryVariablesPasswordTextBox";
             this.EntryVariablesPasswordTextBox.PasswordChar = '*';
             this.EntryVariablesPasswordTextBox.ReadOnly = true;
-            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(250, 20);
+            this.EntryVariablesPasswordTextBox.Size = new System.Drawing.Size(274, 20);
             this.EntryVariablesPasswordTextBox.TabIndex = 10;
             this.EntryVariablesPasswordTextBox.Enter += new System.EventHandler(this.EntryVariablesPasswordTextBox_Enter_1);
             // 
@@ -694,10 +671,10 @@ namespace FirstPass
             this.EntryVariablesConfirmButton.AccessibleName = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.AutoSize = true;
             this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 261);
-            this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(2);
+            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 301);
+            this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(1);
             this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
-            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(360, 23);
+            this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(386, 23);
             this.EntryVariablesConfirmButton.TabIndex = 9;
             this.EntryVariablesConfirmButton.Text = "Confirm";
             this.EntryVariablesConfirmButton.UseVisualStyleBackColor = true;
@@ -709,9 +686,10 @@ namespace FirstPass
             this.EntryVariablesUrlTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesUrlTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EntryVariablesUrlTextBox.Location = new System.Drawing.Point(352, 180);
+            this.EntryVariablesUrlTextBox.Location = new System.Drawing.Point(111, 111);
+            this.EntryVariablesUrlTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesUrlTextBox.Name = "EntryVariablesUrlTextBox";
-            this.EntryVariablesUrlTextBox.Size = new System.Drawing.Size(250, 20);
+            this.EntryVariablesUrlTextBox.Size = new System.Drawing.Size(274, 20);
             this.EntryVariablesUrlTextBox.TabIndex = 8;
             // 
             // EntryVariablesUsernameTextBox
@@ -720,9 +698,10 @@ namespace FirstPass
             this.EntryVariablesUsernameTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesUsernameTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EntryVariablesUsernameTextBox.Location = new System.Drawing.Point(352, 89);
+            this.EntryVariablesUsernameTextBox.Location = new System.Drawing.Point(111, 52);
+            this.EntryVariablesUsernameTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesUsernameTextBox.Name = "EntryVariablesUsernameTextBox";
-            this.EntryVariablesUsernameTextBox.Size = new System.Drawing.Size(250, 20);
+            this.EntryVariablesUsernameTextBox.Size = new System.Drawing.Size(274, 20);
             this.EntryVariablesUsernameTextBox.TabIndex = 6;
             // 
             // EntryVariablesTitleTextBox
@@ -731,53 +710,52 @@ namespace FirstPass
             this.EntryVariablesTitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesTitleTextBox.BackColor = System.Drawing.SystemColors.Control;
-            this.EntryVariablesTitleTextBox.Location = new System.Drawing.Point(352, 45);
+            this.EntryVariablesTitleTextBox.Location = new System.Drawing.Point(111, 26);
+            this.EntryVariablesTitleTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesTitleTextBox.Name = "EntryVariablesTitleTextBox";
-            this.EntryVariablesTitleTextBox.Size = new System.Drawing.Size(250, 20);
+            this.EntryVariablesTitleTextBox.Size = new System.Drawing.Size(274, 20);
             this.EntryVariablesTitleTextBox.TabIndex = 5;
             // 
             // EntryVariablesUrlLabel
             // 
             this.EntryVariablesUrlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EntryVariablesUrlLabel.Location = new System.Drawing.Point(3, 180);
+            this.EntryVariablesUrlLabel.Location = new System.Drawing.Point(3, 114);
+            this.EntryVariablesUrlLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EntryVariablesUrlLabel.Name = "EntryVariablesUrlLabel";
-            this.EntryVariablesUrlLabel.Size = new System.Drawing.Size(341, 20);
+            this.EntryVariablesUrlLabel.Size = new System.Drawing.Size(106, 13);
             this.EntryVariablesUrlLabel.TabIndex = 4;
             this.EntryVariablesUrlLabel.Text = "URL: ";
             this.EntryVariablesUrlLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // EntryVariablesPasswordLabel
             // 
-            this.EntryVariablesPasswordLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EntryVariablesPasswordLabel.Location = new System.Drawing.Point(3, 135);
+            this.EntryVariablesPasswordLabel.Location = new System.Drawing.Point(3, 85);
+            this.EntryVariablesPasswordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EntryVariablesPasswordLabel.Name = "EntryVariablesPasswordLabel";
-            this.EntryVariablesPasswordLabel.Size = new System.Drawing.Size(219, 20);
+            this.EntryVariablesPasswordLabel.Size = new System.Drawing.Size(106, 13);
             this.EntryVariablesPasswordLabel.TabIndex = 3;
             this.EntryVariablesPasswordLabel.Text = "Password:";
             this.EntryVariablesPasswordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // EntryVariablesUsernameLabel
             // 
-            this.EntryVariablesUsernameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesUsernameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EntryVariablesUsernameLabel.Location = new System.Drawing.Point(3, 89);
+            this.EntryVariablesUsernameLabel.Location = new System.Drawing.Point(3, 55);
+            this.EntryVariablesUsernameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EntryVariablesUsernameLabel.Name = "EntryVariablesUsernameLabel";
-            this.EntryVariablesUsernameLabel.Size = new System.Drawing.Size(219, 20);
+            this.EntryVariablesUsernameLabel.Size = new System.Drawing.Size(106, 13);
             this.EntryVariablesUsernameLabel.TabIndex = 2;
             this.EntryVariablesUsernameLabel.Text = "Username:";
             this.EntryVariablesUsernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // EntryVariablesTitleLabel
             // 
-            this.EntryVariablesTitleLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.EntryVariablesTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EntryVariablesTitleLabel.Location = new System.Drawing.Point(3, 45);
+            this.EntryVariablesTitleLabel.Location = new System.Drawing.Point(3, 29);
+            this.EntryVariablesTitleLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EntryVariablesTitleLabel.Name = "EntryVariablesTitleLabel";
-            this.EntryVariablesTitleLabel.Size = new System.Drawing.Size(219, 20);
+            this.EntryVariablesTitleLabel.Size = new System.Drawing.Size(106, 13);
             this.EntryVariablesTitleLabel.TabIndex = 1;
             this.EntryVariablesTitleLabel.Text = "Title:";
             this.EntryVariablesTitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -787,8 +765,9 @@ namespace FirstPass
             this.EntryVariablesHeaderLabel.Dock = System.Windows.Forms.DockStyle.Top;
             this.EntryVariablesHeaderLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EntryVariablesHeaderLabel.Location = new System.Drawing.Point(0, 0);
+            this.EntryVariablesHeaderLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.EntryVariablesHeaderLabel.Name = "EntryVariablesHeaderLabel";
-            this.EntryVariablesHeaderLabel.Size = new System.Drawing.Size(360, 19);
+            this.EntryVariablesHeaderLabel.Size = new System.Drawing.Size(386, 12);
             this.EntryVariablesHeaderLabel.TabIndex = 0;
             this.EntryVariablesHeaderLabel.Text = "Entry Variables";
             this.EntryVariablesHeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -797,25 +776,35 @@ namespace FirstPass
             // 
             this.entryNotes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.entryNotes.Location = new System.Drawing.Point(0, 0);
-            this.entryNotes.Margin = new System.Windows.Forms.Padding(2);
+            this.entryNotes.Margin = new System.Windows.Forms.Padding(1);
             this.entryNotes.Name = "entryNotes";
-            this.entryNotes.Size = new System.Drawing.Size(369, 284);
+            this.entryNotes.Size = new System.Drawing.Size(399, 324);
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 
+            // EntryVariablesExpirationTextBox
+            // 
+            this.EntryVariablesExpirationTextBox.AccessibleName = "EntryVariablesExpirationTextBox";
+            this.EntryVariablesExpirationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EntryVariablesExpirationTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.EntryVariablesExpirationTextBox.Location = new System.Drawing.Point(111, 140);
+            this.EntryVariablesExpirationTextBox.Name = "EntryVariablesExpirationTextBox";
+            this.EntryVariablesExpirationTextBox.Size = new System.Drawing.Size(274, 20);
+            this.EntryVariablesExpirationTextBox.TabIndex = 12;
+            // 
             // MasterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(972, 570);
+            this.ClientSize = new System.Drawing.Size(1041, 639);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "MasterForm";
             this.Text = "PasswordKeeper";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MasterForm_FormClosing);
@@ -864,9 +853,7 @@ namespace FirstPass
         private System.Windows.Forms.ToolStripMenuItem printToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton OpenFileButton;
         private System.Windows.Forms.ToolStripButton SaveFilebutton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton NewEntryButton;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator7;
         private System.Windows.Forms.ToolStripButton LockButton;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
@@ -904,7 +891,6 @@ namespace FirstPass
         private PictureBox pictureBox1;
         public TextBox EntryVariablesPasswordTextBox;
         private Label EntryVariablesExpirationLabel;
-        public TextBox EntryVariablesExpirationTextBox;
         private ToolStripMenuItem settingsToolStripMenuItem;
         private ToolStripMenuItem themeToolStripMenuItem;
         private ToolStripMenuItem darkThemeOption;
@@ -913,11 +899,12 @@ namespace FirstPass
         private ToolStripMenuItem largeTextSizeOption;
         private ToolStripMenuItem defaultTextSizeOption;
         private ToolStripMenuItem defaultThemeOption;
-        private ToolStripButton StegImport;
-        private ToolStripButton StegExort;
         private Label label1;
         private Panel panel1;
         private SplitContainer splitContainer3;
+        private ToolStripButton StegImport;
+        private ToolStripButton StegExport;
+        public TextBox EntryVariablesExpirationTextBox;
     }
 }
 

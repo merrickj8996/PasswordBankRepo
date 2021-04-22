@@ -1035,7 +1035,7 @@ namespace FirstPass {
             frm.ShowDialog();
         }
 
-        private void StegExort_Click(object sender, EventArgs e) {
+        private void StegExport_Click(object sender, EventArgs e) {
             if (FileOP.GetFile() != "") {
                 StegExport frm = new StegExport();
                 frm.ShowDialog();
