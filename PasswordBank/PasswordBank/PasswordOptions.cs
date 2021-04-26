@@ -15,28 +15,27 @@ namespace FirstPass {
 
         public MasterForm TheParent;
         public bool success = false;
-        public List<Control> passwordOptionsTextBoxes;
-        public List<Control> passwordOptionsLabels;
-        public List<Control> passwordOptionsButtons;
-        public bool passwordOptionsDarkThemeEnabled;
-        public bool passwordOptionsDefaultTextSizeEnabled;
-        public bool passwordOptionsSmallTextSizeEnabled;
-        public bool passwordOptionsLargeTextSizeEnabled;
+        public List<Control> passwordOptionsTextBoxes = new List<Control>();
+        public List<Control> passwordOptionsLabels = new List<Control>();
+        public List<Control> passwordOptionsButtons = new List<Control>();
+        public bool passwordOptionsDarkThemeEnabled = false;
+        public bool passwordOptionsDefaultTextSizeEnabled = false;
+        public bool passwordOptionsSmallTextSizeEnabled = false;
+        public bool passwordOptionsLargeTextSizeEnabled = false;
 
-        public PasswordOptions() {
+        public PasswordOptions(Color textColor, Color backgroundColor, Color panelColor, bool darkThemeEnabled) {
+            passwordOptionsDarkThemeEnabled = darkThemeEnabled;
+
             InitializeComponent();
             InitializeControlList();
+            SetTheme(textColor, backgroundColor, panelColor);
         }
 
         /// <summary>
         /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
         /// </summary>
         private void InitializeControlList() {
-            passwordOptionsTextBoxes = new List<Control>();
-            passwordOptionsLabels = new List<Control>();
-            passwordOptionsButtons = new List<Control>();
-
-            // Stores all texboxes
+            // Stores all text boxes
             passwordOptionsTextBoxes.Add(PassEntry1);
             passwordOptionsTextBoxes.Add(PassEntry2);
             passwordOptionsTextBoxes.Add(KeyFileLocationText);
@@ -54,6 +53,35 @@ namespace FirstPass {
             passwordOptionsButtons.Add(FindKeyFile);
             passwordOptionsButtons.Add(ExitButton);
             passwordOptionsButtons.Add(OkButton);
+        }
+
+        /// <summary>
+        /// Sets theme of the passwordOptions form.
+        /// </summary>
+        /// <param name="textColor">Color of the text</param>
+        /// <param name="backgroundColor">Color of the background</param>
+        /// <param name="panelColor">Color of the panels</param>
+        private void SetTheme(Color textColor, Color backgroundColor, Color panelColor) {
+            // Apply theme to the form
+            this.BackColor = panelColor;
+
+            // Apply the theme to all of the text boxes
+            foreach (Control item in passwordOptionsTextBoxes) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
+
+            // Apply the new theme to all of the labels.
+            foreach (Control item in passwordOptionsLabels) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
+
+            // Applying the new theme to all of the buttons.
+            foreach (Control item in passwordOptionsButtons) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
         }
 
         public void UpdateTextBox(string pass) {

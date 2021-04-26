@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace FirstPass {
@@ -27,6 +28,9 @@ namespace FirstPass {
         public bool smallTextSizeEnabled = false;
         public bool defaultTextSizeEnabled = false;
         public bool largeTextSizeEnabled = false;
+
+        // Creating thread delegates
+        private delegate void ChangeThemeDelegate();
 
         /// <summary>
         /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
@@ -144,7 +148,7 @@ namespace FirstPass {
             SearchByComboBox.Font = newFont;
         }
 
-        public void ChangeTheme(System.Drawing.Color textColor, System.Drawing.Color backgroundColor, System.Drawing.Color panelColor) {
+        public void ChangeTheme(Color textColor, Color backgroundColor, Color panelColor) {
 
             // Applying the new theme to all of the rows in the DataGridView
             foreach (DataGridViewRow row in dataGridView1.Rows) {
@@ -221,7 +225,6 @@ namespace FirstPass {
             // Applying the new theme to the search box
             SearchBox.BackColor = backgroundColor;
         }
-
 
         /// <summary>
         /// Sets the datagridviews datasource to be the datatable constructed by the readfile method.
@@ -358,6 +361,7 @@ namespace FirstPass {
             }
 
         }
+
         /// <summary>
         /// Checks the number of days betweeen the current date and the day of expiration.
         /// </summary>
@@ -394,8 +398,13 @@ namespace FirstPass {
         /// Calls the createfilewarning method when the user clicks on the save button.
         /// </summary>
         private void CreateNewButton_Click(object sender, EventArgs e) {
-            DisplayNewFileWarning();
+            // Create a new thread that goes through the file creation process
+            Thread creationThread = new Thread(DisplayNewFileWarning);
+            creationThread.SetApartmentState(ApartmentState.STA);
+            creationThread.Start();
+            creationThread.Join();
         }
+
         /// <summary>
         /// Displays a warning to the user that they are about to create a new file.
         /// </summary>
@@ -419,51 +428,46 @@ namespace FirstPass {
                 }
                 //call the create file method and inflate the next form
                 if (FileOP.CreateFile()) {
-                    PasswordOptions form = new PasswordOptions() {
-                        TheParent = this
-                    };
+                    PasswordOptions passwordOptionsForm;
 
+                    // Creates a passwordOptions form with the correct theme
+                    if(darkThemeEnabled) {
+                        passwordOptionsForm = new PasswordOptions(Color.White, Color.DarkGray, Color.DarkSlateGray, darkThemeEnabled) { TheParent = this };
+                    }
+                    else {
+                        passwordOptionsForm = new PasswordOptions(SystemColors.ControlText, SystemColors.Window, SystemColors.Control, darkThemeEnabled) { TheParent = this };
+                    }
                     
                     // Adding all the password options components to the list of components in the master from.
                     // This is done to apply the same theme and text size to all of the forms
-                    textBoxes.AddRange(form.passwordOptionsTextBoxes);
-                    labels.AddRange(form.passwordOptionsLabels);
-                    this.buttons.AddRange(form.passwordOptionsButtons);
-                    forms.Add(form);
-
-                    // Changing theme of passwordOptions
-                    if (darkThemeEnabled) {
-                        ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
-                        form.passwordOptionsDarkThemeEnabled = true;
-                    }
-                    else {
-                        ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
-                        form.passwordOptionsDarkThemeEnabled = false;
-                    }
+                    textBoxes.AddRange(passwordOptionsForm.passwordOptionsTextBoxes);
+                    labels.AddRange(passwordOptionsForm.passwordOptionsLabels);
+                    this.buttons.AddRange(passwordOptionsForm.passwordOptionsButtons);
+                    forms.Add(passwordOptionsForm);
 
                     // Changing text size of passwordOptions
                     if (defaultTextSizeEnabled) {
                         ChangeFontSize(8.0f);
-                        form.passwordOptionsDefaultTextSizeEnabled = true;
-                        form.passwordOptionsSmallTextSizeEnabled = false;
-                        form.passwordOptionsLargeTextSizeEnabled = false;
+                        passwordOptionsForm.passwordOptionsDefaultTextSizeEnabled = true;
+                        passwordOptionsForm.passwordOptionsSmallTextSizeEnabled = false;
+                        passwordOptionsForm.passwordOptionsLargeTextSizeEnabled = false;
                     }
 
                     else if (smallTextSizeEnabled) {
                         ChangeFontSize(6.0f);
-                        form.passwordOptionsDefaultTextSizeEnabled = false;
-                        form.passwordOptionsSmallTextSizeEnabled = true;
-                        form.passwordOptionsLargeTextSizeEnabled = false;
+                        passwordOptionsForm.passwordOptionsDefaultTextSizeEnabled = false;
+                        passwordOptionsForm.passwordOptionsSmallTextSizeEnabled = true;
+                        passwordOptionsForm.passwordOptionsLargeTextSizeEnabled = false;
                     }
 
                     else if (largeTextSizeEnabled) {
                         ChangeFontSize(10.0f);
-                        form.passwordOptionsDefaultTextSizeEnabled = false;
-                        form.passwordOptionsSmallTextSizeEnabled = false;
-                        form.passwordOptionsLargeTextSizeEnabled = true;
+                        passwordOptionsForm.passwordOptionsDefaultTextSizeEnabled = false;
+                        passwordOptionsForm.passwordOptionsSmallTextSizeEnabled = false;
+                        passwordOptionsForm.passwordOptionsLargeTextSizeEnabled = true;
                     }
 
-                    form.ShowDialog();
+                    passwordOptionsForm.ShowDialog();
                 };
             }
         }
