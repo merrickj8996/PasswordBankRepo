@@ -148,6 +148,12 @@ namespace FirstPass {
             SearchByComboBox.Font = newFont;
         }
 
+        /// <summary>
+        /// Changes the theme of all forms.
+        /// </summary>
+        /// <param name="textColor">Color of the text</param>
+        /// <param name="backgroundColor">Color of the backgrounds</param>
+        /// <param name="panelColor">Color of the panels</param>
         public void ChangeTheme(Color textColor, Color backgroundColor, Color panelColor) {
 
             // Applying the new theme to all of the rows in the DataGridView
@@ -398,11 +404,10 @@ namespace FirstPass {
         /// Calls the createfilewarning method when the user clicks on the save button.
         /// </summary>
         private void CreateNewButton_Click(object sender, EventArgs e) {
-            // Create a new thread that goes through the file creation process
-            Thread creationThread = new Thread(DisplayNewFileWarning);
-            creationThread.SetApartmentState(ApartmentState.STA);
-            creationThread.Start();
-            creationThread.Join();
+            DisplayNewFileWarning();
+
+            // Refresh the program
+            PerformRefresh(true);
         }
 
         /// <summary>
@@ -468,6 +473,7 @@ namespace FirstPass {
                     }
 
                     passwordOptionsForm.ShowDialog();
+                    passwordOptionsForm.Activate();
                 };
             }
         }
