@@ -22,22 +22,24 @@ namespace FirstPass {
         // PrintDocument representing the document being printed
         private PrintDocument masterPasswordDoc = new PrintDocument();
 
-        /// <summary>
-        /// Initializes the pop up and assigns the master password to a member variable.
-        /// </summary>
-        /// <param name="masterPassword">Master password.</param>
-        public MasterPasswordPrintPopUp(string masterPassword) {
-            InitializeComponent();
-            InitializeControlList();
-            m_masterPassword = masterPassword;
-        }
-
         public List<Control> printPopUpLabels;
         public List<Control> printPopUpButtons;
         public bool printPopUpDarkThemeEnabled;
         public bool printPopUpDefaultTextSizeEnabled;
         public bool printPopUpSmallTextSizeEnabled;
         public bool printPopUpLargeTextSizeEnabled;
+
+        /// <summary>
+        /// Initializes the pop up and assigns the master password to a member variable.
+        /// </summary>
+        /// <param name="masterPassword">Master password.</param>
+        public MasterPasswordPrintPopUp(string masterPassword, Color textColor, Color backgroundColor, Color panelColor, bool darkThemeEnabled) {
+            m_masterPassword = masterPassword;
+
+            InitializeComponent();
+            InitializeControlList();
+            SetTheme(textColor, backgroundColor, panelColor);
+        }
 
         /// <summary>
         /// Takes all the components and groups them together in a List<Control>. This is done so themes can be added using loops instead of each component at a time.
@@ -52,6 +54,24 @@ namespace FirstPass {
             // Stores all buttons
             printPopUpButtons.Add(printButton);
             printPopUpButtons.Add(noPrintButton);
+        }
+
+
+        private void SetTheme(Color textColor, Color backgroundColor, Color panelColor) {
+            // Apply the theme to the form
+            this.BackColor = panelColor;
+
+            // Apply the theme to all of the text boxes
+            foreach (Control item in printPopUpLabels) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
+
+            // Apply the theme to all of the text boxes
+            foreach (Control item in printPopUpButtons) {
+                item.BackColor = panelColor;
+                item.ForeColor = textColor;
+            }
         }
 
         /// <summary>

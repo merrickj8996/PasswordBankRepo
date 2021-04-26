@@ -99,53 +99,7 @@ namespace FirstPass {
                     if (FileOP.GetKeyFile() != "" && FileOP.GetKeyFile() != null && File.Exists(FileOP.GetKeyFile())) {
                         KeyFileLocationText.Text = FileOP.GetKeyFile();
                         Crypto.mPassTemp = PassEntry1.Text;
-                        MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
-
-                        // Adding all the printPopUp components to the list of components in the master from.
-                        // This is done to apply the same theme and text size to all of the forms
-
-                        MasterForm controlForm = new MasterForm();
-
-                        controlForm.labels.AddRange(printPopUp.printPopUpLabels);
-                        controlForm.buttons.AddRange(printPopUp.printPopUpButtons);
-                        controlForm.forms.Add(printPopUp);
-
-                        // Changing theme of printPopUp
-                        if (passwordOptionsDarkThemeEnabled) {
-                            controlForm.ChangeTheme(System.Drawing.Color.White, System.Drawing.Color.DarkGray, System.Drawing.Color.DarkSlateGray);
-                            printPopUp.printPopUpDarkThemeEnabled = true;
-                        }
-                        else {
-                            controlForm.ChangeTheme(System.Drawing.SystemColors.ControlText, System.Drawing.SystemColors.Window, System.Drawing.SystemColors.Control);
-                            printPopUp.printPopUpDarkThemeEnabled = false;
-                        }
-
-                        // Changing text size of printPopUp
-                        if (passwordOptionsDefaultTextSizeEnabled) {
-                            controlForm.ChangeFontSize(8.0f);
-                            printPopUp.printPopUpDefaultTextSizeEnabled = true;
-                            printPopUp.printPopUpSmallTextSizeEnabled = false;
-                            printPopUp.printPopUpLargeTextSizeEnabled = false;
-                        }
-
-                        else if (passwordOptionsSmallTextSizeEnabled) {
-                            controlForm.ChangeFontSize(6.0f);
-                            printPopUp.printPopUpDefaultTextSizeEnabled = false;
-                            printPopUp.printPopUpSmallTextSizeEnabled = true;
-                            printPopUp.printPopUpLargeTextSizeEnabled = false;
-                        }
-
-                        else if (passwordOptionsLargeTextSizeEnabled) {
-                            controlForm.ChangeFontSize(10.0f);
-                            printPopUp.printPopUpDefaultTextSizeEnabled = false;
-                            printPopUp.printPopUpSmallTextSizeEnabled = false;
-                            printPopUp.printPopUpLargeTextSizeEnabled = true;
-                        }
-
-                        printPopUp.ShowDialog();
-                        TheParent.PerformRefresh(true);
-                        success = true;
-                        this.Close();
+                        CreatePrintPopUp();
                     }
                     else {
                         MessageBox.Show("Your key file is invalid. Please reselect your keyfile.", "File Error", MessageBoxButtons.OK);
@@ -153,11 +107,7 @@ namespace FirstPass {
                 }
                 else {
                     Crypto.mPassTemp = PassEntry1.Text;
-                    MasterPasswordPrintPopUp printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text);
-                    printPopUp.ShowDialog();
-                    TheParent.PerformRefresh(true);
-                    success = true;
-                    this.Close();
+                    CreatePrintPopUp();
                 }
             }
             else {
@@ -166,6 +116,55 @@ namespace FirstPass {
                 MessageBoxButtons buttons = MessageBoxButtons.OK;
                 _ = MessageBox.Show(message, title, buttons);
             }
+        }
+        
+        /// <summary>
+        /// Creates the master password print pop-up.
+        /// </summary>
+        private void CreatePrintPopUp() {
+            MasterPasswordPrintPopUp printPopUp;
+
+            if (passwordOptionsDarkThemeEnabled) {
+                printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text, Color.White, Color.DarkGray, Color.DarkSlateGray, passwordOptionsDarkThemeEnabled);
+            }
+            else {
+                printPopUp = new MasterPasswordPrintPopUp(PassEntry1.Text, SystemColors.ControlText, SystemColors.Window, SystemColors.Control, passwordOptionsDarkThemeEnabled);
+            }
+
+            // Adding all the printPopUp components to the list of components in the master from.
+            // This is done to apply the same theme and text size to all of the forms
+            MasterForm controlForm = new MasterForm();
+
+            controlForm.labels.AddRange(printPopUp.printPopUpLabels);
+            controlForm.buttons.AddRange(printPopUp.printPopUpButtons);
+            controlForm.forms.Add(printPopUp);
+
+            // Changing text size of printPopUp
+            if (passwordOptionsDefaultTextSizeEnabled) {
+                controlForm.ChangeFontSize(8.0f);
+                printPopUp.printPopUpDefaultTextSizeEnabled = true;
+                printPopUp.printPopUpSmallTextSizeEnabled = false;
+                printPopUp.printPopUpLargeTextSizeEnabled = false;
+            }
+
+            else if (passwordOptionsSmallTextSizeEnabled) {
+                controlForm.ChangeFontSize(6.0f);
+                printPopUp.printPopUpDefaultTextSizeEnabled = false;
+                printPopUp.printPopUpSmallTextSizeEnabled = true;
+                printPopUp.printPopUpLargeTextSizeEnabled = false;
+            }
+
+            else if (passwordOptionsLargeTextSizeEnabled) {
+                controlForm.ChangeFontSize(10.0f);
+                printPopUp.printPopUpDefaultTextSizeEnabled = false;
+                printPopUp.printPopUpSmallTextSizeEnabled = false;
+                printPopUp.printPopUpLargeTextSizeEnabled = true;
+            }
+
+            printPopUp.ShowDialog();
+            //TheParent.PerformRefresh(true);
+            success = true;
+            this.Close();
         }
 
         private void RandomGen_Click(object sender, EventArgs e) {
