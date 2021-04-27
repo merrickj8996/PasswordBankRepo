@@ -416,7 +416,7 @@ namespace FirstPass
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(1041, 584);
+            this.splitContainer1.Size = new System.Drawing.Size(1041, 562);
             this.splitContainer1.SplitterDistance = 251;
             this.splitContainer1.SplitterWidth = 2;
             this.splitContainer1.TabIndex = 4;
@@ -428,7 +428,7 @@ namespace FirstPass
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 584);
+            this.pictureBox1.Size = new System.Drawing.Size(251, 562);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -450,8 +450,8 @@ namespace FirstPass
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.splitContainer3);
-            this.splitContainer2.Size = new System.Drawing.Size(788, 584);
-            this.splitContainer2.SplitterDistance = 259;
+            this.splitContainer2.Size = new System.Drawing.Size(788, 562);
+            this.splitContainer2.SplitterDistance = 249;
             this.splitContainer2.SplitterWidth = 1;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -521,7 +521,7 @@ namespace FirstPass
             this.AddNewEntry.AccessibleName = "AddNewEntry";
             this.AddNewEntry.AutoSize = true;
             this.AddNewEntry.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.AddNewEntry.Location = new System.Drawing.Point(0, 236);
+            this.AddNewEntry.Location = new System.Drawing.Point(0, 226);
             this.AddNewEntry.Margin = new System.Windows.Forms.Padding(1);
             this.AddNewEntry.Name = "AddNewEntry";
             this.AddNewEntry.Size = new System.Drawing.Size(788, 23);
@@ -547,7 +547,7 @@ namespace FirstPass
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(788, 215);
+            this.dataGridView1.Size = new System.Drawing.Size(788, 205);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             this.dataGridView1.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseUp);
@@ -617,7 +617,7 @@ namespace FirstPass
             // splitContainer3.Panel2
             // 
             this.splitContainer3.Panel2.Controls.Add(this.entryNotes);
-            this.splitContainer3.Size = new System.Drawing.Size(788, 324);
+            this.splitContainer3.Size = new System.Drawing.Size(788, 312);
             this.splitContainer3.SplitterDistance = 386;
             this.splitContainer3.SplitterWidth = 3;
             this.splitContainer3.TabIndex = 13;
@@ -641,7 +641,7 @@ namespace FirstPass
             this.EntryVariablesPanel.Location = new System.Drawing.Point(0, 0);
             this.EntryVariablesPanel.Margin = new System.Windows.Forms.Padding(2);
             this.EntryVariablesPanel.Name = "EntryVariablesPanel";
-            this.EntryVariablesPanel.Size = new System.Drawing.Size(386, 324);
+            this.EntryVariablesPanel.Size = new System.Drawing.Size(386, 312);
             this.EntryVariablesPanel.TabIndex = 2;
             // 
             // EntryVariablesExpirationTextBox
@@ -685,7 +685,7 @@ namespace FirstPass
             this.EntryVariablesConfirmButton.AccessibleName = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.AutoSize = true;
             this.EntryVariablesConfirmButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 301);
+            this.EntryVariablesConfirmButton.Location = new System.Drawing.Point(0, 289);
             this.EntryVariablesConfirmButton.Margin = new System.Windows.Forms.Padding(1);
             this.EntryVariablesConfirmButton.Name = "EntryVariablesConfirmButton";
             this.EntryVariablesConfirmButton.Size = new System.Drawing.Size(386, 23);
@@ -792,7 +792,7 @@ namespace FirstPass
             this.entryNotes.Location = new System.Drawing.Point(0, 0);
             this.entryNotes.Margin = new System.Windows.Forms.Padding(1);
             this.entryNotes.Name = "entryNotes";
-            this.entryNotes.Size = new System.Drawing.Size(399, 324);
+            this.entryNotes.Size = new System.Drawing.Size(399, 312);
             this.entryNotes.TabIndex = 1;
             this.entryNotes.Text = "";
             // 
@@ -821,10 +821,10 @@ namespace FirstPass
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1041, 639);
-            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.statusStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.MainMenuStrip = this.menuStrip1;
