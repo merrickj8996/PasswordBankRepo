@@ -200,7 +200,7 @@ namespace FirstPass
             this.StegImport.Name = "StegImport";
             this.StegImport.Size = new System.Drawing.Size(28, 28);
             this.StegImport.Text = "StegImport";
-            this.StegImport.Click += new System.EventHandler(this.StegExport_Click);
+            this.StegImport.Click += new System.EventHandler(this.StegImport_Click);
             // 
             // StegExport
             // 
@@ -210,6 +210,7 @@ namespace FirstPass
             this.StegExport.Name = "StegExport";
             this.StegExport.Size = new System.Drawing.Size(28, 28);
             this.StegExport.Text = "StegExport";
+            this.StegImport.Click += new System.EventHandler(this.StegExport_Click);
             // 
             // menuStrip1
             // 
