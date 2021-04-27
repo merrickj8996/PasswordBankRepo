@@ -405,9 +405,6 @@ namespace FirstPass {
         /// </summary>
         private void CreateNewButton_Click(object sender, EventArgs e) {
             DisplayNewFileWarning();
-
-            // Refresh the program
-            PerformRefresh(true);
         }
 
         /// <summary>

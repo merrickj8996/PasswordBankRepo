@@ -162,7 +162,7 @@ namespace FirstPass {
             }
 
             printPopUp.ShowDialog();
-            //TheParent.PerformRefresh(true);
+            TheParent.PerformRefresh(true);
             success = true;
             this.Close();
         }
