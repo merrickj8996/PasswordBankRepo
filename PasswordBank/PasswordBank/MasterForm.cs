@@ -306,7 +306,7 @@ namespace FirstPass {
                     EntryVariablesExpirationTextBox.Clear();
                 }
                 else {
-                    dataGridView1.SelectedRows[0].Cells[1].Value = EntryVariablesExpirationTextBox.Text;
+                    dataGridView1.SelectedRows[0].Cells[0].Value = EntryVariablesExpirationTextBox.Text;
                 }
 
                 // Checks for comma in the title.
@@ -316,7 +316,7 @@ namespace FirstPass {
                     EntryVariablesTitleTextBox.Clear();
                 }
                 else {
-                    dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesTitleTextBox.Text;
+                    dataGridView1.SelectedRows[0].Cells[1].Value = EntryVariablesTitleTextBox.Text;
                 }
 
                 // Checks for comma in the username.
@@ -326,7 +326,7 @@ namespace FirstPass {
                     EntryVariablesUsernameTextBox.Clear();
                 }
                 else {
-                    dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesUsernameTextBox.Text;
+                    dataGridView1.SelectedRows[0].Cells[2].Value = EntryVariablesUsernameTextBox.Text;
                 }
 
                 // Checks for comma in the password.
@@ -336,7 +336,7 @@ namespace FirstPass {
                     EntryVariablesPasswordTextBox.Clear();
                 }
                 else {
-                    dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesPasswordTextBox.Text;
+                    dataGridView1.SelectedRows[0].Cells[3].Value = EntryVariablesPasswordTextBox.Text;
                 }
 
                 // Checks for comma in the url.
@@ -346,7 +346,7 @@ namespace FirstPass {
                     EntryVariablesUrlTextBox.Clear();
                 }
                 else {
-                    dataGridView1.SelectedRows[0].Cells[5].Value = EntryVariablesUrlTextBox.Text;
+                    dataGridView1.SelectedRows[0].Cells[4].Value = EntryVariablesUrlTextBox.Text;
                 }
 
                 // Checks for comma in the notes.
@@ -356,7 +356,7 @@ namespace FirstPass {
                     entryNotes.Clear();
                 }
                 else {
-                    dataGridView1.SelectedRows[0].Cells[6].Value = entryNotes.Text;
+                    dataGridView1.SelectedRows[0].Cells[5].Value = entryNotes.Text;
                 }
 
                 // Checks to make sure no entry variable's text contains commas. This is so the comma diliminated file doesn't have errors.
