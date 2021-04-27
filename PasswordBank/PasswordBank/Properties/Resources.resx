@@ -121,6 +121,9 @@
   <data name="editrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\editrow.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="lock_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock_file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="openWindow" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openWindow.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -136,17 +139,23 @@
   <data name="fileopened" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fileopened.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="save_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save_file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="enterpasswordwithkeyfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\enterpasswordwithkeyfile.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="open button" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\open button.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="open icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\open icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="createNewFileDropdown1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\createNewFileDropdown1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="open_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open_file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="randomize password" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\randomize password.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,8 +178,11 @@
   <data name="entryingridview" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\entryingridview.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="entryPasswordForm" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\entryPasswordForm.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="firstpass-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\firstpass-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="randomizedpassword" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\randomizedpassword.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="MagnifyingGlass" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MagnifyingGlass1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -187,8 +199,8 @@
   <data name="person" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\person.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="randomizedpassword" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\randomizedpassword.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="entryPasswordForm" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\entryPasswordForm.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fileexport" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fileexport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -202,14 +214,17 @@
   <data name="allDataEntered1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\allDataEntered1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="new_entry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\new_entry.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="openfiledropdown1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\openfiledropdown1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="addnewrow1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addnewrow1.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="enterpasswordwithkeyfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\enterpasswordwithkeyfile.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="open icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\open icon.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="NoImage" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\NoImage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -217,10 +232,16 @@
   <data name="fileimport" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fileimport.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="create_new_file" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\create_new_file.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="enterPasswordWithoutKEyfile" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\enterPasswordWithoutKEyfile.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="firstpass-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\firstpass-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="import" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\import.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="export" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\export.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
